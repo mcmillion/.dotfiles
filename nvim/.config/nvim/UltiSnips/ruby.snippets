@@ -1,0 +1,71 @@
+#==============================================================================
+# RUBY
+#==============================================================================
+
+snippet if
+if $1
+	$0
+end
+endsnippet
+
+snippet unl
+unless $1
+	$0
+end
+endsnippet
+
+snippet ifel
+if $1
+	$2
+else
+	$0
+end
+endsnippet
+
+snippet call
+def self.call(*args)
+	new(*args).call
+end
+
+def call
+	$0
+end
+endsnippet
+
+
+
+#==============================================================================
+# RSPEC
+#==============================================================================
+
+snippet rdesc
+RSpec.describe $1 do
+	$0
+end
+endsnippet
+
+snippet desc
+describe $1 do
+	$0
+end
+endsnippet
+
+snippet con
+context '$1' do
+	${0:${VISUAL}}
+end
+endsnippet
+
+snippet it
+it '$1' do
+	$0
+end
+endsnippet
+
+snippet let
+let(:$1) { $0 }
+endsnippet
+
+snippet sub
+subject { $0 }
+endsnippet

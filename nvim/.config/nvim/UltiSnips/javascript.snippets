@@ -1,0 +1,303 @@
+#==============================================================================
+# JAVASCRIPT
+#==============================================================================
+
+snippet im
+import $1 from '$0';
+endsnippet
+
+snippet im{
+import { $1 } from '$0';
+endsnippet
+
+snippet if
+if ($1) {
+	$0
+}
+endsnippet
+
+snippet ifel
+if ($1) {
+	$2
+}
+else {
+	$0
+}
+endsnippet
+
+snippet func
+${1:function }${2:functionName}(${3:arguments}) {
+	$0
+}
+endsnippet
+
+snippet ()
+(${1:arguments}) => {
+	$0
+}
+endsnippet
+
+snippet cl
+console.log('${1:LABEL}', $0);
+endsnippet
+
+
+
+#==============================================================================
+# JEST
+#==============================================================================
+
+snippet desc
+describe('$1', () => {
+	$0
+});
+endsnippet
+
+snippet con
+context('$1', () => {
+	$0
+});
+endsnippet
+
+snippet it
+it('$1', ${2:async }() => {
+	$0
+});
+endsnippet
+
+snippet be
+before${1:Each}(${2:async }() => {
+	$0
+});
+endsnippet
+
+snippet af
+after${1:Each}(${2:async }() => {
+	$0
+});
+endsnippet
+
+snippet exp
+expect($1).${2:toEqual}($3);
+endsnippet
+
+snippet nockrecord
+nock.recorder.rec({ output_objects: true });
+endsnippet
+
+
+
+#==============================================================================
+# CYPRESS
+#==============================================================================
+
+snippet with
+cy.within($1, () => {
+	$0
+});
+endsnippet
+
+snippet withid
+cy.withinTestId('${1:test-id}', () => {
+	$0
+});
+endsnippet
+
+snippet command
+Cypress.Commands.${1:add}('${2:commands}', (${3:originalFn}) => {
+	$0
+});
+endsnippet
+
+
+
+#==============================================================================
+# REDUX
+#==============================================================================
+
+snippet "redux async action"
+export function ${1:actionName}(${2:arguments}) {
+	return async (dispatch) => {
+		try {
+			$0
+		}
+		catch (error) {
+
+		}
+	};
+}
+endsnippet
+
+snippet "redux reducer"
+export default function reducer(state = defaultState, action) {
+	switch (action.type) {
+		case ${1:ACTION_TYPE}:
+			return {
+				...state,
+				$0
+			};
+
+		default:
+			return state;
+	}
+}
+endsnippet
+
+snippet "reducer action"
+case ${1:ACTION_TYPE}:
+	return {
+		...state,
+		$0
+	};
+endsnippet
+
+snippet "reducer action test"
+describe('${1:ACTION_TYPE}', () => {
+	it('${2:redux action description}', () => {
+		const expectedState = {
+			...defaultState,
+			$0
+		};
+		const action = { type: $1${3:, payload} };
+		const reduced = reducer(defaultState, action);
+		expect(reduced).toEqual(expectedState);
+	});
+});
+endsnippet
+
+
+
+#==============================================================================
+# NIGHTWATCH
+#==============================================================================
+
+snippet "nightwatch page object"
+module.exports = {
+	url() {
+		return \`\$\{this.api.launchUrl\}/${1:path/to/page}\`;
+	},
+	commands: [{
+		$0
+	}],
+	elements: {
+		${2:element}: {
+			selector: '${3:selector}',
+		},
+	},
+};
+endsnippet
+
+snippet "nightwatch feature"
+import { pactSetup, pactTeardown } from 'support/pact';
+import { ${1:PACT_INTERACTION} } from 'interactions/registration';
+
+module.exports = {
+	'@tags': ['${2:tag}'],
+
+	async before(client, done) {
+		pactSetup(done, [$1]);
+	},
+
+	async after(client, done) {
+		pactTeardown(done);
+	},
+
+	'${3:Description of test}'(client) {
+		$0
+
+		client.end();
+	},
+};
+endsnippet
+
+
+
+#==============================================================================
+# PACT
+#==============================================================================
+
+snippet "pact interaction"
+export const ${1:ACTION_WITH_VALID_THINGS} = {
+	state: '${2:some state exists}',
+	uponReceiving: '${3:a request for somethng}',
+	withRequest: {
+		method: '${4:GET}',
+		path: '/${5:endpoint}',
+		headers: {
+			Accept: applicatonJson,
+			'Content-Type': applicatonJson,
+		},
+		body: ${6:requestBody},
+	},
+	willRespondWith: {
+		status: ${7:200},
+		headers: {
+			'Content-Type': applicatonJson,
+		},
+		body: ${8:responseBody},
+	},
+};
+endsnippet
+
+
+
+#==============================================================================
+# STYLED COMPONENTS
+#==============================================================================
+
+snippet sprop
+${props => props.${1:prop}};
+endsnippet
+
+snippet stheme
+${props => props.theme.${1:prop}};
+endsnippet
+
+snippet scond
+${({ ${1:prop} }) =>
+	$1 &&
+	css\`
+		$0
+	\`};
+endsnippet
+
+
+
+#==============================================================================
+# KNEX
+#==============================================================================
+
+snippet knexup
+exports.up = knex => {
+	return knex.schema.$0
+};
+endsnippet
+
+snippet knexdown
+exports.down = knex => {
+	return knex.schema.$0
+};
+endsnippet
+
+snippet table
+table('${1:table}', t => {
+	$0
+})
+endsnippet
+
+snippet ctable
+createTable('${1:table}', t => {
+	$0
+})
+endsnippet
+
+snippet dtable
+dropTable('${1:table}')
+endsnippet
+
+snippet uuid
+t.uuid('id')
+	.primary()
+	.notNullable()
+	.defaultTo(knex.raw('uuid_generate_v4()'));
+endsnippet

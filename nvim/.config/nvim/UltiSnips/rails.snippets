@@ -1,0 +1,15 @@
+#==============================================================================
+# RAILS
+#==============================================================================
+
+extends ruby
+
+snippet cont
+class $1 < ApplicationController
+	$0
+end
+endsnippet
+
+snippet debug
+Rails.logger.debug "DEBUG #{$0}"
+endsnippet

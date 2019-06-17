@@ -1,0 +1,43 @@
+#==============================================================================
+# ERB
+#==============================================================================
+
+extends html
+
+snippet if
+<% if $1 %>
+	$0
+<% end %>
+endsnippet
+
+snippet unl
+<% unless $1 %>
+	$0
+<% end %>
+endsnippet
+
+snippet ifel
+<% if $1 %>
+	$2
+<% else %>
+	$0
+<% end %>
+endsnippet
+
+snippet =
+<%= $0 %>
+endsnippet
+
+snippet do
+<% $1 do |$2| %>
+	$0
+<% end %>
+endsnippet
+
+snippet end
+<% end %>
+endsnippet
+
+snippet partial
+<%= render :partial => '$1' $0%>
+endsnippet
