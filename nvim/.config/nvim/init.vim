@@ -3,6 +3,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dyng/ctrlsf.vim'
+Plug 'gruvbox-community/gruvbox/'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'janko-m/vim-test'
 Plug 'jparise/vim-graphql'
@@ -37,7 +38,7 @@ let g:polyglot_disabled = ['styled-components']
 " GENERAL SETTINGS
 "==================================================================================================
 
-set background=light                    " Color scheme background
+set background=dark                     " Color scheme background
 set diffopt+=vertical                   " Force vertical diffs
 set expandtab                           " Auto-expand tabs into spaces
 set exrc                                " Enable local project .nimvrc files
@@ -78,16 +79,11 @@ set updatetime=1000                     " Tweak updatetime for better vim-gitgut
 
 set guicursor=a:block-blinkwait250-blinkon250
 
-colorscheme flattened_light
-hi GitGutterAdd          ctermfg=1  ctermbg=15
-hi GitGutterChange       ctermfg=3  ctermbg=15
-hi GitGutterChangeDelete ctermfg=1  ctermbg=15
-hi GitGutterDelete       ctermfg=1  ctermbg=15
-hi HighlightedyankRegion ctermfg=15 ctermbg=2
-hi LineNr                ctermfg=14 ctermbg=15
-hi NonText               ctermfg=7  ctermbg=15
-hi SignColumn            ctermfg=11 ctermbg=15
-hi VertSplit             ctermfg=7  ctermbg=15
+let g:gruvbox_termcolors = 16
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_invert_selection = 0
+colorscheme gruvbox
+highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 
 
 
@@ -204,7 +200,7 @@ let g:airline_mode_map = {
     \ }
 let g:airline_powerline_fonts=1
 let g:airline_right_sep=''
-let g:airline_theme='solarized'
+let g:airline_theme='gruvbox'
 let g:airline_inactive_collapse=1
 let g:airline#extensions#branch#displayed_head_limit = 20
 let g:airline#extensions#branch#empty_message = ''
