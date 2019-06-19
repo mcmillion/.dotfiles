@@ -13,7 +13,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
@@ -28,6 +27,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'wincent/ferret'
 call plug#end()
+
+" TODO: Fix this when addressed: https://github.com/styled-components/vim-styled-components/issues/64
+let g:polyglot_disabled = ['styled-components']
 
 
 
