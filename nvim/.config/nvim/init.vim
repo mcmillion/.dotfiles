@@ -10,8 +10,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
-Plug 'morhetz/gruvbox'
-Plug 'neoclide/coc.nvim', { 'tag': '*', 'do': './install.sh' }
+Plug 'gruvbox-community/gruvbox'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
@@ -268,17 +267,6 @@ augroup AleGroup
   autocmd!
   autocmd FileType,BufEnter * call SetAleBufferLinters()
 augroup END
-
-
-
-"==================================================================================================
-" COC
-"==================================================================================================
-
-nmap <leader>ld <Plug>(coc-definition)
-nmap <leader>li <Plug>(coc-implementation)
-nmap <leader>lr <Plug>(coc-references)
-nmap <leader>lrn <Plug>(coc-rename)
 
 
 
