@@ -1,9 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/mlm/.dotfiles/nvim'
-let g:netrw_dirhist_2='/Users/mlm/.dotfiles'
-let g:netrw_dirhist_3='/Users/mlm'
-let g:netrw_dirhist_4='/Users/mlm/.dotfiles'
-let g:netrw_dirhist_5='/Users/mlm'
-let g:netrw_dirhist_6='/Users/mlm/.dotfiles'
-let g:netrw_dirhist_7='/Users/mlm/.dotfiles/tmux'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/mlm/.dotfiles/nvim/.config/nvim/colors'
+let g:netrw_dirhist_2='/Users/mlm/.dotfiles/nvim/.config/nvim'
+let g:netrw_dirhist_3='/Users/mlm/.dotfiles/nvim/.config/nvim/colors'

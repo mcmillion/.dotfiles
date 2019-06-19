@@ -10,7 +10,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
-Plug 'gruvbox-community/gruvbox'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
@@ -78,13 +77,15 @@ set updatetime=1000                     " Tweak updatetime for better vim-gitgut
 set guicursor=a:block-blinkwait250-blinkon250
 
 colorscheme flattened_light
-hi HighlightedyankRegion ctermfg=15 ctermbg=2
-hi GitGutterAdd          ctermfg=2  ctermbg=15
+hi GitGutterAdd          ctermfg=1  ctermbg=15
 hi GitGutterChange       ctermfg=3  ctermbg=15
-hi GitGutterDelete       ctermfg=1  ctermbg=15
 hi GitGutterChangeDelete ctermfg=1  ctermbg=15
-hi SignColumn            ctermfg=11 ctermbg=NONE
-hi VertSplit             ctermfg=7  ctermbg=NONE
+hi GitGutterDelete       ctermfg=1  ctermbg=15
+hi HighlightedyankRegion ctermfg=15 ctermbg=2
+hi LineNr                ctermfg=14 ctermbg=15
+hi NonText               ctermfg=7  ctermbg=15
+hi SignColumn            ctermfg=11 ctermbg=15
+hi VertSplit             ctermfg=7  ctermbg=15
 
 
 
