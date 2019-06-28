@@ -26,7 +26,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 # Auto-ls when cd-ing into directories
 cd () {
   builtin cd "$@";
-  ls -a;
+  ls -aG;
 }
 
 
