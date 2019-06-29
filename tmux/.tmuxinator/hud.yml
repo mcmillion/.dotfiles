@@ -1,0 +1,25 @@
+<% nvim_session_path = '~/.local/share/nvim/sessions' %>
+<% root_path = '~/Development/BitPivot/hud' %>
+
+name: hud
+root: <%= root_path %>
+
+windows:
+  - 'nvim':
+      root: <%= root_path %>
+      panes:
+        - nvim -S <%= nvim_session_path %>/hud.vim
+
+  - 'tests':
+      root: <%= root_path %>
+      layout: even-horizontal
+      panes:
+        - yarn run client-test-watch
+        - yarn run server-test-watch
+
+  - 'server':
+      root: <%= root_path %>
+      layout: even-horizontal
+      panes:
+        -
+        - yarn run dev

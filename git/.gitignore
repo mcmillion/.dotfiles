@@ -1,0 +1,23 @@
+.git
+*~
+*.swp
+*.swo
+.sass-cache
+.DS_Store
+.AppleDouble
+.LSOverride
+.AppleDB
+.AppleDesktop
+.apdisk
+.fseventsd
+.Trashes
+.Spotlight-V100
+._*
+Icon
+Network Trash Folder
+Temporary Items
+Icon
+.byebug_history
+taskell.json
+taskell.md
+.nvimrc

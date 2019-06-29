@@ -1,0 +1,18 @@
+<% nvim_session_path = '~/.local/share/nvim/sessions/' %>
+<% root_path = '~/Development/Personal/mcmillion.github.io/' %>
+
+name: website
+root: <%= root_path %>
+
+windows:
+  - 'nvim':
+      root: <%= root_path %>
+      panes:
+        - nvim -S <%= nvim_session_path %>website.vim
+
+  - 'server':
+      root: <%= root_path %>
+      layout: main-horizontal
+      panes:
+        - npm run develop
+        -

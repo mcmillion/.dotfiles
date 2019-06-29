@@ -1,0 +1,68 @@
+[user]
+  name = Matthew McMillion
+  email = matthew@mcmillion.io
+
+[core]
+  excludesfile = ~/.gitignore
+  whitespace = trailing-space,space-before-tab
+  symlinks = true
+  autocrlf = false
+  editor = nvim
+
+[credential]
+  helper = osxkeychain
+
+[difftool]
+  prompt = false
+
+[diff]
+  tool = vimdiff
+  compactionHeuristic = true
+
+[merge]
+  tool = fugitive
+
+[mergetool "fugitive"]
+  cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+
+[alias]
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  undo = reset --soft HEAD~1
+  branch-name = !git rev-parse --abbrev-ref HEAD
+  publish = !git push -u origin $(git branch-name)
+  unpublish = !git push origin :$(git branch-name)
+  delete-merged-branches = !git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+
+[color]
+  ui = auto
+
+[pack]
+  packSizeLimit = 2g
+
+[help]
+  format = html
+
+[http]
+  postBuffer = 524288000
+
+[push]
+  default = simple
+
+[gh]
+  protocol = https
+
+[rerere]
+  enabled = true
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[pull]
+  autoStash = true
+  rebase = true
+
+[rebase]
+  autoStash = true
