@@ -37,18 +37,10 @@ cd () {
 
 export SPACESHIP_DIR_TRUNC_PREFIX='../'
 export SPACESHIP_GIT_SYMBOL=''
-export SPACESHIP_PACKAGE_SYMBOL='package '
+export SPACESHIP_PACKAGE_SHOW=false
 export SPACESHIP_NODE_SYMBOL='node '
 export SPACESHIP_RUBY_SYMBOL='ruby '
-export SPACESHIP_ELIXIR_SYMBOL='elixir '
-export SPACESHIP_XCODE_SYMBOL='xcode '
-export SPACESHIP_SWIFT_SYMBOL='swift '
-export SPACESHIP_GOLANG_SYMBOL='go '
-export SPACESHIP_PHP_SYMBOL='php '
-export SPACESHIP_RUST_SYMBOL='rust '
-export SPACESHIP_DOCKER_SYMBOL='docker '
-export SPACESHIP_AWS_SYMBOL='aws '
-export SPACESHIP_VI_MODE_COLOR='14'
+export SPACESHIP_VI_MODE_COLOR='7'
 
 # Shim to get vim mode indicator working in Spaceship
 function zle-keymap-select() {
@@ -59,6 +51,20 @@ zle -N zle-keymap-select
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+
+
+
+#==============================================================================
+# HISTORY
+#==============================================================================
+
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase               # Erase duplicates in the history file
+setopt appendhistory        # Append history to the history file (no overwriting)
+setopt sharehistory         # Share history across terminals
+setopt incappendhistory     # Immediately append to the history file, not just when a term is killed
 
 
 
