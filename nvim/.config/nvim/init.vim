@@ -123,12 +123,15 @@ nnoremap K i<CR><Esc>
 " Use :w!! to force write files with sudo
 cnoremap <silent> w!! %!sudo tee > /dev/null %
 
-" Save and Quit typos
+" Save and Quit easier
 nnoremap <silent> WW :w<CR>
 nnoremap <silent> QQ :q<CR>
 
 " Disable ex mode
 nnoremap <silent> Q <Nop>
+
+" Disable undo text in insert
+inoremap <c-u> <Nop>
 
 " Keep search in the middle of the screen
 nnoremap <silent> n nzzzv
