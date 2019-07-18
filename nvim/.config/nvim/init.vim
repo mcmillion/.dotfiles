@@ -25,6 +25,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
@@ -422,3 +423,11 @@ let g:UltiSnipsExpandTrigger = "<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<TAB>"
 let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
 let g:UltiSnipsEditSplit="vertical"
+
+
+
+"==================================================================================================
+" VIMWIKI
+"==================================================================================================
+
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
