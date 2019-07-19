@@ -185,6 +185,15 @@ fkill() {
 
 
 #==================================================================================================
+# ASDF
+#==================================================================================================
+
+. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+
+
+
+#==================================================================================================
 # NODE / JAVASCRIPT
 #==================================================================================================
 
@@ -193,20 +202,11 @@ if [ -f ~/.npmrc ]; then
   export NPM_TOKEN=`sed -n -e '/_authToken/ s/.*\= *//p' ~/.npmrc`
 fi
 
-# NVM
-if [ -f /usr/local/opt/nvm/nvm.sh ]; then
-  export NVM_DIR="$HOME/.nvm"
-  source /usr/local/opt/nvm/nvm.sh
-fi
-
 
 
 #==================================================================================================
 # RUBY / RAILS
 #==================================================================================================
-
-# RBENV
-eval "$(rbenv init -)"
 
 alias be='noglob bundle exec'
 alias migrate='bundle && bin/rails db:migrate && bin/rails db:migrate RAILS_ENV=test'
