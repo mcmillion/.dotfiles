@@ -2,7 +2,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dyng/ctrlsf.vim'
 Plug 'gruvbox-community/gruvbox/'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'janko-m/vim-test'
@@ -30,9 +29,6 @@ Plug 'w0rp/ale'
 Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
 call plug#end()
-
-" TODO: Fix this when addressed: https://github.com/styled-components/vim-styled-components/issues/64
-let g:polyglot_disabled = ['styled-components']
 
 
 
@@ -100,6 +96,9 @@ fun! <SID>StripTrailingWhitespaces()
   call winrestview(view)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" Sync syntax from start of file automatically
+autocmd BufEnter * :syntax sync fromstart
 
 " autoresize pane layout when terminal resizes
 autocmd VimResized * :wincmd =
