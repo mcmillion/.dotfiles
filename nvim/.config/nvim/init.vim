@@ -43,16 +43,18 @@ set exrc                                " Enable local project .nimvrc files
 set formatoptions+=j                    " Smart join comment lines
 set formatoptions-=c                    " Don't auto-wrap comments
 set hidden                              " Hide buffers without having to save
-set inccommand=nosplit                  " Highlight regex replace as it happens in split
 set ignorecase                          " Ignore case in searches by default
+set inccommand=nosplit                  " Highlight regex replace as it happens in split
 set linebreak                           " Wrap on linebreak characters when wrap is on
 set list                                " Turn on whitespace characters
 set listchars=tab:→·,trail:·,nbsp:■     " Define visible whitespace characters
+set nobackup                            " Disable backups
 set nofoldenable                        " Turn off folding
 set nojoinspaces                        " Don't insert extra spaces after . when joining
+set nonumber                            " Turn off line numbering
 set noswapfile                          " Turn off inline swapfiles
 set nowrap                              " Turn off line wrapping
-set nonumber                            " Turn off line numbering
+set nowritebackup                       " Really disable backups
 set scrolloff=10                        " Keep 10 lines above and below cursor when scrolling
 set secure                              " Disable :autocmd in files not owned by user
 set shell=/usr/local/bin/zsh            " Make Vim work nicely with ZSH/RVM
@@ -73,7 +75,7 @@ set textwidth=0                         " Disabled auto wrapping
 set undofile                            " Turn on persistent undo
 set undolevels=1000                     " Maximum number of changes that can be undone
 set undoreload=10000                    " Maximum number lines to save for undo on a buffer reload
-set updatetime=1000                     " Tweak updatetime for better vim-gitgutter
+set updatetime=300                      " Tweak updatetime for better vim-gitgutter/coc
 
 set guicursor=a:block-blinkwait250-blinkon250
 
@@ -162,25 +164,6 @@ xnoremap <Leader>s :s///g<Left><Left><Left>
 
 " Better Changle Global
 nnoremap <silent> c* *Ncgn
-
-" Build
-nnoremap <silent> <C-b> :make!<CR>
-
-" Close all buffers
-command! CloseHiddenBuffers call s:CloseHiddenBuffers()
-function! s:CloseHiddenBuffers()
-  let open_buffers = []
-
-  for i in range(tabpagenr('$'))
-    call extend(open_buffers, tabpagebuflist(i + 1))
-  endfor
-
-  for num in range(1, bufnr("$") + 1)
-    if buflisted(num) && index(open_buffers, num) == -1
-      exec "bdelete ".num
-    endif
-  endfor
-endfunction
 
 
 
@@ -273,20 +256,6 @@ augroup AleGroup
   autocmd!
   autocmd FileType,BufEnter * call SetAleBufferLinters()
 augroup END
-
-
-
-"==================================================================================================
-" CTRLSF
-"==================================================================================================
-
-nmap <C-F> <Plug>CtrlSFPrompt
-vmap <C-F> <Plug>CtrlSFVwordPath
-
-let g:ctrlsf_auto_focus = {
-\ "at": "done",
-\ "duration_less_than": 1000
-\ }
 
 
 
