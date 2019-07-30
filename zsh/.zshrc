@@ -113,6 +113,8 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias cleanup_merged_branches="git checkout master && git branch --merged master | grep -v '^\*' | xargs -n 1 git branch -d"
 alias cleanup_merge="find . \( -name '*.orig' -o -name '*.BACKUP.*'' -o -name '*.BASE.*'' -o -name '*.LOCAL.*'' -o -name '*.REMOTE.*'' \) -ls -delete"
+alias cleanup_branches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
+alias gsync='git pull origin master && git checkout master && cleanup_branches'
 
 
 
