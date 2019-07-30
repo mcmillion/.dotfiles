@@ -407,3 +407,7 @@ let g:UltiSnipsEditSplit="vertical"
 "==================================================================================================
 
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" Remap increase/decrease header levels to avoid overridng vim-vinegar
+nmap <silent> ,= <Plug>VimwikiAddHeaderLevel
+nmap <silent> ,- <Plug>VimwikiRemoveHeaderLevel
