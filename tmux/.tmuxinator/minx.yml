@@ -1,13 +1,7 @@
 name: minx
 root: ~/Development/StitchFix/minx
 
-on_project_start:
-  - kill -9 $(lsof -i tcp:3000 -t)
-  - kill -9 $(lsof -i tcp:8080 -t)
-  - kill -9 $(lsof -i tcp:5050 -t)
-
 windows:
   - nvim: nvim -S ~/.local/share/nvim/sessions/minx.vim
   - zsh:
-  - console: bundle exec rails console
-  - foreman: OLD_ADMIN_USER_ID=78793 ./bin/start_web
+  - server: ./bin/dev start
