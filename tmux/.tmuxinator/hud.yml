@@ -10,13 +10,6 @@ windows:
       panes:
         - nvim -S <%= nvim_session_path %>/hud.vim
 
-  - 'tests':
-      root: <%= root_path %>
-      layout: even-horizontal
-      panes:
-        - yarn run client-test-watch
-        - yarn run server-test-watch
-
   - 'server':
       root: <%= root_path %>
       layout: even-horizontal
