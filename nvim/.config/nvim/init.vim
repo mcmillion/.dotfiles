@@ -105,6 +105,13 @@ autocmd BufEnter * :syntax sync fromstart
 " autoresize pane layout when terminal resizes
 autocmd VimResized * :wincmd =
 
+" Cursorline in active pane
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
 
 
 "==================================================================================================
