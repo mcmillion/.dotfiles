@@ -1,3 +1,7 @@
+" vim:fdm=marker
+
+" Plugins {{{
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux'
@@ -30,11 +34,9 @@ Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
 call plug#end()
 
+" }}}
 
-
-"==================================================================================================
-" GENERAL SETTINGS
-"==================================================================================================
+" General Settings {{{
 
 set background=dark                     " Color scheme background
 set diffopt+=vertical                   " Force vertical diffs
@@ -49,7 +51,6 @@ set linebreak                           " Wrap on linebreak characters when wrap
 set list                                " Turn on whitespace characters
 set listchars=tab:→·,trail:·,nbsp:■     " Define visible whitespace characters
 set nobackup                            " Disable backups
-set nofoldenable                        " Turn off folding
 set nojoinspaces                        " Don't insert extra spaces after . when joining
 set nonumber                            " Turn off line numbering
 set noswapfile                          " Turn off inline swapfiles
@@ -79,17 +80,19 @@ set updatetime=300                      " Tweak updatetime for better vim-gitgut
 
 set guicursor=a:block-blinkwait250-blinkon250
 
+" }}}
+
+" Color Scheme Settings {{{
+
 let g:gruvbox_termcolors = 16
 let g:gruvbox_sign_column = 'bg0'
 let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 
+" }}}
 
-
-"==================================================================================================
-" MISC FUNCTIONS AND AUTOCOMMANDS
-"==================================================================================================
+" Misc Functions and Autocommands {{{
 
 " Automatically trim trailing whitespace
 fun! <SID>StripTrailingWhitespaces()
@@ -112,11 +115,9 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+" }}}
 
-
-"==================================================================================================
-" GENERAL MAPPINGS
-"==================================================================================================
+" General Mappings {{{
 
 let mapleader="\<Space>"
 
@@ -172,11 +173,9 @@ xnoremap <Leader>s :s///g<Left><Left><Left>
 " Better Changle Global
 nnoremap <silent> c* *Ncgn
 
+" }}}
 
-
-"==================================================================================================
-" AIRLINE
-"==================================================================================================
+" Airline {{{
 
 let g:airline_left_sep=''
 let g:airline_mode_map = {
@@ -219,11 +218,9 @@ let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#tab_min_count = 1
 
+" }}}
 
-
-"==================================================================================================
-" ALE
-"==================================================================================================
+" Ale {{{
 
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '●'
@@ -264,11 +261,9 @@ augroup AleGroup
   autocmd FileType,BufEnter * call SetAleBufferLinters()
 augroup END
 
+" }}}
 
-
-"==================================================================================================
-" FUGITIVE
-"==================================================================================================
+" Fugitive {{{
 
 nnoremap <Leader>gs :vertical Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
@@ -281,11 +276,9 @@ nnoremap <Leader>gpl :Git pull --rebase<CR>
 nnoremap <Leader>grc :Git rebase --continue<CR>
 nnoremap <Leader>gra :Git rebase --abort<CR>
 
+" }}}
 
-
-"==================================================================================================
-" FZF
-"==================================================================================================
+" FZF {{{
 
 nnoremap <Leader><Leader> :Files<CR>
 nnoremap <Leader>fc :Commands<CR>
@@ -327,46 +320,36 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+" }}}
 
-
-"==================================================================================================
-" GITGUTTER
-"==================================================================================================
+" Gitgutter {{{
 
 nnoremap <Leader>ggu :GitGutterUndoHunk
 nnoremap <Leader>ggs :GitGutterStageHunk
 
+" }}}
 
-
-"==================================================================================================
-" MARKDOWN
-"==================================================================================================
+" Markdown {{{
 
 let g:vim_markdown_folding_disabled = 1
 
+" }}}
 
-
-"==================================================================================================
-" MARKDOWN PREVIEW
-"==================================================================================================
+" Markdown Preview {{{
 
 let g:mkdp_auto_close = 0
 
+" }}}
 
-
-"==================================================================================================
-" PRETTIER
-"==================================================================================================
+" Prettier {{{
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
 
+" }}}
 
-
-"==================================================================================================
-" RUBY / RAILS
-"==================================================================================================
+" Ruby / Rails {{{
 
 nnoremap <Leader>ra :A<CR>
 nnoremap <Leader>rA :AV<CR>
@@ -374,44 +357,36 @@ nnoremap <Leader>rr :R<CR>
 nnoremap <Leader>rR :RV<CR>
 nnoremap <Leader>rk :Rake<CR>
 
+" }}}
 
-
-"==================================================================================================
-" SNEAK
-"==================================================================================================
+" Sneak {{{
 
 let g:sneak#f_reset = 1
 let g:sneak#use_ic_scs = 1
 hi Sneak ctermfg=15 ctermbg=6
 hi SneakScope ctermfg=15 ctermbg=6
 
+" }}}
 
-
-"==================================================================================================
-" TEST
-"==================================================================================================
+" Test {{{
 
 let test#strategy = "vimux"
 let test#ruby#rspec#executable = 'bundle exec rspec'
 nnoremap <silent> <Leader>t :TestNearest<CR>
 nnoremap <silent> <Leader>tf :TestFile<CR>
 
+" }}}
 
-
-"==================================================================================================
-" ULTISNIPS
-"==================================================================================================
+" Ultisnips {{{
 
 let g:UltiSnipsExpandTrigger = "<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<TAB>"
 let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
 let g:UltiSnipsEditSplit="vertical"
 
+" }}}
 
-
-"==================================================================================================
-" VIMWIKI
-"==================================================================================================
+" VimWiki {{{
 
 let g:vimwiki_global_ext = 0
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
@@ -419,3 +394,5 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}
 " Remap increase/decrease header levels to avoid overridng vim-vinegar
 nmap <silent> ,= <Plug>VimwikiAddHeaderLevel
 nmap <silent> ,- <Plug>VimwikiRemoveHeaderLevel
+
+" }}}
