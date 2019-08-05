@@ -112,8 +112,8 @@ autocmd VimResized * :wincmd =
 " Cursorline in active pane
 augroup CursorLine
   au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
+  au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
+  au WinLeave,FocusLost * setlocal nocursorline
 augroup END
 
 " }}}
