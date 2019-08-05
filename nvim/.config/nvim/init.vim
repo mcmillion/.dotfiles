@@ -121,6 +121,9 @@ augroup END
 
 let mapleader="\<Space>"
 
+" Edit configuration
+nnoremap <silent> <Leader>xe :e $MYVIMRC<CR>
+
 " Refresh all the important things that sometimes need refreshing
 nnoremap <silent> <Leader>xr :so $MYVIMRC<CR>:AirlineRefresh<CR>:checktime<CR>:redraw!<CR>
 
