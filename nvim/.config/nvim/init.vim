@@ -270,7 +270,7 @@ augroup END
 " Fugitive {{{
 
 nnoremap <Leader>gs :vertical Gstatus<CR>
-nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gd :Gdiffsplit!<CR>
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gr :Gread<CR>
