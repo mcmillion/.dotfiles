@@ -2,4 +2,9 @@ name: home
 root: ~/
 
 windows:
+  - tasks:
+      layout: even-horizontal
+      panes:
+        - wiki
+        - tasks
   - zsh:
