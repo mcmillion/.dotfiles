@@ -72,6 +72,7 @@ setopt incappendhistory     # Immediately append to the history file, not just w
 # COMMON ALIASES
 #==============================================================================
 
+alias reload='source ~/.zshrc'
 alias ls='ls -aG'
 alias ll='ls -lh'
 alias cp='cp -iv'
@@ -91,6 +92,8 @@ alias kill_all_tmux_sessions='tmux ls | awk '\''{print $1}'\'' | sed '\''s/://g'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+
+alias tasks='taskell ~/vimwiki/tasks.md'
 
 
 
