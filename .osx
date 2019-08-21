@@ -1,14 +1,7 @@
 # vi:syntax=zsh
 
-# Allow Alfred to use Dropbox Apps folder
-defaults write com.runningwithcrayons.Alfred-Preferences-3 dropbox.allowappsfolder -bool TRUE
-
 # Disable press and hold
 defaults write -g ApplePressAndHoldEnabled -bool false
-
-# Increase key repeat speed
-defaults write -g InitialKeyRepeat -int 2
-defaults write -g KeyRepeat -int 1
 
 # Set dock size to 48px
 defaults write com.apple.dock tilesize -int 48; killall Dock
