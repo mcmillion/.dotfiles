@@ -283,17 +283,9 @@ nnoremap <Leader>fgs :GFiles?<CR>
 nnoremap <Leader>fh :Helptags<CR>
 nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fm :Maps<CR>
-nnoremap <Leader>fr :FuzzyGrep<CR>
 nnoremap <Leader>fs :Snippets<CR>
 
 command! -bang Directories call fzf#run(fzf#wrap({'source': 'find * -type d'}))
-
-command! -bang -nargs=* FuzzyGrep
-  \ call fzf#vim#grep(
-  \   'rg --hidden --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('down:40%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
