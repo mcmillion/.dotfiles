@@ -94,7 +94,6 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias wiki='vim -c VimwikiIndex'
-alias tasks='taskell ~/vimwiki/tasks.md'
 
 
 
