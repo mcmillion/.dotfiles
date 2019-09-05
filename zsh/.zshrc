@@ -40,6 +40,7 @@ export SPACESHIP_GIT_SYMBOL=''
 export SPACESHIP_PACKAGE_SHOW=false
 export SPACESHIP_NODE_SYMBOL='node '
 export SPACESHIP_RUBY_SYMBOL='ruby '
+export SPACESHIP_DOCKER_SYMBOL='docker '
 export SPACESHIP_VI_MODE_COLOR='7'
 
 # Shim to get vim mode indicator working in Spaceship
