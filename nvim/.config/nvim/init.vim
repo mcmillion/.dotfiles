@@ -29,6 +29,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
@@ -38,7 +39,7 @@ call plug#end()
 
 " General Settings {{{
 
-set background=dark                     " Color scheme background
+set background=light                    " Color scheme background
 set diffopt+=vertical                   " Force vertical diffs
 set expandtab                           " Auto-expand tabs into spaces
 set exrc                                " Enable local project .nimvrc files
@@ -84,12 +85,9 @@ set guicursor=a:block-blinkwait250-blinkon250
 
 " Color Scheme Settings {{{
 
-let g:gruvbox_termcolors = 16
-let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_invert_selection = 0
-colorscheme gruvbox
+colorscheme flattened_light
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
-highlight CursorLine ctermbg=236
+highlight CursorLine ctermbg=7
 
 " }}}
 
@@ -108,13 +106,6 @@ autocmd BufEnter * :syntax sync fromstart
 
 " autoresize pane layout when terminal resizes
 autocmd VimResized * :wincmd =
-
-" Cursorline in active pane
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
-  au WinLeave,FocusLost * setlocal nocursorline
-augroup END
 
 " }}}
 
@@ -197,7 +188,7 @@ let g:airline_mode_map = {
     \ }
 let g:airline_powerline_fonts=1
 let g:airline_right_sep=''
-let g:airline_theme='gruvbox'
+let g:airline_theme='solarized'
 let g:airline_inactive_collapse=1
 let g:airline#extensions#branch#displayed_head_limit = 20
 let g:airline#extensions#branch#empty_message = ''
@@ -232,8 +223,8 @@ let g:airline#extensions#ale#error_symbol = '● '
 let g:ale_sign_warning = '○'
 let g:airline#extensions#ale#warning_symbol = '○ '
 let g:ale_linter_aliases = {'jsx': 'css'}
-highlight ALEErrorSign ctermfg=1 ctermbg=0
-highlight ALEWarningSign ctermfg=3 ctermbg=0
+highlight ALEErrorSign ctermfg=1 ctermbg=15
+highlight ALEWarningSign ctermfg=3 ctermbg=15
 
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 function! AirlineThemePatch(palette)
@@ -304,17 +295,17 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Comment'],
   \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Statement'],
+  \ 'hl':      ['fg', 'Directory'],
   \ 'fg+':     ['fg', 'Normal'],
-  \ 'bg+':     ['bg', 'Normal'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+  \ 'bg+':     ['bg', 'Pmenu'],
+  \ 'hl+':     ['fg', 'Directory'],
+  \ 'info':    ['fg', 'Directory'],
+  \ 'border':  ['fg', 'Directory'],
+  \ 'prompt':  ['fg', 'Directory'],
+  \ 'pointer': ['fg', 'Directory'],
+  \ 'marker':  ['fg', 'Directory'],
+  \ 'spinner': ['fg', 'Directory'],
+  \ 'header':  ['fg', 'Directory'] }
 
 " }}}
 
