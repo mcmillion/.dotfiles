@@ -7,7 +7,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
-Plug 'gruvbox-community/gruvbox/'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'janko-m/vim-test'
 Plug 'jparise/vim-graphql'
@@ -30,7 +29,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vimwiki/vimwiki'
 Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
 call plug#end()
@@ -370,16 +368,5 @@ let g:UltiSnipsExpandTrigger = "<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<TAB>"
 let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
 let g:UltiSnipsEditSplit="vertical"
-
-" }}}
-
-" VimWiki {{{
-
-let g:vimwiki_global_ext = 0
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-" Remap increase/decrease header levels to avoid overridng vim-vinegar
-nmap <silent> ,= <Plug>VimwikiAddHeaderLevel
-nmap <silent> ,- <Plug>VimwikiRemoveHeaderLevel
 
 " }}}

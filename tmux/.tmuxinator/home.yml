@@ -2,5 +2,4 @@ name: home
 root: ~/
 
 windows:
-  - wiki: wiki
   - zsh:
