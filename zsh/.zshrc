@@ -41,7 +41,7 @@ export SPACESHIP_PACKAGE_SHOW=false
 export SPACESHIP_NODE_SYMBOL='node '
 export SPACESHIP_RUBY_SYMBOL='ruby '
 export SPACESHIP_DOCKER_SYMBOL='docker '
-export SPACESHIP_VI_MODE_COLOR='14'
+export SPACESHIP_VI_MODE_COLOR='7'
 
 # Shim to get vim mode indicator working in Spaceship
 function zle-keymap-select() {
@@ -127,7 +127,7 @@ alias gsync='git fetch origin master:master && git fetch --all && git checkout m
 #==================================================================================================
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --follow -g "" 2> /dev/null'
-export FZF_DEFAULT_OPTS='--height 50% --color=bg:15,fg:14,hl:4,bg+:7,fg+:11,hl+:4,info:4,prompt:4,pointer:4,marker:4,spinner:4,border:4,header:4'
+export FZF_DEFAULT_OPTS='--height 50% --color=bg:0,fg:7,hl:8,bg+:0,fg+:15,hl+:9,info:6,prompt:9,pointer:9,marker:9,spinner:9,border:3,header:3'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
