@@ -1,5 +1,5 @@
 <% nvim_session_path = '~/.local/share/nvim/sessions' %>
-<% root_path = '~/Development/BitPivot/hud' %>
+<% root_path = '~/Development/Personal/hud' %>
 
 name: hud
 root: <%= root_path %>
