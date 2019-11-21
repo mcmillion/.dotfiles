@@ -1,0 +1,18 @@
+<% nvim_session_path = '~/.local/share/nvim/sessions' %>
+<% root_path = '~/Development/StitchFix/styling-merchandise-service' %>
+
+name: styling-merchandise-service
+root: <%= root_path %>
+
+windows:
+  - 'nvim':
+      root: <%= root_path %>
+      panes:
+        - nvim -S <%= nvim_session_path %>/styling-merchandise-service.vim
+
+  - 'server':
+      root: <%= root_path %>
+      layout: even-horizontal
+      panes:
+        -
+        - bundle exec rails server
