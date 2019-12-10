@@ -84,6 +84,9 @@ set guicursor=a:block-blinkwait250-blinkon250
 
 " Color Scheme Settings {{{
 
+let g:gruvbox_bold =1
+let g:gruvbox_italic = 1
+let g:gruvbox_underline = 1
 let g:gruvbox_termcolors = 16
 let g:gruvbox_sign_column = 'bg0'
 let g:gruvbox_invert_selection = 0
