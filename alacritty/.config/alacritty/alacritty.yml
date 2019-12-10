@@ -19,14 +19,17 @@ tabspaces: 8
 font:
   size: 14.0
   normal:
-    family: "Hack"
+    family: "Fira Code"
+    style: Regular
   bold:
-    family: "Hack"
+    family: "Fira Code"
+    style: Regular
   italic:
-    family: "Hack"
+    family: "Fira Code"
+    style: Regular
   offset:
     x: 0
-    y: 4
+    y: 2
   glyph_offset:
     x: 0
     y: 0
