@@ -2,6 +2,9 @@ env:
   TERM: xterm-256color-italic
 
 window:
+  dimensions:
+    columns: 140
+    lines: 60
   padding:
     x: 5
     y: 5
@@ -26,7 +29,7 @@ font:
     style: Regular
   italic:
     family: "Fira Code"
-    style: Regular
+    style: Italic
   offset:
     x: 0
     y: 2
