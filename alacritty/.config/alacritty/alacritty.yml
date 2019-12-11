@@ -14,10 +14,13 @@ window:
 
 scrolling:
   history: 0
-  multiplier: 3
+  multiplier: 0
   auto_scroll: false
 
 tabspaces: 8
+
+mouse:
+  hide_when_typing: true
 
 font:
   size: 14.0
