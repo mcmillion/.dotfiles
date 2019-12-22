@@ -5,9 +5,6 @@ window:
   dimensions:
     columns: 140
     lines: 60
-  padding:
-    x: 4
-    y: 4
   dynamic_padding: true
   decorations: full
   startup_mode: Windowed
@@ -71,6 +68,12 @@ cursor:
   unfocused_hollow: true
 
 key_bindings:
+  - { key: V,        mods: Command, action: Paste                        }
+  - { key: C,        mods: Command, action: Copy                         }
+  - { key: Q,        mods: Command, action: Quit                         }
+  - { key: N,        mods: Command, action: SpawnNewInstance             }
+  - { key: Return,   mods: Command, action: ToggleFullscreen             }
+
   - { key: J,        mods: Alt,     chars: "\x1bj"                       }
   - { key: K,        mods: Alt,     chars: "\x1bk"                       }
   - { key: H,        mods: Alt,     chars: "\x1bh"                       }
