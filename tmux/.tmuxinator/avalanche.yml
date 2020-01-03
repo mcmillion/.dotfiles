@@ -1,0 +1,17 @@
+<% nvim_session_path = '~/.local/share/nvim/sessions' %>
+<% root_path = '~/Development/AVALANCHE' %>
+
+name: avalanche
+root: <%= root_path %>
+
+windows:
+  - 'app/nvim':
+      root: <%= root_path %>/avalanche-app
+      panes:
+        - 'nvim -S <%= nvim_session_path %>/avalance-app.vim'
+
+  - 'app/server':
+      root: <%= root_path %>/avalanche-app
+      panes:
+        -
+        - yarn ios && yarn android
