@@ -78,8 +78,6 @@ set undolevels=1000                     " Maximum number of changes that can be 
 set undoreload=10000                    " Maximum number lines to save for undo on a buffer reload
 set updatetime=300                      " Tweak updatetime for better vim-gitgutter/coc
 
-set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
-
 set guicursor=a:block-blinkwait250-blinkon250
 
 " }}}
