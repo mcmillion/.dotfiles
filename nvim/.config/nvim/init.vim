@@ -7,7 +7,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
-Plug 'gruvbox-community/gruvbox/'
+Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'janko-m/vim-test'
 Plug 'jparise/vim-graphql'
@@ -77,6 +77,8 @@ set undofile                            " Turn on persistent undo
 set undolevels=1000                     " Maximum number of changes that can be undone
 set undoreload=10000                    " Maximum number lines to save for undo on a buffer reload
 set updatetime=300                      " Tweak updatetime for better vim-gitgutter/coc
+
+set wildignore+=*/node_modules/*,_site,*/__pycache__/,*/venv/*,*/target/*,*/.vim$,\~$,*/.log,*/.aux,*/.cls,*/.aux,*/.bbl,*/.blg,*/.fls,*/.fdb*/,*/.toc,*/.out,*/.glo,*/.log,*/.ist,*/.fdb_latexmk
 
 set guicursor=a:block-blinkwait250-blinkon250
 
