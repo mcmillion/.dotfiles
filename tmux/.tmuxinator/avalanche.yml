@@ -12,7 +12,7 @@ windows:
 
   - 'app/server':
       root: <%= root_path %>/avalanche-app
-      layout: even-horizontal
+      layout: main-vertical
       panes:
         - ranger
         - yarn ios && yarn android
