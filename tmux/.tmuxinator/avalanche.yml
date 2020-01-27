@@ -15,4 +15,4 @@ windows:
       layout: main-vertical
       panes:
         - ranger
-        - yarn ios && yarn android
+        -
