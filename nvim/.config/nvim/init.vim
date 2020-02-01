@@ -29,8 +29,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'vimwiki/vimwiki'
-Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
 call plug#end()
 
@@ -377,15 +375,3 @@ let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
 let g:UltiSnipsEditSplit="vertical"
 
 " }}}
-
-" VimWiki {{{
-
-let g:vimwiki_global_ext = 0
-let g:vimwiki_conceallevel = 0
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-" Remap increase/decrease header levels to avoid overridng vim-vinegar
-nmap <silent> ,= <Plug>VimwikiAddHeaderLevel
-nmap <silent> ,- <Plug>VimwikiRemoveHeaderLevel
-
- " }}}
