@@ -42,6 +42,8 @@ export SPACESHIP_NODE_SYMBOL='node '
 export SPACESHIP_RUBY_SYMBOL='ruby '
 export SPACESHIP_DOCKER_SYMBOL='docker '
 export SPACESHIP_VI_MODE_COLOR='7'
+export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_TIME_COLOR='black'
 
 # Shim to get vim mode indicator working in Spaceship
 function zle-keymap-select() {
