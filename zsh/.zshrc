@@ -279,5 +279,5 @@ alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHold
 
 # Start tmux home session automatically
 if [ -z "$TMUX" ]; then
-  tmuxinator home
+  tmux attach -t home || tmux new -s home
 fi
