@@ -1,5 +1,5 @@
 <% nvim_session_path = '~/.local/share/nvim/sessions' %>
-<% root_path = '~/Development/AVALANCHE' %>
+<% root_path = '~/dev/AVALANCHE' %>
 
 name: avalanche
 root: <%= root_path %>

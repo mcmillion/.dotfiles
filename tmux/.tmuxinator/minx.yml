@@ -1,5 +1,5 @@
 name: minx
-root: ~/Development/StitchFix/minx
+root: ~/dev/StitchFix/minx
 
 windows:
   - nvim: nvim -S ~/.local/share/nvim/sessions/minx.vim

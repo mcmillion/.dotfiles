@@ -1,5 +1,5 @@
 <% nvim_session_path = '~/.local/share/nvim/sessions/' %>
-<% root_path = '~/Development/Personal/mcmillion.github.io/' %>
+<% root_path = '~/dev/Personal/mcmillion.github.io/' %>
 
 name: website
 root: <%= root_path %>

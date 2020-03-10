@@ -1,5 +1,5 @@
 <% nvim_session_path = '~/.local/share/nvim/sessions' %>
-<% root_path = '~/Development/StitchFix/data-hooks' %>
+<% root_path = '~/dev/StitchFix/data-hooks' %>
 
 name: data-hooks
 root: <%= root_path %>
