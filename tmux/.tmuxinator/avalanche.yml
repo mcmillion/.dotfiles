@@ -5,12 +5,12 @@ name: avalanche
 root: <%= root_path %>
 
 windows:
-  - 'app/nvim':
+  - 'nvim':
       root: <%= root_path %>/avalanche-app
       panes:
         - 'nvim -S <%= nvim_session_path %>/avalance-app.vim'
 
-  - 'app/server':
+  - 'shell':
       root: <%= root_path %>/avalanche-app
       layout: main-vertical
       panes:
