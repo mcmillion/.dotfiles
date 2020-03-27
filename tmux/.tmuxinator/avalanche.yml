@@ -14,5 +14,4 @@ windows:
       root: <%= root_path %>/avalanche-app
       layout: main-vertical
       panes:
-        - ranger
         -
