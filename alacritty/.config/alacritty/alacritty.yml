@@ -15,9 +15,6 @@ window:
 scrolling:
   history: 0
   multiplier: 0
-  auto_scroll: false
-
-tabspaces: 8
 
 mouse:
   hide_when_typing: true
