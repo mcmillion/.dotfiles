@@ -1,7 +1,64 @@
 name: minx
-root: ~/dev/StitchFix/minx
+root: ~/dev/StitchFix
 
 windows:
-  - nvim: nvim -S ~/.local/share/nvim/sessions/minx.vim
-  - zsh:
-  - server: ./bin/dev start
+  - 'minx/vim':
+      root: ~/dev/StitchFix/minx
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/minx.vim
+  - 'minx/zsh':
+      root: ~/dev/StitchFix/minx
+      layout: even-horizontal
+      panes:
+        - ./bin/dev start
+        -
+
+  - 'styling-elements/vim':
+      root: ~/dev/StitchFix/styling-elements
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/styling-elements.vim
+  - 'styling-elements/zsh':
+      root: ~/dev/StitchFix/styling-elements
+      layout: even-horizontal
+      panes:
+        - yarn install && yarn start
+        -
+
+  - 'use-minx-configuration':
+      root: ~/dev/StitchFix/use-minx-configuration
+      layout: 69ab,178x50,0,0{116x50,0,0,1,61x50,117,0[61x37,117,0,2,61x12,117,38,3]}
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/use-minx-configuration.vim
+        - yarn install && yarn test-watch
+        -
+
+  - 'use-minx-shipment-id':
+      root: ~/dev/StitchFix/use-minx-shipment-id
+      layout: 69ab,178x50,0,0{116x50,0,0,1,61x50,117,0[61x37,117,0,2,61x12,117,38,3]}
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/use-minx-shipment-id.vim
+        - yarn install && yarn test-watch
+        -
+
+  - 'minx-client-profile/vim':
+      root: ~/dev/StitchFix/minx-client-profile
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/minx-client-profile.vim
+  - 'minx-client-profile/zsh':
+      root: ~/dev/StitchFix/minx-client-profile
+      layout: 4644,178x50,0,0{89x50,0,0[89x25,0,0,4,89x24,0,26,85],88x50,90,0,84}
+      panes:
+        - yarn install && yarn start
+        - cd example && yarn install && yarn start
+        -
+
+  - 'minx-browse-mode':
+      root: ~/dev/StitchFix/minx-browse-mode/cra
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/minx-browse-mode.vim
+  - 'minx-browse-mode':
+      root: ~/dev/StitchFix/minx-browse-mode/cra
+      layout: even-horizontal
+      panes:
+        - yarn install && yarn start
+        -
