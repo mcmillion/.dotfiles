@@ -91,7 +91,7 @@ eval $(thefuck --alias)
 # TMUX / VIM
 #==================================================================================================
 
-alias mux='tmuxinator'
+alias mux='tmuxinator-fzf-start.sh'
 alias kill_all_tmux_sessions='tmux ls | awk '\''{print $1}'\'' | sed '\''s/://g'\'' | xargs -I{} tmux kill-session -t {}'
 
 alias v='nvim'
