@@ -1,0 +1,11 @@
+name: minx-browse-mode
+root: ~/dev/StitchFix/minx-browse-mode
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/minx-browse-mode.vim
+  - 'zsh':
+      layout: even-horizontal
+      panes:
+        - yarn install && yarn start
+        - clear

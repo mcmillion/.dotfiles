@@ -1,0 +1,11 @@
+name: minx
+root: ~/dev/StitchFix/minx
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/minx.vim
+  - 'zsh':
+      layout: even-horizontal
+      panes:
+        - ./bin/dev start
+        - clear

@@ -1,0 +1,12 @@
+name: use-minx-shipment-id
+root: ~/dev/StitchFix/use-minx-shipment-id
+
+windows:
+  - 'vim':
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/use-minx-shipment-id.vim
+        - yarn install && yarn test-watch
+  - 'zsh':
+      panes:
+        - clear

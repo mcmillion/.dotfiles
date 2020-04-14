@@ -1,0 +1,11 @@
+name: use-minx-configuration
+root: ~/dev/StitchFix/use-minx-configuration
+windows:
+  - 'vim':
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/use-minx-configuration.vim
+        - yarn install && yarn test-watch
+  - 'zsh':
+      panes:
+        - clear

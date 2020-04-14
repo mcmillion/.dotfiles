@@ -1,0 +1,11 @@
+name: data-hooks
+root: ~/dev/StitchFix/data-hooks
+windows:
+  - 'nvim':
+      panes:
+        - nvim -S <%= nvim_session_path %>/data-hooks.vim
+  - 'server':
+      layout: even-horizontal
+      panes:
+        - yarn run dev
+        - start
