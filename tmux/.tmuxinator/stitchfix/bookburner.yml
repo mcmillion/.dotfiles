@@ -1,0 +1,11 @@
+name: bookburner
+root: ~/dev/StitchFix/bookburner
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/bookburner.vim
+  - 'zsh':
+      layout: even-horizontal
+      panes:
+        - ./bin/dev start
+        - clear

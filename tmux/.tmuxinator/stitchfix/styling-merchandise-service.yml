@@ -1,11 +1,10 @@
 name: styling-merchandise-service
 root: ~/dev/StitchFix/styling-merchandise-service
 windows:
-  - 'nvim':
+  - 'vim':
       panes:
-        - nvim -S <%= nvim_session_path %>/styling-merchandise-service.vim
-
-  - 'server':
+        - nvim -S ~/.local/share/nvim/sessions/styling-merchandise-service.vim
+  - 'zsh':
       layout: even-horizontal
       panes:
         - bundle exec rails server

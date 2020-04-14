@@ -1,0 +1,9 @@
+name: craft
+root: ~/dev/StitchFix/craft
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/craft.vim
+  - 'zsh':
+      panes:
+        - clear

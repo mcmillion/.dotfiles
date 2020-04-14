@@ -6,8 +6,7 @@ windows:
       panes:
         - nvim -S ~/.local/share/nvim/sessions/minx-client-profile.vim
   - 'zsh':
-      layout: 4644,178x50,0,0{89x50,0,0[89x25,0,0,4,89x24,0,26,85],88x50,90,0,84}
+      layout: even-horizontal
       panes:
         - yarn install && yarn start
-        - cd example && yarn install && yarn start
         - clear
