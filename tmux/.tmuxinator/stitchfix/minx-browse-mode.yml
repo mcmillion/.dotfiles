@@ -1,5 +1,5 @@
 name: minx-browse-mode
-root: ~/dev/StitchFix/minx-browse-mode
+root: ~/dev/StitchFix/minx-browse-mode/cra
 windows:
   - 'vim':
       panes:

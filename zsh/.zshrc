@@ -91,7 +91,6 @@ eval $(thefuck --alias)
 # TMUX / VIM
 #==================================================================================================
 
-alias mux='tmuxinator-fzf-start.sh'
 alias kill_all_tmux_sessions='tmux ls | awk '\''{print $1}'\'' | sed '\''s/://g'\'' | xargs -I{} tmux kill-session -t {}'
 
 alias v='nvim'
@@ -196,6 +195,21 @@ fkill() {
   fi
 }
 
+# FZF tmuxinator
+mux() {
+  local selected=$(tmuxinator list -n | tail -n +2 | fzf --prompt="Project: " -m -1 -q "$1")
+
+  if [ -n "$selected" ]; then
+    # Set the IFS to \n to iterate over \n delimited projects
+    IFS=$'\n'
+
+    # Start each project without attaching
+    for PROJECT in $selected; do
+        tmuxinator start "$PROJECT"
+    done
+  fi
+}
+
 
 
 #==================================================================================================
@@ -278,5 +292,5 @@ alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHold
 
 # Start tmux home session automatically
 if [ -z "$TMUX" ]; then
-  mux home
+  tmux new-session -A -s home
 fi
