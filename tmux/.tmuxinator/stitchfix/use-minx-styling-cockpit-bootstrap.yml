@@ -1,0 +1,11 @@
+name: use-minx-styling-cockpit-bootstrap
+root: ~/dev/StitchFix/use-minx-styling-cockpit-bootstrap
+windows:
+  - 'vim':
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/use-minx-styling-cockpit-bootstrap.vim
+        - yarn install && yarn test-watch
+  - 'zsh':
+      panes:
+        - clear

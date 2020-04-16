@@ -9,3 +9,6 @@ windows:
       panes:
         - ./bin/dev start
         - clear
+  - 'console':
+      panes:
+        - bundle exec rails console
