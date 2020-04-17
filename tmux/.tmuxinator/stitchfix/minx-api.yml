@@ -1,0 +1,11 @@
+name: minx-api
+root: ~/dev/StitchFix/minx-api
+windows:
+  - 'vim':
+      layout: main-vertical
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/minx-api.vim
+        - yarn install && yarn test-watch
+  - 'zsh':
+      panes:
+        - clear
