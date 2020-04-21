@@ -1,0 +1,26 @@
+{
+  "diagnostic.errorSign": "☓",
+  "diagnostic.warningSign": "◬",
+  "diagnostic.infoSign": "△",
+  "diagnostic.hintSign": "△",
+  "prettier.requireConfig": true,
+  "coc.preferences.formatOnIn▵sertLeave": true,
+  "coc.preferences.formatOnSa▵veFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ],
+
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ],
+
+  "coc.preferences.diagnostic.virtualText": true
+}
