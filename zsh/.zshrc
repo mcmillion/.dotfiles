@@ -97,9 +97,30 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 
-alias wiki='vim -c VimwikiIndex'
-
 alias r='ranger'
+
+
+
+#==================================================================================================
+# HOMEBREW / UPDATING
+#==================================================================================================
+
+update() {
+  brew update
+  brew upgrade
+  brew cleanup
+
+  gem install bundler -v 2.0.2
+  gem install solargraph
+  gem install tmuxinator
+  gem install rails
+
+  npm i -g npm
+  npm i -g yarn
+  npm i -g spaceship-prompt
+
+  vim +PlugUpdate +qall
+}
 
 
 

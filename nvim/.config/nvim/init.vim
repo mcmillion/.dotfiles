@@ -39,7 +39,7 @@ Plug 'wincent/ferret'
 
 " Completion / Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-snippets']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-solargraph', 'coc-snippets']
 
 " Misc
 Plug 'machakann/vim-highlightedyank'
