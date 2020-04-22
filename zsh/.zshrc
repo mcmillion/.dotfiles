@@ -105,7 +105,7 @@ alias r='ranger'
 # HOMEBREW / UPDATING
 #==================================================================================================
 
-update() {
+upgrade() {
   brew update
   brew upgrade
   brew cleanup
@@ -114,10 +114,11 @@ update() {
   gem install solargraph
   gem install tmuxinator
   gem install rails
+  gem update
 
   npm i -g npm
   npm i -g yarn
-  npm i -g spaceship-prompt
+  npm i -g spaceship-prompt --ignore-scripts
 
   vim +PlugUpdate +qall
 }
