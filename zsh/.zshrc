@@ -110,16 +110,6 @@ upgrade() {
 
   asdf plugin-update --all
 
-  gem install bundler -v 2.0.2
-  gem install solargraph
-  gem install tmuxinator
-  gem install rails
-  gem update
-
-  npm i -g npm
-  npm i -g yarn
-  npm i -g spaceship-prompt --ignore-scripts
-
   vim +PlugUpdate +qall
 }
 

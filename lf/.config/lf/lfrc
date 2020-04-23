@@ -20,3 +20,6 @@ map <enter> open
 # Use trash
 cmd trash %set -f; trash $fx
 map <c-d> trash
+
+# Create new file
+map t push $touch<space>
