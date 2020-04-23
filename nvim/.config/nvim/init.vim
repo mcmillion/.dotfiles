@@ -33,8 +33,9 @@ Plug 'tpope/vim-rails', { 'for': 'ruby' }
 " Search / Fuzzy Finding / File Management / Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
 Plug 'wincent/ferret'
 
 " Completion / Intellisense
@@ -177,6 +178,7 @@ nnoremap <silent> <Leader><Right> :5wincmd ><CR>
 nnoremap <silent> <Leader>qx :cclose<CR>:noh<CR>
 
 " Panes / Tabs
+nnoremap <silent> - :LfCurrentFile<CR>
 nnoremap <silent> <Leader>- :vsplit %:h<CR>
 nnoremap <silent> <Leader>_ :split %:h<CR>
 nnoremap <silent> <Leader>= :tab split %:h<CR>
@@ -290,6 +292,13 @@ let g:fzf_colors =
 
 nnoremap <Leader>ggu :GitGutterUndoHunk
 nnoremap <Leader>ggs :GitGutterStageHunk
+
+" }}}
+
+" LF {{{
+
+let g:lf_map_keys = 0
+let g:lf_replace_netrw = 1
 
 " }}}
 
