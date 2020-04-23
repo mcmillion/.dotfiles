@@ -110,6 +110,8 @@ upgrade() {
   brew upgrade
   brew cleanup
 
+  asdf plugin-update --all
+
   gem install bundler -v 2.0.2
   gem install solargraph
   gem install tmuxinator
