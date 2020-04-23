@@ -5,6 +5,8 @@ set filesep "\n"  # default already
 
 set scrolloff 10
 set hidden
+set ratios 1:2:1
+set info size:time
 
 # Open files
 cmd open ${{
