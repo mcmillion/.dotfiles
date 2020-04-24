@@ -5,8 +5,8 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Theme / Layout
+Plug 'vim-airline/vim-airline'
 Plug 'gruvbox-community/gruvbox'
-Plug 'itchyny/lightline.vim'
 
 " Editing Extensions
 Plug 'tomtom/tcomment_vim'
@@ -40,10 +40,8 @@ Plug 'wincent/ferret'
 
 " Completion / Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-solargraph', 'coc-snippets']
 
 " Misc
-Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-obsession'
 
 call plug#end()
@@ -197,7 +195,66 @@ nnoremap <silent> c* *Ncgn
 
 " }}}
 
+" Airline {{{
+
+let g:airline_left_sep=''
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+let g:airline_powerline_fonts=1
+let g:airline_right_sep=''
+let g:airline_theme='gruvbox'
+let g:airline_inactive_collapse=1
+let g:airline#extensions#branch#displayed_head_limit = 20
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline_section_z = '%3p%% %l:%c '
+
+let g:airline#extensions#tabline#buf_label_first = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'jsformatter'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#tab_min_count = 1
+
+" }}}
+
 " CoC {{{
+
+let g:coc_global_extensions = [
+  \ 'coc-emmet',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-prettier',
+  \ 'coc-tsserver',
+  \ 'coc-solargraph',
+  \ 'coc-snippets',
+  \ 'coc-yank',
+  \ 'coc-inline-jest',
+  \ 'coc-yaml',
+\]
 
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? coc#_select_confirm() :
@@ -234,6 +291,9 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
+
+" Yank preview
+nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<CR>
 
 " }}}
 
@@ -299,42 +359,6 @@ nnoremap <Leader>ggs :GitGutterStageHunk
 
 let g:lf_map_keys = 0
 let g:lf_replace_netrw = 1
-
-" }}}
-
-" Lightline {{{
-
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
-  \ 'active': {
-  \   'left': [
-  \     [ 'mode', 'paste' ],
-  \     [ 'git_branch', 'filename' ]
-  \   ],
-  \   'right': [
-  \     [ 'lineinfo' ],
-  \   ]
-  \ },
-  \ 'inactive': {
-  \   'right': [ ]
-  \ },
-  \ 'component_function': {
-  \   'git_branch': 'FugitiveHead',
-  \ },
-  \ 'mode_map': {
-  \   'n' : 'N',
-  \   'i' : 'I',
-  \   'R' : 'R',
-  \   'v' : 'V',
-  \   'V' : 'VL',
-  \   "\<C-v>": 'VB',
-  \   'c' : 'C',
-  \   's' : 'S',
-  \   'S' : 'SL',
-  \   "\<C-s>": 'SB',
-  \   't': 'T',
-  \ },
-\ }
 
 " }}}
 
