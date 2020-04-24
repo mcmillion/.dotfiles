@@ -97,9 +97,21 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 
-alias wiki='vim -c VimwikiIndex'
 
-alias r='ranger'
+
+#==================================================================================================
+# HOMEBREW / UPDATING
+#==================================================================================================
+
+upgrade() {
+  brew update
+  brew upgrade
+  brew cleanup
+
+  asdf plugin-update --all
+
+  vim +PlugUpdate +qall
+}
 
 
 
