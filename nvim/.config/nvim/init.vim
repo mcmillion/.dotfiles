@@ -242,17 +242,18 @@ let g:airline#extensions#tabline#tab_min_count = 1
 " CoC {{{
 
 let g:coc_global_extensions = [
-  \ 'coc-emmet',
   \ 'coc-css',
+  \ 'coc-emmet',
   \ 'coc-html',
+  \ 'coc-inline-jest',
   \ 'coc-json',
   \ 'coc-prettier',
-  \ 'coc-tsserver',
-  \ 'coc-solargraph',
+  \ 'coc-python',
   \ 'coc-snippets',
-  \ 'coc-yank',
-  \ 'coc-inline-jest',
+  \ 'coc-solargraph',
+  \ 'coc-tsserver',
   \ 'coc-yaml',
+  \ 'coc-yank',
 \]
 
 inoremap <silent><expr> <TAB>

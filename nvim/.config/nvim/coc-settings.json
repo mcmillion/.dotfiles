@@ -11,7 +11,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json"
+    "json",
+    "python"
   ],
 
   "eslint.autoFixOnSave": true,
