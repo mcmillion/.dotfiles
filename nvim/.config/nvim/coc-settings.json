@@ -5,8 +5,8 @@
   "diagnostic.hintSign": "△",
 
   "prettier.requireConfig": true,
-  "coc.preferences.formatOnIn▵sertLeave": true,
-  "coc.preferences.formatOnSa▵veFiletypes": [
+  "coc.preferences.formatOnInsertLeave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
     "typescript",
