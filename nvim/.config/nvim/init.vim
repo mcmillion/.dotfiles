@@ -43,7 +43,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Misc
 Plug 'tpope/vim-obsession'
-Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -356,12 +355,6 @@ nnoremap <Leader>ggs :GitGutterStageHunk
 
 " }}}
 
-" Markdown {{{
-
-let g:vim_markdown_folding_disabled = 1
-
-" }}}
-
 " Markdown Preview {{{
 
 let g:mkdp_auto_close = 0
@@ -384,17 +377,5 @@ let test#strategy = "vimux"
 let test#ruby#rspec#executable = 'bundle exec rspec'
 nnoremap <silent> <Leader>t :TestNearest<CR>
 nnoremap <silent> <Leader>tf :TestFile<CR>
-
-" }}}
-
-" VimWiki {{{
-
-let g:vimwiki_url_maxsave=0
-let g:vimwiki_global_ext = 0
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-" Remap increase/decrease header levels to avoid overridng vim-vinegar
-nmap <silent> ,= <Plug>VimwikiAddHeaderLevel
-nmap <silent> ,- <Plug>VimwikiRemoveHeaderLevel
 
 " }}}
