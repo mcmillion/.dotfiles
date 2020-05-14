@@ -4,45 +4,32 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Theme / Layout
-Plug 'vim-airline/vim-airline'
-Plug 'gruvbox-community/gruvbox'
-
-" Editing Extensions
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-
-" Tmux Integration
+Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux', { 'for': 'ruby' }
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'janko-m/vim-test', { 'for': 'ruby' }
-Plug 'tmux-plugins/vim-tmux-focus-events'
-
-" Git Integration
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" Language Support
+Plug 'dense-analysis/ale'
+Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn install'  }
+Plug 'janko-m/vim-test', { 'for': 'ruby' }
 Plug 'jparise/vim-graphql'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
-
-" Search / Fuzzy Finding / File Management / Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-vinegar'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'tpope/vim-unimpaired'
-Plug 'wincent/ferret'
-
-" Completion / Intellisense
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Misc
+Plug 'machakann/vim-highlightedyank'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
+Plug 'wincent/ferret'
 
 call plug#end()
 
@@ -141,7 +128,7 @@ let mapleader="\<Space>"
 nnoremap <silent> <Leader>xe :e $MYVIMRC<CR>
 
 " Refresh all the important things that sometimes need refreshing
-nnoremap <silent> <Leader>xr :so $MYVIMRC<CR>:checktime<CR>:redraw!<CR>
+nnoremap <silent> <Leader>xr :so $MYVIMRC<CR>:AirlineRefresh<CR>:checktime<CR>:redraw!<CR>
 
 " Remove last search highlighting
 nnoremap <silent> <Leader>h :noh<CR>
@@ -239,61 +226,46 @@ let g:airline#extensions#tabline#tab_min_count = 1
 
 " }}}
 
-" CoC {{{
+" Ale {{{
 
-let g:coc_global_extensions = [
-  \ 'coc-css',
-  \ 'coc-emmet',
-  \ 'coc-html',
-  \ 'coc-inline-jest',
-  \ 'coc-json',
-  \ 'coc-prettier',
-  \ 'coc-python',
-  \ 'coc-snippets',
-  \ 'coc-solargraph',
-  \ 'coc-tsserver',
-  \ 'coc-yaml',
-  \ 'coc-yank',
-\]
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '●'
+let g:airline#extensions#ale#error_symbol = '● '
+let g:ale_sign_warning = '○'
+let g:airline#extensions#ale#warning_symbol = '○ '
+let g:ale_linter_aliases = {'jsx': 'css'}
+highlight ALEErrorSign ctermfg=1 ctermbg=0
+highlight ALEWarningSign ctermfg=3 ctermbg=0
 
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? coc#_select_confirm() :
-  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  for mode in keys(a:palette)
+    let a:palette[mode]['airline_error'] = [ '#fdf6e3', '#b58900', 15, 1 ]
+    let a:palette[mode]['airline_warning'] = [ '#fdf6e3', '#dc322f', 15, 3 ]
+  endfor
 endfunction
 
-let g:coc_snippet_next = '<tab>'
+let g:ale_linters = {
+\   'html': [],
+\}
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" Only enable Ruby linters if configuration files are present
+function! SetAleBufferLinters()
+  let ruby_linters = ["ruby"]
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  if filereadable(".rubocop.yml") | :call add(ruby_linters, "rubocop") | endif
+  if filereadable("rails_best_practices.yml") | :call add(ruby_linters, "rails_best_pratices") | endif
+  if filereadable(".reek") | :call add(ruby_linters, "reek") | endif
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+  let b:ale_linters = {
+  \   'ruby': ruby_linters,
+  \}
+endfunction
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Yank preview
-nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<CR>
+augroup AleGroup
+  autocmd!
+  autocmd FileType,BufEnter * call SetAleBufferLinters()
+augroup END
 
 " }}}
 
@@ -361,6 +333,14 @@ let g:mkdp_auto_close = 0
 
 " }}}
 
+" Prettier {{{
+
+let g:prettier#autoformat = 1
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
+
+" }}}
+
 " Ruby / Rails {{{
 
 nnoremap <Leader>ra :A<CR>
@@ -377,5 +357,14 @@ let test#strategy = "vimux"
 let test#ruby#rspec#executable = 'bundle exec rspec'
 nnoremap <silent> <Leader>t :TestNearest<CR>
 nnoremap <silent> <Leader>tf :TestFile<CR>
+
+" }}}
+
+" Ultisnips {{{
+
+let g:UltiSnipsExpandTrigger = "<TAB>"
+let g:UltiSnipsJumpForwardTrigger="<TAB>"
+let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
+let g:UltiSnipsEditSplit="vertical"
 
 " }}}
