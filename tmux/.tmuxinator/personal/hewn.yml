@@ -1,0 +1,11 @@
+name: hewn
+root: ~/dev/Personal/hewn
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/hewn.vim
+  - 'zsh':
+      layout: even-horizontal
+      panes:
+        - npm run dev
+        - clear
