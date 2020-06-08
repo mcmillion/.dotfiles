@@ -230,7 +230,7 @@ mux() {
 # ASDF
 #==================================================================================================
 
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$(uname)" == "Darwin" ]]; then
   . /usr/local/opt/asdf/asdf.sh
 else
   . $HOME/.asdf/asdf.sh
