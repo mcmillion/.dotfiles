@@ -9,3 +9,8 @@ windows:
       panes:
         - npm run dev
         - clear
+  - 'playground':
+      root: ~/dev/Personal/hewn/playground
+      panes:
+        - clear
+
