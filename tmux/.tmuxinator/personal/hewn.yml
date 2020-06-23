@@ -1,16 +1,16 @@
 name: hewn
-root: ~/dev/Personal/hewn
+root: ~/dev/hewn-cli/hewn-cli
 windows:
   - 'vim':
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/hewn.vim
+        - nvim -S ~/.local/share/nvim/sessions/hewn-cli.vim
   - 'zsh':
       layout: even-horizontal
       panes:
         - npm run dev
         - clear
   - 'playground':
-      root: ~/dev/Personal/hewn/playground
+      root: ~/dev/hewn-cli/hewn-cli/playground
       panes:
         - clear
 
