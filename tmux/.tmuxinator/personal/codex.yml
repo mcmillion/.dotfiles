@@ -1,0 +1,12 @@
+name: codex
+root: ~/dev/Personal/codex
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/codex.vim
+
+  - 'zsh':
+      layout: even-horizontal
+      panes:
+        - bundle exec rails server
+        - clear
