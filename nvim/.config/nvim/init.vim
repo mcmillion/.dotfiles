@@ -91,6 +91,7 @@ let g:gruvbox_italic = 1
 let g:gruvbox_underline = 1
 let g:gruvbox_termcolors = 16
 let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 highlight CursorLine ctermbg=236
