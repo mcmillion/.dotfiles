@@ -6,7 +6,7 @@ windows:
         - nvim -S ~/.local/share/nvim/sessions/codex.vim
 
   - 'zsh':
-      layout: even-horizontal
+      layout: main-vertical
       panes:
-        - bundle exec rails server
         - clear
+        - bundle exec rails server
