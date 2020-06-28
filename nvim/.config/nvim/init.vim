@@ -17,6 +17,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -28,7 +30,6 @@ Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
@@ -90,7 +91,6 @@ let g:gruvbox_italic = 1
 let g:gruvbox_underline = 1
 let g:gruvbox_termcolors = 16
 let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 highlight CursorLine ctermbg=236
@@ -165,6 +165,7 @@ nnoremap <silent> <Leader><Right> :5wincmd ><CR>
 nnoremap <silent> <Leader>qx :cclose<CR>:noh<CR>
 
 " Panes / Tabs
+nnoremap <silent> - :LfCurrentFile<CR>
 nnoremap <silent> <Leader>- :vsplit %:h<CR>
 nnoremap <silent> <Leader>_ :split %:h<CR>
 nnoremap <silent> <Leader>= :tab split %:h<CR>
@@ -326,6 +327,13 @@ let g:fzf_colors =
 
 nnoremap <Leader>ggu :GitGutterUndoHunk
 nnoremap <Leader>ggs :GitGutterStageHunk
+
+" }}}
+
+" LF {{{
+
+ let g:lf_map_keys = 0
+ let g:lf_replace_netrw = 1
 
 " }}}
 
