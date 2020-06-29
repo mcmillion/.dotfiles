@@ -1,6 +1,6 @@
 [user]
   name = Matthew McMillion
-  email = matthew@mcmillion.io
+  email = mlm@hey.com
 
 [core]
   excludesfile = ~/.gitignore
