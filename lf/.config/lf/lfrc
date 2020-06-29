@@ -10,6 +10,8 @@ set hidden
 set ratios 1:2:2
 set info size:time
 
+map <esc> quit
+
 # Open files
 cmd open ${{
   case $(file --mime-type $f -b) in
