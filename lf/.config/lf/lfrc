@@ -2,10 +2,12 @@ set shell zsh
 set shellopts '-eu:--shwordsplit'
 set ifs "\n"
 set filesep "\n"  # default already
+set previewer ~/.config/lf/preview.sh
+set color256
 
 set scrolloff 10
 set hidden
-set ratios 1:2:1
+set ratios 1:2:2
 set info size:time
 
 # Open files
