@@ -9,4 +9,4 @@ windows:
       layout: main-vertical
       panes:
         - clear
-        - bundle exec rails server
+        - RAILS_ENV=development bundle exec foreman start
