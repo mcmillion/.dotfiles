@@ -8,5 +8,5 @@ windows:
   - 'zsh':
       layout: main-vertical
       panes:
-        - bundle exec rails server
+        - bundle exec foreman start -f Procfile.dev
         - clear
