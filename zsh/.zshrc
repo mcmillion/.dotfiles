@@ -133,13 +133,16 @@ alias gpu='git push'
 alias gpf='git push --force-with-lease'
 alias gpl='git pull'
 alias grm='gco master && gpl && gco - && git rebase master'
+alias grt='gco trunk && gpl && gco - && git rebase trunk'
 alias gri='git rebase -i `fcs`~1'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias cleanup_merged_branches="git checkout master && git branch --merged master | grep -v '^\*' | xargs -n 1 git branch -d"
 alias cleanup_merge="find . \( -name '*.orig' -o -name '*.BACKUP.*'' -o -name '*.BASE.*'' -o -name '*.LOCAL.*'' -o -name '*.REMOTE.*'' \) -ls -delete"
 alias cleanup_branches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
+alias cleanup_branches_trunk='git branch --merged trunk | grep -v "\* trunk" | xargs -n 1 git branch -d'
 alias gsync='git fetch origin master:master && git fetch --all && git checkout master && cleanup_branches'
+alias gtrunk='git fetch origin trunk:trunk && git fetch --all && git checkout trunk && cleanup_branches_trunk'
 
 
 
