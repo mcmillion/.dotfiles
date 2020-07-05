@@ -18,8 +18,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'ptzz/lf.vim'
-Plug 'rbgrouleff/bclose.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -168,7 +166,6 @@ nnoremap <silent> <Leader><Right> :5wincmd ><CR>
 nnoremap <silent> <Leader>qx :cclose<CR>:noh<CR>
 
 " Panes / Tabs
-nnoremap <silent> - :LfCurrentFile<CR>
 nnoremap <silent> <Leader>- :vsplit %:h<CR>
 nnoremap <silent> <Leader>_ :split %:h<CR>
 nnoremap <silent> <Leader>= :tab split %:h<CR>
