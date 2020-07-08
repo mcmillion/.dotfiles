@@ -172,6 +172,10 @@ nnoremap <silent> <Leader>_ :split %:h<CR>
 nnoremap <silent> <Leader>= :tab split %:h<CR>
 nnoremap <silent> <Leader>+ :tabclose<CR>
 
+" Moving Tabs
+nnoremap <silent> <a-j> gT
+nnoremap <silent> <a-k> gt
+
 " Yank to end of line because consistency makes sense
 nnoremap <silent> Y y$
 
