@@ -100,7 +100,7 @@ highlight CursorLine ctermbg=236
 
 augroup matchup_matchparen_highlight
   autocmd!
-  autocmd ColorScheme * hi MatchParen ctermfg=15 ctermbg=1
+  autocmd ColorScheme * hi MatchParen cterm=underline ctermbg=0
 augroup END
 
 " }}}
