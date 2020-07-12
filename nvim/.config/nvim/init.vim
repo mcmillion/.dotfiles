@@ -5,6 +5,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'andymass/vim-matchup'
 Plug 'benmills/vimux', { 'for': 'ruby' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
