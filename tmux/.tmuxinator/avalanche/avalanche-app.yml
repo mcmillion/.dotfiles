@@ -1,5 +1,5 @@
 name: avalanche-app
-root: ~/dev/Personal/avalanche-app
+root: ~/dev/AVALANCHE/avalanche-app
 windows:
   - 'vim':
       panes:
