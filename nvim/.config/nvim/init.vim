@@ -273,6 +273,20 @@ augroup END
 
 " }}}
 
+" Emmet {{{
+
+let g:user_emmet_settings = {
+\    "html": {
+\        "quote_char": "'"
+\    },
+\    "javascript.jsx": {
+\        "extends": "jsx",
+\        "quote_char": "'"
+\    }
+\}
+
+" }}}
+
 " Fugitive {{{
 
 nnoremap <Leader>gs :vertical Gstatus<CR>
