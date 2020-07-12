@@ -98,6 +98,11 @@ colorscheme gruvbox
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 highlight CursorLine ctermbg=236
 
+augroup matchup_matchparen_highlight
+  autocmd!
+  autocmd ColorScheme * hi MatchParen ctermfg=15 ctermbg=1
+augroup END
+
 " }}}
 
 " Misc Functions and Autocommands {{{
