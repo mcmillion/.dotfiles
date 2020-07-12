@@ -1,0 +1,12 @@
+name: avalanche-app
+root: ~/dev/Personal/avalanche-app
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/avalanche-app.vim
+
+  - 'zsh':
+      layout: main-vertical
+      panes:
+        - rake dev
+        - clear
