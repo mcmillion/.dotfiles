@@ -97,11 +97,7 @@ let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 highlight CursorLine ctermbg=236
-
-augroup matchup_matchparen_highlight
-  autocmd!
-  autocmd ColorScheme * hi MatchParen cterm=underline ctermbg=0
-augroup END
+highlight MatchParen ctermbg=239
 
 " }}}
 
