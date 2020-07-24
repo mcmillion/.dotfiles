@@ -85,8 +85,6 @@ set updatetime=300                      " Tweak updatetime for better vim-gitgut
 
 set guicursor=a:block-blinkwait250-blinkon250
 
-let g:polyglot_disabled = ['scss']
-
 " }}}
 
 " Color Scheme Settings {{{
@@ -100,6 +98,7 @@ let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 highlight CursorLine ctermbg=236
+highlight CursorLineNR ctermfg=15
 highlight MatchParen ctermbg=239
 
 " }}}
