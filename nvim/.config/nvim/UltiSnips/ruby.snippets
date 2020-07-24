@@ -44,6 +44,24 @@ RSpec.describe $1 do
 end
 endsnippet
 
+snippet rfeat
+RSpec.describe '$1', type: :feature do
+	$0
+end
+endsnippet
+
+snippet rreq
+RSpec.describe '$1', type: :request do
+	$0
+end
+endsnippet
+
+snippet rcomp
+RSpec.describe '$1', type: :component do
+	$0
+end
+endsnippet
+
 snippet desc
 describe $1 do
 	$0
@@ -62,10 +80,34 @@ it '$1' do
 end
 endsnippet
 
+snippet scen
+scenario '$1' do
+	$0
+end
+endsnippet
+
 snippet let
 let(:$1) { $0 }
 endsnippet
 
 snippet sub
 subject { $0 }
+endsnippet
+
+
+
+#==============================================================================
+# CAPYBARA
+#==============================================================================
+
+snippet text
+expect(page).to have_text('$0')
+endsnippet
+
+snippet fill
+fill_in('$1', with: '$0')
+endsnippet
+
+snippet click
+click_on('$0')
 endsnippet

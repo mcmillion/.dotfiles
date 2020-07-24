@@ -35,6 +35,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
+Plug 'mcmillion/scss-syntax-tailwind.vim'
 
 call plug#end()
 
@@ -56,7 +57,7 @@ set list                                " Turn on whitespace characters
 set listchars=tab:→·,trail:·,nbsp:■     " Define visible whitespace characters
 set nobackup                            " Disable backups
 set nojoinspaces                        " Don't insert extra spaces after . when joining
-set nonumber                            " Turn off line numbering
+set number                              " Turn on line numbering
 set noswapfile                          " Turn off inline swapfiles
 set nowrap                              " Turn off line wrapping
 set nowritebackup                       " Really disable backups
@@ -83,6 +84,8 @@ set undoreload=10000                    " Maximum number lines to save for undo 
 set updatetime=300                      " Tweak updatetime for better vim-gitgutter/coc
 
 set guicursor=a:block-blinkwait250-blinkon250
+
+let g:polyglot_disabled = ['scss']
 
 " }}}
 
