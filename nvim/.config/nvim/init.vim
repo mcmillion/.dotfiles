@@ -57,7 +57,7 @@ set list                                " Turn on whitespace characters
 set listchars=tab:→·,trail:·,nbsp:■     " Define visible whitespace characters
 set nobackup                            " Disable backups
 set nojoinspaces                        " Don't insert extra spaces after . when joining
-set number                              " Turn on line numbering
+set nonumber                            " Turn on line numbering
 set noswapfile                          " Turn off inline swapfiles
 set nowrap                              " Turn off line wrapping
 set nowritebackup                       " Really disable backups
