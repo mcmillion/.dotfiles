@@ -35,7 +35,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
-Plug 'mcmillion/scss-syntax-tailwind.vim'
 
 call plug#end()
 
