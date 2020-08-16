@@ -16,9 +16,11 @@ Plug 'janko-m/vim-test', { 'for': 'ruby' }
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'rizzatti/dash.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'slim-template/vim-slim'
@@ -234,7 +236,7 @@ let g:airline#extensions#tabline#tab_min_count = 1
 
 " }}}
 
-" Ale {{{
+" ALE {{{
 
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '●'
@@ -274,6 +276,12 @@ augroup AleGroup
   autocmd!
   autocmd FileType,BufEnter * call SetAleBufferLinters()
 augroup END
+
+" }}}
+
+" Dash {{{
+
+nmap <silent> <leader>d <Plug>DashSearch
 
 " }}}
 
@@ -346,6 +354,13 @@ let g:fzf_colors =
 
 nnoremap <Leader>ggu :GitGutterUndoHunk
 nnoremap <Leader>ggs :GitGutterStageHunk
+
+" }}}
+
+" GV {{{
+
+nnoremap <Leader>gv :GV<CR>
+nnoremap <Leader>gvb :GV!<CR>
 
 " }}}
 
