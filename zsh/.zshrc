@@ -141,8 +141,16 @@ alias gra='git rebase --abort'
 gsync() {
   local main current
   main=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+  current=$(git rev-parse --abbrev-ref HEAD)
 
   [ -z "$main" ] && return 1
+
+  if [ "$current" = "$main" ]
+  then
+    git pull
+  else
+    git fetch origin $main:$main
+  fi
 
   git fetch --all
   git checkout $main
