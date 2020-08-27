@@ -1,2 +1,2 @@
-setlocal omnifunc=csscomplete#CompleteCSS
 setlocal iskeyword+=-
+setlocal omnifunc=csscomplete#CompleteCSS

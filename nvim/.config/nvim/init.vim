@@ -11,6 +11,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn install'  }
 Plug 'janko-m/vim-test', { 'for': 'ruby' }
 Plug 'jparise/vim-graphql'
