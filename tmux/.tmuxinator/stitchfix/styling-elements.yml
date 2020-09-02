@@ -7,5 +7,5 @@ windows:
   - 'zsh':
       layout: even-horizontal
       panes:
-        - yarn install && yarn start
+        - yarn install && yarn dev
         - clear
