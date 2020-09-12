@@ -2,8 +2,12 @@
 
 " Plugins {{{
 
+let g:polyglot_disabled = ['typescript']
+
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux', { 'for': 'ruby' }
 Plug 'christoomey/vim-tmux-navigator'
