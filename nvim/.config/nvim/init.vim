@@ -6,8 +6,6 @@ let g:polyglot_disabled = ['typescript']
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux', { 'for': 'ruby' }
 Plug 'christoomey/vim-tmux-navigator'
@@ -21,11 +19,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'leafgarland/typescript-vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
+Plug 'sodapopcan/vim-twiggy'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
