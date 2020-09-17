@@ -1,0 +1,27 @@
+[aws]
+disabled = true
+symbol = ''
+
+[character]
+symbol = '➜'
+error_symbol = '➜'
+use_symbol_for_status = true
+
+[directory]
+fish_style_pwd_dir_length = 1
+
+[nodejs]
+symbol = 'node '
+
+[package]
+disabled = true
+
+[python]
+symbol = 'python '
+
+[ruby]
+symbol = 'ruby '
+
+[time]
+disabled = false
+use_12hr = true

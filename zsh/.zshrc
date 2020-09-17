@@ -35,25 +35,7 @@ cd () {
 # PROMPT
 #==============================================================================
 
-export SPACESHIP_DIR_TRUNC_PREFIX='../'
-export SPACESHIP_GIT_SYMBOL=''
-export SPACESHIP_PACKAGE_SHOW=false
-export SPACESHIP_NODE_SYMBOL='node '
-export SPACESHIP_RUBY_SYMBOL='ruby '
-export SPACESHIP_DOCKER_SYMBOL='docker '
-export SPACESHIP_VI_MODE_COLOR='7'
-export SPACESHIP_TIME_SHOW=true
-export SPACESHIP_TIME_COLOR='3'
-
-# Shim to get vim mode indicator working in Spaceship
-function zle-keymap-select() {
-   zle reset-prompt zle -R
-}
-zle -N zle-keymap-select
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+eval "$(starship init zsh)"
 
 
 
