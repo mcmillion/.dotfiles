@@ -10,6 +10,9 @@ use_symbol_for_status = true
 [directory]
 fish_style_pwd_dir_length = 1
 
+[git_branch]
+symbol = ''
+
 [nodejs]
 symbol = 'node '
 
