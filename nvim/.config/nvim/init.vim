@@ -14,7 +14,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn install'  }
 Plug 'janko-m/vim-test', { 'for': 'ruby' }
-Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
@@ -37,7 +36,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'wakatime/vim-wakatime'
 Plug 'wincent/ferret'
 
 call plug#end()
@@ -117,18 +115,8 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" Sync syntax from start of file automatically
-autocmd BufEnter * :syntax sync fromstart
-
 " autoresize pane layout when terminal resizes
 autocmd VimResized * :wincmd =
-
-" Cursorline in active pane
- augroup CursorLine
-   au!
-   au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
-   au WinLeave,FocusLost * setlocal nocursorline
- augroup END
 
 " }}}
 
@@ -152,8 +140,8 @@ nnoremap K i<CR><Esc>
 cnoremap <silent> w!! %!sudo tee > /dev/null %
 
 " Save and Quit easier
-nnoremap <silent> WW :w<CR>
-nnoremap <silent> QQ :q<CR>
+nnoremap <silent> <leader>w :w<CR>
+nnoremap <silent> <leader>q :q<CR>
 
 " Disable ex mode
 nnoremap <silent> Q <Nop>
@@ -350,13 +338,6 @@ let g:fzf_colors =
 
 nnoremap <Leader>ggu :GitGutterUndoHunk
 nnoremap <Leader>ggs :GitGutterStageHunk
-
-" }}}
-
-" GV {{{
-
-nnoremap <Leader>gv :GV<CR>
-nnoremap <Leader>gvb :GV!<CR>
 
 " }}}
 
