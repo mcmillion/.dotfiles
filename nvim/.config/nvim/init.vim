@@ -139,10 +139,6 @@ nnoremap K i<CR><Esc>
 " Use :w!! to force write files with sudo
 cnoremap <silent> w!! %!sudo tee > /dev/null %
 
-" Save and Quit easier
-nnoremap <silent> <leader>w :w<CR>
-nnoremap <silent> <leader>q :q<CR>
-
 " Disable ex mode
 nnoremap <silent> Q <Nop>
 
