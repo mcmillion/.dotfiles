@@ -149,6 +149,10 @@ inoremap <c-u> <Nop>
 nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
 
+" Quicker mappings
+nnoremap <silent> QQ :q<CR>
+nnoremap <Leader>w :w<CR>
+
 " Quick window resizing
 nnoremap <silent> <Leader><Up> :5wincmd +<CR>
 nnoremap <silent> <Leader><Down> :5wincmd -<CR>
