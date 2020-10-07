@@ -2,8 +2,6 @@
 
 " Plugins {{{
 
-let g:polyglot_disabled = ['typescript']
-
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
@@ -16,12 +14,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn i
 Plug 'janko-m/vim-test', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/gv.vim'
-Plug 'justinmk/vim-sneak'
-Plug 'leafgarland/typescript-vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
@@ -36,7 +30,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'wincent/ferret'
-Plug 'wellle/targets.vim'
 
 call plug#end()
 
@@ -349,19 +342,7 @@ let g:mkdp_auto_close = 0
 
 " Prettier {{{
 
-let g:prettier#autoformat = 1
-let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
-
-" }}}
-
-" Ruby / Rails {{{
-
-nnoremap <Leader>ra :A<CR>
-nnoremap <Leader>rA :AV<CR>
-nnoremap <Leader>rr :R<CR>
-nnoremap <Leader>rR :RV<CR>
-nnoremap <Leader>rk :Rake<CR>
 
 " }}}
 
