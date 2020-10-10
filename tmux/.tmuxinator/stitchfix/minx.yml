@@ -17,18 +17,27 @@ windows:
       panes:
         - nvim -S ~/.local/share/nvim/sessions/styling-elements.vim
 
-  - 'shells':
-      root: ~/dev/StitchFix
-      layout: main-vertical
-      panes:
-        - cd minx && clear
-        - cd minx-api && clear
-        - cd styling-elements && clear
-
   - 'servers':
       root: ~/dev/StitchFix
-      layout: main-vertical
+      layout: 116e,285x80,0,0{94x80,0,0[94x55,0,0,74,94x24,0,56,78],94x80,95,0[94x55,95,0,76,94x24,95,56,80],95x80,190,0[95x55,190,0,77,95x24,190,56,81]}
       panes:
-        - cd minx && ./bin/dev start
-        - cd minx-api && yarn install && yarn dev
-        - cd styling-elements && yarn install && yarn dev
+        - 'minx/server':
+            - cd minx
+            - ./bin/dev start
+        - 'minx/shell':
+            - cd minx
+            - clear
+        - 'minx-api/server':
+            - cd minx-api
+            - yarn install
+            - yarn dev
+        - 'minx-api/shell':
+            - cd minx-api
+            - clear
+        - 'styling-elements/server':
+            - cd styling-elements
+            - yarn install
+            - yarn dev
+        - 'styling-elements/shell':
+            - cd styling-elements
+            - clear
