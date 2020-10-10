@@ -2,40 +2,33 @@ name: minx
 root: ~/dev/StitchFix/minx
 
 windows:
-  - 'minx/vim':
+  - 'minx':
       root: ~/dev/StitchFix/minx
       panes:
         - nvim -S ~/.local/share/nvim/sessions/minx.vim
 
-  - 'minx/zsh':
-      root: ~/dev/StitchFix/minx
-      layout: even-horizontal
-      panes:
-        - ./bin/dev start
-        - clear
-
-  - 'api/vim':
+  - 'minx-api':
       root: ~/dev/StitchFix/minx-api
-      layout: main-vertical
       panes:
         - nvim -S ~/.local/share/nvim/sessions/minx-api.vim
-        - yarn install && yarn test-watch
 
-  - 'api/zsh':
-      root: ~/dev/StitchFix/minx-api
-      layout: even-horizontal
-      panes:
-        - yarn install && yarn dev
-        - clear
-
-  - 'ui/vim':
+  - 'styling-elements':
       root: ~/dev/StitchFix/styling-elements
       panes:
         - nvim -S ~/.local/share/nvim/sessions/styling-elements.vim
 
-  - 'ui/zsh':
-      root: ~/dev/StitchFix/styling-elements
-      layout: even-horizontal
+  - 'shells':
+      root: ~/dev/StitchFix
+      layout: main-vertical
       panes:
-        - yarn install && yarn dev
-        - clear
+        - cd minx && clear
+        - cd minx-api && clear
+        - cd styling-elements && clear
+
+  - 'servers':
+      root: ~/dev/StitchFix
+      layout: main-vertical
+      panes:
+        - cd minx && ./bin/dev start
+        - cd minx-api && yarn install && yarn dev
+        - cd styling-elements && yarn install && yarn dev
