@@ -6,8 +6,13 @@ export LANG=en_US.UTF-8
 export TERM=screen-256color
 export EDITOR='nvim'
 export LESS='-RFX'
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:./bin/
 export HOMEBREW_NO_ANALYTICS=1
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export PATH=$PATH:/usr/local/bin:/usr/local/sbin:./bin/
+else
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
 
 
 
@@ -231,7 +236,7 @@ mux() {
 if [[ "$(uname)" == "Darwin" ]]; then
   . /usr/local/opt/asdf/asdf.sh
 else
-  . $HOME/.asdf/asdf.sh
+  . $(brew --prefix asdf)/asdf.sh
 fi
 
 
@@ -307,6 +312,6 @@ alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHold
 
 
 # Start tmux home session automatically
-if [ -z "$TMUX" ]; then
+if [[ ("$OSTYPE" == "darwin"*) && (-z "$TMUX") ]]; then
   tmux new-session -A -s home
 fi
