@@ -169,7 +169,7 @@ nnoremap <Leader>s :s/<C-r><C-w>//g<Left><Left>
 nnoremap <Leader>S :%s/<C-r><C-w>//g<Left><Left>
 xnoremap <Leader>s :s///g<Left><Left><Left>
 
-" Better Changle Global
+" Better Change Global
 nnoremap <silent> c* *Ncgn
 
 " }}}
