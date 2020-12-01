@@ -1,5 +1,5 @@
 name: styling-merchandise-service
-root: ~/dev/StitchFix/styling-merchandise-service
+root: ~/Developer/StitchFix/styling-merchandise-service
 windows:
   - 'vim':
       panes:

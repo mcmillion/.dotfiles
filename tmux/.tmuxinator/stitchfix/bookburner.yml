@@ -1,5 +1,5 @@
 name: bookburner
-root: ~/dev/StitchFix/bookburner
+root: ~/Developer/StitchFix/bookburner
 windows:
   - 'vim':
       panes:

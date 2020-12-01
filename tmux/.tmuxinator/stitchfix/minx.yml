@@ -1,24 +1,24 @@
 name: minx
-root: ~/dev/StitchFix/minx
+root: ~/Developer/StitchFix/minx
 
 windows:
   - 'minx':
-      root: ~/dev/StitchFix/minx
+      root: ~/Developer/StitchFix/minx
       panes:
         - nvim -S ~/.local/share/nvim/sessions/minx.vim
 
   - 'minx-api':
-      root: ~/dev/StitchFix/minx-api
+      root: ~/Developer/StitchFix/minx-api
       panes:
         - nvim -S ~/.local/share/nvim/sessions/minx-api.vim
 
   - 'styling-elements':
-      root: ~/dev/StitchFix/styling-elements
+      root: ~/Developer/StitchFix/styling-elements
       panes:
         - nvim -S ~/.local/share/nvim/sessions/styling-elements.vim
 
   - 'servers':
-      root: ~/dev/StitchFix
+      root: ~/Developer/StitchFix
       layout: d7a6,178x47,0,0{58x47,0,0[58x32,0,0,157,58x14,0,33,158],58x47,59,0[58x32,59,0,159,58x14,59,33,160],60x47,118,0[60x32,118,0,161,60x14,118,33,162]}
       panes:
         - 'minx/server':

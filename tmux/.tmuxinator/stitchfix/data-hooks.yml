@@ -1,5 +1,5 @@
 name: data-hooks
-root: ~/dev/StitchFix/data-hooks
+root: ~/Developer/StitchFix/data-hooks
 windows:
   - 'vim':
       panes:

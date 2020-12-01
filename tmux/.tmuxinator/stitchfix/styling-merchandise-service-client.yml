@@ -1,5 +1,5 @@
 name: stitchfix-styling_merchandise_service_client
-root: ~/dev/StitchFix/styling-merchandise-service-client
+root: ~/Developer/StitchFix/styling-merchandise-service-client
 windows:
   - 'vim':
       panes:
