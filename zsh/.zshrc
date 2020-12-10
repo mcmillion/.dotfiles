@@ -93,7 +93,6 @@ alias wiki='vim -c VimwikiIndex'
 #==================================================================================================
 
 upgrade() {
-  brew update
   brew upgrade
   brew cleanup
 
