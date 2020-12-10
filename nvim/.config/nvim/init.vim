@@ -2,8 +2,6 @@
 
 " Plugins {{{
 
-let g:polyglot_disabled = ['typescript']
-
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
@@ -16,10 +14,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn i
 Plug 'janko-m/vim-test', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
@@ -87,12 +83,11 @@ set guicursor=a:block-blinkwait250-blinkon250
 
 " Color Scheme Settings {{{
 
-let g:gruvbox_bold =1
+let g:gruvbox_bold = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_underline = 1
 let g:gruvbox_termcolors = 16
 let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 highlight HighlightedyankRegion ctermfg=15 ctermbg=6
 highlight LineNr ctermfg=239
