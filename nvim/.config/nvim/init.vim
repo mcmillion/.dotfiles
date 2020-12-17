@@ -12,7 +12,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn install'  }
 Plug 'janko-m/vim-test', { 'for': 'ruby' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
