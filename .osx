@@ -1,13 +1,7 @@
 # vi:syntax=zsh
 
-# Disable press and hold
-defaults write -g ApplePressAndHoldEnabled -bool false
-
 # Set dock size to 48px
 defaults write com.apple.dock tilesize -int 48; killall Dock
 
-# Increase default timeout for standby mode to 12 hours
-sudo pmset -a standbydelay 43200
-
 # Better font rendering in Electron on Mojave
-defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
+# defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
