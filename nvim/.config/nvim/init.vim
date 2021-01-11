@@ -30,6 +30,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'vimwiki/vimwiki'
 Plug 'wincent/ferret'
 
 call plug#end()
@@ -335,6 +336,12 @@ nnoremap <Leader>ggs :GitGutterStageHunk
 
 " }}}
 
+" Markdown {{{
+
+let g:vim_markdown_folding_disabled = 1
+
+" }}}
+
 " Markdown Preview {{{
 
 let g:mkdp_auto_close = 0
@@ -362,5 +369,17 @@ let g:UltiSnipsExpandTrigger = "<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<TAB>"
 let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
 let g:UltiSnipsEditSplit="vertical"
+
+" }}}
+
+" VimWiki {{{
+
+let g:vimwiki_url_maxsave=0
+let g:vimwiki_global_ext = 0
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" Remap increase/decrease header levels to avoid overridng vim-vinegar
+nmap <silent> ,= <Plug>VimwikiAddHeaderLevel
+nmap <silent> ,- <Plug>VimwikiRemoveHeaderLevel
 
 " }}}
