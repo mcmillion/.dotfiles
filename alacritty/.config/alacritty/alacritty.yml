@@ -1,0 +1,85 @@
+env:
+  TERM: xterm-256color-italic
+
+window:
+  dimensions:
+    columns: 140
+    lines: 60
+  padding:
+    x: 5
+    y: 5
+  dynamic_padding: true
+  decorations: full
+  startup_mode: Windowed
+
+scrolling:
+  history: 0
+  multiplier: 0
+
+mouse:
+  hide_when_typing: true
+
+font:
+  size: 14.0
+  normal:
+    family: "JetBrains Mono"
+    style: Regular
+  bold:
+    family: "JetBrains Mono"
+    style: ExtraBold
+  italic:
+    family: "JetBrains Mono"
+    style: Italic
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+  use_thin_strokes: true
+
+colors:
+  cursor:
+    text:       '0xebdbb2'
+    cursor:     '0xcc241d'
+
+  primary:
+    background: '0x282828'
+    foreground: '0xebdbb2'
+
+  normal:
+    black:      '0x282828'
+    red:        '0xcc241d'
+    green:      '0x98971a'
+    yellow:     '0xd79921'
+    blue:       '0x458588'
+    magenta:    '0xb16286'
+    cyan:       '0x689d6a'
+    white:      '0xa89984'
+
+  bright:
+    black:      '0x928374'
+    red:        '0xfb4934'
+    green:      '0xb8bb26'
+    yellow:     '0xfabd2f'
+    blue:       '0x83a598'
+    magenta:    '0xd3869b'
+    cyan:       '0x8ec07c'
+    white:      '0xebdbb2'
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+key_bindings:
+  - { key: V,        mods: Command, action: Paste                        }
+  - { key: C,        mods: Command, action: Copy                         }
+  - { key: Q,        mods: Command, action: Quit                         }
+  - { key: N,        mods: Command, action: SpawnNewInstance             }
+  - { key: Return,   mods: Command, action: ToggleFullscreen             }
+
+  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
+  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
+  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
+  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
+  - { key: Delete,                  chars: "\x1b[3~",   mode: ~AppKeypad }
