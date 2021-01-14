@@ -162,6 +162,9 @@ nnoremap <silent> <Leader>_ :split %:h<CR>
 nnoremap <silent> <Leader>= :tab split %:h<CR>
 nnoremap <silent> <Leader>+ :tabclose<CR>
 
+" Delete selected text to void and paste default reg
+vnoremap <silent> <Leader>p "_dP
+
 " Yank to end of line because consistency makes sense
 nnoremap <silent> Y y$
 
