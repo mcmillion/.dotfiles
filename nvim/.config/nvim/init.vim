@@ -97,6 +97,7 @@ highlight LineNr ctermfg=239
 highlight CursorLine ctermbg=236
 highlight CursorLineNR ctermbg=236 ctermfg=243
 highlight MatchParen ctermbg=239
+highlight Sneak ctermfg=0 ctermbg=2
 
 " }}}
 
