@@ -1,0 +1,12 @@
+name: live-styling
+root: ~/Developer/StitchFix/fix-agency-ui
+
+windows:
+  - 'vim':
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/faui.vim
+  - 'zsh':
+      layout: even-horizontal
+      panes:
+        - clear
+        - ./bin/start_web
