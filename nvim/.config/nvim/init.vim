@@ -129,8 +129,8 @@ nnoremap <silent> <Leader>h :noh<CR>
 " Split line
 nnoremap K i<CR><Esc>
 
-" Use :w!! to force write files with sudo
-cnoremap <silent> w!! %!sudo tee > /dev/null %
+" Use :W to force write files with sudo
+command! W w !sudo tee % > /dev/null
 
 " Disable ex mode
 nnoremap <silent> Q <Nop>
