@@ -14,7 +14,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn i
 Plug 'janko-m/vim-test', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'justinmk/vim-sneak'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -31,7 +30,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'vimwiki/vimwiki'
 Plug 'wincent/ferret'
 
 call plug#end()
@@ -97,7 +95,6 @@ highlight LineNr ctermfg=239
 highlight CursorLine ctermbg=236
 highlight CursorLineNR ctermbg=236 ctermfg=243
 highlight MatchParen ctermbg=239
-highlight Sneak ctermfg=0 ctermbg=2
 
 " }}}
 
@@ -374,17 +371,5 @@ let g:UltiSnipsExpandTrigger = "<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<TAB>"
 let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
 let g:UltiSnipsEditSplit="vertical"
-
-" }}}
-
-" VimWiki {{{
-
-let g:vimwiki_url_maxsave=0
-let g:vimwiki_global_ext = 0
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-" Remap increase/decrease header levels to avoid overridng vim-vinegar
-nmap <silent> ,= <Plug>VimwikiAddHeaderLevel
-nmap <silent> ,- <Plug>VimwikiRemoveHeaderLevel
 
 " }}}
