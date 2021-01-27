@@ -10,6 +10,9 @@ use_symbol_for_status = true
 [git_branch]
 symbol = ''
 
+[java]
+symbol = 'java '
+
 [nodejs]
 symbol = 'node '
 
