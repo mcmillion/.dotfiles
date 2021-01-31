@@ -1,6 +1,7 @@
 brew 'asdf'
 brew 'cmake'
 brew 'curl'
+brew 'fzf'
 brew 'gcc'
 brew 'git'
 brew 'gnupg'
