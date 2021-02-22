@@ -26,7 +26,7 @@ font:
     style: Regular
   bold:
     family: "JetBrains Mono"
-    style: ExtraBold
+    style: Bold
   italic:
     family: "JetBrains Mono"
     style: Italic
