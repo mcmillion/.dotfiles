@@ -95,6 +95,7 @@ alias wiki='vim -c VimwikiIndex'
 upgrade() {
   brew upgrade
   brew cleanup
+  bat cache --build
 
   asdf plugin-update --all
 
