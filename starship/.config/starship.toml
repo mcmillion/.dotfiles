@@ -1,4 +1,4 @@
-command_timeout = 2500
+command_timeout = 500
 
 [aws]
 disabled = true
@@ -13,18 +13,22 @@ use_symbol_for_status = true
 symbol = ''
 
 [java]
+disabled = true
 symbol = 'java '
 
 [nodejs]
+disabled = true
 symbol = 'node '
 
 [package]
 disabled = true
 
 [python]
+disabled = true
 symbol = 'python '
 
 [ruby]
+disabled = true
 symbol = 'ruby '
 
 [time]
