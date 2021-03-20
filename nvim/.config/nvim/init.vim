@@ -144,7 +144,7 @@ nnoremap <silent> N Nzzzv
 
 " Quicker mappings
 nnoremap <silent> QQ :q<CR>
-nnoremap <silent> ZW :w<CR>
+nnoremap <Leader>w :w<CR>
 
 " Quick window resizing
 nnoremap <silent> <Leader><Up> :5wincmd +<CR>
