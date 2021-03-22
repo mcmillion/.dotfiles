@@ -111,6 +111,14 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " autoresize pane layout when terminal resizes
 autocmd VimResized * :wincmd =
 
+" Cursorline in active pane
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
+  au WinLeave,FocusLost * setlocal nocursorline
+augroup END
+
+
 " }}}
 
 " General Mappings {{{
