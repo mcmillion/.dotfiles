@@ -1,0 +1,12 @@
+name: contribute
+root: ~/Developer/AVALANCHE/contribute
+windows:
+  - vim:
+      panes:
+        - nvim -S ~/.local/share/nvim/sessions/contribute.vim
+
+  - zsh:
+      layout: even-horizontal
+      panes:
+        - npm run start
+        - clear
