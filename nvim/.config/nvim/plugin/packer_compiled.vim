@@ -60,6 +60,24 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
+  ["nvim-compe"] = {
+    config = { "\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17config.compe\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvim-compe"
+  },
+  ["nvim-lspconfig"] = {
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.lspconfig\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspupdate"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvim-lspupdate"
+  },
+  ["nvim-markdown-preview"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvim-markdown-preview"
+  },
   ["nvim-treesitter"] = {
     config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0" },
     loaded = true,
@@ -91,6 +109,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ultisnips = {
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.ultisnips\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/ultisnips"
+  },
   ["vim-abolish"] = {
     loaded = true,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-abolish"
@@ -103,6 +126,11 @@ _G.packer_plugins = {
     config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.fugitive\frequire\0" },
     loaded = true,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-prettier"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.prettier\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-prettier"
   },
   ["vim-rails"] = {
     loaded = false,
@@ -145,18 +173,26 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: vim-fugitive
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.fugitive\frequire\0", "config", "vim-fugitive")
+-- Config for: gitsigns.nvim
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0", "config", "gitsigns.nvim")
+-- Config for: nvim-lspconfig
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.lspconfig\frequire\0", "config", "nvim-lspconfig")
+-- Config for: vim-prettier
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.prettier\frequire\0", "config", "vim-prettier")
+-- Config for: ultisnips
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.ultisnips\frequire\0", "config", "ultisnips")
+-- Config for: lualine.nvim
+try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.lualine\frequire\0", "config", "lualine.nvim")
 -- Config for: telescope.nvim
 try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.telescope\frequire\0", "config", "telescope.nvim")
 -- Config for: nvim-treesitter
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
+-- Config for: vim-fugitive
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.fugitive\frequire\0", "config", "vim-fugitive")
 -- Config for: auto-session
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.auto-session\frequire\0", "config", "auto-session")
--- Config for: gitsigns.nvim
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0", "config", "gitsigns.nvim")
--- Config for: lualine.nvim
-try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.lualine\frequire\0", "config", "lualine.nvim")
+-- Config for: nvim-compe
+try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17config.compe\frequire\0", "config", "nvim-compe")
 -- Config for: nvim-colorizer.lua
 try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.colorizer\frequire\0", "config", "nvim-colorizer.lua")
 vim.cmd [[augroup packer_load_aucmds]]

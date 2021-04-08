@@ -3,7 +3,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   use { "wbthomason/packer.nvim", opt = true }
 
-  -- Syntax Highlighting
+  -- Syntax Highlighting / Formatting
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -14,6 +14,7 @@ return require('packer').startup(function()
     'norcalli/nvim-colorizer.lua',
     config = function() require('config.colorizer') end
   }
+  use { 'prettier/vim-prettier', run = 'yarn install', config = function() require('config.prettier') end }
 
   -- Statusline / Tabline
   use {
@@ -21,6 +22,11 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function() require('config.lualine') end
   }
+
+  -- LSP / Completion
+  use { 'hrsh7th/nvim-compe', config = function() require('config.compe') end }
+  use { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end }
+  use 'alexaandru/nvim-lspupdate'
 
   -- File Navigation
   use {
@@ -48,6 +54,7 @@ return require('packer').startup(function()
   }
 
   -- Misc Utilities
+  use { 'SirVer/ultisnips', config = function() require('config.ultisnips') end }
   use 'tpope/vim-abolish'
   use 'tpope/vim-commentary'
   use { 'tpope/vim-rails', ft = { 'ruby' } }
@@ -58,4 +65,5 @@ return require('packer').startup(function()
   use 'andweeb/presence.nvim'
   use { 'rmagatti/auto-session', config = function() require('config.auto-session') end }
   use 'editorconfig/editorconfig-vim'
+  use 'davidgranstrom/nvim-markdown-preview'
 end)

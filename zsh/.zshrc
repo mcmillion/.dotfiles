@@ -99,7 +99,7 @@ upgrade() {
 
   asdf plugin-update --all
 
-  vim +PlugUpdate +qall
+  nvim +PackerSync +PackerCompile +qall
 }
 
 
