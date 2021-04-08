@@ -3,7 +3,7 @@
 #==============================================================================
 
 export LANG=en_US.UTF-8
-export TERM=screen-256color
+export TERM=xterm-256color
 export EDITOR='nvim'
 export LESS='-RFX'
 export HOMEBREW_NO_ANALYTICS=1

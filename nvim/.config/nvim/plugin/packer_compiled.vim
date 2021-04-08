@@ -32,10 +32,31 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
+  ["ayu-vim"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/ayu-vim"
+  },
+  everforest = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/everforest"
+  },
+  ["iceberg.vim"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/iceberg.vim"
+  },
   ["lualine.nvim"] = {
     config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.lualine\frequire\0" },
     loaded = true,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+  },
+  ["nvcode-color-schemes.vim"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+  },
+  ["nvim-treesitter"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -52,6 +73,8 @@ _G.packer_plugins = {
   }
 }
 
+-- Config for: nvim-treesitter
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
 -- Config for: lualine.nvim
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.lualine\frequire\0", "config", "lualine.nvim")
 END
