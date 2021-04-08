@@ -32,17 +32,19 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
-  ["ayu-vim"] = {
+  ["auto-session"] = {
+    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.auto-session\frequire\0" },
     loaded = true,
-    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/ayu-vim"
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/auto-session"
   },
-  everforest = {
+  ["editorconfig-vim"] = {
     loaded = true,
-    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/everforest"
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
   },
-  ["iceberg.vim"] = {
+  ["gitsigns.nvim"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0" },
     loaded = true,
-    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/iceberg.vim"
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   ["lualine.nvim"] = {
     config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.lualine\frequire\0" },
@@ -52,6 +54,11 @@ _G.packer_plugins = {
   ["nvcode-color-schemes.vim"] = {
     loaded = true,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+  },
+  ["nvim-colorizer.lua"] = {
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.colorizer\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-treesitter"] = {
     config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0" },
@@ -67,16 +74,96 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["presence.nvim"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/presence.nvim"
+  },
+  ["telescope.nvim"] = {
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.telescope\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["vim-abolish"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-abolish"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-fugitive"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.fugitive\frequire\0" },
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-rails"] = {
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/opt/vim-rails"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-repeat"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
+  ["vim-test"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.vim-test\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/opt/vim-test"
+  },
+  ["vim-tmux-focus-events"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-tmux-focus-events"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
+  },
+  ["vim-unimpaired"] = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-unimpaired"
+  },
   ["vim-vinegar"] = {
     loaded = true,
     path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vim-vinegar"
+  },
+  vimux = {
+    loaded = true,
+    path = "/Users/mlm/.local/share/nvim/site/pack/packer/start/vimux"
   }
 }
 
+-- Config for: vim-fugitive
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.fugitive\frequire\0", "config", "vim-fugitive")
+-- Config for: telescope.nvim
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.telescope\frequire\0", "config", "telescope.nvim")
 -- Config for: nvim-treesitter
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0", "config", "nvim-treesitter")
+-- Config for: auto-session
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.auto-session\frequire\0", "config", "auto-session")
+-- Config for: gitsigns.nvim
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0", "config", "gitsigns.nvim")
 -- Config for: lualine.nvim
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config.lualine\frequire\0", "config", "lualine.nvim")
+-- Config for: nvim-colorizer.lua
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.colorizer\frequire\0", "config", "nvim-colorizer.lua")
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+vim.cmd [[au FileType ruby ++once lua require("packer.load")({'vim-test', 'vim-rails'}, { ft = "ruby" }, _G.packer_plugins)]]
+vim.cmd("augroup END")
 END
 
 catch

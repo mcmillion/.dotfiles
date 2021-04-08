@@ -1,3 +1,1 @@
-vim.cmd [[
-  colorscheme iceberg
-]]
+vim.g.colors_name = 'onedark'

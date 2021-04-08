@@ -1,7 +1,7 @@
 return require('lualine').setup({
   options = {
-    theme = 'iceberg_dark',
-    section_separators = {'', ''},
-    component_separators = {'', ''},
+    theme = 'onedark',
+    section_separators = { '', '' },
+    component_separators = { '', '' },
   }
 })

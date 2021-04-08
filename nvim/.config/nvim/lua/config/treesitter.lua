@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+return require'nvim-treesitter.configs'.setup({
   ensure_installed = {
     'bash',
     'c',
@@ -22,4 +22,4 @@ require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   }
-}
+})

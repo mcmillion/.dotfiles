@@ -1,12 +1,8 @@
-local map = vim.api.nvim_set_keymap
-
--- Helper for basic noremap functionality
-function noremap(mode, map, command)
-  vim.api.nvim_set_keymap(mode, map, command, { noremap = true })
-end
+utils = require('utils')
+local noremap = utils.noremap
 
 -- remap the leader key to <Space>
-map('n', '<space>', '', {})
+vim.api.nvim_set_keymap('n', '<space>', '', {})
 vim.g.mapleader = ' '
 
 -- Disable ex mode
@@ -56,4 +52,3 @@ noremap('n', 'Y', 'y$')
 noremap('n', '<leader>s', ':s/<c-r><c-w>//g<left><left>')
 noremap('n', '<leader>S', ':%s/<c-r><c-w>//g<left><left>')
 noremap('x', '<leader>s', ':s///g<left><left><left>')
-

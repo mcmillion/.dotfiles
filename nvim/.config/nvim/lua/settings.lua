@@ -39,4 +39,5 @@ local bo = vim.bo
 bo.expandtab = true                        -- Expand tabs into spaces
 bo.formatoptions = o.formatoptions .. 'j'  -- Smart join comment lines
 bo.swapfile = false                        -- Disable swapfile
+bo.undofile = true                         -- Turn on persistent undo (here as well)
 bo.tabstop = 2                             -- Set tab stops to 2
