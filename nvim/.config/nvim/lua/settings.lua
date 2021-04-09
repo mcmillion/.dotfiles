@@ -1,4 +1,4 @@
--- global options
+-- Global Options
 local o = vim.o
 o.background = 'dark'                      -- Dark mode
 o.backup = false                           -- Disable backups
@@ -27,7 +27,7 @@ o.undofile = true                          -- Turn on persistent undo
 o.updatetime = 300                         -- Lower updatetime time for hold events
 o.writebackup = false                      -- Really disable backups
 
--- window-local options
+-- Window-Local Options
 local wo = vim.wo
 wo.linebreak = true                        -- Wrap on linebreak when wrap is on
 wo.list = true                             -- Show whitespace characters
@@ -35,7 +35,7 @@ wo.number = true                           -- Enable line numbering
 wo.signcolumn = 'yes'                      -- Always show sign column
 wo.wrap = false                            -- Don't wrap lines
 
--- buffer options
+-- Buffer Options
 local bo = vim.bo
 bo.expandtab = true                        -- Expand tabs into spaces
 bo.formatoptions = o.formatoptions .. 'j'  -- Smart join comment lines
