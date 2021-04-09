@@ -7,7 +7,7 @@ noremap('n', '<leader>fg', [[<cmd>lua require('telescope.builtin').live_grep()<c
 noremap('n', '<leader>fgl', [[<cmd>lua require('telescope.builtin').git_commits()<cr>]])
 noremap('n', '<leader>fgb', [[<cmd>lua require('telescope.builtin').git_branches()<cr>]])
 
-return require('telescope').setup({
+require('telescope').setup({
   defaults = {
     vimgrep_arguments = {
       'rg',
