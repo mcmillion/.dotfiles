@@ -62,7 +62,6 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
-  use 'andweeb/presence.nvim'
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
   use { 'davidgranstrom/nvim-markdown-preview', ft = { 'markdown' } }
