@@ -5,17 +5,17 @@ windows:
   - 'minx':
       root: ~/Developer/StitchFix/minx
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/minx.vim
+        - nvim
 
   - 'minx-api':
       root: ~/Developer/StitchFix/minx-api
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/minx-api.vim
+        - nvim
 
   - 'styling-elements':
       root: ~/Developer/StitchFix/styling-elements
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/styling-elements.vim
+        - nvim
 
   - 'servers':
       root: ~/Developer/StitchFix

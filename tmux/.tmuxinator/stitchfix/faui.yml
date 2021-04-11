@@ -4,7 +4,7 @@ root: ~/Developer/StitchFix/fix-agency-ui
 windows:
   - 'vim':
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/faui.vim
+        - nvim
   - 'zsh':
       layout: even-horizontal
       panes:

@@ -3,7 +3,7 @@ root: ~/Developer/StitchFix/data-hooks
 windows:
   - 'vim':
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/data-hooks.vim
+        - nvim
   - 'zsh':
       layout: even-horizontal
       panes:
