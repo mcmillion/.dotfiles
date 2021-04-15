@@ -14,7 +14,7 @@ return require('packer').startup(function()
     'norcalli/nvim-colorizer.lua',
     config = function() require('config.colorizer') end
   }
-  use { 'prettier/vim-prettier', run = 'yarn install', config = function() require('config.prettier') end }
+  use { 'mhartington/formatter.nvim', config = function() require('config.formatter') end }
   use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua', config = function() require('config.indent-blankline') end }
 
   -- Statusline / Tabline
