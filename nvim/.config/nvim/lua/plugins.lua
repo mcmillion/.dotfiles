@@ -28,6 +28,7 @@ return require('packer').startup(function()
   use { 'hrsh7th/nvim-compe', config = function() require('config.compe') end }
   use { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end }
   use 'alexaandru/nvim-lspupdate'
+  use 'tversteeg/registers.nvim'
 
   -- File Navigation
   use {
@@ -37,8 +38,7 @@ return require('packer').startup(function()
   }
 
   -- Tmux Integration
-  use 'tmux-plugins/vim-tmux-focus-events'
-  use 'christoomey/vim-tmux-navigator'
+  use { 'numToStr/Navigator.nvim', config = function() require('config.navigator') end }
   use {
     'vim-test/vim-test',
     requires = { 'benmills/vimux' },

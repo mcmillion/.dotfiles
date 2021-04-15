@@ -1,4 +1,4 @@
-wheel
-pylint
 autopep8
 pipenv
+pylint
+wheel
