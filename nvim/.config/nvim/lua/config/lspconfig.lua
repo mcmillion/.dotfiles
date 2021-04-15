@@ -43,7 +43,13 @@ local on_attach = function(client, bufnr)
 end
 
 require('lspconfig').tsserver.setup({ on_attach = on_attach })
-require('lspconfig').solargraph.setup({ on_attach = on_attach })
+require('lspconfig').solargraph.setup({ on_attach = on_attach,
+ settings = {
+    solargraph = {
+      diagnostics = true
+    }
+  }
+})
 
 -- Configure EFM for ESLint
 local eslint = {
