@@ -4,11 +4,6 @@ command_timeout = 500
 disabled = true
 symbol = ''
 
-[character]
-symbol = '➜'
-error_symbol = '➜'
-use_symbol_for_status = true
-
 [git_branch]
 symbol = ''
 
