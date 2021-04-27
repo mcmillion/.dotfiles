@@ -23,7 +23,7 @@ symbol = 'dotnet '
 [git_branch]
 symbol = ''
 
-[go]
+[golang]
 disabled = true
 symbol = 'go '
 
