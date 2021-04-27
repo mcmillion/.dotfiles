@@ -1,15 +1,38 @@
-command_timeout = 500
+command_timeout = 5000
 
 [aws]
 disabled = true
-symbol = ''
+symbol = 'aws '
+
+[cmake]
+disabled = true
+symbol = 'cmake '
+
+[deno]
+disabled = true
+symbol = 'deno '
+
+[docker_context]
+disabled = true
+symbol = 'docker '
+
+[dotnet]
+disabled = true
+symbol = 'dotnet '
 
 [git_branch]
 symbol = ''
 
+[go]
+disabled = true
+symbol = 'go '
+
 [java]
 disabled = true
 symbol = 'java '
+
+[lua]
+symbol = 'lua '
 
 [nodejs]
 disabled = true
@@ -17,6 +40,11 @@ symbol = 'node '
 
 [package]
 disabled = true
+symbol = 'package '
+
+[perl]
+disabled = true
+symbol = 'perl '
 
 [python]
 disabled = true
@@ -25,6 +53,10 @@ symbol = 'python '
 [ruby]
 disabled = true
 symbol = 'ruby '
+
+[rust]
+disabled = true
+symbol = 'rust '
 
 [time]
 disabled = false
