@@ -30,12 +30,13 @@ return require('packer').startup(function()
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
 
-  -- File Navigation
+  -- File Navigation / Search
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
     config = function() require('config.telescope') end
   }
+  use 'wincent/ferret'
 
   -- Tmux Integration
   use { 'numToStr/Navigator.nvim', config = function() require('config.navigator') end }
