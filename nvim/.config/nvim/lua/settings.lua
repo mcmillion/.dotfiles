@@ -29,6 +29,7 @@ o.writebackup = false                      -- Really disable backups
 
 -- Window-Local Options
 local wo = vim.wo
+wo.colorcolumn = "9999"                    -- Dumb workaround until merged: https://github.com/neovim/neovim/issues/14209
 wo.linebreak = true                        -- Wrap on linebreak when wrap is on
 wo.list = true                             -- Show whitespace characters
 wo.number = true                           -- Enable line numbering
