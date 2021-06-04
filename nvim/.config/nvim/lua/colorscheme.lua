@@ -13,9 +13,9 @@ auto([[
 
     autocmd ColorScheme * hi TSNamespace guifg=#61afef guibg=NON
 
-    autocmd ColorScheme * highlight LspDiagnosticsVirtualTextError guifg=#f44747
+    autocmd ColorScheme * highlight LspDiagnosticsVirtualTextError guifg=#e5c07b
     autocmd ColorScheme * highlight LspDiagnosticsVirtualTextWarning guifg=#e5c07b
-    autocmd ColorScheme * highlight LspDiagnosticsVirtualTextInformation guifg=#61afef
-    autocmd ColorScheme * highlight LspDiagnosticsVirtualTextHint guifg=#98c379
+    autocmd ColorScheme * highlight LspDiagnosticsVirtualTextInformation guifg=#e5c07b
+    autocmd ColorScheme * highlight LspDiagnosticsVirtualTextHint guifg=#e5c07b
   augroup END
 ]], true)

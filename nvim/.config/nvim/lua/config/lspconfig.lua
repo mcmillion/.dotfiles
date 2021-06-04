@@ -27,21 +27,31 @@ local on_attach = function(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
+    -- Set up cursor hold highlight if language server supports it
     vim.api.nvim_exec([[
-    hi LspReferenceRead cterm=bold ctermbg=red guibg=#393e48
-    hi LspReferenceText cterm=bold ctermbg=red guibg=#393e48
-    hi LspReferenceWrite cterm=bold ctermbg=red guibg=#393e48
-    augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=#393e48
+      hi LspReferenceText cterm=bold ctermbg=red guibg=#393e48
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#393e48
+
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
     ]], false)
   end
 end
 
 require('lspconfig').tsserver.setup({ on_attach = on_attach })
 require('lspconfig').solargraph.setup({ on_attach = on_attach })
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    signs = false,
+    underline = false,
+    update_in_insert = false,
+    virtual_text = true,
+  })
 
 -- Configure EFM for ESLint
 local eslint = {
