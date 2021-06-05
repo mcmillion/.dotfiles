@@ -1,3 +1,5 @@
 **/nvim/.netrwhist
 **/nvim/plugged/**
+**/nvim/sessions/**
 **/karabiner/automatic_backups/**
+packer_compiled.vim

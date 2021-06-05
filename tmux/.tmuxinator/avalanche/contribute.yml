@@ -3,7 +3,7 @@ root: ~/Developer/AVALANCHE/contribute
 windows:
   - vim:
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/contribute.vim
+        - nvim
 
   - zsh:
       layout: even-horizontal

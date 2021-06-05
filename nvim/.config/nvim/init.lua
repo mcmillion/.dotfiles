@@ -1,0 +1,5 @@
+require('colorscheme')
+require('plugins')
+require('settings')
+require('maps')
+require('autocommands')

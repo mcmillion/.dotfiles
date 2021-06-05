@@ -3,7 +3,7 @@ root: ~/Developer/StitchFix/styling-merchandise-service
 windows:
   - 'vim':
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/styling-merchandise-service.vim
+        - nvim
   - 'zsh':
       layout: even-horizontal
       panes:

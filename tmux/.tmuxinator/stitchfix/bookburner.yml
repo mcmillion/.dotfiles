@@ -3,7 +3,7 @@ root: ~/Developer/StitchFix/bookburner
 windows:
   - 'vim':
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/bookburner.vim
+        - nvim
   - 'zsh':
       layout: even-horizontal
       panes:

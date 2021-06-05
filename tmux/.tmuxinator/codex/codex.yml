@@ -3,7 +3,7 @@ root: ~/Developer/Codex/codex
 windows:
   - 'vim':
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/codex.vim
+        - nvim
 
   - 'zsh':
       layout: even-horizontal

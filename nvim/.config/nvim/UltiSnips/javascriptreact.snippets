@@ -1,1 +1,62 @@
 extends javascript
+
+snippet comp
+import React from "react";
+
+export const ${1:ComponentName} = () => {
+	return <div>$1</div>
+}
+endsnippet
+
+snippet cn
+className={styles.$0}
+endsnippet
+
+snippet cx
+className={cx('$0')}
+endsnippet
+
+snippet tid
+data-testid="$0"
+endsnippet
+
+snippet react_context
+import React, { createContext, useContext, useReducer } from 'react';
+
+const ${1:Example}Context = createContext();
+
+const initialState = {
+  // Initial state
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    ${0:// case 'ACTION':}
+
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`);
+    }
+  }
+}
+
+export function $1Provider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <$1Context.Provider value={{ state, dispatch }}>
+      {children}
+    </$1Context.Provider>
+  );
+}
+
+export function use$1() {
+  const context = useContext($1Context);
+  if (context == undefined) {
+    throw new Error('use$1 must be used within a $1Provider')
+  }
+
+  return {
+    // state,
+    // action() {},
+  }
+}
+endsnippet

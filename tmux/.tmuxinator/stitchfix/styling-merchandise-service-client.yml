@@ -3,7 +3,7 @@ root: ~/Developer/StitchFix/styling-merchandise-service-client
 windows:
   - 'vim':
       panes:
-        - nvim -S ~/.local/share/nvim/sessions/styling-merchandise-service-client.vim
+        - nvim
   - 'zsh':
       panes:
         - clear
