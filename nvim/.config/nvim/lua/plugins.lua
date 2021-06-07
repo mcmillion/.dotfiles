@@ -59,7 +59,6 @@ return require('packer').startup(function()
   use { 'SirVer/ultisnips', config = function() require('config.ultisnips') end }
   use 'tpope/vim-abolish'
   use 'tpope/vim-commentary'
-  use { 'tpope/vim-rails', ft = { 'ruby' } }
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
