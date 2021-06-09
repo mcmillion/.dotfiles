@@ -43,7 +43,7 @@ local on_attach = function(client, bufnr)
 end
 
 require('lspconfig').tsserver.setup({ on_attach = on_attach })
-require('lspconfig').solargraph.setup({ on_attach = on_attach })
+-- require('lspconfig').solargraph.setup({ on_attach = on_attach })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
