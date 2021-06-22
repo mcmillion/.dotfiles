@@ -12,7 +12,7 @@ auto([[
     autocmd ColorScheme * highlight Title guifg=#5c6370 guibg=NONE
 
     autocmd ColorScheme * highlight CursorLine guibg=#262b35
-    autocmd ColorScheme * highlight CursorLineNr guifg=#858b96 gui=NONE
+    autocmd ColorScheme * highlight CursorLineNr guifg=#858b96 guibg=#262b35 gui=NONE
 
     autocmd ColorScheme * hi TSNamespace guifg=#61afef guibg=NON
 
