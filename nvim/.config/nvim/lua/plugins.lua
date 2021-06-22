@@ -4,8 +4,7 @@ return require('packer').startup(function()
   use { "wbthomason/packer.nvim", opt = true }
 
   -- Syntax Highlighting / Formatting
-  -- use 'christianchiarulli/nvcode-color-schemes.vim'
-  use 'ful1e5/onedark.nvim'
+  use 'christianchiarulli/nvcode-color-schemes.vim'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
