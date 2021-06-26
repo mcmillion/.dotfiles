@@ -66,4 +66,5 @@ return require('packer').startup(function()
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
   use { 'davidgranstrom/nvim-markdown-preview', ft = { 'markdown' } }
+  use 'wakatime/vim-wakatime'
 end)
