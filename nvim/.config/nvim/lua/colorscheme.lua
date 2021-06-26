@@ -6,13 +6,13 @@ auto([[
   augroup ColorschemeTweaks
     autocmd!
 
-    autocmd ColorScheme * highlight TabLineFill guifg=#5c6370 guibg=#2d323c
-    autocmd ColorScheme * highlight TabLine guifg=#5c6370 guibg=#2d323c
+    autocmd ColorScheme * highlight TabLineFill guifg=#5c6370 guibg=#2d323d
+    autocmd ColorScheme * highlight TabLine guifg=#5c6370 guibg=#2d323d
     autocmd ColorScheme * highlight TabLineSel guifg=#abb2bf guibg=#3f4452
     autocmd ColorScheme * highlight Title guifg=#5c6370 guibg=NONE
 
-    autocmd ColorScheme * highlight CursorLine guibg=#262b35
-    autocmd ColorScheme * highlight CursorLineNr guifg=#858b96 guibg=#262b35 gui=NONE
+    autocmd ColorScheme * highlight CursorLine guibg=#2c323d
+    autocmd ColorScheme * highlight CursorLineNr guifg=#858b96 guibg=#2c323d gui=NONE
 
     autocmd ColorScheme * hi TSNamespace guifg=#61afef guibg=NON
 
