@@ -42,6 +42,13 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/usr/local/bin/omnisharp"
+require('lspconfig').omnisharp.setup({
+    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
+    on_attach = on_attach
+})
+
 require('lspconfig').tsserver.setup({ on_attach = on_attach })
 -- require('lspconfig').solargraph.setup({ on_attach = on_attach })
 

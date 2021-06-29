@@ -27,7 +27,7 @@ require('compe').setup({
     calc = true,
     nvim_lsp = true,
     nvim_lua = false,
-    spell = true,
+    spell = false,
     tags = false,
     ultisnips = {kind = "  "},
   }

@@ -20,5 +20,10 @@ auto([[
     autocmd ColorScheme * highlight LspDiagnosticsVirtualTextWarning guifg=#e5c07b
     autocmd ColorScheme * highlight LspDiagnosticsVirtualTextInformation guifg=#e5c07b
     autocmd ColorScheme * highlight LspDiagnosticsVirtualTextHint guifg=#e5c07b
+
+    autocmd ColorScheme * highligh Pmenu guifg=#abb2bf guibg=#222529
+    autocmd ColorScheme * highligh PmenuSel guifg=#abb2bf guibg=#2c323d
+    autocmd ColorScheme * highligh PmenuSbar guifg=NONE guibg=#222529
+    autocmd ColorScheme * highligh PmenuThumb guifg=NONE guibg=#2c323d
   augroup END
 ]], true)
