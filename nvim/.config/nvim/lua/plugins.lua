@@ -1,6 +1,8 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
+
   -- Syntax Highlighting / Formatting
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use {
