@@ -15,7 +15,7 @@ return require('packer').startup(function()
     config = function() require('config.colorizer') end
   }
   use { 'mhartington/formatter.nvim', config = function() require('config.formatter') end }
-  use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua', config = function() require('config.indent-blankline') end }
+  use { 'lukas-reineke/indent-blankline.nvim', config = function() require('config.indent-blankline') end }
 
   -- Statusline / Tabline
   use {
