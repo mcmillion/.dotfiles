@@ -3,6 +3,6 @@ local noremap = utils.noremap
 
 noremap('n', '<leader>gs', ':vertical Gstatus<cr>')
 noremap('n', '<Leader>gd', ':Gdiffsplit!<CR>')
-noremap('n', '<Leader>gb', ':Gblame<CR>')
-noremap('n', '<Leader>gw', ':Gwrite<CR>')
-noremap('n', '<Leader>gr', ':Gread<CR>')
+noremap('n', '<Leader>gb', ':Git blame<CR>')
+noremap('n', '<Leader>gw', ':Git write<CR>')
+noremap('n', '<Leader>gr', ':Git read<CR>')
