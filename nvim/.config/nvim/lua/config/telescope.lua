@@ -1,5 +1,6 @@
 utils = require('utils')
 local noremap = utils.noremap
+local actions = require('telescope.actions')
 
 noremap('n', '<leader><leader>', [[<cmd>lua require('telescope.builtin').find_files({ hidden=true })<cr>]])
 noremap('n', '<leader>fb', [[<cmd>lua require('telescope.builtin').file_browser()<cr>]])
@@ -9,6 +10,11 @@ noremap('n', '<leader>fgb', [[<cmd>lua require('telescope.builtin').git_branches
 
 require('telescope').setup({
   defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+      },
+    },
     vimgrep_arguments = {
       'rg',
       '--color=never',
