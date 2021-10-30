@@ -24,6 +24,9 @@ brew 'tmux'
 brew 'trash'
 brew 'wget'
 brew 'zsh'
-cask 'font-jetbrains-mono'
+
+tap 'homebrew/cask-fonts'
+cask 'font-jetbrains-mono-nerd-font'
+
 cask 'kitty'
 cask 'raycast'
