@@ -19,7 +19,7 @@ return require('packer').startup(function()
 
   -- Statusline / Tabline
   use {
-    'hoob3rt/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function() require('config.lualine') end
   }
@@ -40,12 +40,6 @@ return require('packer').startup(function()
 
   -- Tmux Integration
   use { 'numToStr/Navigator.nvim', config = function() require('config.navigator') end }
-  use {
-    'vim-test/vim-test',
-    requires = { 'benmills/vimux' },
-    ft = { 'ruby' },
-    config = function() require('config.vim-test') end
-  }
 
   -- Git Integration
   use { 'tpope/vim-fugitive', config = function() require('config.fugitive') end }
