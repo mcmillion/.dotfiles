@@ -8,11 +8,7 @@ export EDITOR='nvim'
 export LESS='-RFX'
 export HOMEBREW_NO_ANALYTICS=1
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  export PATH=$PATH:/usr/local/bin:/usr/local/sbin:./bin/
-else
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 
@@ -231,11 +227,7 @@ mux() {
 # ASDF
 #==================================================================================================
 
-if [[ "$(uname)" == "Darwin" ]]; then
-  . /usr/local/opt/asdf/asdf.sh
-else
-  . $(brew --prefix asdf)/asdf.sh
-fi
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 
 
