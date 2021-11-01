@@ -30,3 +30,4 @@ cask 'font-jetbrains-mono-nerd-font'
 
 cask 'kitty'
 cask 'raycast'
+cask 'rectangle'
