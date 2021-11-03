@@ -29,6 +29,7 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end }
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
+  use 'github/copilot.vim'
 
   -- File Navigation / Search
   use {
