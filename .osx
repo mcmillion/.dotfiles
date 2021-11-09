@@ -3,5 +3,8 @@
 # Set dock size to 48px
 defaults write com.apple.dock tilesize -int 48; killall Dock
 
+# Disable press and hold
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 # Better font rendering in Electron on Mojave
 # defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
