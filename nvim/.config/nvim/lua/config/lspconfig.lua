@@ -6,7 +6,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     virtual_text = true,
   })
 
-require('config/lspconfig-efm')
+require('config/lspconfig-eslint')
 require('config/lspconfig-tsserver')
 require('config/lspconfig-omnisharp')
 require('config/lspconfig-solargraph')

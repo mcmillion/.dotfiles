@@ -16,3 +16,6 @@ auto([[
     au WinLeave,FocusLost * setlocal nocursorline
   augroup END
 ]], true)
+
+-- Format with ESLint
+vim.cmd('autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.cjs,*.mjs :EslintFixAll')
