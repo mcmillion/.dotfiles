@@ -59,6 +59,10 @@ symbol = 'ruby '
 disabled = true
 symbol = 'rust '
 
+[scala]
+disabled = true
+symbol = 'scala '
+
 [time]
 disabled = false
 use_12hr = true
