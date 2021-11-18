@@ -51,7 +51,10 @@ return require('packer').startup(function()
   }
 
   -- Misc Utilities
-  use { 'SirVer/ultisnips', config = function() require('config.ultisnips') end }
+  use {
+    'SirVer/ultisnips',
+    config = function() require('config.ultisnips') end
+  }
   use 'tpope/vim-abolish'
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
@@ -60,6 +63,10 @@ return require('packer').startup(function()
   use 'tpope/vim-vinegar'
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
-  use { 'davidgranstrom/nvim-markdown-preview', ft = { 'markdown' } }
+  use {
+    'davidgranstrom/nvim-markdown-preview',
+    config = function() require('config.markdown-preview') end,
+    ft = { 'markdown' }
+  }
   use 'wakatime/vim-wakatime'
 end)
