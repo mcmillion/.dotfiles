@@ -18,4 +18,4 @@ auto([[
 ]], true)
 
 -- Format with ESLint
-vim.cmd('autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.cjs,*.mjs :EslintFixAll')
+vim.cmd('autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx,*.cjs,*.mjs :EslintFixAll')
