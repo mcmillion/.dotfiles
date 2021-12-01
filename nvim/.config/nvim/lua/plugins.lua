@@ -49,6 +49,9 @@ return require('packer').startup(function()
     config = function() require('config.gitsigns') end
   }
 
+  -- Languages missing from treesitter
+  use 'https://github.com/jxnblk/vim-mdx-js'
+
   -- Misc Utilities
   use {
     'SirVer/ultisnips',
