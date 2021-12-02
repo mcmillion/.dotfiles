@@ -1,2 +1,2 @@
 export PATH=$PATH:/usr/local/bin
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
