@@ -9,4 +9,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 require('config/lspconfig-eslint')
 require('config/lspconfig-tsserver')
 require('config/lspconfig-omnisharp')
+require('config/lspconfig-rust_analyzer')
 require('config/lspconfig-solargraph')

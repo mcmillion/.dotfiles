@@ -28,7 +28,6 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end }
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
-  use 'github/copilot.vim'
 
   -- File Navigation / Search
   use {
@@ -63,6 +62,7 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
+  use 'vim-autoformat/vim-autoformat'
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
   use {
