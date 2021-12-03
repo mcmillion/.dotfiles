@@ -62,7 +62,7 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
-  use 'vim-autoformat/vim-autoformat'
+  use { 'vim-autoformat/vim-autoformat', config = function() require('config.vim-autoformat') end }
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
   use {
