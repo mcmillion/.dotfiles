@@ -1,11 +1,11 @@
 vim.o.completeopt = "menuone,noselect"
 
 vim.cmd[[
-  inoremap <silent><expr> <C-Space> compe#complete()
-  inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-  inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-  inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-  inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 ]]
 
 require('compe').setup({
@@ -13,7 +13,7 @@ require('compe').setup({
   autocomplete = true,
   debug = false,
   min_length = 1,
-  preselect = false,
+  preselect = 'disable',
   throttle_time = 80,
   source_timeout = 200,
   incomplete_delay = 400,
