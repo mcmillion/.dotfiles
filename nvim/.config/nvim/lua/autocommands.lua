@@ -19,3 +19,4 @@ augroup END
 
 -- Format on save
 vim.cmd('autocmd BufWritePre * :Autoformat')
+vim.cmd('autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.cjs,*.mjs :EslintFixAll')
