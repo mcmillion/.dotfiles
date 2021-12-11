@@ -12,7 +12,7 @@ return require('lualine').setup({
         modified = { fg = '#e5c07b' },
         removed = { fg = '#e06c75' },
       }},
-      { 'diagnostics', sources={'nvim_lsp'}},
+      { 'diagnostics', sources={'nvim_diagnostic'}},
     },
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'filetype'},
