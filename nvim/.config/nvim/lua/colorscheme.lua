@@ -14,10 +14,12 @@ auto([[
     autocmd ColorScheme * highlight CursorLine guibg=#2c323d
     autocmd ColorScheme * highlight CursorLineNr guifg=#858b96 guibg=#2c323d gui=NONE
 
+    autocmd ColorScheme * highlight NormalFloat guibg=#222529
+    autocmd ColorScheme * highlight FloatBorder guifg=#363945 guibg=#222529
     autocmd ColorScheme * highlight DiagnosticError guifg=#f44747
     autocmd ColorScheme * highlight DiagnosticWarn guifg=#e5c07b
-    autocmd ColorScheme * highlight DiagnsoticInfo guifg=#5c6370
-    autocmd ColorScheme * highlight DiagnosticHint guifg=#5c6370
+    autocmd ColorScheme * highlight DiagnsoticInfo guifg=#abb2bf
+    autocmd ColorScheme * highlight DiagnosticHint guifg=#abb2bf
 
     autocmd ColorScheme * highlight Pmenu guifg=#abb2bf guibg=#222529
     autocmd ColorScheme * highlight PmenuSel guifg=#abb2bf guibg=#2c323d
