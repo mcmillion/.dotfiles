@@ -65,6 +65,8 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias mkdir='mkdir -pv'
 alias ..='cd ..'
+alias x='exit'
+alias q='exit'
 
 
 
