@@ -1,5 +1,3 @@
-command_timeout = 5000
-
 [aws]
 disabled = true
 symbol = 'aws '
