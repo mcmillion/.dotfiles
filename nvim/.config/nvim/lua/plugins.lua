@@ -28,6 +28,7 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end }
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
+  use { 'simrat39/rust-tools.nvim', config = function() require('config.rust-tools') end }
 
   -- File Navigation / Search
   use {
