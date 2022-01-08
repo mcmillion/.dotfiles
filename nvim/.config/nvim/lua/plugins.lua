@@ -38,8 +38,9 @@ return require('packer').startup(function()
   }
   use 'wincent/ferret'
 
-  -- Tmux Integration
+  -- Tmux / Terminal Integration
   use { 'numToStr/Navigator.nvim', config = function() require('config.navigator') end }
+  use 'voldikss/vim-floaterm'
 
   -- Git Integration
   use { 'tpope/vim-fugitive', config = function() require('config.fugitive') end }

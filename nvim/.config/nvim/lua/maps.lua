@@ -52,3 +52,6 @@ noremap('n', 'Y', 'y$')
 noremap('n', '<leader>s', ':s/<c-r><c-w>//g<left><left>')
 noremap('n', '<leader>S', ':%s/<c-r><c-w>//g<left><left>')
 noremap('x', '<leader>s', ':s///g<left><left><left>')
+
+-- Popup Terminal
+noremap('n', '<leader>t', ':FloatermNew --width=0.6 --height=0.6 --autoclose=1<cr>')
