@@ -64,6 +64,7 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
+  use { 'petertriho/nvim-scrollbar', config = function() require('config.nvim-scrollbar') end }
   use { 'vim-autoformat/vim-autoformat', config = function() require('config.vim-autoformat') end }
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
