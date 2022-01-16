@@ -14,9 +14,10 @@ require'nvim-treesitter.configs'.setup({
     'lua',
     'regex',
     'ruby',
+    'rust',
     'toml',
     'tsx',
-    'typescript'
+    'typescript',
   },
   highlight = {
     enable = true,
