@@ -43,3 +43,6 @@ bo.formatoptions = o.formatoptions .. 'j'  -- Smart join comment lines
 bo.swapfile = false                        -- Disable swapfile (here as well)
 bo.undofile = true                         -- Turn on persistent undo (here as well)
 bo.tabstop = 2                             -- Set tab stops to 2
+
+-- Set some general sessions options that should help with auto-session
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
