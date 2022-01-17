@@ -30,5 +30,7 @@ auto([[
     autocmd ColorScheme * highlight PmenuThumb guifg=NONE guibg=#2c323d
 
     autocmd ColorScheme * highlight Comment guifg=#686f7c
+
+    autocmd ColorScheme * highlight TSNamespace guifg=#56b6c2
   augroup END
 ]], true)
