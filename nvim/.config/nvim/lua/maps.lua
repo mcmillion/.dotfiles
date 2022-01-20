@@ -24,9 +24,21 @@ noremap('n', 'K', 'i<cr><esc>')
 noremap('n', 'n', 'nzzzv')
 noremap('n', 'N', 'Nzzzv')
 
--- Quicker quit and save mappings
+-- Quicker quit
 noremap('n', 'QQ', ':q<cr>')
-noremap('n', '<leader>w', ':w<cr>')
+
+-- Dumb hack to format with :EslintFixAll before saving, since the BufPreWrite
+-- route breaks undo
+vim.cmd([[
+function! MaybeFormatAndSave()
+  if exists(":EslintFixAll")
+    :EslintFixAll
+  endif
+
+  write
+endfunction
+]])
+noremap('n', '<leader>w', ':call MaybeFormatAndSave()<cr>')
 
 -- Easy change global with next
 noremap('n', 'c*', '*Ncgn')

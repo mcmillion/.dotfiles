@@ -17,9 +17,5 @@ au WinLeave,FocusLost * setlocal nocursorline
 augroup END
 ]], true)
 
--- Format on save
-vim.cmd('autocmd BufWritePre * :Autoformat')
-vim.cmd('autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.cjs,*.mjs :EslintFixAll')
-
 -- Open diagnostics on hover
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]

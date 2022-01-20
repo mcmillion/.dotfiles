@@ -50,9 +50,6 @@ return require('packer').startup(function()
     config = function() require('config.gitsigns') end
   }
 
-  -- Languages missing from treesitter
-  use 'https://github.com/jxnblk/vim-mdx-js'
-
   -- Misc Utilities
   use {
     'SirVer/ultisnips',
@@ -65,7 +62,6 @@ return require('packer').startup(function()
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
   use { 'petertriho/nvim-scrollbar', config = function() require('config.nvim-scrollbar') end }
-  use { 'vim-autoformat/vim-autoformat', config = function() require('config.vim-autoformat') end }
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
   use {
