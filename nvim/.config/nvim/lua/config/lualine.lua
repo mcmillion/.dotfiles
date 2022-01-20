@@ -14,7 +14,7 @@ return require('lualine').setup({
       }},
       { 'diagnostics', sources={'nvim_diagnostic'}},
     },
-    lualine_c = {'filename'},
+    lualine_c = {{ 'filename', path = 1, shorting_target = 30 }},
     lualine_x = {'encoding', 'filetype'},
     lualine_y = {},
     lualine_z = {'location'}
