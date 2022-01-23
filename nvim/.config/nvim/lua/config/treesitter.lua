@@ -5,7 +5,6 @@ require'nvim-treesitter.configs'.setup({
     'c_sharp',
     'comment',
     'cpp',
-    'css',
     'go',
     'graphql',
     'html',
@@ -22,4 +21,7 @@ require'nvim-treesitter.configs'.setup({
   highlight = {
     enable = true,
   },
+  indent = {
+    enable = true,
+  }
 })
