@@ -1,4 +1,5 @@
 live-server
 npm-check-updates
-yarn
+stylelint-lsp
 typescript-language-server
+yarn

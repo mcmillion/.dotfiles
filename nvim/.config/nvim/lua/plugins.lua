@@ -16,6 +16,7 @@ return require('packer').startup(function()
     config = function() require('config.colorizer') end
   }
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('config.indent-blankline') end }
+  use { 'vim-autoformat/vim-autoformat', config = function() require('config.vim-autoformat') end }
 
   -- Statusline / Tabline
   use {

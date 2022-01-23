@@ -33,6 +33,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 require('config/lspconfig-eslint')
+require('config/lspconfig-stylelint')
 require('config/lspconfig-tsserver')
 require('config/lspconfig-omnisharp')
 require('config/lspconfig-solargraph')
