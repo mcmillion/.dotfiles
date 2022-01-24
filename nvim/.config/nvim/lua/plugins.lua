@@ -53,6 +53,7 @@ return require('packer').startup(function()
   }
 
   -- Misc Utilities
+  use 'justinmk/vim-sneak'
   use {
     'SirVer/ultisnips',
     config = function() require('config.ultisnips') end

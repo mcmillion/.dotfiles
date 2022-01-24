@@ -32,5 +32,7 @@ auto([[
     autocmd ColorScheme * highlight Comment guifg=#686f7c
 
     autocmd ColorScheme * highlight TSNamespace guifg=#56b6c2
+
+    autocmd ColorScheme * highlight Sneak guifg=#282c34 guibg=#d19a66
   augroup END
 ]], true)
