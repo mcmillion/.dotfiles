@@ -1,8 +1,7 @@
-require('gitsigns').setup({
-})
+require('gitsigns').setup({})
 
 vim.cmd[[
-  hi! GitSignsAdd guifg=#98c379 ctermfg=114 guibg=#282c34 ctermbg=235 gui=NONE cterm=NONE
-  hi! GitSignsChange guifg=#e5c07b ctermfg=180 guibg=#282c34 ctermbg=235 gui=NONE cterm=NONE
-  hi! GitSignsDelete guifg=#e06c75 ctermfg=168 guibg=#282c34 ctermbg=235 gui=NONE cterm=NONE
+  hi! GitSignsAdd guifg=#98c379 guibg=#282c34
+  hi! GitSignsChange guifg=#e5c07b guibg=#282c34
+  hi! GitSignsDelete guifg=#e06c75 guibg=#282c34
 ]]

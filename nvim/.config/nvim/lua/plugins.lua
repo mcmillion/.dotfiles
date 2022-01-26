@@ -52,6 +52,15 @@ return require('packer').startup(function()
     config = function() require('config.gitsigns') end
   }
 
+  -- Linting / Testing
+  use {
+    "rcarriga/vim-ultest",
+    requires = {"vim-test/vim-test"},
+    run = ":UpdateRemotePlugins",
+    config = function() require('config.vim-ultest') end
+  }
+  use { 'petertriho/nvim-scrollbar', config = function() require('config.nvim-scrollbar') end }
+
   -- Misc Utilities
   use 'justinmk/vim-sneak'
   use {
@@ -64,7 +73,6 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
-  use { 'petertriho/nvim-scrollbar', config = function() require('config.nvim-scrollbar') end }
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
   use {

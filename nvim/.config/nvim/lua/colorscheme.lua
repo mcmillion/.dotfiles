@@ -32,5 +32,13 @@ auto([[
     autocmd ColorScheme * highlight TSNamespace guifg=#56b6c2
 
     autocmd ColorScheme * highlight Sneak guifg=#282c34 guibg=#d19a66
+
+    autocmd ColorScheme * highlight UltestPass guifg=#98c379
+    autocmd ColorScheme * highlight UltestFail guifg=#f44747
+    autocmd ColorScheme * highlight UltestRunning guifg=#e5c07b
+    autocmd ColorScheme * highlight UltestBorder guifg=#f44747
+    autocmd ColorScheme * highlight UltestSummaryInfo guifg=#5c6370 gui=bold
+    autocmd ColorScheme * highlight link UltestSummaryFile UltestSummaryInfo
+    autocmd ColorScheme * highlight link UltestSummaryNamespace UltestSummaryInfo
   augroup END
 ]], true)
