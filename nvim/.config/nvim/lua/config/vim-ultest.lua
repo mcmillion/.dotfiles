@@ -14,4 +14,5 @@ augroup END
 vim.cmd[[
 nmap ]t <Plug>(ultest-next-fail)
 nmap [t <Plug>(ultest-prev-fail)
+nmap <leader>t <Plug>(ultest-summary-toggle)
 ]]
