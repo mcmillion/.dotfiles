@@ -33,6 +33,8 @@ vim.cmd([[
 function! MaybeFormatAndSave()
   if exists(":EslintFixAll")
     :EslintFixAll
+  else
+    :Autoformat
   endif
 
   write
