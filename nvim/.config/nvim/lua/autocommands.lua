@@ -5,6 +5,8 @@ auto([[
 augroup addition_filetypes
   autocmd!
   autocmd BufRead,BufNewFile *.env.* set filetype=sh
+  autocmd BufRead,BufNewFile Procfile set filetype=sh
+  autocmd BufRead,BufNewFile Procfile.* set filetype=sh
 augroup END
 ]], true)
 
