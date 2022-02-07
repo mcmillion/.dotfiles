@@ -1,0 +1,18 @@
+name: sojournal
+root: ~/Developer/Personal/sojournal
+windows:
+  - 'client':
+      root: ~/Developer/Personal/sojournal/client
+      panes:
+        - nvim
+
+  - 'server':
+      root: ~/Developer/Personal/sojournal/server
+      panes:
+        - nvim
+
+  - 'shell':
+      layout: even-horizontal
+      panes:
+        - make && foreman start
+        - clear
