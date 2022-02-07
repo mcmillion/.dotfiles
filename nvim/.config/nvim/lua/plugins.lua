@@ -6,6 +6,7 @@ return require('packer').startup(function()
   -- Syntax Highlighting / Formatting
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'cakebaker/scss-syntax.vim'
+  use 'pantharshit00/vim-prisma'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
