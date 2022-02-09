@@ -4,4 +4,4 @@ require('settings')
 require('maps')
 require('autocommands')
 
-vim.cmd 'source ~/.config/nvim/netrw_touch_create.vim'
+vim.cmd 'source ~/.config/nvim/netrw_tweaks.vim'
