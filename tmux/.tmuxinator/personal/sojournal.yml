@@ -1,18 +1,13 @@
 name: sojournal
 root: ~/Developer/Personal/sojournal
 windows:
-  - 'client':
-      root: ~/Developer/Personal/sojournal/client
+  - 'nvim':
       panes:
         - nvim
 
-  - 'server':
-      root: ~/Developer/Personal/sojournal/server
+  - 'zsh':
+      layout: 8bab,285x79,0,0{142x79,0,0[142x39,0,0,1,142x39,0,40,4],142x79,143,0,3}
       panes:
-        - nvim
-
-  - 'shell':
-      layout: even-horizontal
-      panes:
-        - make && foreman start
-        - clear
+        - npm run dev:tailwind
+        - sleep 5 && npm run ios && clear
+        - npm run start
