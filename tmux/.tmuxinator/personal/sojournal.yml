@@ -6,8 +6,7 @@ windows:
         - nvim
 
   - 'zsh':
-      layout: 8bab,285x79,0,0{142x79,0,0[142x39,0,0,1,142x39,0,40,4],142x79,143,0,3}
+      layout: even-horizontal
       panes:
-        - npm run dev:tailwind
         - sleep 5 && npm run ios && clear
         - npm run start
