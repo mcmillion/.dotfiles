@@ -1,6 +1,6 @@
 utils = require('utils')
 local noremap = utils.noremap
-local silent_noremap = utils.noremap
+local silent_noremap = utils.silent_noremap
 
 -- remap the leader key to <Space>
 vim.api.nvim_set_keymap('n', '<space>', '', {})
