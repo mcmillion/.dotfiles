@@ -31,10 +31,10 @@ cmp.setup {
       { "i", "s" }
     ),
   },
-  sources = {
-    { name = 'ultisnips' },
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'path' },
-    { name = 'buffer' }
-  },
+    { name = 'ultisnips' },
+  }, {
+    { name = 'buffer' },
+  })
 }
