@@ -6,7 +6,6 @@ return require('packer').startup(function()
   -- Syntax Highlighting / Formatting
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'cakebaker/scss-syntax.vim'
-  use 'pantharshit00/vim-prisma'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -27,8 +26,18 @@ return require('packer').startup(function()
   }
 
   -- LSP / Completion
-  use { 'hrsh7th/nvim-compe', config = function() require('config.compe') end }
   use { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end }
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'quangnguyen30192/cmp-nvim-ultisnips',
+    },
+    config = function() require('config.nvim-cmp') end
+  }
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
   use { 'simrat39/rust-tools.nvim', config = function() require('config.rust-tools') end }
