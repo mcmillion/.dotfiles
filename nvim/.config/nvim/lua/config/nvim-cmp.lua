@@ -2,6 +2,7 @@ local cmp = require 'cmp'
 local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 cmp.setup {
+  preselect = 'none',
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
