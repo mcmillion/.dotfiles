@@ -23,13 +23,12 @@ o.splitbelow = true                        -- Open new horizontal splits below
 o.splitright = true                        -- Open new vertical splits to the right
 o.swapfile = false                         -- Disable swapfile
 o.termguicolors = true                     -- 24-bit color
-o.undofile = true                          -- Turn on persistent undo
+o.undofile = false                         -- Turn on persistent undo
 o.updatetime = 300                         -- Lower updatetime time for hold events
 o.writebackup = false                      -- Really disable backups
 
 -- Window-Local Options
 local wo = vim.wo
-wo.colorcolumn = "9999"                    -- Dumb workaround until merged: https://github.com/neovim/neovim/issues/14209
 wo.linebreak = true                        -- Wrap on linebreak when wrap is on
 wo.list = true                             -- Show whitespace characters
 wo.number = false                          -- Disable line numbering by default

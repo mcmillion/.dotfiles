@@ -69,10 +69,8 @@ return require('packer').startup(function()
     run = ":UpdateRemotePlugins",
     config = function() require('config.vim-ultest') end
   }
-  use { 'petertriho/nvim-scrollbar', config = function() require('config.nvim-scrollbar') end }
 
   -- Misc Utilities
-  use 'justinmk/vim-sneak'
   use {
     'SirVer/ultisnips',
     config = function() require('config.ultisnips') end
