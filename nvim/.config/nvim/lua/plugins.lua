@@ -51,7 +51,11 @@ return require('packer').startup(function()
   use 'wincent/ferret'
 
   -- Tmux / Terminal Integration
-  use { 'numToStr/Navigator.nvim', config = function() require('config.navigator') end }
+  use {
+    'numToStr/Navigator.nvim',
+    commit = '6bfcf7d',
+    config = function() require('config.navigator') end
+  }
   use 'voldikss/vim-floaterm'
 
   -- Git Integration
