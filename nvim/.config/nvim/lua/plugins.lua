@@ -16,8 +16,14 @@ return require('packer').startup(function()
     'norcalli/nvim-colorizer.lua',
     config = function() require('config.colorizer') end
   }
-  use { 'lukas-reineke/indent-blankline.nvim', config = function() require('config.indent-blankline') end }
-  use { 'vim-autoformat/vim-autoformat', config = function() require('config.vim-autoformat') end }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require('config.indent-blankline') end
+  }
+  use {
+    'vim-autoformat/vim-autoformat',
+    config = function() require('config.vim-autoformat') end
+  }
 
   -- Statusline / Tabline
   use {
@@ -27,7 +33,10 @@ return require('packer').startup(function()
   }
 
   -- LSP / Completion
-  use { 'neovim/nvim-lspconfig', config = function() require('config.lspconfig') end }
+  use {
+    'neovim/nvim-lspconfig',
+    config = function() require('config.lspconfig') end
+  }
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -41,7 +50,10 @@ return require('packer').startup(function()
   }
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
-  use { 'simrat39/rust-tools.nvim', config = function() require('config.rust-tools') end }
+  use {
+    'simrat39/rust-tools.nvim',
+    config = function() require('config.rust-tools') end
+  }
 
   -- File Navigation / Search
   use {
@@ -54,13 +66,15 @@ return require('packer').startup(function()
   -- Tmux / Terminal Integration
   use {
     'numToStr/Navigator.nvim',
-    commit = '6bfcf7d',
     config = function() require('config.navigator') end
   }
   use 'voldikss/vim-floaterm'
 
   -- Git Integration
-  use { 'tpope/vim-fugitive', config = function() require('config.fugitive') end }
+  use {
+    'tpope/vim-fugitive',
+    config = function() require('config.fugitive') end
+  }
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
