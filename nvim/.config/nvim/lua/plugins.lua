@@ -48,6 +48,7 @@ return require('packer').startup(function()
     },
     config = function() require('config.nvim-cmp') end
   }
+  use 'mattn/emmet-vim'
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
   use {
