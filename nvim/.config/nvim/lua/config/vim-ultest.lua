@@ -8,8 +8,8 @@ vim.g.ultest_running_sign = '◌'
 -- Automatically run tests on save
 auto([[
 augroup UltestRunner
-au!
-au BufWritePost * Ultest
+  au!
+  au BufWritePost * UltestNearest
 augroup END
 ]], true)
 
