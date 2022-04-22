@@ -82,12 +82,11 @@ return require('packer').startup(function()
     config = function() require('config.gitsigns') end
   }
 
-  -- Linting / Testing
+  -- Testing / Linting
   use {
-    "rcarriga/vim-ultest",
-    requires = {"vim-test/vim-test"},
-    run = ":UpdateRemotePlugins",
-    config = function() require('config.vim-ultest') end
+    'vim-test/vim-test',
+    requires = { 'preservim/vimux' },
+    config = function() require('config.vim-test') end
   }
 
   -- Misc Utilities
