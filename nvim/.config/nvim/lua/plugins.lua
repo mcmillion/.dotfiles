@@ -91,6 +91,10 @@ return require('packer').startup(function()
 
   -- Misc Utilities
   use {
+    'andymass/vim-matchup',
+    config = function() require('config.vim-matchup') end
+  }
+  use {
     'SirVer/ultisnips',
     config = function() require('config.ultisnips') end
   }
