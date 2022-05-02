@@ -129,7 +129,7 @@ gsync() {
 #==================================================================================================
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "" 3> /dev/null'
-export FZF_DEFAULT_OPTS='--height 50% --color=bg:0,fg:7,hl:8,bg+:0,fg+:15,hl+:9,info:6,prompt:9,pointer:9,marker:9,spinner:9,border:3,header:3'
+export FZF_DEFAULT_OPTS='--height 50% --color=bg:0,fg:7,hl:8,bg+:0,fg+:15,hl+:4,info:9,prompt:4,pointer:4,marker:4,spinner:4,border:3,header:3'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
