@@ -58,9 +58,9 @@ return require('packer').startup(function()
 
   -- File Navigation / Search
   use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-    config = function() require('config.telescope') end
+    'junegunn/fzf.vim',
+    requires = {{'junegunn/fzf'}},
+    config = function() require('config.fzf') end
   }
   use 'wincent/ferret'
 
