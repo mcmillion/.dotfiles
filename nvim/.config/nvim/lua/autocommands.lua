@@ -27,5 +27,10 @@ augroup CursorLine
 augroup END
 ]], true)
 
+-- Automatically reload ultisnips after save
+auto([[
+autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
+]], true)
+
 -- Open diagnostics on hover
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
