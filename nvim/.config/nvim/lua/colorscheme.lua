@@ -24,6 +24,7 @@ auto([[
     autocmd ColorScheme * highlight link Floaterm NormalFloat
     autocmd ColorScheme * highlight link FloatermBorder FloatBorder
 
+    autocmd ColorScheme * highlight Comment guifg=#6c727e
     autocmd ColorScheme * highlight Todo guifg=#abb2bf guibg=NONE
 
     autocmd ColorScheme * highlight Pmenu guifg=#abb2bf guibg=#222529
