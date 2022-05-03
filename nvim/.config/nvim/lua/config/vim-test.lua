@@ -8,4 +8,4 @@ vim.g['test#strategy'] = 'vimux'
 vim.g['test#ruby#rspec#executable'] = 'bundle exec rspec'
 
 noremap('n', '<Leader>t', ':TestNearest<CR>')
-noremap('n', '<Leader>tf', ':TestFile<CR>')
+noremap('n', '<Leader>tt', ':TestFile<CR>')
