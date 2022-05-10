@@ -59,7 +59,7 @@ setopt incappendhistory     # Immediately append to the history file, not just w
 #==============================================================================
 
 alias reload='source ~/.zshrc'
-alias ls='ls -apG'
+alias ls='ls -aG'
 alias ll='ls -lh'
 alias cp='cp -iv'
 alias mv='mv -iv'
