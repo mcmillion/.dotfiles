@@ -190,21 +190,6 @@ fkill() {
   fi
 }
 
-# FZF tmuxinator
-mux() {
-  local selected=$(tmuxinator list -n | tail -n +2 | fzf --prompt="Project: " -m -1 -q "$1")
-
-  if [ -n "$selected" ]; then
-    # Set the IFS to \n to iterate over \n delimited projects
-    IFS=$'\n'
-
-    # Start each project without attaching
-    for PROJECT in $selected; do
-        tmuxinator start "$PROJECT"
-    done
-  fi
-}
-
 
 
 #==================================================================================================

@@ -1,5 +1,0 @@
-name: home
-root: ~/
-
-windows:
-  - 'zsh': clear
