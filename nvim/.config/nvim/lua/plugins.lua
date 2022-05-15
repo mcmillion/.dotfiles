@@ -98,6 +98,10 @@ return require('packer').startup(function()
     'SirVer/ultisnips',
     config = function() require('config.ultisnips') end
   }
+  use {
+    'lambdalisue/suda.vim',
+    config = function() require('config.suda') end
+  }
   use 'tpope/vim-abolish'
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
