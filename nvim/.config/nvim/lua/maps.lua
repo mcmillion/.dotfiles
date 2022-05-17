@@ -70,3 +70,6 @@ noremap('x', '<leader>s', ':s///g<left><left><left>')
 
 -- Popup Terminal
 silent_noremap('n', '<leader>`', ':FloatermNew --width=0.6 --height=0.6 --autoclose=1<cr>')
+
+-- YAML path
+silent_noremap('n', '<leader>yp', ':call yaml_path#show()<CR>')

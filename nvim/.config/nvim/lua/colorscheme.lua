@@ -33,7 +33,7 @@ auto([[
     autocmd ColorScheme * highlight PmenuThumb guifg=NONE guibg=#2c323d
 
     autocmd ColorScheme * highlight TSNamespace guifg=#56b6c2
-    autocmd ColorScheme * highlight MatchParen guifg=#e06c75 gui=underline
+    autocmd ColorScheme * highlight MatchParen guifg=none gui=underline
 
     autocmd ColorScheme * highlight Sneak guifg=#282c34 guibg=#d19a66
 
