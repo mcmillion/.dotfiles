@@ -26,7 +26,7 @@ class YAMLPath
   def self.path(source, line, col)
     ast = Psych.parse(source)
     path = traverse(ast, line, col)
-    path[0...-1].join('.')
+    path[1...-1].join('.')
   end
 end
 RUBY
