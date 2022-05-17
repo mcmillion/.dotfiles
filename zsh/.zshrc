@@ -214,7 +214,7 @@ alias kill_rails_server='kill -9 $(lsof -i tcp:3000 -t)'
 # POSTGRES / REDIS / ETC
 #==================================================================================================
 
-alias fix_stuck_postgres='rm /usr/local/var/postgres/postmaster.pid; brew services restart postgresql'
+alias fix_stuck_postgres='rm /opt/homebrew/var/postgres/postmaster.pid; brew services restart postgresql'
 
 
 
