@@ -1,3 +1,6 @@
-require('colorizer').setup(nil, {
+require('colorizer').setup({
+  '*';
+  '!ruby';
+}, {
   names = false,
 })
