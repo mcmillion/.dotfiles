@@ -4,7 +4,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   -- Syntax Highlighting / Formatting
-  use 'christianchiarulli/nvcode-color-schemes.vim'
+  -- use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'cakebaker/scss-syntax.vim'
   use 'kchmck/vim-coffee-script'
   use {
