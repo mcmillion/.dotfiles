@@ -5,8 +5,18 @@ return require('lualine').setup({
     component_separators = { '', '' },
   },
   sections = {
+    lualine_a = {
+      { 'mode', fmt = function(s) return s:sub(1,1) end },
+    },
     lualine_b = {
-      'branch',
+      { 'branch', fmt = function(s)
+        if string.len(s) < 25
+        then
+          return s
+        else
+          return s:sub(1,24) .. '>'
+        end
+      end },
       { 'diff', diff_color = {
         added = { fg = '#98c379' },
         modified = { fg = '#e5c07b' },
@@ -15,7 +25,7 @@ return require('lualine').setup({
       { 'diagnostics', sources={'nvim_diagnostic'}},
     },
     lualine_c = {{ 'filename', path = 1, shorting_target = 30 }},
-    lualine_x = {'encoding', 'filetype'},
+    lualine_x = {'filetype'},
     lualine_y = {},
     lualine_z = {'location'}
   },
