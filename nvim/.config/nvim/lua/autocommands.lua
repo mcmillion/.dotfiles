@@ -32,5 +32,11 @@ auto([[
 autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 ]], true)
 
+-- Open quick fix in vertical split
+-- https://stackoverflow.com/a/16743676/479732
+auto([[
+autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+]], true)
+
 -- Open diagnostics on hover
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
