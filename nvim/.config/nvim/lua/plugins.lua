@@ -92,6 +92,11 @@ return require('packer').startup(function()
 
   -- Misc Utilities
   use {
+    'numToStr/Comment.nvim',
+    branch = 'jsx',
+    config = function() require('config.comment') end
+  }
+  use {
     'andymass/vim-matchup',
     config = function() require('config.vim-matchup') end
   }
@@ -104,7 +109,7 @@ return require('packer').startup(function()
     config = function() require('config.suda') end
   }
   use 'tpope/vim-abolish'
-  use 'tpope/vim-commentary'
+  -- use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
