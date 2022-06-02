@@ -32,6 +32,10 @@ silent_noremap('n', 'QQ', ':q<cr>')
 -- route breaks undo
 vim.cmd([[
 function! MaybeFormatAndSave()
+  if exists(":OrganizeImports")
+    :OrganizeImports
+  endif
+
   if exists(":EslintFixAll")
     :EslintFixAll
   else
