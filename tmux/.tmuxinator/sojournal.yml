@@ -1,0 +1,13 @@
+name: sojournal
+root: ~/Developer/Personal/sojournal
+windows:
+  - 'nvim':
+    panes:
+      - nvim
+
+  - 'servers':
+    layout: cc34,285x79,0,0{142x79,0,0,0,142x79,143,0[142x39,143,0,33,142x39,143,40,34]}
+    panes:
+      - npm run dev
+        # - cd functions && npm run serve
+      # - npm run start

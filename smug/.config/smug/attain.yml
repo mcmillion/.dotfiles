@@ -1,0 +1,18 @@
+session: attain
+root: ~/Developer/SEAS/cas-seas3-web
+
+before_start:
+  - bundle install
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: server
+    commands:
+      - bin/rails s
+
+  - name: console
+    commands:
+      - bin/rails c

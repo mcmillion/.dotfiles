@@ -74,6 +74,7 @@ alias q='exit'
 # TMUX / VIM
 #==================================================================================================
 
+alias home='tmux new-session -A -s home'
 alias kill_all_tmux_sessions='tmux ls | awk '\''{print $1}'\'' | sed '\''s/://g'\'' | xargs -I{} tmux kill-session -t {}'
 
 alias v='nvim'
@@ -187,6 +188,15 @@ fkill() {
   if [ "x$pid" != "x" ]
   then
     echo $pid | xargs kill -${1:-9}
+  fi
+}
+
+# FZF tmuxinator
+mux() {
+  local selected=$(smug list | fzf --prompt="Project: " -m -1 -q "$1")
+
+  if [ -n "$selected" ]; then
+    smug start "$selected" -a
   fi
 }
 
