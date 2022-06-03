@@ -10,10 +10,9 @@ windows:
       - nvim
 
   - name: server
-    layout: main-vertical
     commands:
       - PORT=5050 npm run dev
-    panes:
-      - type: horizontal
-        commands:
-          - BROWSER=none npx prisma studio
+
+  - name: studio
+    commands:
+      - BROWSER=none npx prisma studio
