@@ -55,7 +55,7 @@ return require('packer').startup(function()
     'simrat39/rust-tools.nvim',
     config = function() require('config.rust-tools') end
   }
-  use 'github/copilot.vim'
+  -- use 'github/copilot.vim'
 
   -- File Navigation / Search
   use {
