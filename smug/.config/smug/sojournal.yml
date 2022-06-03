@@ -6,17 +6,14 @@ before_start:
 
 windows:
   - name: nvim
-    root: .
     commands:
       - nvim
 
   - name: server
-    root: .
     layout: main-vertical
     commands:
       - PORT=5050 npm run dev
     panes:
       - type: horizontal
-        root: .
         commands:
           - BROWSER=none npx prisma studio
