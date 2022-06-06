@@ -230,6 +230,10 @@ hi DiagnosticError guifg=#f44747 guibg=NONE gui=NONE
 hi DiagnosticWarn guifg=#e5c07b guibg=NONE gui=NONE
 hi DiagnsoticInfo guifg=#abb2bf guibg=NONE gui=NONE
 hi DiagnosticHint guifg=#abb2bf guibg=NONE gui=NONE
+hi DiagnosticUnderlineError gui=undercurl guisp=#f44747
+hi DiagnosticUnderlineWarn gui=undercurl guisp=#e5c07b
+hi DiagnosticUnderlineInfo gui=undercurl guisp=#abb2bf
+hi DiagnosticUnderlineHint gui=undercurl guisp=#abb2bf
 hi UltestPass guifg=#98c379 guibg=NONE gui=NONE
 hi UltestFail guifg=#f44747 guibg=NONE gui=NONE
 hi UltestRunning guifg=#e5c07b guibg=NONE gui=NONE
