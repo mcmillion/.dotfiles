@@ -1,7 +1,24 @@
-require('gitsigns').setup({})
+require('gitsigns').setup({
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
 
-vim.cmd[[
-  hi! GitSignsAdd guifg=#98c379 guibg=#282c34
-  hi! GitSignsChange guifg=#e5c07b guibg=#282c34
-  hi! GitSignsDelete guifg=#e06c75 guibg=#282c34
-]]
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+  end
+})

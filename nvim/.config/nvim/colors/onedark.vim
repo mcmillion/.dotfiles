@@ -241,3 +241,6 @@ hi UltestBorder guifg=#f44747 guibg=NONE gui=NONE
 hi UltestSummaryInfo guifg=#5c6370 guibg=NONE gui=bold
 hi link UltestSummaryFile UltestSummaryInfo
 hi link UltestSummaryNamespace UltestSummaryInfo
+hi GitSignsAdd guifg=#98c379 guibg=#282c34
+hi GitSignsChange guifg=#e5c07b guibg=#282c34
+hi GitSignsDelete guifg=#e06c75 guibg=#282c34
