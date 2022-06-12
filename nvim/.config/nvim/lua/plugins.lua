@@ -74,7 +74,10 @@ return require('packer').startup(function()
     'numToStr/Navigator.nvim',
     config = function() require('config.navigator') end
   }
-  use 'voldikss/vim-floaterm'
+  use {
+    'voldikss/vim-floaterm',
+    config = function() require('config.vim-floaterm') end
+  }
 
   -- Git Integration
   use {
