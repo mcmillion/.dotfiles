@@ -1,8 +1,8 @@
 return require('lualine').setup({
   options = {
-    theme = custom_onedark,
     section_separators = { '', '' },
     component_separators = { '', '' },
+    disabled_filetypes = {'NvimTree'},
   },
   sections = {
     lualine_a = {
