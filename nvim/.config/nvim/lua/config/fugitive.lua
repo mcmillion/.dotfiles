@@ -1,8 +1,8 @@
 utils = require('utils')
-local noremap = utils.noremap
+local silent_noremap = utils.silent_noremap
 
-noremap('n', '<leader>gs', ':vertical Git<cr>')
-noremap('n', '<Leader>gd', ':Gdiffsplit!<CR>')
-noremap('n', '<Leader>gb', ':Git blame<CR>')
-noremap('n', '<Leader>gw', ':Gwrite<CR>')
-noremap('n', '<Leader>gr', ':Gread<CR>')
+silent_noremap('n', '<leader>gs', ':vertical Git<cr>')
+silent_noremap('n', '<Leader>gd', ':Gdiffsplit!<CR>')
+silent_noremap('n', '<Leader>gb', ':Git blame<CR>')
+silent_noremap('n', '<Leader>gw', ':Gwrite<CR>')
+silent_noremap('n', '<Leader>gr', ':Gread<CR>')
