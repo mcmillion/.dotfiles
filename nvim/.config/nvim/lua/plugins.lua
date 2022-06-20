@@ -67,10 +67,9 @@ return require('packer').startup(function()
     config = function() require('config.nvim-tree') end,
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
-  use {
-    'junegunn/fzf.vim',
-    requires = {{'junegunn/fzf'}},
-    config = function() require('config.fzf') end
+  use { 'ibhagwan/fzf-lua',
+    config = function() require('config.fzf-lua') end,
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
   use 'wincent/ferret'
 
