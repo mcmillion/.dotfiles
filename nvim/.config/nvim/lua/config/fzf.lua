@@ -12,7 +12,7 @@ vim.cmd([[
 
   command! -bang Directories call fzf#run(fzf#wrap({'source': 'find * -type d'}))
 
-  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8, 'highlight': 'FloatBorder', 'border': 'sharp' } }
+  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8, 'highlight': 'FloatBorder', 'border': 'rounded' } }
   let g:fzf_colors =
   \ { 'fg':      ['fg', 'Comment'],
     \ 'bg':      ['bg', 'NormalFloat'],
