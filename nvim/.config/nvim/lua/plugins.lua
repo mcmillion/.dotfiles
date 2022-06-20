@@ -63,6 +63,11 @@ return require('packer').startup(function()
 
   -- File Navigation / Search
   use {
+    -- 'ptzz/lf.vim',
+    '~/Developer/Personal/lf.vim',
+    config = function() require('config.lf') end,
+  }
+  use {
     'kyazdani42/nvim-tree.lua',
     config = function() require('config.nvim-tree') end,
     requires = { 'kyazdani42/nvim-web-devicons' }
@@ -120,7 +125,6 @@ return require('packer').startup(function()
     config = function() require('config.suda') end
   }
   use 'tpope/vim-abolish'
-  -- use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'

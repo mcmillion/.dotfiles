@@ -2,7 +2,7 @@ return require('lualine').setup({
   options = {
     section_separators = { '', '' },
     component_separators = { '', '' },
-    disabled_filetypes = {'NvimTree'},
+    disabled_filetypes = { 'NvimTree' },
   },
   sections = {
     lualine_a = {
@@ -32,7 +32,7 @@ return require('lualine').setup({
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {{ 'filename', path = 1 }},
+    lualine_c = {{ 'filename', path = 1, shorting_target = 30 }},
     lualine_x = {},
     lualine_y = {},
     lualine_z = {}

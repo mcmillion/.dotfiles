@@ -1,0 +1,45 @@
+set errorfmt "\033[7;31;40m%s\033[0m"
+set shell zsh
+set shellopts '-eu:--shwordsplit'
+set ifs "\n"
+set filesep "\n"  # default already
+set previewer ~/.config/lf/preview.sh
+set preview true
+set icons true
+set ignorecase true
+
+set scrolloff 10
+set hidden
+set ratios 1:2:2
+set info size:time
+
+map <esc> quit
+map - updir
+
+# Open files
+cmd open ${{
+  case $(file --mime-type $f -b) in
+    text/*) $EDITOR $fx;;
+    *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+  esac
+}}
+map <enter> open
+
+cmd mkdir %{{
+  printf " Directory Name: "
+  read ans
+  mkdir -p $ans
+}}
+map d mkdir
+
+cmd mkfile %{{
+  printf " File Name: "
+  read ans
+  touche $ans
+  $EDITOR $ans
+}}
+map t mkfile
+
+# Use trash
+cmd trash %set -f; trash $fx
+map D trash

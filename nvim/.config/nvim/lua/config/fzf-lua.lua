@@ -12,6 +12,10 @@ vim.api.nvim_set_keymap('n', '<leader>fg',
 
 require('fzf-lua').setup({
   winopts = {
+    height = 0.85,
+    width  = 0.80,
+    row    = 0.50,
+    col    = 0.50,
     border = { '🭽', '▔', '🭾', '▕', '🭿', '▁', '🭼', '▏' },
     hl = {
       normal = 'NormalFloat',
