@@ -2,6 +2,10 @@ vim.api.nvim_set_keymap('n', '<leader><leader>',
   "<cmd>lua require('fzf-lua').files()<CR>",
   { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>fd',
+  "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>",
+  { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap('n', '<leader>fg',
   "<cmd>lua require('fzf-lua').git_commits()<CR>",
   { noremap = true, silent = true })
