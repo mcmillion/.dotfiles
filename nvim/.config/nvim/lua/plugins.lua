@@ -67,11 +67,6 @@ return require('packer').startup(function()
     '~/Developer/Personal/lf.vim',
     config = function() require('config.lf') end,
   }
-  use {
-    'kyazdani42/nvim-tree.lua',
-    config = function() require('config.nvim-tree') end,
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
   use { 'ibhagwan/fzf-lua',
     config = function() require('config.fzf-lua') end,
     requires = { 'kyazdani42/nvim-web-devicons' }
