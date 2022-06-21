@@ -25,7 +25,7 @@ require('fzf-lua').setup({
     preview = {
       title = false,
       winopts = {
-        nubmer = false,
+        number = false,
         cursorline = false,
       },
     },

@@ -1,2 +1,2 @@
 #!/bin/bash
-bat --color=always --theme="TwoDark" --style="changes" "$1"
+bat --color=always --theme="base16" --style="changes" "$1"

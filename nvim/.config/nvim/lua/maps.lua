@@ -53,9 +53,10 @@ silent_noremap('n', '<leader><left>', ':5wincmd <<cr>')
 silent_noremap('n', '<leader><right>', ':5wincmd ><cr>')
 
 -- Panes / Tabs
-silent_noremap('n', '<leader>-', ':LfNewVerticalSplit<cr>')
-silent_noremap('n', '<leader>_', ':LfNewSplit<cr>')
-silent_noremap('n', '<leader>=', ':LfNewTab<cr>')
+silent_noremap('n', '-', ':LfCurrentFile<cr>')
+silent_noremap('n', '<leader>-', ':LfCurrentFileNewVerticalSplit<cr>')
+silent_noremap('n', '<leader>_', ':LfCurrentFileNewSplit<cr>')
+silent_noremap('n', '<leader>=', ':LfCurrentFileNewTab<cr>')
 
 -- Delete selected to text to void and paste default register
 silent_noremap('v', '<leader>p', '"_dP')
