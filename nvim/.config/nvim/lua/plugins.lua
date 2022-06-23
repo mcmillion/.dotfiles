@@ -62,11 +62,6 @@ return require('packer').startup(function()
   use 'github/copilot.vim'
 
   -- File Navigation / Search
-  use {
-    -- 'ptzz/lf.vim',
-    '~/Developer/Personal/lf.vim',
-    config = function() require('config.lf') end,
-  }
   use { 'ibhagwan/fzf-lua',
     config = function() require('config.fzf-lua') end,
     requires = { 'kyazdani42/nvim-web-devicons' }
@@ -123,6 +118,7 @@ return require('packer').startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
+  use 'tpope/vim-vinegar'
   use 'rmagatti/auto-session'
   use 'editorconfig/editorconfig-vim'
   use {
