@@ -52,7 +52,7 @@ map d mkdir
 cmd mkfile %{{
   printf " File Name: "
   read ans
-  touche $ans
+  touch $ans
   $EDITOR $ans
 }}
 map t mkfile
