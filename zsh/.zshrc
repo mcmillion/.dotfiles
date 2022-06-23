@@ -68,6 +68,7 @@ alias mkdir='mkdir -pv'
 alias ..='cd ..'
 alias x='exit'
 alias q='exit'
+alias grep='grep --color=always'
 
 
 
@@ -418,6 +419,14 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 alias fl='bundle exec fastlane'
+
+
+
+#==================================================================================================
+# RUST
+#==================================================================================================
+
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 
 

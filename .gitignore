@@ -4,3 +4,4 @@
 **/karabiner/automatic_backups/**
 packer_compiled.vim
 packer_compiled.lua
+.zshenv
