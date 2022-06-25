@@ -36,6 +36,23 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'ultisnips' },
   }, {
+    { name = 'path' },
     { name = 'buffer' },
-  })
+  }),
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        nvim_lsp  = '[LSP]',
+        path      = '[File]',
+        ultisnips = '[Snippet]',
+        buffer    = '[Buffer]',
+      })[entry.source.name]
+      vim_item.dup = ({
+        buffer = 0,
+        path = 0,
+        nvim_lsp = 0,
+      })[entry.source.name] or 0
+      return vim_item
+    end
+  },
 }
