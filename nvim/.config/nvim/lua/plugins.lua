@@ -68,7 +68,8 @@ return require('packer').startup(function()
   }
   use {
     'wincent/ferret',
-    config = function() require('config.ferret') end
+    config = function() require('config.ferret') end,
+    commit = ''
   }
 
   -- Tmux / Terminal Integration
