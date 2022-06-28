@@ -95,8 +95,8 @@ endsnippet
 # CYPRESS
 #==============================================================================
 
-snippet with
-cy.within($1, () => {
+snippet within
+cy.get('[data-testid="$1"]').within(() => {
 	$0
 });
 endsnippet

@@ -66,7 +66,10 @@ return require('packer').startup(function()
     config = function() require('config.fzf-lua') end,
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
-  use 'wincent/ferret'
+  use {
+    'wincent/ferret',
+    config = function() require('config.ferret') end
+  }
 
   -- Tmux / Terminal Integration
   use {
