@@ -1,4 +1,5 @@
-vim.g.indentLine_showFirstIndentLevel = 1
-vim.g.indentLine_setColors = 0
-vim.g.indent_blankline_filetype_exclude = { 'man', 'help', 'startify', 'dashboard', 'packer', 'neogitstatus', 'markdown' }
-vim.g.indent_blankline_buftype_exclude = { 'terminal' }
+require("indent_blankline").setup({
+  -- char = "▏",
+  filetype_exclude = { 'man', 'help', 'startify', 'dashboard', 'packer', 'neogitstatus', 'markdown' },
+  buftype_exclude = { 'terminal' },
+})
