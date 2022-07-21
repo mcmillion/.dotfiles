@@ -1,0 +1,28 @@
+session: academy-sync
+root: ~/Developer/AcademySync/
+
+windows:
+  - name: frontend - nvim
+    root: frontend/
+    commands:
+      - nvim
+
+  - name: frontend - server
+    root: frontend/
+    commands:
+      - PORT=8000 npm run start
+
+  - name: api - nvim
+    root: api/
+    commands:
+      - nvim
+
+  - name: api - server
+    root: api/
+    commands:
+      - bin/rails server
+
+  - name: api - console
+    root: api/
+    commands:
+      - bin/rails console
