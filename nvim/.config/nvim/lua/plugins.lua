@@ -59,6 +59,10 @@ return require('packer').startup(function()
     'simrat39/rust-tools.nvim',
     config = function() require('config.rust-tools') end
   }
+  use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function() require('config.lsp_lines') end
+  }
 
   -- File Navigation / Search
   use { 'ibhagwan/fzf-lua',
@@ -67,8 +71,7 @@ return require('packer').startup(function()
   }
   use {
     'wincent/ferret',
-    config = function() require('config.ferret') end,
-    commit = ''
+    config = function() require('config.ferret') end
   }
 
   -- Tmux / Terminal Integration
