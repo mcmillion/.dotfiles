@@ -1,8 +1,6 @@
 " Redfine cssDefinition to include new groups
 syn region cssDefinition transparent matchgroup=cssBraces start='{' end='}' contains=cssTagName,cssAttributeSelector,cssClassName,cssIdentifier,cssAtRule,cssAttrRegion,css.*Prop,cssComment,cssValue.*,cssColor,cssURL,cssImportant,cssCustomProp,cssError,cssStringQ,cssStringQQ,cssFunction,cssUnicodeEscape,cssVendor,cssDefinition,cssHacks,cssNoise,twDirective fold
 
-syn region twLayer start=/@layer\>/ end=/\ze{/ skipwhite skipnl matchgroup=tailwindLayerKeyword nextgroup=cssDefinition
-
 syn region twLayer start=/@layer\>/ end=/\ze{/ skipwhite skipnl contains=twLayerType nextgroup=cssDefinition
 syn keyword twLayerType contained base components utilities variants contained
 
