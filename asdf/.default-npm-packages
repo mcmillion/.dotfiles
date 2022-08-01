@@ -3,6 +3,7 @@ firebase-tools
 live-server
 npm-check-updates
 stylelint-lsp
+typescript
 typescript-language-server
 vscode-langservers-extracted
 yarn
