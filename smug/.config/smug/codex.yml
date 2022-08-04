@@ -1,5 +1,5 @@
-session: sojournal
-root: ~/Developer/Personal/sojournal
+session: codex
+root: ~/Developer/Personal/codex
 
 before_start:
   - npm install
@@ -11,7 +11,7 @@ windows:
 
   - name: server
     commands:
-      - PORT=5050 npm run dev
+      - PORT=3000 npm run dev
 
   - name: studio
     commands:
