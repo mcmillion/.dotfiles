@@ -23,7 +23,7 @@ o.splitbelow = true                        -- Open new horizontal splits below
 o.splitright = true                        -- Open new vertical splits to the right
 o.swapfile = false                         -- Disable swapfile
 o.termguicolors = true                     -- 24-bit color
-o.undofile = false                         -- Turn on persistent undo
+o.undofile = true                          -- Turn on persistent undo
 o.updatetime = 300                         -- Lower updatetime time for hold events
 o.writebackup = false                      -- Really disable backups
 

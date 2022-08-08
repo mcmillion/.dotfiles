@@ -13,10 +13,6 @@ return require('packer').startup(function()
     config = function() require('config.treesitter') end
   }
   use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    config = function() require('config.treesitter-textobjects') end
-  }
-  use {
     'norcalli/nvim-colorizer.lua',
     config = function() require('config.colorizer') end
   }
@@ -52,7 +48,6 @@ return require('packer').startup(function()
     },
     config = function() require('config.nvim-cmp') end
   }
-  use 'mattn/emmet-vim'
   use 'alexaandru/nvim-lspupdate'
   use 'tversteeg/registers.nvim'
   use {
@@ -100,11 +95,6 @@ return require('packer').startup(function()
 
   -- Misc Utilities
   use {
-    'numToStr/Comment.nvim',
-    branch = 'jsx',
-    config = function() require('config.comment') end
-  }
-  use {
     'andymass/vim-matchup',
     config = function() require('config.vim-matchup') end
   }
@@ -116,6 +106,7 @@ return require('packer').startup(function()
     'lambdalisue/suda.vim',
     config = function() require('config.suda') end
   }
+  use 'tpope/vim-commentary'
   use 'tpope/vim-abolish'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
