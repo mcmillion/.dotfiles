@@ -22,7 +22,7 @@ windows:
     commands:
       - bin/rails server
 
-  - name: api - console
-    root: api/
-    commands:
-      - bin/rails console
+  # - name: api - console
+  #   root: api/
+  #   commands:
+  #     - bin/rails console

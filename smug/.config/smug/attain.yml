@@ -13,6 +13,6 @@ windows:
     commands:
       - bin/rails s
 
-  - name: console
-    commands:
-      - bin/rails c
+  # - name: console
+  #   commands:
+  #     - bin/rails c
