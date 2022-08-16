@@ -82,6 +82,7 @@ return require('packer').startup(function()
   }
   use {
     'lewis6991/gitsigns.nvim',
+    commit = 'ce636faddd573c1e6d821250da713e00e99d0f74',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function() require('config.gitsigns') end
   }
