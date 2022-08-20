@@ -54,6 +54,11 @@ return require('packer').startup(function()
     'simrat39/rust-tools.nvim',
     config = function() require('config.rust-tools') end
   }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function() require('config.trouble') end
+  }
 
   -- File Navigation / Search
   use { 'ibhagwan/fzf-lua',
