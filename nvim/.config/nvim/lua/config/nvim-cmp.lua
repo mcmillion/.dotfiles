@@ -19,18 +19,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
-    ["<Tab>"] = cmp.mapping(
-      function(fallback)
-        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-      end,
-      { "i", "s" }
-    ),
-    ["<S-Tab>"] = cmp.mapping(
-      function(fallback)
-        cmp_ultisnips_mappings.jump_backwards(fallback)
-      end,
-      { "i", "s" }
-    ),
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
