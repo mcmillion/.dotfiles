@@ -59,11 +59,6 @@ return require('packer').startup(function()
     requires = "kyazdani42/nvim-web-devicons",
     config = function() require('config.trouble') end
   }
-  use {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function() require('config.todo-comments') end
-  }
 
   -- File Navigation / Search
   use { 'ibhagwan/fzf-lua',
