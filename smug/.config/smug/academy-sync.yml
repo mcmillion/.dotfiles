@@ -12,11 +12,6 @@ windows:
     commands:
       - PORT=8000 npm run start
 
-  - name: frontend - cypress
-    root: frontend/
-    commands:
-      - npm run cypress
-
   - name: api - nvim
     root: api/
     commands:
@@ -26,8 +21,3 @@ windows:
     root: api/
     commands:
       - bin/rails server
-
-  - name: api - console
-    root: api/
-    commands:
-      - bin/rails console
