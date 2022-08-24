@@ -10,7 +10,7 @@ windows:
   - name: frontend - server
     root: frontend/
     commands:
-      - PORT=8000 npm run start
+      - npm run start
 
   - name: api - nvim
     root: api/

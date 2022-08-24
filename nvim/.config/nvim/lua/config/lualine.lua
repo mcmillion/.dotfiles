@@ -24,7 +24,7 @@ return require('lualine').setup({
         then
           return s
         else
-          return s:sub(1,24) .. '>'
+          return s:sub(1,24) .. '…'
         end
       end },
       { 'diff',

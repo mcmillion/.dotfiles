@@ -54,11 +54,6 @@ return require('packer').startup(function()
     'simrat39/rust-tools.nvim',
     config = function() require('config.rust-tools') end
   }
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function() require('config.trouble') end
-  }
 
   -- File Navigation / Search
   use { 'ibhagwan/fzf-lua',
@@ -87,7 +82,6 @@ return require('packer').startup(function()
   }
   use {
     'lewis6991/gitsigns.nvim',
-    commit = 'ce636faddd573c1e6d821250da713e00e99d0f74',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function() require('config.gitsigns') end
   }
