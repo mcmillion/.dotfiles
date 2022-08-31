@@ -1,4 +1,4 @@
-session: academy-sync
+session: as
 root: ~/Developer/AcademySync/
 
 windows:
@@ -11,6 +11,11 @@ windows:
     root: frontend/
     commands:
       - npm run start
+
+  - name: frontend - xstate
+    root: frontend/
+    commands:
+      - npm run xstate:typegen
 
   - name: api - nvim
     root: api/
