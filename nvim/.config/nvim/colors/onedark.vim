@@ -55,7 +55,7 @@ hi Folded guifg=#5c6370 guibg=NONE gui=NONE
 hi FoldColumn guifg=NONE guibg=NONE gui=NONE
 hi IncSearch guifg=#e5c07b guibg=#5c6370 gui=NONE
 hi LineNr guifg=#4b5263 guibg=NONE gui=NONE
-hi MatchParen guifg=NONE guibg=NONE gui=underline
+hi MatchParen guifg=NONE guibg=#313e55 gui=NONE
 hi NonText guifg=#3b4048 guibg=NONE gui=NONE
 hi Pmenu guifg=#abb2bf guibg=#222529 gui=NONE
 hi PmenuSel guifg=#abb2bf guibg=#2c323d gui=NONE
