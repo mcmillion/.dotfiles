@@ -15,7 +15,7 @@ windows:
   - name: frontend - storybook
     root: frontend/
     commands:
-      - npm run storybook
+      - npm run storybook -- --no-open
 
   - name: frontend - xstate
     root: frontend/
