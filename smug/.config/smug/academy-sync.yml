@@ -22,11 +22,6 @@ windows:
     commands:
       - npm run xstate:typegen
 
-  - name: frontend - cypress
-    root: frontend/
-    commands:
-      - npm run cypress
-
   - name: api - nvim
     root: api/
     commands:
