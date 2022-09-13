@@ -6,7 +6,7 @@ endif
 let g:colors_name='onedark'
 
 hi Normal guifg=#abb2bf guibg=#282c34 gui=NONE
-hi Comment guifg=#6c727e guibg=NONE gui=italic
+hi Comment guifg=#6c727e guibg=NONE gui=NONE
 hi Constant guifg=#e5c07b guibg=NONE gui=NONE
 hi String guifg=#98c379 guibg=NONE gui=NONE
 hi Character guifg=#98c379 guibg=NONE gui=NONE
@@ -32,10 +32,10 @@ hi Type guifg=#61afef guibg=NONE gui=NONE
 hi StorageClass guifg=#61afef guibg=NONE gui=NONE
 hi Structure guifg=#e5c07b guibg=NONE gui=NONE
 hi Typedef guifg=#e5c07b guibg=NONE gui=NONE
-hi Special guifg=#61afef guibg=NONE gui=italic
+hi Special guifg=#61afef guibg=NONE gui=NONE
 hi SpecialComment guifg=#5c6370 guibg=NONE gui=NONE
 hi Error guifg=#f44747 guibg=NONE gui=bold,reverse
-hi Todo guifg=#abb2bf guibg=NONE gui=bold,italic
+hi Todo guifg=#abb2bf guibg=NONE gui=bold,NONE
 hi Underlined guifg=#56b6c2 gui=underline
 hi Cursor guifg=NONE guibg=NONE gui=reverse
 hi ColorColumn guifg=NONE guibg=#2c323c gui=NONE
@@ -140,7 +140,7 @@ hi htmlH3 guifg=#61afef guibg=NONE gui=NONE
 hi htmlH4 guifg=#61afef guibg=NONE gui=NONE
 hi htmlH5 guifg=#61afef guibg=NONE gui=NONE
 hi htmlH6 guifg=#61afef guibg=NONE gui=NONE
-hi htmlItalic guifg=#c678dd guibg=NONE gui=italic
+hi htmlItalic guifg=#c678dd guibg=NONE gui=NONE
 hi htmlLink guifg=#56b6c2 guibg=NONE gui=underline
 hi htmlSpecialChar guifg=#e5c07b guibg=NONE gui=NONE
 hi htmlSpecialTagName guifg=#61afef guibg=NONE gui=NONE
@@ -164,7 +164,7 @@ hi markdownHeadingRule guifg=#5c6370 guibg=NONE gui=NONE
 hi markdownId guifg=#c678dd guibg=NONE gui=NONE
 hi markdownIdDeclaration guifg=#61afef guibg=NONE gui=NONE
 hi markdownIdDelimiter guifg=#c678dd guibg=NONE gui=NONE
-hi markdownItalic guifg=#c678dd guibg=NONE gui=italic
+hi markdownItalic guifg=#c678dd guibg=NONE gui=NONE
 hi markdownLinkDelimiter guifg=#c678dd guibg=NONE gui=NONE
 hi markdownLinkText guifg=#61afef guibg=NONE gui=NONE
 hi markdownListMarker guifg=#e06c75 guibg=NONE gui=NONE
