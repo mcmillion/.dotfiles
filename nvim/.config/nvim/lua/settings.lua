@@ -31,8 +31,8 @@ o.writebackup = false                      -- Really disable backups
 local wo = vim.wo
 wo.linebreak = true                        -- Wrap on linebreak when wrap is on
 wo.list = true                             -- Show whitespace characters
-wo.number = true                           -- Enable line numbering by default
-wo.relativenumber = true                   -- Enable relative line numbering by default
+wo.number = false                          -- Disable line numbering by default
+wo.relativenumber = false                  -- Disable relative line numbering by default
 wo.signcolumn = 'yes'                      -- Always show sign column
 wo.wrap = false                            -- Don't wrap lines
 
