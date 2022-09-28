@@ -122,10 +122,6 @@ return require('packer').startup(function()
     'lambdalisue/suda.vim',
     config = function() require('config.suda') end
   }
-  use {
-    'ja-ford/delaytrain.nvim',
-    config = function() require('config.delaytrain') end
-  }
   use 'tpope/vim-commentary'
   use 'tpope/vim-abolish'
   use 'tpope/vim-repeat'
