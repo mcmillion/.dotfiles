@@ -8,6 +8,7 @@ o.ignorecase = true                        -- Ignore case in searches
 o.inccommand = 'nosplit'                   -- Show incremental search
 o.joinspaces = false                       -- Don't insert extra spaces after . when joining
 o.listchars = 'tab:→·,trail:·,nbsp:■'      -- Define visible whitespace characters
+o.mouse = ''                               -- Disable mouse
 o.scrolloff = 10                           -- Keep 10 lines above and below cursor
 o.secure = true                            -- Disable :autocmd in files not owned by user
 o.shiftround = true                        -- Indent to closest shiftwidth
