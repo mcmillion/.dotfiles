@@ -34,6 +34,7 @@ end
 
 require('config/lspconfig-eslint')
 require('config/lspconfig-stylelint')
+require('config/lspconfig-tailwindcss')
 require('config/lspconfig-tsserver')
 -- require('config/lspconfig-omnisharp')
 -- require('config/lspconfig-solargraph')
