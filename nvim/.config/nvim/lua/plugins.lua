@@ -43,7 +43,7 @@ return require('packer').startup(function()
   }
   use {
     'hrsh7th/nvim-cmp',
-    commit = 'b0dff0ec4f2748626aae13f011d1a47071fe9abc',
+    -- commit = 'b0dff0ec4f2748626aae13f011d1a47071fe9abc',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
