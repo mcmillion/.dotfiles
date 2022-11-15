@@ -21,6 +21,10 @@ silent_noremap('n', '<leader>qx', ':cclose<cr>:noh<cr>')
 -- Split line
 silent_noremap('n', 'K', 'i<cr><esc>')
 
+-- Remap up/down to keep line centered
+silent_noremap('n', '<c-u>', '<c-u>zz')
+silent_noremap('n', '<c-d>', '<c-d>zz')
+
 -- Remap search next to keep search in the middle of the screen
 silent_noremap('n', 'n', 'nzzzv')
 silent_noremap('n', 'N', 'Nzzzv')
