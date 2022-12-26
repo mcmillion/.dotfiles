@@ -33,6 +33,7 @@
   unpublish = !git push origin :$(git branch-name)
   delete-merged-branches = !git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
   new = !git init && git symbolic-ref HEAD refs/heads/trunk
+	refresh = !git commit --amend -m \"$(git log -1 --format=%s)\"
 
 [color]
   ui = auto

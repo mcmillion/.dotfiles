@@ -232,6 +232,25 @@ alias kill_rails_server='kill -9 $(lsof -i tcp:3000 -t)'
 
 
 #==================================================================================================
+# PYTHON
+#==================================================================================================
+
+# Work Bootstrap
+if command -v pyenv 1>/dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  export PATH="$PATH:/Users/mmcmillion/.local/bin"
+  eval "$(pyenv init -)"
+
+  # git -C ~/Developer/Galileo/dotfiles reset --hard origin/master > /dev/null 2>&1
+  # git -C ~/Developer/Galileo/dotfiles pull > /dev/null 2>&1
+  source ~/Developer/Galileo/dotfiles/bootstrap.sh
+fi
+
+
+
+#==================================================================================================
 # POSTGRES / REDIS / ETC
 #==================================================================================================
 
