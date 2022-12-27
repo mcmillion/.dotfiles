@@ -1,0 +1,14 @@
+session: dna
+root: ~/Developer/Galileo/dna.galileo.io
+
+before_start:
+  - yarn install
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: server
+    commands:
+      - yarn start
