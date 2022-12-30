@@ -1,5 +1,5 @@
 session: dna
-root: ~/Developer/Galileo/dna.galileo.io
+root: ~/Developer/Galileo/dna
 
 before_start:
   - yarn install
