@@ -13,7 +13,7 @@ silent_noremap('n', 'Q', '<nop>')
 silent_noremap('i', '<c-u>', '<nop>')
 
 -- Remove last search highlight
-silent_noremap('n', '<esc>', ':nohlsearch<cr>')
+silent_noremap('n', '<leader><esc>', ':nohlsearch<cr>')
 
 -- Close quickfix and remove highlight
 silent_noremap('n', '<leader>qx', ':cclose<cr>:noh<cr>')
