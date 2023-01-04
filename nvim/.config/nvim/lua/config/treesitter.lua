@@ -17,6 +17,7 @@ require('nvim-treesitter.configs').setup({
     'toml',
     'tsx',
     'typescript',
+    'vim',
   },
   highlight = {
     enable = true,
