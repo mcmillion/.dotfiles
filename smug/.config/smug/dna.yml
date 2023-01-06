@@ -5,10 +5,25 @@ before_start:
   - yarn install
 
 windows:
-  - name: nvim
+  - name: dna/nvim
     commands:
       - nvim
 
-  - name: server
+  - name: dna/servers
+    layout: even-vertical
     commands:
       - yarn start
+    panes:
+      - type: vertical
+        commands:
+          - yarn xstate:typegen:watch
+
+  - name: component-library/nvim
+    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library
+    commands:
+      - nvim
+
+  - name: component-library/servers
+    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library
+    commands:
+      - yarn storybook
