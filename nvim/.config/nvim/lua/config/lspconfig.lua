@@ -7,6 +7,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     virtual_text = true,
   })
 
+vim.diagnostic.config({
+  float = {
+    source = "always",
+  },
+})
+
 -- Diagnostic Icon Settings
 local signs = { Error = " ", Warn = "", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
