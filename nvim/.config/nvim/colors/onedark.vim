@@ -172,7 +172,7 @@ hi UltestPass                      guifg=#98c379 guibg=NONE    gui=NONE
 hi UltestRunning                   guifg=#e5c07b guibg=NONE    gui=NONE
 hi UltestSummaryInfo               guifg=#5c6370 guibg=NONE    gui=bold
 hi Underlined                      guifg=#56b6c2 guibg=NONE    gui=underline
-hi VertSplit                       guifg=#181a1f guibg=NONE    gui=NONE
+hi VertSplit                       guifg=#2d323b guibg=NONE    gui=NONE
 hi VimwikiHR                       guifg=#e5c07b guibg=NONE    gui=NONE
 hi VimwikiHeader1                  guifg=#d19a66 guibg=NONE    gui=bold
 hi VimwikiHeader2                  guifg=#98c379 guibg=NONE    gui=bold

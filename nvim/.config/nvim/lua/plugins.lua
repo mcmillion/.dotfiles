@@ -68,7 +68,11 @@ return require('packer').startup(function()
   use {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
-    config = function () require("config.copilot-cmp") end
+    config = function() require("config.copilot-cmp") end
+  }
+  use {
+    'onsails/diaglist.nvim',
+    config = function() require('config.diaglist') end
   }
 
   -- File Navigation / Search
