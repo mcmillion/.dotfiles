@@ -18,6 +18,7 @@ o.shortmess = o.shortmess .. 'I'           -- Hide splash screen
 o.shortmess = o.shortmess .. 'W'           -- Hide file written message
 o.shortmess = o.shortmess .. 'a'           -- Abbreviate various messages
 o.shortmess = o.shortmess .. 'c'           -- Hide completion messages
+o.showmode = false                         -- Hide mode
 o.sidescrolloff = 5                        -- Keep 5 lines on either side of cursor
 o.smartcase = true                         -- Use case-sensitive when searches contain uppercase
 o.splitbelow = true                        -- Open new horizontal splits below
