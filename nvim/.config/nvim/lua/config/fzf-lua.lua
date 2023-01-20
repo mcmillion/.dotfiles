@@ -14,6 +14,10 @@ vim.api.nvim_set_keymap('n', '<leader>ff',
   "<cmd>lua require('fzf-lua').grep()<CR>",
   { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>fc',
+  "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>",
+  { noremap = true, silent = true })
+
 require('fzf-lua').setup({
   winopts = {
     height = 0.85,
