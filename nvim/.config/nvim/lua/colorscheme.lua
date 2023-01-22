@@ -1,3 +1,5 @@
-local auto = vim.api.nvim_exec
+if vim.fn.has('termguicolors') then
+  vim.cmd('set termguicolors')
+end
 
-vim.g.colors_name = 'onedark'
+vim.cmd[[colorscheme onedark]]
