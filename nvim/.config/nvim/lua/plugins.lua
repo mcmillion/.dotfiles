@@ -5,7 +5,6 @@ return require('packer').startup(function()
 
   -- Syntax Highlighting / Formatting
   use 'cakebaker/scss-syntax.vim'
-  use 'pantharshit00/vim-prisma'
   use 'kchmck/vim-coffee-script'
   use {
     'nvim-treesitter/nvim-treesitter',
