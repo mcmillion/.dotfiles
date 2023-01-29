@@ -10,13 +10,8 @@ windows:
       - nvim
 
   - name: dna/servers
-    layout: even-vertical
     commands:
       - yarn start
-    panes:
-      - type: vertical
-        commands:
-          - yarn xstate:typegen:watch
 
   - name: component-library/nvim
     root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library
