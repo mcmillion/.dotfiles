@@ -4,6 +4,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   -- Syntax Highlighting / Formatting
+  use 'prisma/vim-prisma'
   use 'cakebaker/scss-syntax.vim'
   use 'kchmck/vim-coffee-script'
   use {
