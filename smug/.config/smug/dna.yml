@@ -1,24 +1,33 @@
 session: dna
-root: ~/Developer/Galileo/dna
+root: ~/Developer/Galileo/dna/
 
 before_start:
   - yarn install
+  - source .cypress_local
 
 windows:
   - name: dna/nvim
     commands:
       - nvim
 
-  - name: dna/servers
+  - name: dna/server
     commands:
       - yarn start
 
+  - name: core-api
+    manual: true
+    root: ~/Developer/Galileo/core-api/
+    before_start:
+      - docker-compose --file=local.yml up --detach --build postgres redis opensearch
+    commands:
+      - compose/local/django/start
+
   - name: component-library/nvim
-    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library
+    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library/
     commands:
       - nvim
 
   - name: component-library/servers
-    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library
+    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library/
     commands:
       - yarn storybook
