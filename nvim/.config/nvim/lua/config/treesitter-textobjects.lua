@@ -3,28 +3,31 @@ require'nvim-treesitter.configs'.setup {
     select = {
       enable = true,
       lookahead = true,
+      set_jumps = true,
+      include_surrounding_whitespace = true,
+
       keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
       },
-      set_jumps = true,
       goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
+        ["]]"] = "@function.outer",
       },
       goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
+        ["]["] = "@function.outer",
       },
       goto_previous_start = {
-        ["[m"] = "@function.outer",
+        ["[["] = "@function.outer",
         ["[["] = "@class.outer",
       },
       goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
+        ["[]"] = "@function.outer",
+      },
+
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
       },
     },
   },
