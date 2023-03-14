@@ -1,10 +1,10 @@
 utils = require('utils')
-local noremap = utils.noremap
+local silent_noremap = utils.silent_noremap
 
 require('treesj').setup({
   use_default_keymaps = false,
 })
 
-noremap('n', '<Leader>m', ':TSJToggle<CR>')
-noremap('n', '<Leader>j', ':TSJJoin<CR>')
-noremap('n', '<Leader>k', ':TSJSplit<CR>')
+silent_noremap('n', '<Leader>m', ':TSJToggle<CR>')
+silent_noremap('n', '<Leader>j', ':TSJJoin<CR>')
+silent_noremap('n', '<Leader>k', ':TSJSplit<CR>')
