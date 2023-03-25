@@ -13,15 +13,6 @@ return require('packer').startup(function()
     config = function() require('config.treesitter') end
   }
   use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    config = function() require('config.treesitter-textobjects') end
-  }
-  use {
-    'Wansmer/treesj',
-    requires = { 'nvim-treesitter' },
-    config = function() require('config.treesj') end,
-  }
-  use {
     'norcalli/nvim-colorizer.lua',
     config = function() require('config.colorizer') end
   }
@@ -32,6 +23,18 @@ return require('packer').startup(function()
   use {
     'vim-autoformat/vim-autoformat',
     config = function() require('config.vim-autoformat') end
+  }
+
+  -- Movement
+  use { "chrisgrieser/nvim-spider" }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    config = function() require('config.treesitter-textobjects') end
+  }
+  use {
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function() require('config.treesj') end,
   }
 
   -- Statusline / Tabline
