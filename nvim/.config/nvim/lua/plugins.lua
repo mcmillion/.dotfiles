@@ -26,7 +26,10 @@ return require('packer').startup(function()
   }
 
   -- Movement
-  use { "chrisgrieser/nvim-spider" }
+  use {
+    "chrisgrieser/nvim-spider",
+    config = function() require('config.nvim-spider') end
+  }
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     config = function() require('config.treesitter-textobjects') end
