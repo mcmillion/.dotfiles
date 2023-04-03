@@ -5,8 +5,6 @@ return require('packer').startup(function()
 
   -- Syntax Highlighting / Formatting
   use 'prisma/vim-prisma'
-  use 'cakebaker/scss-syntax.vim'
-  use 'kchmck/vim-coffee-script'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -26,10 +24,10 @@ return require('packer').startup(function()
   }
 
   -- Movement
-  -- use {
-  --   "chrisgrieser/nvim-spider",
-  --   config = function() require('config.nvim-spider') end
-  -- }
+  use {
+    "chrisgrieser/nvim-spider",
+    config = function() require('config.nvim-spider') end
+  }
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     config = function() require('config.treesitter-textobjects') end
@@ -115,13 +113,6 @@ return require('packer').startup(function()
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function() require('config.gitsigns') end
-  }
-
-  -- Testing / Linting
-  use {
-    'vim-test/vim-test',
-    requires = { 'preservim/vimux' },
-    config = function() require('config.vim-test') end
   }
 
   -- Misc Utilities
