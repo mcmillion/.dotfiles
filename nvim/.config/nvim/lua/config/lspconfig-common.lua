@@ -15,6 +15,9 @@ function common.on_attach(client, bufnr)
   buf_set_keymap('n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
+  -- Disable semantic tokens
+  client.server_capabilities.semanticTokensProvider = nil
 end
 
 return common
