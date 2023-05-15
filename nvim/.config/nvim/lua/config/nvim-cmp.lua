@@ -2,6 +2,16 @@ local cmp = require 'cmp'
 local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 cmp.setup {
+  window = {
+    completion = {
+      border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+      winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+    },
+    documentation = {
+      border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+      winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+    },
+  },
   preselect = 'none',
   snippet = {
     expand = function(args)
