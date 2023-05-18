@@ -85,6 +85,8 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 
+alias clear_nvim_sessions='rm ~/.local/share/nvim/sessions/*'
+
 
 
 #==================================================================================================
