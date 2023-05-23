@@ -35,7 +35,15 @@ return require('lualine').setup({
           removed = { fg = '#e06c75' },
         }
       },
-      { 'diagnostics', sources={'nvim_diagnostic'}},
+      {
+        'diagnostics',
+        symbols = {
+          error = ' ',
+          warn = '⚠',
+          info = ' ',
+          hint = ' ',
+        }
+      }
     },
     lualine_c = {{ 'filename', path = 1, shorting_target = 30 }},
     lualine_x = {'filetype'},
