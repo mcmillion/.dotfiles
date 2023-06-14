@@ -83,6 +83,15 @@ return require('packer').startup(function()
     'onsails/diaglist.nvim',
     config = function() require('config.diaglist') end
   }
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function() require("config.null-ls") end
+  }
+  use {
+    'MunifTanjim/prettier.nvim',
+    config = function() require("config.prettier") end
+  }
 
   -- File Navigation / Search
   use { 'ibhagwan/fzf-lua',
