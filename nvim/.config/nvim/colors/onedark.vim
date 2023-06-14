@@ -261,3 +261,6 @@ hi link Floaterm               NormalFloat
 hi link FloatermBorder         FloatBorder
 hi link UltestSummaryFile      UltestSummaryInfo
 hi link UltestSummaryNamespace UltestSummaryInfo
+
+hi link FzfLuaNormal           NormalFloat
+hi link FzfLuaBorder           FloatBorder
