@@ -1,0 +1,18 @@
+session: taskle
+root: ~/Developer/Personal/taskle
+
+before_start:
+  - npm install
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: server
+    commands:
+      - PORT=3000 npm run dev
+
+  - name: studio
+    commands:
+      - BROWSER=none npx prisma studio
