@@ -14,5 +14,6 @@ windows:
       - PORT=3000 npm run dev
 
   - name: studio
+    manual: true
     commands:
       - BROWSER=none npx prisma studio
