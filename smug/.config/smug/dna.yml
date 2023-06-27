@@ -2,6 +2,7 @@ session: dna
 root: ~/Developer/Galileo/dna/
 
 before_start:
+  - aws-codeartifact
   - yarn install
   - source .cypress_local
 
