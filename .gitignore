@@ -6,3 +6,4 @@ packer_compiled.vim
 packer_compiled.lua
 .zshenv
 .DS_Store
+*.log
