@@ -84,10 +84,6 @@ return require('packer').startup(function()
     requires = { 'nvim-lua/plenary.nvim' },
     config = function() require("config.null-ls") end
   }
-  use {
-    'MunifTanjim/prettier.nvim',
-    config = function() require("config.prettier") end
-  }
 
   -- File Navigation / Search
   use { 'ibhagwan/fzf-lua',

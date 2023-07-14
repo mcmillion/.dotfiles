@@ -25,8 +25,20 @@ silent_noremap('n', 'N', 'Nzzzv')
 -- Quicker quit
 silent_noremap('n', 'QQ', ':q<cr>')
 
--- Quicker save
-silent_noremap('n', '<leader>w', ':w<cr>')
+-- Dumb hack to format with :EslintFixAll before saving, since the BufPreWrite
+-- route breaks undo
+vim.cmd([[
+function! MaybeFormatAndSave()
+  if exists(":EslintFixAll")
+    :EslintFixAll
+  else
+    :Autoformat
+  endif
+
+  write
+endfunction
+]])
+silent_noremap('n', '<leader>w', ':call MaybeFormatAndSave()<cr>')
 
 -- Easy change global with next
 silent_noremap('n', 'c*', '*Ncgn')
