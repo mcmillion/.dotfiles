@@ -1,0 +1,15 @@
+session: brag
+root: ~/Developer/Personal/brag
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: server
+    commands:
+      - bin/dev
+
+  - name: console
+    commands:
+      - bin/rails console
