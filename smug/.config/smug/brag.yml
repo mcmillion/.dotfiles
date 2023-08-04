@@ -8,8 +8,4 @@ windows:
 
   - name: server
     commands:
-      - bin/dev
-
-  - name: console
-    commands:
-      - bin/rails console
+      - npm run dev
