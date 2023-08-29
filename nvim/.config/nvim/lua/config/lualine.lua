@@ -46,7 +46,14 @@ return require('lualine').setup({
       }
     },
     lualine_c = {{ 'filename', path = 1, shorting_target = 30 }},
-    lualine_x = {'filetype'},
+    lualine_x = {{ 'filetype', fmt = function(s)
+      if s == 'javascript' then return 'js'
+      elseif s == 'javascriptreact' then return 'jsx'
+      elseif s == 'typescript' then return 'ts'
+      elseif s == 'typescriptreact' then return 'tsx'
+      else return s
+      end
+    end }},
     lualine_y = {},
     lualine_z = {'location'}
   },
