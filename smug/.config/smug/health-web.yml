@@ -1,0 +1,14 @@
+session: health-web
+root: ~/Developer/Galileo/health-web/
+
+before_start:
+  - source .cypress_local
+
+windows:
+  - name: web/nvim
+    commands:
+      - nvim
+
+  - name: web/server
+    commands:
+      - yarn start
