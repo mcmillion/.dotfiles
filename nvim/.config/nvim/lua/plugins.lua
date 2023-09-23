@@ -139,7 +139,6 @@ return require('packer').startup(function()
     'rmagatti/auto-session',
     config = function() require('config.auto-session') end
   }
-  use 'editorconfig/editorconfig-vim'
   use {
     'davidgranstrom/nvim-markdown-preview',
     config = function() require('config.markdown-preview') end,

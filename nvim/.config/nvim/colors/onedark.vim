@@ -43,7 +43,7 @@ hi @string                         guifg=#98c379 guibg=NONE    gui=NONE
 hi @string.escape                  guifg=#56b6c2 guibg=NONE    gui=NONE
 hi @string.regex                   guifg=#98c379 guibg=NONE    gui=NONE
 hi @strong                         guifg=NONE    guibg=NONE    gui=NONE
-hi @structure                      guifg=#ff00ff guibg=NONE    gui=NONE
+hi @structure                      guifg=#e5c07b guibg=NONE    gui=NONE
 hi @tag                            guifg=#e06c75 guibg=NONE    gui=NONE
 hi @tag.attribute                  guifg=#e5c07b guibg=NONE    gui=NONE
 hi @tag.delimiter                  guifg=#5c6370 guibg=NONE    gui=NONE
