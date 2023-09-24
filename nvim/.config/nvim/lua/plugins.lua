@@ -145,4 +145,5 @@ return require('packer').startup(function()
     ft = { 'markdown' }
   }
   use 'wakatime/vim-wakatime'
+  use 'andweeb/presence.nvim'
 end)
