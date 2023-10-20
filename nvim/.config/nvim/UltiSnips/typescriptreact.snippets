@@ -21,3 +21,9 @@ export function $1(props: $1Props) {
   $0
 }
 endsnippet
+
+snippet query
+const query = useQuery({ queryKey: ['${1:key}'], queryFn: async () => {
+  $0
+});
+endsnippet
