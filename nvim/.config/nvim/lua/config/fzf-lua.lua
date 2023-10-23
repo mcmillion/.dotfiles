@@ -14,8 +14,16 @@ vim.api.nvim_set_keymap('n', '<leader>ff',
   "<cmd>lua require('fzf-lua').grep()<CR>",
   { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>fc',
+vim.api.nvim_set_keymap('n', '<leader>lca',
   "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>",
+  { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>ls',
+  "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>",
+  { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>fd',
+  "<cmd>lua require('fzf-lua').lsp_workspace_diagnostics()<CR>",
   { noremap = true, silent = true })
 
 require('fzf-lua').setup({
