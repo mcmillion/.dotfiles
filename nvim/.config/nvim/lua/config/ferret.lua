@@ -1,3 +1,3 @@
 vim.g.FerretExecutableArguments = {
-  rg = '--vimgrep --hidden --smart-case --no-heading --no-config --max-columns 4096'
+  rg = '--vimgrep --no-heading --no-config --max-columns 4096 --hidden --glob !{.git,.next,node_modules}',
 }
