@@ -144,10 +144,5 @@ return require('packer').startup(function()
     config = function() require('config.markdown-preview') end,
     ft = { 'markdown' }
   }
-  use {
-    "rest-nvim/rest.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function() require('config.rest') end,
-  }
   use 'wakatime/vim-wakatime'
 end)
