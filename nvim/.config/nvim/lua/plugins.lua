@@ -4,7 +4,6 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   -- Syntax Highlighting / Formatting
-  use 'prisma/vim-prisma'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
