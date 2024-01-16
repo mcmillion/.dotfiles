@@ -36,7 +36,6 @@ return require('packer').startup(function()
   -- Statusline / Tabline
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
     config = function() require('config.lualine') end
   }
 
@@ -87,7 +86,6 @@ return require('packer').startup(function()
   -- File Navigation / Search
   use { 'ibhagwan/fzf-lua',
     config = function() require('config.fzf-lua') end,
-    requires = { 'kyazdani42/nvim-web-devicons' }
   }
   use {
     'wincent/ferret',
