@@ -2,37 +2,47 @@ session: academy-sync
 root: ~/Developer/AcademySync/
 
 windows:
-  - name: frontend - nvim
+  - name: fe-v2/nvim
+    root: frontend-v2/
+    commands:
+      - nvim
+
+  - name: fe-v2/server
+    root: frontend-v2/
+    commands:
+      - npm run dev
+
+  - name: fe-v2/storybook
+    root: frontend-v2/
+    commands:
+      - npm run storybook -- --no-open
+
+  # - name: frontend - xstate
+  #   root: frontend-v2/
+  #   commands:
+  #     - npm run xstate:typegen
+
+  - name: fe-old/nvim
     root: frontend/
     commands:
       - nvim
 
-  - name: frontend - server
+  - name: fe-old/server
     root: frontend/
     commands:
       - npm run start
 
-  - name: frontend - storybook
-    root: frontend/
-    commands:
-      - npm run storybook -- --no-open
-
-  - name: frontend - xstate
-    root: frontend/
-    commands:
-      - npm run xstate:typegen
-
-  - name: api - nvim
+  - name: api/nvim
     root: api/
     commands:
       - nvim
 
-  - name: api - server
+  - name: api/server
     root: api/
     commands:
       - bin/rails server
 
-  - name: api - console
+  - name: api/console
     root: api/
     commands:
       - bin/rails console
