@@ -235,8 +235,17 @@ source /opt/homebrew/opt/asdf/libexec/asdf.sh
 # NPM / PRISMA / T3
 #==================================================================================================
 
-alias n='npm run'
-alias p='npx prisma'
+# Intelligently handle npm/yarn based on presence of lockfile
+n() {
+  if [ -e yarn.lock ]; then
+    command yarn $@
+  elif [ -e package-lock.json ]; then
+    command npm run $@
+  else
+    echo "No lockfile found."
+    return 1
+  fi
+}
 
 
 
