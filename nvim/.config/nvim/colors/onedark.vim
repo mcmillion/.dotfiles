@@ -242,20 +242,25 @@ hi markdownOrderedListMarker       guifg=#e06c75 guibg=NONE    gui=NONE
 hi markdownRule                    guifg=#5c6370 guibg=NONE    gui=NONE
 hi markdownUrl                     guifg=#56b6c2 guibg=NONE    gui=underline
 
-hi link @lsp.type.namespace    @namespace
-hi link @lsp.type.type         @type
-hi link @lsp.type.class        @type
-hi link @lsp.type.enum         @type
-hi link @lsp.type.interface    @type
-hi link @lsp.type.struct       @structure
-hi link @lsp.type.parameter    @parameter
-hi link @lsp.type.variable     @variable
-hi link @lsp.type.property     @property
-hi link @lsp.type.enumMember   @constant
-hi link @lsp.type.function     @function
-hi link @lsp.type.method       @method
-hi link @lsp.type.macro        @macro
-hi link @lsp.type.decorator    @function
+hi link @lsp.type.namespace      @namespace
+hi link @lsp.type.type           @type
+hi link @lsp.type.class          @type
+hi link @lsp.type.enum           @type
+hi link @lsp.type.interface      @type
+hi link @lsp.type.struct         @structure
+hi link @lsp.type.parameter      @parameter
+hi link @lsp.type.variable       @variable
+hi link @lsp.type.property       @property
+hi link @lsp.type.enumMember     @constant
+hi link @lsp.type.function       @function
+hi link @lsp.type.method         @method
+hi link @lsp.type.macro          @macro
+hi link @lsp.type.decorator      @function
+hi link @comment.todo.comment    Todo
+hi link @comment.note.comment    Todo
+hi link @comment.error.comment   Todo
+hi link @comment.warning.comment Todo
+hi link @variable.member.tsx     @property
 
 hi link Floaterm               NormalFloat
 hi link FloatermBorder         FloatBorder
