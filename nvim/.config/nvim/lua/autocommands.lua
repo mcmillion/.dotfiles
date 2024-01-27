@@ -2,7 +2,7 @@ local auto = vim.api.nvim_exec
 
 -- Additional filetypes
 auto([[
-augroup addition_filetypes
+augroup additional_filetypes
   autocmd!
   autocmd BufRead,BufNewFile *.env.* set filetype=sh
   autocmd BufRead,BufNewFile Procfile set filetype=sh
