@@ -23,7 +23,24 @@ export function $1(props: $1Props) {
 endsnippet
 
 snippet query
-const query = useQuery({ queryKey: ['${1:key}'], queryFn: async () => {
-  $0
+const query = useQuery({
+  queryKey: ['${1:key}'],
+  queryFn: async () => {
+    $0
+  }
 });
+endsnippet
+
+snippet route
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute("${1:path}")({
+  component: ${2:Component},
+});
+
+function $2() {
+  return (
+    <main>$0</main>
+  )
+}
 endsnippet
