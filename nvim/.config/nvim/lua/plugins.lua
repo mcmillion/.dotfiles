@@ -115,6 +115,11 @@ return require('packer').startup(function()
 
   -- Misc Utilities
   use {
+    "rest-nvim/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function() require('config.rest-nvim') end
+  }
+  use {
     'andymass/vim-matchup',
     config = function() require('config.vim-matchup') end
   }
