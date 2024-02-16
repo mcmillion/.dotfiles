@@ -7,20 +7,19 @@ windows:
     commands:
       - nvim
 
-  - name: fe-v2/server
+  - name: fe-v2/servers
     root: frontend-v2/
     commands:
       - npm run dev
-
-  - name: fe-v2/storybook
-    root: frontend-v2/
-    commands:
-      - npm run storybook -- --no-open
-
-  # - name: frontend - xstate
-  #   root: frontend-v2/
-  #   commands:
-  #     - npm run xstate:typegen
+    panes:
+      - type: horizontal
+        root: frontend-v2/
+        commands:
+          - npm run storybook -- --no-open
+      # - type: horizontal
+      #   root: frontend-v2/
+      #   commands:
+      #     - npm run xstate:typegen
 
   - name: fe-old/nvim
     root: frontend/
