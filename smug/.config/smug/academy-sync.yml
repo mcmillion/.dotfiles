@@ -13,7 +13,7 @@ windows:
       - npm run dev
     panes:
       - type: horizontal
-        root: frontend-v2/
+        root: .
         commands:
           - npm run storybook -- --no-open
       # - type: horizontal
