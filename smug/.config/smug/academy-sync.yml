@@ -16,10 +16,10 @@ windows:
         root: .
         commands:
           - npm run storybook -- --no-open
-      # - type: horizontal
-      #   root: frontend-v2/
-      #   commands:
-      #     - npm run xstate:typegen
+    # - type: horizontal
+    #   root: frontend-v2/
+    #   commands:
+    #     - npm run xstate:typegen
 
   - name: fe-old/nvim
     root: frontend/
