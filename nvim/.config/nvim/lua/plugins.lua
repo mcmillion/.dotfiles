@@ -113,25 +113,7 @@ return require('packer').startup(function()
     config = function() require('config.gitsigns') end
   }
 
-  -- Testing
-  use {
-    "nvim-neotest/neotest",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "marilari88/neotest-vitest",
-      "thenbe/neotest-playwright",
-    },
-    config = function() require('config.neotest') end
-  }
-
   -- Misc Utilities
-  use {
-    "rest-nvim/rest.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function() require('config.rest-nvim') end
-  }
   use {
     'andymass/vim-matchup',
     config = function() require('config.vim-matchup') end
