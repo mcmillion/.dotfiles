@@ -10,6 +10,10 @@ return require('packer').startup(function()
     config = function() require('config.treesitter') end
   }
   use {
+    "stevearc/conform.nvim",
+    config = function() require('config.conform') end
+  }
+  use {
     'norcalli/nvim-colorizer.lua',
     config = function() require('config.colorizer') end
   }
@@ -72,15 +76,6 @@ return require('packer').startup(function()
   use {
     'onsails/diaglist.nvim',
     config = function() require('config.diaglist') end
-  }
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require("config.null-ls") end
-  }
-  use {
-    'MunifTanjim/prettier.nvim',
-    config = function() require('config.prettier') end
   }
 
   -- File Navigation / Search
