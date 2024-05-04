@@ -179,11 +179,10 @@ return require("packer").startup(function()
     end,
   })
   use({
-    "davidgranstrom/nvim-markdown-preview",
-    config = function()
-      require("config.markdown-preview")
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
     end,
-    ft = { "markdown" },
   })
   use("wakatime/vim-wakatime")
 end)
