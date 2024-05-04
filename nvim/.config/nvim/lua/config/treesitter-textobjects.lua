@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   textobjects = {
     select = {
       enable = true,
@@ -25,10 +25,10 @@ require'nvim-treesitter.configs'.setup {
       },
 
       selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
-        ['@class.outer'] = '<c-v>', -- blockwise
+        ["@parameter.outer"] = "v", -- charwise
+        ["@function.outer"] = "V", -- linewise
+        ["@class.outer"] = "<c-v>", -- blockwise
       },
     },
   },
-}
+})

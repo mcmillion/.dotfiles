@@ -1,7 +1,7 @@
-common = require('config/lspconfig-common')
+common = require("config/lspconfig-common")
 local on_attach = common.on_attach
 
-require('rust-tools').setup({
+require("rust-tools").setup({
   tools = {
     inlay_hints = {
       only_current_line = true,
@@ -11,7 +11,7 @@ require('rust-tools').setup({
     on_attach = on_attach,
     settings = {
       ["rust-analyzer"] = {
-        checkOnSave = {command = "clippy"},
+        checkOnSave = { command = "clippy" },
       },
     },
   },

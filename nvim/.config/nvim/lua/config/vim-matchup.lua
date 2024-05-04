@@ -1,5 +1,5 @@
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   matchup = {
-    enable = true
+    enable = true,
   },
-}
+})

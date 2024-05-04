@@ -1,6 +1,6 @@
-require('colorizer').setup({
-  '*';
-  '!ruby';
+require("colorizer").setup({
+  "*",
+  "!ruby",
 }, {
   names = false,
 })

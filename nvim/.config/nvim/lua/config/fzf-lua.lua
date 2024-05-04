@@ -1,38 +1,51 @@
-vim.api.nvim_set_keymap('n', '<leader><leader>',
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader><leader>",
   "<cmd>lua require('fzf-lua').files()<CR>",
-  { noremap = true, silent = true })
+  { noremap = true, silent = true }
+)
 
-vim.api.nvim_set_keymap('n', '<leader>fd',
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fd",
   "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>",
-  { noremap = true, silent = true })
+  { noremap = true, silent = true }
+)
 
-vim.api.nvim_set_keymap('n', '<leader>fg',
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fg",
   "<cmd>lua require('fzf-lua').git_commits()<CR>",
-  { noremap = true, silent = true })
+  { noremap = true, silent = true }
+)
 
-vim.api.nvim_set_keymap('n', '<leader>ff',
-  "<cmd>lua require('fzf-lua').grep()<CR>",
-  { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua').grep()<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>lca',
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>lca",
   "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>",
-  { noremap = true, silent = true })
+  { noremap = true, silent = true }
+)
 
-vim.api.nvim_set_keymap('n', '<leader>ls',
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ls",
   "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>",
-  { noremap = true, silent = true })
+  { noremap = true, silent = true }
+)
 
-require('fzf-lua').setup({
+require("fzf-lua").setup({
   winopts = {
     height = 0.85,
-    width  = 0.80,
-    row    = 0.50,
-    col    = 0.50,
-    border = { '🭽', '▔', '🭾', '▕', '🭿', '▁', '🭼', '▏' },
+    width = 0.80,
+    row = 0.50,
+    col = 0.50,
+    border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
     hl = {
-      normal = 'NormalFloat',
-      border = 'FloatBorder',
-      search = 'NormalFloat',
+      normal = "NormalFloat",
+      border = "FloatBorder",
+      search = "NormalFloat",
     },
     preview = {
       title = false,
@@ -43,21 +56,21 @@ require('fzf-lua').setup({
     },
   },
   fzf_opts = {
-    ['--layout'] = false,
+    ["--layout"] = false,
   },
   fzf_colors = {
-    ["fg"]      = { "fg", "Comment" },
-    ["bg"]      = { "bg", "NormalFloat" },
-    ["hl"]      = { "fg", "Normal" },
-    ["fg+"]     = { "fg", "Normal" },
-    ["bg+"]     = { "bg", "CursorLine" },
-    ["hl+"]     = { "fg", "Identifier" },
-    ["info"]    = { "fg", "Comment" },
-    ["prompt"]  = { "fg", "Identifier" },
+    ["fg"] = { "fg", "Comment" },
+    ["bg"] = { "bg", "NormalFloat" },
+    ["hl"] = { "fg", "Normal" },
+    ["fg+"] = { "fg", "Normal" },
+    ["bg+"] = { "bg", "CursorLine" },
+    ["hl+"] = { "fg", "Identifier" },
+    ["info"] = { "fg", "Comment" },
+    ["prompt"] = { "fg", "Identifier" },
     ["pointer"] = { "fg", "Identifier" },
-    ["marker"]  = { "fg", "Keyword" },
+    ["marker"] = { "fg", "Keyword" },
     ["spinner"] = { "fg", "Label" },
-    ["header"]  = { "fg", "Comment" },
-    ["gutter"]  = { "bg", "NormalFloat" },
+    ["header"] = { "fg", "Comment" },
+    ["gutter"] = { "bg", "NormalFloat" },
   },
 })
