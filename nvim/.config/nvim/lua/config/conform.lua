@@ -1,14 +1,14 @@
 require("conform").setup({
   formatters_by_ft = {
-    css = { "prettierd" },
-    html = { "prettierd" },
-    javascript = { "prettierd" },
-    javascriptreact = { "prettierd" },
+    css = { "prettier" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
     json = { "jq" },
     lua = { "stylua" },
     rust = { "rustfmt" },
-    typescript = { "prettierd" },
-    typescriptreact = { "prettierd" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
   },
   format_on_save = {
     timeout_ms = 500,
