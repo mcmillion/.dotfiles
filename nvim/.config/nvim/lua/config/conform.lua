@@ -4,7 +4,7 @@ require("conform").setup({
     html = { "prettier" },
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
-    json = { "jq" },
+    -- json = { "jq" },
     lua = { "stylua" },
     rust = { "rustfmt" },
     typescript = { "prettier" },

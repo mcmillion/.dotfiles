@@ -101,6 +101,7 @@ alias clear_nvim_sessions='rm ~/.local/share/nvim/sessions/*'
 #==================================================================================================
 
 alias gs='git status'
+alias gd='git diff'
 alias ga='git add . && git status'
 alias gc='git commit --verbose && git --no-pager log -n 1'
 alias gca='git commit --amend --verbose && git --no-pager log -n 1'
