@@ -100,6 +100,7 @@ alias clear_nvim_sessions='rm ~/.local/share/nvim/sessions/*'
 # GIT
 #==================================================================================================
 
+alias g='gh dash'
 alias gs='git status'
 alias gd='git diff'
 alias ga='git add . && git status'
