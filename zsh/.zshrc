@@ -235,24 +235,6 @@ export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 
 
 #==================================================================================================
-# NPM / PRISMA / T3
-#==================================================================================================
-
-# Intelligently handle npm/yarn based on presence of lockfile
-n() {
-  if [ -e yarn.lock ]; then
-    command yarn $@
-  elif [ -e package-lock.json ]; then
-    command npm run $@
-  else
-    echo "No lockfile found."
-    return 1
-  fi
-}
-
-
-
-#==================================================================================================
 # RUBY / RAILS
 #==================================================================================================
 
