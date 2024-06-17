@@ -116,6 +116,7 @@ hi Label                           guifg=#61afef guibg=NONE    gui=NONE
 hi LineNr                          guifg=#4b5263 guibg=NONE    gui=NONE
 hi Macro                           guifg=#c678dd guibg=NONE    gui=NONE
 hi MatchParen                      guifg=NONE    guibg=#313e55 gui=NONE
+" hi MsgArea                         guifg=#abb2bf guibg=NONE    gui=NONE
 hi NonText                         guifg=#3b4048 guibg=NONE    gui=NONE
 hi Normal                          guifg=#abb2bf guibg=#282c34 gui=NONE
 hi NormalFloat                     guifg=NONE    guibg=#222529 gui=NONE
@@ -262,6 +263,7 @@ hi link @comment.error.comment   Todo
 hi link @comment.warning.comment Todo
 hi link @variable.member.tsx     @property
 
+hi link WinSeparator           VertSplit
 hi link Floaterm               NormalFloat
 hi link FloatermBorder         FloatBorder
 hi link UltestSummaryFile      UltestSummaryInfo
