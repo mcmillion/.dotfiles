@@ -2,7 +2,6 @@
 @fsouza/prettierd
 @tailwindcss/language-server
 aws-cdk
-firebase-tools
 live-server
 npm-check-updates
 stylelint-lsp
