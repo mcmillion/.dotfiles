@@ -8,6 +8,7 @@ export EDITOR='nvim'
 export LESS='-RFX'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="$PATH:/Users/mlm/.local/bin"
 
 
 
