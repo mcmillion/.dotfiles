@@ -7,5 +7,6 @@ npm-check-updates
 stylelint-lsp
 typescript
 typescript-language-server
+vercel
 vscode-langservers-extracted
 yarn
