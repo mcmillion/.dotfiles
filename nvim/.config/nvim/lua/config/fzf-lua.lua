@@ -38,10 +38,7 @@ vim.api.nvim_set_keymap(
 require("fzf-lua").setup({
   winopts = {
     backdrop = 100,
-    height = 0.85,
-    width = 0.80,
-    row = 0.50,
-    col = 0.50,
+    fullscreen = true,
     border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
     hl = {
       normal = "NormalFloat",
