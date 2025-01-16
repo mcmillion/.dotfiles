@@ -40,7 +40,7 @@ require("fzf-lua").setup({
     backdrop = 100,
     fullscreen = true,
     border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
-    hl = {
+    hls = {
       normal = "NormalFloat",
       border = "FloatBorder",
       search = "NormalFloat",
