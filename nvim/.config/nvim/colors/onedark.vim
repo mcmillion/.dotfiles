@@ -116,7 +116,7 @@ hi Label                           guifg=#61afef guibg=NONE    gui=NONE
 hi LineNr                          guifg=#4b5263 guibg=NONE    gui=NONE
 hi Macro                           guifg=#c678dd guibg=NONE    gui=NONE
 hi MatchParen                      guifg=NONE    guibg=#313e55 gui=NONE
-" hi MsgArea                         guifg=#abb2bf guibg=NONE    gui=NONE
+hi MsgArea                         guifg=#abb2bf guibg=NONE    gui=NONE
 hi NonText                         guifg=#3b4048 guibg=NONE    gui=NONE
 hi Normal                          guifg=#abb2bf guibg=#282c34 gui=NONE
 hi NormalFloat                     guifg=NONE    guibg=#222529 gui=NONE
@@ -163,7 +163,7 @@ hi TabLine                         guifg=#5c6370 guibg=#2d323d gui=NONE
 hi TabLineFill                     guifg=#5c6370 guibg=#2d323d gui=NONE
 hi TabLineSel                      guifg=#abb2bf guibg=#3f4452 gui=NONE
 hi Terminal                        guifg=#abb2bf guibg=#282c34 gui=NONE
-hi Title                           guifg=#5c6370 guibg=NONE    gui=NONE
+hi Title                           guifg=#abb2bf guibg=NONE    gui=NONE
 hi Todo                            guifg=#abb2bf guibg=NONE    gui=bold,italic
 hi Type                            guifg=#61afef guibg=NONE    gui=NONE
 hi Typedef                         guifg=#e5c07b guibg=NONE    gui=NONE
