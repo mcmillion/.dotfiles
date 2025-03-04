@@ -131,6 +131,7 @@ hi PreProc                         guifg=#e5c07b guibg=NONE    gui=NONE
 hi Question                        guifg=#c678dd guibg=NONE    gui=NONE
 hi QuickFixLine                    guifg=#282c34 guibg=#e5c07b gui=NONE
 hi Repeat                          guifg=#c678dd guibg=NONE    gui=NONE
+hi Scope                           guifg=#5c6370 guibg=NONE    gui=NONE
 hi Search                          guifg=#282c34 guibg=#e5c07b gui=NONE
 hi SignColumn                      guifg=NONE    guibg=#282c34 gui=NONE
 hi Special                         guifg=#61afef guibg=NONE    gui=italic
