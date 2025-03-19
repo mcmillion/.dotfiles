@@ -47,6 +47,7 @@ require("fzf-lua").setup({
     },
     preview = {
       title = false,
+      border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
       winopts = {
         number = false,
         cursorline = false,
