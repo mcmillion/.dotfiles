@@ -3,6 +3,7 @@ font-family-bold        = "JetBrains Mono Bold"
 font-family-italic      = "JetBrains Mono Italic"
 font-family-bold-italic = "JetBrains Mono Bold Italic"
 font-size = 14
+adjust-cell-width = -1
 
 palette = 0=#2c323d
 palette = 1=#e06c75
