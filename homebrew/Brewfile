@@ -29,5 +29,5 @@ brew 'wget'
 brew 'zoxide'
 brew 'zsh'
 
-cask 'kitty'
+cask 'ghostty'
 cask 'raycast'
