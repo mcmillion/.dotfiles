@@ -1,5 +1,11 @@
+-- remap the leader key to <Space>
+vim.api.nvim_set_keymap("n", "<space>", "", {})
+vim.g.mapleader = " "
+
+-- Use termgui colors and dark mode
 vim.o.termguicolors = true
 vim.o.background = "dark"
+vim.cmd([[colorscheme onedark]])
 
 -- Disable backups and swaps
 vim.o.backup = false

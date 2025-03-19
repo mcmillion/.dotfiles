@@ -1,20 +1,20 @@
 local auto = vim.api.nvim_exec
 
 -- Additional filetypes
-auto(
+vim.api.nvim_exec(
   [[
-augroup additional_filetypes
-  autocmd!
-  autocmd BufRead,BufNewFile *.env.* set filetype=sh
-  autocmd BufRead,BufNewFile Procfile set filetype=sh
-  autocmd BufRead,BufNewFile Procfile.* set filetype=sh
-augroup END
-]],
+    augroup additional_filetypes
+    autocmd!
+    autocmd BufRead,BufNewFile *.env.* set filetype=sh
+    autocmd BufRead,BufNewFile Procfile set filetype=sh
+    autocmd BufRead,BufNewFile Procfile.* set filetype=sh
+    augroup END
+  ]],
   true
 )
 
 -- Highlight yanked text
-auto(
+vim.api.nvim_exec(
   [[
 augroup highlight_yank
   autocmd!
@@ -25,7 +25,7 @@ augroup END
 )
 
 -- Cursorline in active pane
-auto(
+vim.api.nvim_exec(
   [[
 augroup CursorLine
   autocmd!
@@ -37,7 +37,7 @@ augroup END
 )
 
 -- Automatically reload ultisnips after save
-auto(
+vim.api.nvim_exec(
   [[
 autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 ]],
@@ -46,7 +46,7 @@ autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
 
 -- Open quick fix in vertical split
 -- https://stackoverflow.com/a/16743676/479732
-auto(
+vim.api.nvim_exec(
   [[
 autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 ]],
