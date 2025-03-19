@@ -2,8 +2,8 @@
 # ENVIRONMENT
 #==============================================================================
 
-export LANG=en_US.UTF-8
-export TERM=xterm-kitty
+export LANG='en_US.UTF-8'
+export TERM='xterm-ghostty'
 export EDITOR='nvim'
 export LESS='-RFX'
 

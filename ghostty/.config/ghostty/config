@@ -1,0 +1,39 @@
+font-family             = "JetBrains Mono Regular"
+font-family-bold        = "JetBrains Mono Bold"
+font-family-italic      = "JetBrains Mono Italic"
+font-family-bold-italic = "JetBrains Mono Bold Italic"
+font-size = 14
+
+palette = 0=#2c323d
+palette = 1=#e06c75
+palette = 2=#98c379
+palette = 3=#e5c07b
+palette = 4=#61afef
+palette = 5=#c678dd
+palette = 6=#56b6c2
+palette = 7=#979eab
+palette = 8=#3e4452
+palette = 9=#e06c75
+palette = 10=#98c379
+palette = 11=#e5c07b
+palette = 12=#61afef
+palette = 13=#c678dd
+palette = 14=#56b6c2
+palette = 15=#abb2bf
+background = #282c34
+foreground = #abb2bf
+cursor-color = #e06c75
+cursor-text = #000000
+selection-foreground = #282c34
+selection-background = #979eab
+
+cursor-style = block
+
+window-height = 48
+window-width = 176
+window-padding-x = 6
+window-padding-y = 6
+window-padding-balance = true
+
+window-colorspace = srgb
+confirm-close-surface = false
