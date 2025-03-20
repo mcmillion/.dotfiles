@@ -1,19 +1,1 @@
 extends javascript
-
-snippet i
-interface ${1:Interface} {
-  $0
-}
-endsnippet
-
-snippet token
-${token("$0")};
-endsnippet
-
-snippet size
-${size($0)};
-endsnippet
-
-snippet sleep
-await new Promise((r) => setTimeout(r, ${0:2000}));
-endsnippet

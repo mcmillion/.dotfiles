@@ -2,35 +2,6 @@
 # JAVASCRIPT
 #==============================================================================
 
-snippet im
-import { $1 } from '$0';
-endsnippet
-
-snippet imd
-import $1 from '$0';
-endsnippet
-
-snippet if
-if ($1) {
-	$0
-}
-endsnippet
-
-snippet ifel
-if ($1) {
-	$2
-}
-else {
-	$0
-}
-endsnippet
-
-snippet func
-${1:function }${2:functionName}(${3:arguments}) {
-	$0
-}
-endsnippet
-
 snippet cl
 console.log('${1:LABEL}', $0);
 endsnippet
@@ -39,8 +10,8 @@ snippet c{
 console.log({ $0 });
 endsnippet
 
-snippet esdis
-/* eslint-disable-next-line ${0:react-hooks/exhaustive-deps} */
+snippet sleep
+await new Promise((r) => setTimeout(r, ${0:2000}));
 endsnippet
 
 
@@ -51,12 +22,6 @@ endsnippet
 
 snippet desc
 describe("$1", () => {
-	$0
-});
-endsnippet
-
-snippet con
-context("$1", () => {
 	$0
 });
 endsnippet
@@ -87,10 +52,6 @@ endsnippet
 
 snippet exp
 expect($1).${2:toEqual}($3);
-endsnippet
-
-snippet nockrecord
-nock.recorder.rec({ output_objects: true });
 endsnippet
 
 
