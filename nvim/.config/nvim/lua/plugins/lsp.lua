@@ -5,7 +5,6 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- Float Border Settings
 local border = {
   { "🭽", "FloatBorder" },
   { "▔", "FloatBorder" },
@@ -16,12 +15,11 @@ local border = {
   { "🭼", "FloatBorder" },
   { "▏", "FloatBorder" },
 }
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or border
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = border,
+  style = "minimal",
+  silent = true,
+})
 
 function on_attach(client, bufnr)
   -- Go to definition
