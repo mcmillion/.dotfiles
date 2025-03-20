@@ -1,0 +1,12 @@
+session: zodiac
+root: ~/Developer/Galileo/frontend-monorepo/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: server
+    root: packages/zodiac.galileo.io
+    commands:
+      - nr start
