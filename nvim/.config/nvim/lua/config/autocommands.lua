@@ -36,14 +36,6 @@ augroup END
   true
 )
 
--- Automatically reload ultisnips after save
-vim.api.nvim_exec(
-  [[
-autocmd BufWritePost *.snippets :CmpUltisnipsReloadSnippets
-]],
-  true
-)
-
 -- Open quick fix in vertical split
 -- https://stackoverflow.com/a/16743676/479732
 vim.api.nvim_exec(

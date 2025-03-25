@@ -1,0 +1,36 @@
+snippet cl "console log"
+  console.log('${1:LABEL}', ${2});
+
+snippet c{ "console log object"
+  console.log({ ${1} });
+
+snippet sleep "await sleep
+  await new Promise((r) => setTimeout(r, ${1:2000}));
+
+snippet desc "unit testing > 'describe' block"
+  describe("$1", () => {
+    $0
+  });
+
+snippet it "unit testing > 'it' block"
+  it("$1", () => {
+    $0
+  });
+
+snippet test "unit testing > 'test' block"
+  test("$1", ${2:async }() => {
+    $0
+  });
+
+snippet sprop "styled-components > prop"
+  ${props => props.${1:prop}};
+
+snippet stheme "styled-components > theme
+  ${props => props.theme.${1:prop}};
+
+snippet scond "styled-components > conditional"
+  ${({ ${1:prop} }) =>
+    $1 &&
+    css\`
+      $0
+    \`};

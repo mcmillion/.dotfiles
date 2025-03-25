@@ -6,12 +6,11 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "quangnguyen30192/cmp-nvim-ultisnips",
+      "saadparwaiz1/cmp_luasnip",
     },
 
     config = function()
       local cmp = require("cmp")
-      local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
       cmp.setup({
         window = {
@@ -27,7 +26,7 @@ return {
         preselect = "none",
         snippet = {
           expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body)
+            require("luasnip").lsp_expand(args.body)
           end,
         },
         mapping = {
@@ -45,7 +44,7 @@ return {
         sources = cmp.config.sources({
           { name = "copilot" },
           { name = "nvim_lsp" },
-          { name = "ultisnips" },
+          { name = "luasnip" },
         }, {
           { name = "path" },
           { name = "buffer" },
