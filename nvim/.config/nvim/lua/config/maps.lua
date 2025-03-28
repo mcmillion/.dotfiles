@@ -44,6 +44,3 @@ vim.keymap.set("n", "Y", "y$", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>s", ":s/<c-r><c-w>//g<left><left>", { noremap = true })
 vim.keymap.set("n", "<leader>S", ":%s/<c-r><c-w>//g<left><left>", { noremap = true })
 vim.keymap.set("x", "<leader>s", ":s///g<left><left><left>", { noremap = true })
-
--- Popup Terminal
-vim.keymap.set("n", "<leader>`", ":FloatermNew --autoclose=1<cr>", { noremap = true, silent = true })
