@@ -2,6 +2,9 @@
 vim.api.nvim_set_keymap("n", "<space>", "", {})
 vim.g.mapleader = " "
 
+-- Set global window border
+vim.o.winborder = "single"
+
 -- Use termgui colors and dark mode
 vim.o.termguicolors = true
 vim.o.background = "dark"
