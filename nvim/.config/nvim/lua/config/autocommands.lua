@@ -16,23 +16,23 @@ vim.api.nvim_exec(
 -- Highlight yanked text
 vim.api.nvim_exec(
   [[
-augroup highlight_yank
-  autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup END
-]],
+    augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+    augroup END
+  ]],
   true
 )
 
 -- Cursorline in active pane
 vim.api.nvim_exec(
   [[
-augroup CursorLine
-  autocmd!
-  au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
-  au WinLeave,FocusLost * setlocal nocursorline
-augroup END
-]],
+    augroup CursorLine
+    autocmd!
+    au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
+    au WinLeave,FocusLost * setlocal nocursorline
+    augroup END
+  ]],
   true
 )
 
@@ -40,8 +40,8 @@ augroup END
 -- https://stackoverflow.com/a/16743676/479732
 vim.api.nvim_exec(
   [[
-autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
-]],
+    autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+  ]],
   true
 )
 

@@ -44,3 +44,6 @@ vim.keymap.set("n", "Y", "y$", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>s", ":s/<c-r><c-w>//g<left><left>", { noremap = true })
 vim.keymap.set("n", "<leader>S", ":%s/<c-r><c-w>//g<left><left>", { noremap = true })
 vim.keymap.set("x", "<leader>s", ":s///g<left><left><left>", { noremap = true })
+
+-- Floating terminal
+vim.keymap.set("n", "<leader>`", ":ToggleTerm direction=float<cr>", { noremap = true, silent = true })
