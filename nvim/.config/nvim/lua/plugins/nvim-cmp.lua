@@ -15,11 +15,11 @@ return {
       cmp.setup({
         window = {
           completion = {
-            border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+            border = "single",
             winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
           },
           documentation = {
-            border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+            border = "single",
             winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
           },
         },
