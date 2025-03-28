@@ -1,9 +1,8 @@
-font-family             = "JetBrains Mono Regular"
-font-family-bold        = "JetBrains Mono Bold"
-font-family-italic      = "JetBrains Mono Italic"
-font-family-bold-italic = "JetBrains Mono Bold Italic"
+font-family             = "Iosevka Term"
+font-family-bold        = "Iosevka Term Bold"
+font-family-italic      = "Iosevka Term Italic"
+font-family-bold-italic = "Iosevka Term Bold Italic"
 font-size = 14
-adjust-cell-width = -1
 
 palette = 0=#2c323d
 palette = 1=#e06c75
