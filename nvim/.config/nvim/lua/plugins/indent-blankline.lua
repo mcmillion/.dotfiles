@@ -5,7 +5,7 @@ return {
   opts = {
     indent = { char = "▏" },
     scope = {
-      highlight = "Scope",
+      highlight = "Conceal",
       char = "▎",
     },
   },
