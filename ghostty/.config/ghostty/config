@@ -8,31 +8,28 @@ font-feature = -liga
 font-feature = -calt
 font-feature = -dlig
 
-background = #1C1C1C
-foreground = #C9C3B8
-
-cursor-color = #C55350
+palette = 0=#2c323d
+palette = 1=#e06c75
+palette = 2=#98c379
+palette = 3=#e5c07b
+palette = 4=#61afef
+palette = 5=#c678dd
+palette = 6=#56b6c2
+palette = 7=#979eab
+palette = 8=#3e4452
+palette = 9=#e06c75
+palette = 10=#98c379
+palette = 11=#e5c07b
+palette = 12=#61afef
+palette = 13=#c678dd
+palette = 14=#56b6c2
+palette = 15=#abb2bf
+background = #282c34
+foreground = #abb2bf
+cursor-color = #e06c75
 cursor-text = #000000
-
-selection-background = #424852
-selection-foreground = #C9C3B8
-
-palette = 00=#1C1C1C
-palette = 01=#C55350
-palette = 02=#889B4A
-palette = 03=#E19E54
-palette = 04=#7490BA
-palette = 05=#B26E97
-palette = 06=#77A59B
-palette = 07=#888184
-palette = 08=#494849
-palette = 09=#D47766
-palette = 10=#9AB25C
-palette = 11=#E1B75E
-palette = 12=#9BAEC9
-palette = 13=#B896BA
-palette = 14=#89B9B0
-palette = 15=#C9C3B8
+selection-foreground = #282c34
+selection-background = #979eab
 
 cursor-style = block
 
