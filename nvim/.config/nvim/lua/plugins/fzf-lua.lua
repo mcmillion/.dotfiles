@@ -7,7 +7,6 @@ return {
     winopts = {
       backdrop = 100,
       fullscreen = true,
-      border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
       hls = {
         normal = "NormalFloat",
         border = "FloatBorder",
@@ -15,7 +14,6 @@ return {
       },
       preview = {
         title = false,
-        border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
         winopts = {
           number = false,
           cursorline = false,
@@ -44,7 +42,7 @@ return {
 
   keys = {
     -- Fuzzy find all files
-    { '<leader><leader>', "<cmd>lua require('fzf-lua').files()<CR>" },
+    { "<leader><leader>", "<cmd>lua require('fzf-lua').files()<CR>" },
 
     -- Fuzzy find directories and open in netrw
     { "<leader>fd", "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>" },
@@ -56,6 +54,6 @@ return {
     { "<leader>lca", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>" },
 
     -- Workspace symbols
-    { "<leader>ls", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>" }
-  }
+    { "<leader>ls", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>" },
+  },
 }
