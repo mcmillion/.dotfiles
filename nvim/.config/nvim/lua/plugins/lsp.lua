@@ -1,5 +1,7 @@
 -- Diagnostic Icon Settings
 vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "✘",
