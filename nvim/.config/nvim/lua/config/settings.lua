@@ -94,10 +94,10 @@ vim.wo.wrap = false
 vim.wo.list = true
 
 -- Enable line numbering by default
-vim.wo.number = true
+vim.wo.number = false
 
 -- Enable relative line numbering by default
-vim.wo.relativenumber = true
+vim.wo.relativenumber = false
 
 -- Always show sign column
 vim.wo.signcolumn = "yes"
