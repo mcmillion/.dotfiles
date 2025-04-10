@@ -29,4 +29,5 @@ brew 'zoxide'
 brew 'zsh'
 
 cask 'ghostty'
+cask 'mouseless'
 cask 'raycast'
