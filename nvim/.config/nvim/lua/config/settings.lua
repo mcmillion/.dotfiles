@@ -8,6 +8,7 @@ vim.o.winborder = "single"
 -- Use termgui colors and dark mode
 vim.o.termguicolors = true
 vim.o.background = "dark"
+vim.cmd.colorscheme("onedark")
 
 -- Disable backups and swaps
 vim.o.backup = false
