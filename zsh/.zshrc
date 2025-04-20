@@ -163,8 +163,7 @@ export LSCOLORS='ExfxbxdxCxegedabagacad'
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "" 3> /dev/null'
 export FZF_DEFAULT_OPTS='--height 50% --color=bg:0,fg:7,hl:8,bg+:0,fg+:15,hl+:4,info:9,prompt:4,pointer:4,marker:4,spinner:4,border:3,header:3'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 gco() {
   if [ "$1" = '-a' ] || [ "$1" = '' ]
