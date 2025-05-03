@@ -1,6 +1,7 @@
 return {
   "lewis6991/gitsigns.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
+  version = "v1.0.2",
 
   opts = {
     on_attach = function(bufnr)
