@@ -67,3 +67,12 @@ augroup quickfix
 	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 ]])
+
+-- Autoreload files when changed
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold" }, {
+  callback = function()
+    if vim.fn.getcwd() ~= vim.fn.expand("%:p:h") then
+      vim.cmd("checktime")
+    end
+  end,
+})

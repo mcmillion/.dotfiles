@@ -110,3 +110,6 @@ vim.bo.formatoptions = vim.o.formatoptions .. "j"
 
 -- Set tab stops to 2
 vim.bo.tabstop = 2
+
+-- Automatically reload changed files
+vim.o.autoread = true
