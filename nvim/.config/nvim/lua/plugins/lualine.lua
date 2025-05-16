@@ -60,6 +60,7 @@ return {
       lualine_x = {
         {
           "filetype",
+          icons_enabled = false,
           fmt = function(s)
             if s == "javascript" then
               return "js"
