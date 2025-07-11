@@ -330,6 +330,6 @@ alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHold
 
 
 # Start tmux home session automatically
-if [[ ("$OSTYPE" == "darwin"*) && (-z "$TMUX") ]]; then
+if [[ ("$OSTYPE" == "darwin"*) && "$TERM_PROGRAM" != "vscode" && (-z "$TMUX") ]]; then
   tmux new-session -A -s home
 fi
