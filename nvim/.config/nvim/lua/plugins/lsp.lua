@@ -155,7 +155,7 @@ return {
         on_attach = on_attach,
         settings = {
           ["rust-analyzer"] = {
-            checkOnSave = { command = "clippy" },
+            checkOnSave = true,
           },
         },
       },
