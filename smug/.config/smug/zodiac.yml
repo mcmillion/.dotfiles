@@ -6,6 +6,10 @@ windows:
     commands:
       - nvim
 
+  - name: claude
+    commands:
+      - claude --add-dir ../api --add-dir ../core-api
+
   - name: server
     root: packages/zodiac.galileo.io
     commands:
