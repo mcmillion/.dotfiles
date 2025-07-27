@@ -14,4 +14,6 @@
 
 ## Git and Version Control
 
+- ALWAYS keep commit messages short
 - NEVER include yourself as a co-author in a commit
+- DO NOT add author or co-author information
