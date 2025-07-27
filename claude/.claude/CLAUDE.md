@@ -1,5 +1,5 @@
 # Personal Global Claude Setup
-- Use tmux panes when performing background tasks
+- ALWAYS use tmux panes when performing background tasks
 
 ## TypeScript and React
 
@@ -14,4 +14,4 @@
 
 ## Git and Version Control
 
-- Never include yourself as a co-author in a commit
+- NEVER include yourself as a co-author in a commit

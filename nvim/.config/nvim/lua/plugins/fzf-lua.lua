@@ -3,6 +3,11 @@ return {
 
   dependencies = { "nvim-tree/nvim-web-devicons" },
 
+  config = function(_, opts)
+    require("fzf-lua").setup(opts)
+    require("fzf-lua").register_ui_select()
+  end,
+
   opts = {
     winopts = {
       backdrop = 100,
