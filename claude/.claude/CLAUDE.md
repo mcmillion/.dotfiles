@@ -11,3 +11,7 @@
 - Use interfaces rather than types unless types are needed
 - Do not inline complex argument types or return types, always use an interface
 - For functions with multiple arguments, prefer passing an object rather than individual arguments
+
+## Git and Version Control
+
+- Never include yourself as a co-author in a commit
