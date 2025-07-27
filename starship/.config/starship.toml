@@ -65,6 +65,12 @@ symbol = 'rust '
 disabled = true
 symbol = 'scala '
 
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
 [time]
 disabled = false
 use_12hr = true
