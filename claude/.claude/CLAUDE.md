@@ -17,3 +17,8 @@
 - ALWAYS keep commit messages short
 - NEVER include yourself as a co-author in a commit
 - DO NOT add author or co-author information
+
+## File Handling
+
+- ALWAYS use unix line endings in files
+- ALWAYS end files with a newline
