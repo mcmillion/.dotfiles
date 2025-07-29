@@ -56,7 +56,7 @@ return {
     { "<leader>fg", "<cmd>lua require('fzf-lua').git_commits()<CR>" },
 
     -- LSP Code actions
-    { "<leader>lca", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>" },
+    { "gra", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>" },
 
     -- Workspace symbols
     { "<leader>ls", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>" },

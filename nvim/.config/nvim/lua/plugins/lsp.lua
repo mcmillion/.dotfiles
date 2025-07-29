@@ -1,5 +1,6 @@
 -- Diagnostic Icon Settings
 vim.diagnostic.config({
+  virtual_lines = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "✘",
@@ -17,24 +18,8 @@ vim.diagnostic.config({
 })
 
 function on_attach(client, bufnr)
-  -- Go to definition
-  vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", { buffer = bufnr, noremap = true, silent = true })
-
   -- Hover information
-  vim.keymap.set(
-    "n",
-    "<leader>ll",
-    "<Cmd>lua vim.lsp.buf.hover()<CR>",
-    { buffer = bufnr, noremap = true, silent = true }
-  )
-
-  -- Go to implementation
-  vim.keymap.set(
-    "n",
-    "gi",
-    "<cmd>lua vim.lsp.buf.implementation()<CR>",
-    { buffer = bufnr, noremap = true, silent = true }
-  )
+  vim.keymap.set("n", "grh", "<Cmd>lua vim.lsp.buf.hover()<CR>", { buffer = bufnr, noremap = true, silent = true })
 
   -- Go to previous diagnostic
   vim.keymap.set(
@@ -49,30 +34,6 @@ function on_attach(client, bufnr)
     "n",
     "]d",
     "<cmd>lua vim.diagnostic.goto_next()<CR>",
-    { buffer = bufnr, noremap = true, silent = true }
-  )
-
-  -- Rename
-  vim.keymap.set(
-    "n",
-    "<leader>lrn",
-    "<cmd>lua vim.lsp.buf.rename()<CR>",
-    { buffer = bufnr, noremap = true, silent = true }
-  )
-
-  -- References
-  vim.keymap.set(
-    "n",
-    "<leader>lrf",
-    "<cmd>lua vim.lsp.buf.references()<CR>",
-    { buffer = bufnr, noremap = true, silent = true }
-  )
-
-  -- Open diagnostic in float
-  vim.keymap.set(
-    "n",
-    "<leader>ld",
-    "<cmd>lua vim.diagnostic.open_float()<CR>",
     { buffer = bufnr, noremap = true, silent = true }
   )
 end
