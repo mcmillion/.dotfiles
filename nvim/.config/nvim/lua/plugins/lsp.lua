@@ -1,6 +1,9 @@
 -- Diagnostic Icon Settings
 vim.diagnostic.config({
-  virtual_lines = true,
+  virtual_text = {
+    prefix = "●",
+    spacing = 4,
+  },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "✘",
@@ -34,6 +37,14 @@ function on_attach(client, bufnr)
     "n",
     "]d",
     "<cmd>lua vim.diagnostic.goto_next()<CR>",
+    { buffer = bufnr, noremap = true, silent = true }
+  )
+
+  -- Open diagnostic in float
+  vim.keymap.set(
+    "n",
+    "grd",
+    "<cmd>lua vim.diagnostic.open_float()<CR>",
     { buffer = bufnr, noremap = true, silent = true }
   )
 end
