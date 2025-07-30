@@ -1,0 +1,23 @@
+session: smashboard
+root: ~/Developer/BitPivot/smashboard/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: servers
+    layout: even-horizontal
+    commands:
+      - nr dev
+    panes:
+      - type: horizontal
+        commands:
+          - nr storybook --no-open
+      - type: horizontal
+        commands:
+          - nr db:ui
