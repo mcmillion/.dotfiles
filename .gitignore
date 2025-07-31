@@ -7,3 +7,6 @@ packer_compiled.lua
 .zshenv
 .DS_Store
 *.log
+
+# Claude files
+.claude/
