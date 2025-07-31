@@ -5,7 +5,10 @@ return {
   },
 
   config = function()
-    require("copilot").setup()
+    require("copilot").setup({
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    })
 
     require("copilot_cmp").setup({
       method = "getCompletionsCycling",

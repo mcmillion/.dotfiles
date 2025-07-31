@@ -69,10 +69,8 @@ augroup END
 ]])
 
 -- Autoreload files when changed
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "FocusGained" }, {
   callback = function()
-    if vim.fn.getcwd() ~= vim.fn.expand("%:p:h") then
-      vim.cmd("checktime")
-    end
+    vim.cmd("checktime")
   end,
 })

@@ -7,6 +7,7 @@ return {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
+      "zbirenbaum/copilot-cmp",
     },
 
     config = function()
@@ -52,6 +53,7 @@ return {
         formatting = {
           format = function(entry, vim_item)
             vim_item.menu = ({
+              copilot = "[Copilot]",
               nvim_lsp = "[LSP]",
               path = "[File]",
               ultisnips = "[Snippet]",
