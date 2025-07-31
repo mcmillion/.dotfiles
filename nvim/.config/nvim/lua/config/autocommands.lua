@@ -45,9 +45,6 @@ vim.api.nvim_exec(
   true
 )
 
--- Open diagnostics on hover
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-
 -- Better :grep
 vim.cmd([[
 function! Grep(...)
@@ -67,10 +64,3 @@ augroup quickfix
 	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 ]])
-
--- Autoreload files when changed
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "FocusGained" }, {
-  callback = function()
-    vim.cmd("checktime")
-  end,
-})
