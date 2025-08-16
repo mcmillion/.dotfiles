@@ -111,6 +111,12 @@ return {
 
         on_attach = on_attach,
       })
+
+      -- GDScript
+      lspconfig.gdscript.setup({
+        settings = {},
+        on_attach = on_attach,
+      })
     end,
   },
 
