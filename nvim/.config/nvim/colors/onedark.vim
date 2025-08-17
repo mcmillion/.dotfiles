@@ -195,7 +195,7 @@ hi WhichKeyDesc                    guifg=#61afef guibg=NONE    gui=NONE
 hi WhichKeyGroup                   guifg=#61afef guibg=NONE    gui=NONE
 hi WhichKeySeperator               guifg=#98c379 guibg=NONE    gui=NONE
 hi WildMenu                        guifg=#282c34 guibg=#61afef gui=NONE
-hi debugBreakpoint                 guifg=#e06c75 guibg=NONE    gui=reverse
+hi debugBreakpoint                 guifg=#e06c75 guibg=NONE    gui=NONE
 hi debugPc                         guifg=NONE    guibg=#56b6c2 gui=NONE
 hi diffAdded                       guifg=#98c379 guibg=NONE    gui=NONE
 hi diffFile                        guifg=#3b4048 guibg=NONE    gui=NONE
@@ -272,3 +272,5 @@ hi link UltestSummaryNamespace UltestSummaryInfo
 
 hi link FzfLuaNormal           NormalFloat
 hi link FzfLuaBorder           FloatBorder
+
+hi link DapBreakpoint          debugBreakpoint

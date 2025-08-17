@@ -1,0 +1,11 @@
+session: sentinel
+root: ~/Developer/Personal/sentinel/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim --listen /tmp/godothost
+
+  - name: claude
+    commands:
+      - claude

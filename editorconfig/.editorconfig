@@ -11,6 +11,10 @@ trim_trailing_whitespace = true
 [*.{rs,cs,py}]
 indent_size = 4
 
+[*.gd]
+indent_style = tab
+indent_size = 4
+
 [Makefile]
 indent_style = tab
 indent_size = 4

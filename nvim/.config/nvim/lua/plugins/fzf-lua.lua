@@ -60,5 +60,9 @@ return {
 
     -- Workspace symbols
     { "<leader>ls", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>" },
+
+    -- DAP
+    { "<leader>dc", "<cmd>lua require('fzf-lua').dap_commands()<CR>" },
+    { "<leader>db", "<cmd>lua require('fzf-lua').dap_breakpoints()<CR>" },
   },
 }

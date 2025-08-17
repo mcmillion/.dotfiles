@@ -12,6 +12,7 @@ return {
       rust = { "rustfmt" },
       -- typescript = { "prettier" },
       -- typescriptreact = { "prettier" },
+      gdscript = { "lsp" },
     },
     format_on_save = {
       timeout_ms = 500,
