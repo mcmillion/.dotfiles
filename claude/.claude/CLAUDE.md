@@ -15,8 +15,10 @@
 ## Git and Version Control
 
 - ALWAYS keep commit messages short
+- ALWAYS keep commit messages terse
 - NEVER include yourself as a co-author in a commit
 - DO NOT add author or co-author information
+- Don't add things to a commit that we did that are enforced by CI, like typechecking, linting, test coverage, etc
 
 ## File Handling
 
