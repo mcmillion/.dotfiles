@@ -1,5 +1,5 @@
 session: sentinel
-root: ~/Developer/Personal/sentinel/
+root: ~/Developer/BlackOmen/sentinel/
 
 windows:
   - name: nvim

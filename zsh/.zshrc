@@ -100,7 +100,8 @@ alias clear_nvim_sessions='rm ~/.local/share/nvim/sessions/*'
 # GIT
 #==================================================================================================
 
-alias g='gh dash'
+alias g='lazygit'
+alias gh='gh dash'
 alias gs='git status'
 alias gd='git diff'
 alias ga='git add . && git status'
@@ -113,8 +114,6 @@ alias gunpub='git unpublish'
 alias gpu='git push'
 alias gpf='git push --force-with-lease'
 alias gpl='git pull'
-alias grm='gco master && gpl && gco - && git rebase master'
-alias grt='gco trunk && gpl && gco - && git rebase trunk'
 alias gri='git rebase -i `fcs`~1'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'

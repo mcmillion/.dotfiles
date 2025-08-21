@@ -1,0 +1,15 @@
+session: black-omen-web
+root: ~/Developer/BlackOmen/black-omen-web/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: servers
+    commands:
+      - nr dev

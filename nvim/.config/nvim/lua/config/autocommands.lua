@@ -64,3 +64,17 @@ augroup quickfix
 	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 ]])
+
+-- Disable mouse in tmux panes that contain neovim
+-- For init.lua
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.fn.system("tmux set -g mouse off")
+  end,
+})
+
+vim.api.nvim_create_autocmd("VimLeave", {
+  callback = function()
+    vim.fn.system("tmux set -g mouse on")
+  end,
+})

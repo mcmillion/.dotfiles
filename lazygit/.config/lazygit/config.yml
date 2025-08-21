@@ -1,0 +1,31 @@
+gui:
+  tabWidth: 2
+  border: rounded
+
+  theme:
+    activeBorderColor:
+      - '#979eab'
+
+    inactiveBorderColor:
+      - '#3e4452'
+
+    searchingActiveBorderColor:
+      - '#e5c07b'
+
+    optionsTextColor:
+      - '#3e4452'
+
+    selectedLineBgColor:
+      - '#3e4452'
+
+    cherryPickedCommitBgColor:
+      - '#61afef'
+
+    markedBaseCommitBgColor:
+      - '#e5c07b'
+
+    unstagedChangesColor:
+      - '#e06c75'
+
+    defaultFgColor:
+      - '#abb2bf'
