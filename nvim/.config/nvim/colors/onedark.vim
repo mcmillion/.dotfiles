@@ -101,7 +101,7 @@ hi Error                           guifg=#f44747 guibg=NONE    gui=bold,reverse
 hi ErrorMsg                        guifg=#f44747 guibg=NONE    gui=NONE
 hi Exception                       guifg=#c678dd guibg=NONE    gui=NONE
 hi Float                           guifg=#d19a66 guibg=NONE    gui=NONE
-hi FloatBorder                     guifg=#363945 guibg=#222529 gui=NONE
+hi FloatBorder                     guifg=#363945 guibg=#282c34 gui=NONE
 hi FoldColumn                      guifg=NONE    guibg=NONE    gui=NONE
 hi Folded                          guifg=#5c6370 guibg=NONE    gui=NONE
 hi Function                        guifg=#e5c07b guibg=NONE    gui=NONE
@@ -119,7 +119,7 @@ hi MatchParen                      guifg=NONE    guibg=#313e55 gui=NONE
 hi MsgArea                         guifg=#abb2bf guibg=NONE    gui=NONE
 hi NonText                         guifg=#3b4048 guibg=NONE    gui=NONE
 hi Normal                          guifg=#abb2bf guibg=#282c34 gui=NONE
-hi NormalFloat                     guifg=NONE    guibg=#222529 gui=NONE
+hi NormalFloat                     guifg=NONE    guibg=#282c34 gui=NONE
 hi Number                          guifg=#d19a66 guibg=NONE    gui=NONE
 hi Operator                        guifg=#c678dd guibg=NONE    gui=NONE
 hi Pmenu                           guifg=#abb2bf guibg=#222529 gui=NONE
@@ -196,7 +196,7 @@ hi WhichKeyGroup                   guifg=#61afef guibg=NONE    gui=NONE
 hi WhichKeySeperator               guifg=#98c379 guibg=NONE    gui=NONE
 hi WildMenu                        guifg=#282c34 guibg=#61afef gui=NONE
 hi debugBreakpoint                 guifg=#e06c75 guibg=NONE    gui=NONE
-hi debugPc                         guifg=NONE    guibg=#56b6c2 gui=NONE
+hi debugPc                         guifg=NONE    guibg=NONE    gui=italic,underline
 hi diffAdded                       guifg=#98c379 guibg=NONE    gui=NONE
 hi diffFile                        guifg=#3b4048 guibg=NONE    gui=NONE
 hi diffFileId                      guifg=#61afef guibg=NONE    gui=bold,reverse
@@ -274,3 +274,4 @@ hi link FzfLuaNormal           NormalFloat
 hi link FzfLuaBorder           FloatBorder
 
 hi link DapBreakpoint          debugBreakpoint
+hi link DapStopped             debugPc

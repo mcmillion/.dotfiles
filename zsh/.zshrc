@@ -82,7 +82,7 @@ export SSH_AUTH_SOCK='~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/age
 
 
 #==================================================================================================
-# TMUX / VIM
+# TMUX / VIM / FILES
 #==================================================================================================
 
 alias home='tmux new-session -A -s home'
@@ -93,6 +93,8 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias clear_nvim_sessions='rm ~/.local/share/nvim/sessions/*'
+
+alias y='yazi'
 
 
 

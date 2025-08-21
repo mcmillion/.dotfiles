@@ -41,5 +41,6 @@
   "vim-unimpaired": { "branch": "master", "commit": "6d44a6dc2ec34607c41ec78acf81657248580bf1" },
   "vim-vinegar": { "branch": "master", "commit": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6" },
   "vim-wakatime": { "branch": "master", "commit": "3403495670f0ee08887401a28f8430dc4ac67429" },
-  "vivify.vim": { "branch": "main", "commit": "b75789dad8bac1c59589bd97cc1907e00a7ffd84" }
+  "vivify.vim": { "branch": "main", "commit": "b75789dad8bac1c59589bd97cc1907e00a7ffd84" },
+  "yazi.nvim": { "branch": "main", "commit": "74460dc4533bde424983702f1257df420455eebe" }
 }

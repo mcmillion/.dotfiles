@@ -1,0 +1,26 @@
+[mgr]
+
+cwd = { fg = "gray", bg = "black", italic = true }
+hovered = { fg = "yellow", bg = "darkgray", bold = true }
+preview_hovered = { fg = "yellow", bg = "darkgray", bold = true }
+find_keyword = { fg = "black", bg = "yellow", italic = true }
+border_style = { fg = "darkgray", bg = "reset" }
+
+
+
+[mode]
+
+normal_main = { fg = "black", bg = "green", bold = true }
+normal_alt = { fg = "gray", bg = "darkgray", bold = true }
+
+select_main = { fg = "black", bg = "red", bold = true }
+select_alt = { fg = "gray", bg = "darkgray", bold = true }
+unset_main = { fg = "black", bg = "red", bold = true }
+unset_alt = { fg = "gray", bg = "darkgray", bold = true }
+
+
+
+[status]
+
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
