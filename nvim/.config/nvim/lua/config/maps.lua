@@ -46,4 +46,9 @@ vim.keymap.set("n", "<leader>S", ":%s/<c-r><c-w>//g<left><left>", { noremap = tr
 vim.keymap.set("x", "<leader>s", ":s///g<left><left><left>", { noremap = true })
 
 -- Floating terminal
-vim.keymap.set("n", "<leader>`", ":ToggleTerm direction=float<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>`", function()
+  -- This tries to get git root, falls back to current directory
+  local cmd = "git rev-parse --show-toplevel 2>/dev/null || echo " .. vim.fn.getcwd()
+  local root = vim.fn.system(cmd):gsub("\n", "")
+  vim.fn.system(string.format('tmux popup -w 80%% -h 80%% -E "cd %s && zsh"', root))
+end, { noremap = true, silent = true })
