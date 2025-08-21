@@ -32,7 +32,49 @@ return {
       { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
     )
 
-    require("dapui").setup()
+    require("dapui").setup({
+      controls = {
+        enabled = false,
+      },
+      layouts = {
+        {
+          elements = {
+            {
+              id = "scopes",
+              size = 0.25,
+            },
+            {
+              id = "breakpoints",
+              size = 0.25,
+            },
+            {
+              id = "stacks",
+              size = 0.25,
+            },
+            {
+              id = "watches",
+              size = 0.25,
+            },
+          },
+          position = "right",
+          size = 80,
+        },
+        {
+          elements = {
+            {
+              id = "repl",
+              size = 0.5,
+            },
+            {
+              id = "console",
+              size = 0.5,
+            },
+          },
+          position = "bottom",
+          size = 15,
+        },
+      },
+    })
 
     local dapui = require("dapui")
     dap.listeners.after.event_initialized["dapui_config"] = function()

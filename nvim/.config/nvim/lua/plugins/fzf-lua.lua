@@ -12,11 +12,7 @@ return {
     winopts = {
       backdrop = 100,
       fullscreen = true,
-      hls = {
-        normal = "NormalFloat",
-        border = "FloatBorder",
-        search = "NormalFloat",
-      },
+      border = "single",
       preview = {
         title = false,
         winopts = {
@@ -24,6 +20,14 @@ return {
           cursorline = false,
         },
       },
+    },
+    hls = {
+      normal = "NormalFloat",
+      preview_normal = "NormalFloat",
+      border = "FloatBorder",
+      preview_border = "FloatBorder",
+      search = "NormalFloat",
+      preview_search = "NormalFloat",
     },
     fzf_opts = {
       ["--layout"] = false,

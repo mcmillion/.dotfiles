@@ -1,5 +1,5 @@
 [directory]
-style = 'bold blue'
+style = 'blue'
 
 [aws]
 disabled = true
@@ -23,7 +23,7 @@ symbol = 'dotnet '
 
 [git_branch]
 symbol = ''
-style = 'bold purple'
+style = 'yellow'
 
 [golang]
 disabled = true
