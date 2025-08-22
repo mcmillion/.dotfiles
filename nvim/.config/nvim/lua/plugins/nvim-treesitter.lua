@@ -14,6 +14,7 @@ return {
         "c_sharp",
         "comment",
         "cpp",
+        "gdscript",
         "go",
         "graphql",
         "html",
