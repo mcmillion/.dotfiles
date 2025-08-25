@@ -18,6 +18,8 @@ return {
           completion = {
             border = "single",
             winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+            col_offset = -3,
+            side_padding = 1,
           },
           documentation = {
             border = "single",
@@ -45,21 +47,43 @@ return {
             select = false,
           }),
         },
-        sources = cmp.config.sources({
-          { name = "copilot" },
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        }, {
-          { name = "path" },
-          { name = "buffer" },
-        }),
+        sources = {
+          { name = "nvim_lsp", priority = 1000 },
+          { name = "luasnip", priority = 750 },
+          { name = "copilot", priority = 100, max_item_count = 3 },
+          { name = "path", priority = 50 },
+          { name = "buffer", priority = 25 },
+        },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            require("copilot_cmp.comparators").prioritize,
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.locality,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
+        },
         formatting = {
           format = function(entry, vim_item)
+            -- Don't truncate copilot completions, but truncate others
+            if entry.source.name ~= "copilot" then
+              local max_width = 80
+              if string.len(vim_item.abbr) > max_width then
+                vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. "…"
+              end
+            end
+            
             vim_item.menu = ({
               copilot = "[Copilot]",
               nvim_lsp = "[LSP]",
               path = "[File]",
-              ultisnips = "[Snippet]",
+              luasnip = "[Snippet]",
               buffer = "[Buffer]",
             })[entry.source.name]
             vim_item.dup = ({

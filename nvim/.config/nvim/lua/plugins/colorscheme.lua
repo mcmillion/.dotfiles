@@ -5,6 +5,8 @@ return {
   opts = {
     hl_overrides = {
       Comment = { fg = "#5B6081" },
+      Visual = { bg = "#32416F" },
+      PmenuSel = { bg = "#32416F" },
     },
   },
 

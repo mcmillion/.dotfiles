@@ -47,6 +47,9 @@ return {
       ["header"] = { "fg", "Comment" },
       ["gutter"] = { "bg", "NormalFloat" },
     },
+    marks = {
+      marks = "%a",
+    },
   },
 
   keys = {
@@ -59,11 +62,14 @@ return {
     -- Fuzzy find git commits (and optionally check out)
     { "<leader>fg", "<cmd>lua require('fzf-lua').git_commits()<CR>" },
 
+    -- Fuzzy find marks
+    { "<leader>fm", "<cmd>lua require('fzf-lua').marks()<CR>" },
+
     -- LSP Code actions
     { "gra", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>" },
 
     -- Workspace symbols
-    { "<leader>ls", "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>" },
+    { "<leader>ls", "<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>" },
 
     -- DAP
     { "<leader>dc", "<cmd>lua require('fzf-lua').dap_commands()<CR>" },

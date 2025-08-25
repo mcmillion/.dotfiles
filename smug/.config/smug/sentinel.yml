@@ -9,3 +9,7 @@ windows:
   - name: claude
     commands:
       - claude
+
+  - name: yazi
+    commands:
+      - yazi
