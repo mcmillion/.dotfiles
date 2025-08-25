@@ -17,7 +17,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 # Auto-ls when cd-ing into directories
 cd () {
   builtin cd "$@";
-  ls -aG;
+  lsd -a;
 }
 
 
@@ -59,9 +59,9 @@ setopt incappendhistory     # Immediately append to the history file, not just w
 alias dot='cd ~/.dotfiles'
 alias reload='source ~/.zshrc'
 alias c='clear'
-alias l='ls'
-alias ls='ls -aG'
-alias ll='ls -lh'
+alias l='lsd -a'
+alias ls='lsd -a'
+alias ll='lsd -al'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -v'
