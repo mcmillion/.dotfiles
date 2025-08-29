@@ -1,5 +1,5 @@
 vim.api.nvim_create_user_command('CommentHeader', function(opts)
-  local text = opts.args
+  local text = string.upper(opts.args)
   local padding = ' '
   local padded_text = padding .. text .. padding
   local border_length = #padded_text
