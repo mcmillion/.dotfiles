@@ -9,4 +9,4 @@ packer_compiled.lua
 *.log
 
 # Claude files
-.claude/
+/.claude
