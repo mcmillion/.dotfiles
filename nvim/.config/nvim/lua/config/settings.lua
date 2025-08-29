@@ -95,8 +95,8 @@ vim.wo.list = true
 -- Enable line numbering by default
 vim.wo.number = true
 
--- Disable relative line numbering by default
-vim.wo.relativenumber = false
+-- Enable relative line numbering by default
+vim.wo.relativenumber = true
 
 -- Always show sign column
 vim.wo.signcolumn = "yes"
