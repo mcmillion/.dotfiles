@@ -2,6 +2,7 @@ require("config.settings")
 require("config.lazy")
 require("config.maps")
 require("config.autocommands")
+require("config.commands")
 
 if vim.g.neovide then
   require("config.neovide")
