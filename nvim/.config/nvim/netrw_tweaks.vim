@@ -1,3 +1,6 @@
+" Hide .uid files in netrw
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,.*\.uid$'
+
 augroup netrw_mapping
   autocmd!
   autocmd filetype netrw call NetrwMapping()

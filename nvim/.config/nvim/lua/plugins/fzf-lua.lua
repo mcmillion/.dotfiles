@@ -9,6 +9,9 @@ return {
   end,
 
   opts = {
+    file_ignore_patterns = {
+      "%.uid$",
+    },
     winopts = {
       backdrop = 100,
       fullscreen = true,
