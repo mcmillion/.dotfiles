@@ -28,7 +28,10 @@ end, {
 vim.api.nvim_create_user_command("GutTest", function()
   local cwd = vim.fn.getcwd()
   local godot_path = "/Applications/Godot.app/Contents/MacOS/Godot"
-  local test_dirs = { "res://test/unit/" }
+  local test_dirs = {
+    "res://test/unit/",
+    "res://test/integration/",
+  }
 
   local gdir_args = ""
   for _, dir in ipairs(test_dirs) do
