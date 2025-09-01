@@ -23,6 +23,7 @@ return {
         "json",
         "json5",
         "lua",
+        "make",
         "regex",
         "ruby",
         "rust",
