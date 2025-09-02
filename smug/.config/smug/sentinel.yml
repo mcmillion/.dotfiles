@@ -10,6 +10,10 @@ windows:
     commands:
       - claude
 
+  - name: codex
+    commands:
+      - codex
+
   - name: yazi
     commands:
       - yazi

@@ -56,7 +56,6 @@ setopt incappendhistory     # Immediately append to the history file, not just w
 # COMMON ALIASES
 #==============================================================================
 
-alias dot='cd ~/.dotfiles'
 alias reload='source ~/.zshrc'
 alias c='clear'
 alias l='lsd -a'
