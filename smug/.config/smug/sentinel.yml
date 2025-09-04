@@ -14,6 +14,10 @@ windows:
     commands:
       - codex
 
+  - name: zsh
+    commands:
+      - clear
+
   - name: yazi
     commands:
       - yazi
