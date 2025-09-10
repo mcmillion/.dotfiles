@@ -29,7 +29,7 @@ background = #191d23
 foreground = #ccd5e5
 cursor-color = #5dcd9a
 cursor-text = #000000
-selection-background = #1f242d
+selection-background = #474b65
 selection-foreground = #ccd5e5
 
 cursor-style = block
