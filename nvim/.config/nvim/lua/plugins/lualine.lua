@@ -41,9 +41,9 @@ return {
           "diff",
           source = diff_source,
           diff_color = {
-            added = { fg = "#9FDACC" },
-            modified = { fg = "#B7C4FF" },
-            removed = { fg = "#FFC0C5" },
+            added = { fg = "#98c379" },
+            modified = { fg = "#e5c07b" },
+            removed = { fg = "#e06c75" },
           },
         },
         {

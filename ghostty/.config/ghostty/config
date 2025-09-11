@@ -8,7 +8,7 @@ font-feature = -liga
 font-feature = -calt
 font-feature = -dlig
 
-palette = 0=#2c323d
+palette = 0=#2c323c
 palette = 1=#e06c75
 palette = 2=#98c379
 palette = 3=#e5c07b
