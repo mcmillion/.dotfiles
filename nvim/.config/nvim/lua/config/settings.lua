@@ -9,6 +9,9 @@ vim.o.winborder = "single"
 vim.o.termguicolors = true
 vim.o.background = "dark"
 
+-- Set colorscheme
+vim.cmd.colorscheme("onedark")
+
 -- Disable backups and swaps
 vim.o.backup = false
 vim.o.writebackup = false

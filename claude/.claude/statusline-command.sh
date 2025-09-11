@@ -48,5 +48,5 @@ if [ -n "$git_branch" ]; then
 fi
 
 if [ -n "$ccusage_output" ]; then
-    printf " \033[90m| %s\033[0m" "$ccusage_output"
+    printf " \033[37m| %s\033[0m" "$ccusage_output"
 fi
