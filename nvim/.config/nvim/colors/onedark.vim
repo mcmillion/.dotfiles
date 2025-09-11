@@ -76,8 +76,8 @@ hi Conditional                     guifg=#c678dd guibg=NONE    gui=NONE
 hi Constant                        guifg=#e5c07b guibg=NONE    gui=NONE
 hi Cursor                          guifg=NONE    guibg=NONE    gui=reverse
 hi CursorColumn                    guifg=NONE    guibg=#272d36 gui=NONE
-hi CursorLine                      guifg=NONE    guibg=#272d36 gui=NONE
-hi CursorLineNr                    guifg=#858b96 guibg=#272d36 gui=NONE
+hi CursorLine                      guifg=NONE    guibg=#1f242b gui=NONE
+hi CursorLineNr                    guifg=#858b96 guibg=#1f242b gui=NONE
 hi Define                          guifg=#c678dd guibg=NONE    gui=NONE
 hi DiagnosticError                 guifg=#f44747 guibg=NONE    gui=NONE
 hi DiagnosticHint                  guifg=#6c727e guibg=NONE    gui=NONE
@@ -87,27 +87,27 @@ hi DiagnosticUnderlineInfo         gui=undercurl guisp=#6c727e
 hi DiagnosticUnderlineWarn         gui=undercurl guisp=#e5c07b
 hi DiagnosticWarn                  guifg=#e5c07b guibg=NONE    gui=NONE
 hi DiagnsoticInfo                  guifg=#6c727e guibg=NONE    gui=NONE
-hi DiffAdd                         guifg=#202329 guibg=#98c379 gui=NONE
+hi DiffAdd                         guifg=#1c1f24 guibg=#98c379 gui=NONE
 hi DiffChange                      guifg=#e5c07b guibg=NONE    gui=underline
-hi DiffDelete                      guifg=#202329 guibg=#e06c75 gui=NONE
-hi DiffText                        guifg=#202329 guibg=#e5c07b gui=NONE
+hi DiffDelete                      guifg=#1c1f24 guibg=#e06c75 gui=NONE
+hi DiffText                        guifg=#1c1f24 guibg=#e5c07b gui=NONE
 hi Directory                       guifg=#61afef guibg=NONE    gui=NONE
 hi EasyMotionShade                 guifg=NONE    guibg=NONE    gui=NONE
 hi EasyMotionTarget                guifg=#f44747 guibg=NONE    gui=bold
 hi EasyMotionTarget2First          guifg=#f44747 guibg=NONE    gui=bold
 hi EasyMotionTarget2Second         guifg=#f44747 guibg=NONE    gui=bold
-hi EndOfBuffer                     guifg=#202329 guibg=NONE    gui=NONE
+hi EndOfBuffer                     guifg=#1c1f24 guibg=NONE    gui=NONE
 hi Error                           guifg=#f44747 guibg=NONE    gui=bold,reverse
 hi ErrorMsg                        guifg=#f44747 guibg=NONE    gui=NONE
 hi Exception                       guifg=#c678dd guibg=NONE    gui=NONE
 hi Float                           guifg=#d19a66 guibg=NONE    gui=NONE
-hi FloatBorder                     guifg=#363945 guibg=#202329 gui=NONE
+hi FloatBorder                     guifg=#363945 guibg=#1c1f24 gui=NONE
 hi FoldColumn                      guifg=NONE    guibg=NONE    gui=NONE
 hi Folded                          guifg=#5c6370 guibg=NONE    gui=NONE
 hi Function                        guifg=#e5c07b guibg=NONE    gui=NONE
-hi GitSignsAdd                     guifg=#98c379 guibg=#202329
-hi GitSignsChange                  guifg=#e5c07b guibg=#202329
-hi GitSignsDelete                  guifg=#e06c75 guibg=#202329
+hi GitSignsAdd                     guifg=#98c379 guibg=#1c1f24
+hi GitSignsChange                  guifg=#e5c07b guibg=#1c1f24
+hi GitSignsDelete                  guifg=#e06c75 guibg=#1c1f24
 hi Identifier                      guifg=#61afef guibg=NONE    gui=NONE
 hi IncSearch                       guifg=#e5c07b guibg=#5c6370 gui=NONE
 hi Include                         guifg=#c678dd guibg=NONE    gui=NONE
@@ -118,22 +118,22 @@ hi Macro                           guifg=#c678dd guibg=NONE    gui=NONE
 hi MatchParen                      guifg=NONE    guibg=#313e55 gui=NONE
 hi MsgArea                         guifg=#abb2bf guibg=NONE    gui=NONE
 hi NonText                         guifg=#3b4048 guibg=NONE    gui=NONE
-hi Normal                          guifg=#abb2bf guibg=#202329 gui=NONE
-hi NormalFloat                     guifg=NONE    guibg=#202329 gui=NONE
+hi Normal                          guifg=#abb2bf guibg=#1c1f24 gui=NONE
+hi NormalFloat                     guifg=NONE    guibg=#1c1f24 gui=NONE
 hi Number                          guifg=#d19a66 guibg=NONE    gui=NONE
 hi Operator                        guifg=#c678dd guibg=NONE    gui=NONE
-hi Pmenu                           guifg=#abb2bf guibg=#202329 gui=NONE
-hi PmenuSbar                       guifg=NONE    guibg=#202329 gui=NONE
+hi Pmenu                           guifg=#abb2bf guibg=#1c1f24 gui=NONE
+hi PmenuSbar                       guifg=NONE    guibg=#1c1f24 gui=NONE
 hi PmenuSel                        guifg=#abb2bf guibg=#272d36 gui=NONE
 hi PmenuThumb                      guifg=NONE    guibg=#272d36 gui=NONE
 hi PreCondit                       guifg=#61afef guibg=NONE    gui=NONE
 hi PreProc                         guifg=#e5c07b guibg=NONE    gui=NONE
 hi Question                        guifg=#c678dd guibg=NONE    gui=NONE
-hi QuickFixLine                    guifg=#202329 guibg=#e5c07b gui=NONE
+hi QuickFixLine                    guifg=#1c1f24 guibg=#e5c07b gui=NONE
 hi Repeat                          guifg=#c678dd guibg=NONE    gui=NONE
 hi Scope                           guifg=#5c6370 guibg=NONE    gui=NONE
-hi Search                          guifg=#202329 guibg=#e5c07b gui=NONE
-hi SignColumn                      guifg=NONE    guibg=#202329 gui=NONE
+hi Search                          guifg=#1c1f24 guibg=#e5c07b gui=NONE
+hi SignColumn                      guifg=NONE    guibg=#1c1f24 gui=NONE
 hi Special                         guifg=#61afef guibg=NONE    gui=italic
 hi SpecialComment                  guifg=#5c6370 guibg=NONE    gui=italic
 hi SpecialKey                      guifg=#3b4048 guibg=NONE    gui=NONE
@@ -163,7 +163,7 @@ hi Structure                       guifg=#e5c07b guibg=NONE    gui=NONE
 hi TabLine                         guifg=#5c6370 guibg=#282d36 gui=NONE
 hi TabLineFill                     guifg=#5c6370 guibg=#282d36 gui=NONE
 hi TabLineSel                      guifg=#abb2bf guibg=#3f4452 gui=NONE
-hi Terminal                        guifg=#abb2bf guibg=#202329 gui=NONE
+hi Terminal                        guifg=#abb2bf guibg=#1c1f24 gui=NONE
 hi Title                           guifg=#abb2bf guibg=NONE    gui=NONE
 hi Todo                            guifg=#abb2bf guibg=NONE    gui=bold,italic
 hi Type                            guifg=#61afef guibg=NONE    gui=NONE
@@ -194,7 +194,7 @@ hi WhichKey                        guifg=#c678dd guibg=NONE    gui=NONE
 hi WhichKeyDesc                    guifg=#61afef guibg=NONE    gui=NONE
 hi WhichKeyGroup                   guifg=#61afef guibg=NONE    gui=NONE
 hi WhichKeySeperator               guifg=#98c379 guibg=NONE    gui=NONE
-hi WildMenu                        guifg=#202329 guibg=#61afef gui=NONE
+hi WildMenu                        guifg=#1c1f24 guibg=#61afef gui=NONE
 hi debugBreakpoint                 guifg=#e06c75 guibg=NONE    gui=reverse
 hi debugPc                         guifg=NONE    guibg=#56b6c2 gui=NONE
 hi diffAdded                       guifg=#98c379 guibg=NONE    gui=NONE
