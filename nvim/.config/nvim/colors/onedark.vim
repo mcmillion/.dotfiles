@@ -76,8 +76,8 @@ hi Conditional                     guifg=#c678dd guibg=NONE    gui=NONE
 hi Constant                        guifg=#e5c07b guibg=NONE    gui=NONE
 hi Cursor                          guifg=NONE    guibg=NONE    gui=reverse
 hi CursorColumn                    guifg=NONE    guibg=#272d36 gui=NONE
-hi CursorLine                      guifg=NONE    guibg=#1f242b gui=NONE
-hi CursorLineNr                    guifg=#858b96 guibg=#1f242b gui=NONE
+hi CursorLine                      guifg=NONE    guibg=#242932 gui=NONE
+hi CursorLineNr                    guifg=#858b96 guibg=#242932 gui=NONE
 hi Define                          guifg=#c678dd guibg=NONE    gui=NONE
 hi DiagnosticError                 guifg=#f44747 guibg=NONE    gui=NONE
 hi DiagnosticHint                  guifg=#6c727e guibg=NONE    gui=NONE

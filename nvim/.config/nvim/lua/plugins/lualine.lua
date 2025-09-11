@@ -18,7 +18,7 @@ return {
     -- Only override section c (main status area) background to our custom color
     for _, mode in pairs({'normal', 'insert', 'visual', 'replace', 'command', 'inactive'}) do
       if auto_theme[mode] and auto_theme[mode].c then
-        auto_theme[mode].c.bg = '#1f242b'
+        auto_theme[mode].c.bg = '#242932'
       end
     end
     
