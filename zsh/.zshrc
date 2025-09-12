@@ -152,6 +152,7 @@ export LSCOLORS='ExfxbxdxCxegedabagacad'
 # FZF
 #==================================================================================================
 
+export FZF_TMUX=0
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!*.uid" 3> /dev/null'
 export FZF_DEFAULT_OPTS='--height 50% --color=fg:7,hl:8,fg+:15,hl+:4,info:9,prompt:4,pointer:4,marker:4,spinner:4,border:3,header:3'
 source <(fzf --zsh)
@@ -172,7 +173,7 @@ gco() {
       branches=$(git branch | grep -v HEAD) &&
     fi
 
-    branch=$(echo "$branches" | fzf-tmux +m) &&
+    branch=$(echo "$branches" | fzf +m) &&
     git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 
   elif [ "$1" = '-b' ]
