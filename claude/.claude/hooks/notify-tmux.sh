@@ -29,7 +29,7 @@ fi
 session_name=$(tmux display-message -p "#{session_name}")
 
 # Format the notification message
-notification_text="[$session_name] $message"
+notification_text=" [$session_name] $message"
 
 # Display the message in tmux (shows for 5 seconds) and play system sound
 tmux display-message -d 5000 "$notification_text"
