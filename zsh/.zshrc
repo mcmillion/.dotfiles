@@ -118,6 +118,7 @@ alias gpl='git pull'
 alias gri='git rebase -i `fcs`~1'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
+alias gwt='git worktree'
 
 gsync() {
   local main current
