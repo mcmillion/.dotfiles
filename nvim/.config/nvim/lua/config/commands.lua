@@ -46,3 +46,27 @@ vim.api.nvim_create_user_command("GutTest", function()
 end, {
   desc = "Run GUT tests in tmux popup (80% x 80%)",
 })
+
+-- Run the current GUT test file in headed mode (with Godot GUI visible).
+-- Only runs the current test file using the -gtest parameter.
+vim.api.nvim_create_user_command("GutTestHeaded", function()
+  local cwd = vim.fn.getcwd()
+  local godot_path = "/Applications/Godot.app/Contents/MacOS/Godot"
+  local current_file = vim.fn.expand('%')
+
+  if not current_file:match("%.gd$") then
+    print("GutTestHeaded: Current file is not a GDScript file")
+    return
+  end
+
+  -- Convert file path to res:// format
+  local res_path = "res://" .. current_file
+
+  local cmd = string.format("%s --path %s -s res://addons/gut/gut_cmdln.gd -gtest=%s -gexit", godot_path, cwd, res_path)
+
+  local tmux_cmd = string.format("tmux display-popup -w 80%% -h 80%% -E '%s; $SHELL'", cmd)
+
+  vim.fn.system(tmux_cmd)
+end, {
+  desc = "Run current GUT test file in headed mode",
+})

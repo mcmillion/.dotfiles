@@ -15,3 +15,8 @@ vim.keymap.set("n", "<leader>t", ":GutTest<CR>", {
   buffer = true,
   desc = "Run GUT tests in tmux popup",
 })
+
+vim.keymap.set("n", "<leader>T", ":GutTestHeaded<CR>", {
+  buffer = true,
+  desc = "Run current GUT test in headed mode",
+})
