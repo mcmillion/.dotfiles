@@ -57,6 +57,9 @@ return {
 
   keys = {
     -- Fuzzy find all files
+    { "<leader>fk", "<cmd>lua require('fzf-lua').keymaps()<CR>" },
+
+    -- Fuzzy find all files
     { "<leader><leader>", "<cmd>lua require('fzf-lua').files()<CR>" },
 
     -- Fuzzy find directories and open in netrw
