@@ -1,0 +1,15 @@
+session: desolate
+root: ~/Developer/BitPivot/desolate.gg/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: servers
+    commands:
+      - nr dev
