@@ -272,3 +272,11 @@ hi link UltestSummaryNamespace UltestSummaryInfo
 
 hi link FzfLuaNormal           NormalFloat
 hi link FzfLuaBorder           FloatBorder
+
+" Winbar styling to match lualine
+hi WinBar                       guifg=#abb2bf guibg=#242932 gui=NONE
+hi WinBarNC                     guifg=#5c6370 guibg=#1c1f24 gui=NONE
+
+" Macro recording and status messages
+hi ModeMsg                      guifg=#98c379 guibg=NONE    gui=NONE
+hi MoreMsg                      guifg=#98c379 guibg=NONE    gui=NONE
