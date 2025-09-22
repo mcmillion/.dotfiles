@@ -10,10 +10,6 @@ windows:
     commands:
       - claude
 
-  - name: codex
-    commands:
-      - codex
-
   - name: zsh
     commands:
       - clear
