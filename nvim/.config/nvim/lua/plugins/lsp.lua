@@ -54,17 +54,16 @@ return {
     "neovim/nvim-lspconfig",
 
     config = function()
-      local lspconfig = require("lspconfig")
-
       -- Typescript
-      lspconfig.ts_ls.setup({
+      vim.lsp.config("ts_ls", {
         on_attach = on_attach,
-        root_dir = lspconfig.util.root_pattern("package.json"),
+        root_markers = { "package.json" },
         single_file_support = false,
       })
+      vim.lsp.enable("ts_ls")
 
       -- ESLint
-      lspconfig.eslint.setup({
+      vim.lsp.config("eslint", {
         on_attach = function(client, bufnr)
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
@@ -85,16 +84,18 @@ return {
           "json",
         },
       })
+      vim.lsp.enable("eslint")
 
       -- Tailwind
-      lspconfig.tailwindcss.setup({
+      vim.lsp.config("tailwindcss", {
         on_attach = on_attach,
-        root_dir = lspconfig.util.root_pattern("package.json"),
+        root_markers = { "package.json" },
       })
+      vim.lsp.enable("tailwindcss")
 
       -- Deno
-      lspconfig.denols.setup({
-        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+      vim.lsp.config("denols", {
+        root_markers = { "deno.json", "deno.jsonc" },
         init_options = {
           lint = true,
           unstable = true,
@@ -108,35 +109,39 @@ return {
             },
           },
         },
-
         on_attach = on_attach,
       })
+      vim.lsp.enable("denols")
 
       -- GDScript
-      lspconfig.gdscript.setup({
+      vim.lsp.config("gdscript", {
         settings = {},
         on_attach = on_attach,
       })
+      vim.lsp.enable("gdscript")
     end,
   },
 
   {
-    "simrat39/rust-tools.nvim",
-
-    opts = {
-      tools = {
-        inlay_hints = {
-          only_current_line = true,
-        },
-      },
-      server = {
-        on_attach = on_attach,
-        settings = {
-          ["rust-analyzer"] = {
-            checkOnSave = true,
+    "mrcjkb/rustaceanvim",
+    version = "^5",
+    lazy = false,
+    init = function()
+      vim.g.rustaceanvim = {
+        server = {
+          on_attach = on_attach,
+          settings = {
+            ["rust-analyzer"] = {
+              checkOnSave = true,
+            },
           },
         },
-      },
-    },
+        tools = {
+          inlay_hints = {
+            only_current_line = true,
+          },
+        },
+      }
+    end,
   },
 }
