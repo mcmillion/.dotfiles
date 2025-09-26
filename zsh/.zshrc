@@ -65,10 +65,14 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -v'
 alias mkdir='mkdir -pv'
-alias ..='cd ..'
 alias x='exit'
 alias q='exit'
 alias grep='grep --color=always'
+
+alias .='pwd'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 
 
