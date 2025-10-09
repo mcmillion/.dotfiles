@@ -1,5 +1,5 @@
 session: zodiac
-root: ~/Developer/Galileo/frontend-monorepo/
+root: ~/Developer/Galileo/zodiac/
 
 windows:
   - name: nvim
