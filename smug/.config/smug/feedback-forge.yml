@@ -1,0 +1,15 @@
+session: feedback-forge
+root: ~/Developer/BitPivot/feedback-forge/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: server
+    commands:
+      - bin/dev
