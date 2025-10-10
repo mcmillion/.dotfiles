@@ -11,6 +11,5 @@ windows:
       - claude --add-dir ../api --add-dir ../core-api
 
   - name: server
-    root: packages/zodiac.galileo.io
     commands:
       - nr start
