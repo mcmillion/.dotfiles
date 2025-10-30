@@ -1,0 +1,19 @@
+session: relic-heroes
+root: ~/Developer/BlackOmen/relic-heroes/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim --listen /tmp/godothost
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: zsh
+    commands:
+      - clear
+
+  - name: yazi
+    commands:
+      - yazi
