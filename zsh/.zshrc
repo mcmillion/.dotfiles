@@ -34,7 +34,11 @@ eval "$(starship init zsh)"
 # ZOXIDE
 #==============================================================================
 
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --hook pwd)"
+function z() {
+    __zoxide_z "$@" && lsd -a
+}
+
 
 
 
