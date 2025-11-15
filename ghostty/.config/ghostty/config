@@ -42,3 +42,5 @@ window-padding-balance = true
 window-colorspace = srgb
 confirm-close-surface = false
 keybind = shift+enter=text:\x1b\r
+keybind = alt+left=esc:[1;3D
+keybind = alt+right=esc:[1;3C
