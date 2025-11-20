@@ -4,6 +4,7 @@ return {
   version = "v1.0.2",
 
   opts = {
+    linehl = true, -- Highlight background of changed lines
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
 

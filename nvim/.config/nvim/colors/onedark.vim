@@ -108,6 +108,9 @@ hi Function                        guifg=#e5c07b guibg=NONE    gui=NONE
 hi GitSignsAdd                     guifg=#98c379 guibg=#1c1f24
 hi GitSignsChange                  guifg=#e5c07b guibg=#1c1f24
 hi GitSignsDelete                  guifg=#e06c75 guibg=#1c1f24
+hi GitSignsAddLn                   guibg=#1f2824 guifg=NONE
+hi GitSignsChangeLn                guibg=#282721 guifg=NONE
+hi GitSignsDeleteLn                guibg=#1c1f24 guifg=NONE
 hi Identifier                      guifg=#61afef guibg=NONE    gui=NONE
 hi IncSearch                       guifg=#e5c07b guibg=#5c6370 gui=NONE
 hi Include                         guifg=#c678dd guibg=NONE    gui=NONE
