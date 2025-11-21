@@ -327,6 +327,27 @@ alias enable_local_timemachine='sudo tmutil enablelocal'
 alias disable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false'
 alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true'
 
+# Restart network services and flush DNS
+restart_network() {
+    echo "🔄 Restarting network interfaces..."
+
+    # Get all active network interfaces
+    for interface in $(networksetup -listallhardwareports | awk '/Device/{print $2}'); do
+        if [[ $interface =~ ^en[0-9]+$ ]]; then
+            echo "  Restarting $interface..."
+            sudo ifconfig $interface down
+            sleep 1
+            sudo ifconfig $interface up
+        fi
+    done
+
+    echo "🧹 Flushing DNS cache..."
+    sudo dscacheutil -flushcache 2>/dev/null
+    sudo killall -HUP mDNSResponder 2>/dev/null
+
+    echo "✅ Network restart complete!"
+    echo "💡 Tip: If issues persist, try 'sudo reboot'"
+}
 
 
 # Start tmux home session automatically
