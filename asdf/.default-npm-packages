@@ -1,5 +1,4 @@
 @antfu/ni
-@anthropic-ai/claude-code
 @fsouza/prettierd
 @tailwindcss/language-server
 aws-cdk
