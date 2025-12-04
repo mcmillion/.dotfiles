@@ -1,0 +1,15 @@
+session: jarvis
+root: ~/Developer/Personal/jarvis/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: servers
+    commands:
+      - nr dev
