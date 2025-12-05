@@ -11,5 +11,10 @@ windows:
       - claude
 
   - name: servers
+    layout: even-horizontal
     commands:
       - nr dev
+    panes:
+      - type: horizontal
+        commands:
+          - nr storybook
