@@ -20,6 +20,9 @@ This repository contains configuration for the following tools:
 ### Package Management
 - **Homebrew** - Package manager with Brewfile for reproducible installs
 
+### System Services
+- **launchd** - macOS launch agent for tmux autostart
+
 ### Utilities
 - **EditorConfig** - Consistent coding styles across editors
 - **Claude** - AI assistant configuration
@@ -102,3 +105,24 @@ To restow (useful after making changes):
 ```bash
 stow -R tool-name
 ```
+
+### Tmux Autostart (macOS)
+
+A launch agent is included to automatically start a tmux session at login.
+
+1. Stow the launchd configuration:
+```bash
+stow launchd
+```
+
+2. Load the launch agent:
+```bash
+launchctl load ~/Library/LaunchAgents/com.user.tmux.plist
+```
+
+To unload:
+```bash
+launchctl unload ~/Library/LaunchAgents/com.user.tmux.plist
+```
+
+This creates a detached tmux session named "home" that starts automatically when you log in.
