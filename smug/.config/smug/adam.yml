@@ -1,5 +1,5 @@
-session: jarvis
-root: ~/Developer/Personal/jarvis/
+session: adam
+root: ~/Developer/Personal/adam/
 
 windows:
   - name: nvim
