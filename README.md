@@ -109,6 +109,5 @@ Tmux session persistence is handled by tmux-resurrect and tmux-continuum plugins
 
 - **Auto-save**: Sessions saved every 5 minutes
 - **Auto-restore**: Sessions restored when tmux starts
-- **Auto-boot**: Tmux starts automatically on login (via launchd)
 
-These are configured in the tmux config and managed by the plugins - no manual setup required.
+Tmux starts automatically when opening a terminal (via zshrc). No launchd plist needed.
