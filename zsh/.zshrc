@@ -93,7 +93,6 @@ export SSH_AUTH_SOCK='~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/age
 # TMUX / VIM / FILES
 #==================================================================================================
 
-alias home='tmux new-session -A -s home'
 alias kill_all_tmux_sessions='tmux ls | awk '\''{print $1}'\'' | sed '\''s/://g'\'' | xargs -I{} tmux kill-session -t {}'
 
 alias v='nvim'
