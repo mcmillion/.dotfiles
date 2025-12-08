@@ -20,9 +20,6 @@ This repository contains configuration for the following tools:
 ### Package Management
 - **Homebrew** - Package manager with Brewfile for reproducible installs
 
-### System Services
-- **launchd** - macOS launch agent for tmux autostart
-
 ### Utilities
 - **EditorConfig** - Consistent coding styles across editors
 - **Claude** - AI assistant configuration
@@ -106,23 +103,12 @@ To restow (useful after making changes):
 stow -R tool-name
 ```
 
-### Tmux Autostart (macOS)
+### Tmux Session Persistence
 
-A launch agent is included to automatically start a tmux session at login.
+Tmux session persistence is handled by tmux-resurrect and tmux-continuum plugins:
 
-1. Stow the launchd configuration:
-```bash
-stow launchd
-```
+- **Auto-save**: Sessions saved every 5 minutes
+- **Auto-restore**: Sessions restored when tmux starts
+- **Auto-boot**: Tmux starts automatically on login (via launchd)
 
-2. Load the launch agent:
-```bash
-launchctl load ~/Library/LaunchAgents/com.user.tmux.plist
-```
-
-To unload:
-```bash
-launchctl unload ~/Library/LaunchAgents/com.user.tmux.plist
-```
-
-This creates a detached tmux session named "home" that starts automatically when you log in.
+These are configured in the tmux config and managed by the plugins - no manual setup required.
