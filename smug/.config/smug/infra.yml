@@ -1,0 +1,15 @@
+session: infra
+root: ~/Developer/Personal/infra/
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: maridia
+    commands:
+      - mosh maridia
