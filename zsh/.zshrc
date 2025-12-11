@@ -352,5 +352,5 @@ restart_network() {
 
 # Start tmux home session automatically
 if [[ ("$OSTYPE" == "darwin"*) && "$TERM_PROGRAM" != "vscode" && (-z "$TMUX") ]]; then
-  tmux attach || tmux
+  tmux new-session -A -s home
 fi
