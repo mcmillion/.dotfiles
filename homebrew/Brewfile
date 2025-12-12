@@ -33,5 +33,5 @@ brew 'zsh'
 
 cask 'claude'
 cask 'claude-code'
-cask 'ghostty'
+cask 'kitty'
 cask 'raycast'
