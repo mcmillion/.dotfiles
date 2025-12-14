@@ -357,9 +357,7 @@ restart_network() {
 # STARSHIP PROMPT (must be after fzf to avoid zle-keymap-select conflicts)
 #==================================================================================================
 
-if [[ -z "$STARSHIP_SESSION_KEY" ]]; then
-  eval "$(starship init zsh)"
-fi
+eval "$(starship init zsh)"
 
 
 
