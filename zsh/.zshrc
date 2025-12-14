@@ -24,14 +24,6 @@ cd () {
 
 
 #==============================================================================
-# PROMPT
-#==============================================================================
-
-eval "$(starship init zsh)"
-
-
-
-#==============================================================================
 # ZOXIDE
 #==============================================================================
 
@@ -102,6 +94,17 @@ alias vim='nvim'
 alias clear_nvim_sessions='rm ~/.local/share/nvim/sessions/*'
 
 alias y='yazi'
+
+
+
+#==================================================================================================
+# TWM (Tmux Workspace Manager)
+#==================================================================================================
+
+eval "$(twm --print-zsh-completion)"
+
+alias t='twm'
+alias home='tmux new-session -A -s home'
 
 
 
@@ -348,6 +351,16 @@ restart_network() {
     echo "✅ Network restart complete!"
     echo "💡 Tip: If issues persist, try 'sudo reboot'"
 }
+
+
+#==================================================================================================
+# STARSHIP PROMPT (must be after fzf to avoid zle-keymap-select conflicts)
+#==================================================================================================
+
+if [[ -z "$STARSHIP_SESSION_KEY" ]]; then
+  eval "$(starship init zsh)"
+fi
+
 
 
 # Start tmux home session automatically
