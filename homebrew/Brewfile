@@ -34,7 +34,6 @@ brew 'zsh'
 
 cask '1password-cli'
 cask 'claude'
-cask 'claude-code'
 cask 'font-symbols-only-nerd-font'
 cask 'kitty'
 cask 'raycast'
