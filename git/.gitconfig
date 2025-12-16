@@ -10,9 +10,6 @@
   autocrlf = false
   editor = nvim
 
-[credential]
-  helper = !/opt/homebrew/bin/op plugin run -- git-credential
-
 [difftool]
   prompt = false
 

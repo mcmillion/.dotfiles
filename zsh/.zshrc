@@ -77,7 +77,7 @@ alias ....='cd ../../..'
 # SSH
 #==================================================================================================
 
-export SSH_AUTH_SOCK='~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock'
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 
 
@@ -97,13 +97,6 @@ alias y='yazi'
 
 
 
-#==================================================================================================
-# TWM (Tmux Workspace Manager)
-#==================================================================================================
-
-eval "$(twm --print-zsh-completion)"
-
-alias t='twm'
 alias home='tmux new-session -A -s home'
 
 
@@ -264,7 +257,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
   export PATH="$PYENV_ROOT/bin:$PATH"
-  export PATH="$PATH:/Users/mmcmillion/.local/bin"
+  export PATH="$PATH:$HOME/.local/bin"
   eval "$(pyenv init -)"
 
   # git -C ~/Developer/Galileo/dotfiles reset --hard origin/master > /dev/null 2>&1
@@ -361,7 +354,7 @@ eval "$(starship init zsh)"
 
 
 
-# Start tmux home session automatically
-if [[ ("$OSTYPE" == "darwin"*) && "$TERM_PROGRAM" != "vscode" && (-z "$TMUX") ]]; then
+# Auto-start or attach to home tmux session
+if [[ "$OSTYPE" == darwin* && "$TERM_PROGRAM" != "vscode" && -z "$TMUX" ]]; then
   tmux new-session -A -s home
 fi
