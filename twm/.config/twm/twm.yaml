@@ -12,6 +12,7 @@ exclude_path_components:
   - .git
   - __pycache__
   - node_modules
+  - qmk_firmware
   - target
   - venv
   - vendor
@@ -30,6 +31,7 @@ workspace_definitions:
   - name: komodo
     has_all_files:
       - komodo
+      - .git
     missing_all_files:
       - .bare
     default_layout: komodo
