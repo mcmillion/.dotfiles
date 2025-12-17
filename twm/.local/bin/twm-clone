@@ -1,5 +1,5 @@
 #!/bin/bash
-# git-clone-bare
+# twm-clone
 # Clone a git repo as a bare repo with worktree setup
 #
 # Creates structure:
@@ -8,12 +8,16 @@
 #     main/            (worktree for default branch)
 #
 # Usage:
-#   git-clone-bare git@github.com:Org/project.git
-#   git-clone-bare https://github.com/Org/project.git
+#   twm-clone git@github.com:Org/project.git
+#   twm-clone https://github.com/Org/project.git
 
 set -e
 
 DEV_DIR="$HOME/Developer"
+
+#==============================================================================
+# PARSE GIT URL
+#==============================================================================
 
 parse_git_url() {
   local url="$1"
@@ -41,15 +45,19 @@ parse_git_url() {
   echo "$org" "$project"
 }
 
+#==============================================================================
+# MAIN
+#==============================================================================
+
 main() {
   local url="$1"
 
   if [[ -z "$url" ]]; then
-    echo "Usage: git-clone-bare <git-url>" >&2
+    echo "Usage: twm-clone <git-url>" >&2
     echo "" >&2
     echo "Examples:" >&2
-    echo "  git-clone-bare git@github.com:Org/project.git" >&2
-    echo "  git-clone-bare https://github.com/Org/project.git" >&2
+    echo "  twm-clone git@github.com:Org/project.git" >&2
+    echo "  twm-clone https://github.com/Org/project.git" >&2
     exit 1
   fi
 
@@ -96,6 +104,13 @@ main() {
 
   # Add default branch as worktree
   git --git-dir=.bare worktree add "$default_branch" "$default_branch"
+
+  # Set up environment
+  cd "$default_branch"
+  if command -v twm-worktree-setup &> /dev/null; then
+    twm-worktree-setup
+  fi
+  cd ..
 
   echo ""
   echo "Created: $project_dir/"
