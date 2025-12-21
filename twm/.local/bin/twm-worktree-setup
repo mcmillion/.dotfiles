@@ -99,65 +99,6 @@ setup_env_from_1password() {
 }
 
 #==============================================================================
-# PORT CONFIGURATION
-#==============================================================================
-
-setup_port() {
-  local project_root
-  project_root=$(find_project_root "$(pwd)") || {
-    echo "twm-setup: Could not determine project root for port setup"
-    return 1
-  }
-
-  # Detect project type and set base port
-  local base_port=3000
-  if [[ -f "next.config.js" || -f "next.config.ts" || -f "next.config.mjs" ]]; then
-    base_port=3000
-  elif [[ -f "vite.config.js" || -f "vite.config.ts" || -f "vite.config.mts" ]]; then
-    base_port=5173
-  elif [[ -f "Gemfile" && -f "config/routes.rb" ]]; then
-    base_port=3000
-  elif [[ -f "manage.py" ]]; then
-    base_port=8000
-  fi
-
-  # Check for local .twm.yaml override in project root
-  local local_config="$project_root/.twm.yaml"
-  if [[ -f "$local_config" ]]; then
-    local override_port
-    override_port=$(grep -E "^base_port:" "$local_config" 2>/dev/null | awk '{print $2}')
-    if [[ -n "$override_port" ]]; then
-      base_port="$override_port"
-    fi
-  fi
-
-  # Calculate worktree index (alphabetically sorted, 0-indexed)
-  local worktree_name worktree_index
-  worktree_name=$(basename "$(pwd)")
-
-  # List sibling directories (excluding .bare) and find our index
-  worktree_index=$(ls -1 "$project_root" 2>/dev/null | grep -v "^\.bare$" | sort | grep -n "^${worktree_name}$" | cut -d: -f1)
-
-  if [[ -z "$worktree_index" ]]; then
-    worktree_index=1
-  fi
-
-  worktree_index=$((worktree_index - 1))
-
-  # Set PORT
-  export PORT=$((base_port + worktree_index))
-  echo "twm-setup: PORT=$PORT (base: $base_port, index: $worktree_index)"
-
-  # Also update env file if it exists and doesn't have PORT set
-  local env_file
-  env_file=$(get_env_filename)
-  if [[ -f "$env_file" ]] && ! grep -q "^PORT=" "$env_file"; then
-    echo "PORT=$PORT" >> "$env_file"
-    echo "twm-setup: Added PORT=$PORT to $env_file"
-  fi
-}
-
-#==============================================================================
 # INSTALL DEPENDENCIES
 #==============================================================================
 
@@ -209,7 +150,6 @@ main() {
   echo "twm-setup: Setting up worktree environment..."
 
   setup_env_from_1password
-  setup_port
   install_dependencies
 
   echo "twm-setup: Done"
