@@ -102,12 +102,3 @@ To restow (useful after making changes):
 ```bash
 stow -R tool-name
 ```
-
-### Tmux Session Persistence
-
-Tmux session persistence is handled by tmux-resurrect and tmux-continuum plugins:
-
-- **Auto-save**: Sessions saved every 5 minutes
-- **Auto-restore**: Sessions restored when tmux starts
-
-Tmux starts automatically when opening a terminal (via zshrc). No launchd plist needed.

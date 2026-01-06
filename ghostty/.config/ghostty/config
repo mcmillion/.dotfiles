@@ -1,0 +1,48 @@
+font-family             = "Iosevka Term Medium"
+font-family-bold        = "Iosevka Term Semibold"
+font-family-italic      = "Iosevka Term Medium Italic"
+font-family-bold-italic = "Iosevka Term Semibold Italic"
+font-size = 14
+
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
+
+palette = 0=#2c323c
+palette = 1=#e06c75
+palette = 2=#98c379
+palette = 3=#e5c07b
+palette = 4=#61afef
+palette = 5=#c678dd
+palette = 6=#56b6c2
+palette = 7=#979eab
+palette = 8=#3e4452
+palette = 9=#e06c75
+palette = 10=#98c379
+palette = 11=#e5c07b
+palette = 12=#61afef
+palette = 13=#c678dd
+palette = 14=#56b6c2
+palette = 15=#abb2bf
+background = #1c1f24
+foreground = #abb2bf
+cursor-color = #e06c75
+cursor-text = #000000
+selection-foreground = #282c34
+selection-background = #979eab
+
+cursor-style = block
+
+window-height = 48
+window-width = 176
+window-padding-x = 6
+window-padding-y = 6
+window-padding-balance = true
+
+window-colorspace = srgb
+confirm-close-surface = false
+
+mouse-hide-while-typing = true
+keybind = shift+enter=text:\x1b\r
+keybind = alt+left=esc:[1;3D
+keybind = alt+right=esc:[1;3C
