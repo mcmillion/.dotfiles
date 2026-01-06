@@ -1,0 +1,15 @@
+session: mlm-dev
+root: ~/Developer/mcmillion/mlm-dev/main
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: servers
+    commands:
+      - nr dev
