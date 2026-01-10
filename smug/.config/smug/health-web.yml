@@ -1,5 +1,5 @@
 session: healthweb
-root: ~/Developer/Galileo/healthweb/
+root: ~/Developer/galileo-inc/healthweb/
 
 before_start:
   - source .cypress_local

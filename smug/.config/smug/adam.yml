@@ -1,5 +1,5 @@
 session: adam
-root: ~/Developer/mcmillion/adam/main
+root: ~/Developer/mcmillion/adam
 
 windows:
   - name: nvim

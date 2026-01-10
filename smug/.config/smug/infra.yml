@@ -1,5 +1,5 @@
 session: infra
-root: ~/Developer/mcmillion/infra/main
+root: ~/Developer/mcmillion/infra
 
 windows:
   - name: nvim

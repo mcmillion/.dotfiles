@@ -1,5 +1,5 @@
 session: dna
-root: ~/Developer/Galileo/dna/
+root: ~/Developer/galileo-inc/dna/
 
 before_start:
   - source .cypress_local

@@ -1,5 +1,5 @@
 session: mlm-dev
-root: ~/Developer/mcmillion/mlm-dev/main
+root: ~/Developer/mcmillion/mlm-dev
 
 windows:
   - name: nvim
