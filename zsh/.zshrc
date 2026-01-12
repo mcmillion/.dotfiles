@@ -262,7 +262,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 
   # git -C ~/Developer/Galileo/dotfiles reset --hard origin/master > /dev/null 2>&1
   # git -C ~/Developer/Galileo/dotfiles pull > /dev/null 2>&1
-  source ~/Developer/Galileo/dotfiles/bootstrap.sh
+  source ~/Developer/galileo-inc/dotfiles/bootstrap.sh
 fi
 
 
