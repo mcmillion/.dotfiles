@@ -152,7 +152,8 @@
       "Bash(git merge-base:*)",
       "Bash(git cherry:*)",
       "Bash(git whatchanged:*)",
-      "Bash(git for-each-ref:*)"
+      "Bash(git for-each-ref:*)",
+      "Bash(tail:*)"
     ]
   }
 }
