@@ -1,4 +1,5 @@
 brew 'asdf'
+brew 'claude-code'
 brew 'cmake'
 brew 'coreutils'
 brew 'curl'
