@@ -1,0 +1,20 @@
+session: varia
+root: ~/Developer/mcmillion/varia
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: servers
+    layout: even-horizontal
+    commands:
+      - nr dev
+    panes:
+      - type: horizontal
+        commands:
+          - nr storybook
