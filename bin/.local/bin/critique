@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec bun /Users/mlm/Developer/mcmillion/critique/src/cli.tsx "$@"
