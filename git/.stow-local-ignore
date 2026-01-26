@@ -1,9 +1,0 @@
-# Override default stow ignores to allow .gitignore to be stowed
-# This replaces the default ignore list, so we keep common patterns
-RCS
-.+,v
-CVS
-_darcs
-.svn
-.git
-.DS_Store
