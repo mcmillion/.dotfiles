@@ -1,5 +1,4 @@
 brew 'asdf'
-brew 'claude-code'
 brew 'cmake'
 brew 'coreutils'
 brew 'curl'
@@ -36,6 +35,7 @@ brew 'zsh'
 
 cask '1password-cli'
 cask 'claude'
+cask 'claude-code'
 cask 'font-symbols-only-nerd-font'
 cask 'ghostty'
 cask 'raycast'
