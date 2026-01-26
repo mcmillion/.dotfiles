@@ -19,12 +19,15 @@ brew update && brew upgrade
 
 ### Stow Operations
 ```bash
-# Link all configurations
+# Link all configurations (most packages)
 stow */
 
 # Link specific tool configuration
 stow nvim
 stow tmux
+
+# Git requires --dotfiles flag to link dot-gitignore as .gitignore
+stow --dotfiles git
 
 # Remove/unlink configuration
 stow -D tool-name
@@ -36,9 +39,11 @@ stow -R tool-name
 ### Tmux Session Management
 ```bash
 # Start predefined development sessions using Smug
-smug start sentinel      # Neovim development session
+smug start sentinel
 smug start black-omen-web
 smug start health-web
+smug start varia
+smug start zodiac
 
 # List available sessions
 smug list
@@ -58,33 +63,41 @@ source .macos
 ### Stow-based Configuration Management
 Each tool has its own directory containing the configuration files in the same structure they should appear in `$HOME`. Stow creates symbolic links from the home directory to the dotfiles repository, allowing version control of configurations while keeping them in their expected locations.
 
-### Key Tool Configurations
+### Tool Configurations
 
-**Neovim** (`nvim/`)
-- Lua-based configuration with extensive plugin ecosystem
-- LSP integration, autocompletion, and syntax highlighting
-- Custom keybindings and file type specific settings
-- Organized into `lua/config/` and `lua/plugins/` directories
+**Editor & Development**
+- `nvim/` - Neovim with Lua-based config, LSP, Treesitter, and plugins
+- `editorconfig/` - Consistent coding styles across editors
 
-**Tmux** (`tmux/`)
-- Custom prefix key (Ctrl+A instead of Ctrl+B)
-- Vim-style pane navigation
-- Extended history and reduced escape time
-- Status bar with system monitoring
+**Terminal & Shell**
+- `zsh/` - Zsh shell configuration (.zshrc, .zprofile)
+- `ghostty/` - Ghostty terminal emulator configuration
+- `tmux/` - Terminal multiplexer (Ctrl+A prefix, vim-style navigation)
+- `starship/` - Cross-shell prompt with Git integration
 
-**Smug** (`smug/.config/smug/`)
-- Project-specific tmux session templates
-- Predefined window layouts and commands
-- Sessions for different development projects (sentinel, black-omen-web, health-web, etc.)
+**Session & File Management**
+- `smug/` - Tmux session templates (sentinel, black-omen-web, health-web, varia, zodiac, etc.)
+- `yazi/` - Terminal file manager configuration
+- `lsd/` - Modern ls replacement configuration
 
-**Development Tools**
-- `asdf/` - Runtime version manager with default packages
-- `starship/` - Shell prompt configuration
+**Version Control**
+- `git/` - Git configuration (.gitconfig, global gitignore via dot-gitignore)
 - `lazygit/` - Git TUI configuration
-- `yazi/` - File manager configuration
 
-### Homebrew Integration
-The `homebrew/Brewfile` contains all CLI tools and GUI applications managed by Homebrew, ensuring reproducible development environment setup.
+**Search & Navigation**
+- `ripgrep/` - Fast text search (.ripgreprc, .ignore)
+
+**Runtime & Language Tools**
+- `asdf/` - Version manager with default packages for Ruby, Node.js, Python
+- `ruby/` - Ruby development configs (.rubocop.yml, .rspec, .irbrc, .pryrc, .guard.rb)
+- `homebrew/` - Brewfile for reproducible package installs
+
+**System Utilities**
+- `karabiner/` - Keyboard remapping for macOS
+- `bin/` - Custom scripts in .local/bin (critique)
+
+**AI Tools**
+- `claude/` - Claude Code configuration (settings, custom agents, hooks, commands)
 
 ## Working with Configurations
 
