@@ -79,6 +79,9 @@ stow homebrew
 stow editorconfig
 stow claude
 stow smug
+
+# Git requires --dotfiles flag to properly link .gitignore
+stow --dotfiles git
 ```
 
 5. Reload your shell or start a new terminal session to apply changes.
