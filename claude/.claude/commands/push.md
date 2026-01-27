@@ -1,0 +1,13 @@
+# Create a new commit with outstanding changes and push to remote
+
+- NEVER use `git -C` - always run git commands directly in the current directory
+- ALWAYS use the git-expert subagent
+- ALWAYS analyze changes to create atomic commits grouping related changes together
+- If changes are unrelated, create multiple commits (one per logical change)
+- ALWAYS summarize actual changes made in files, not from context or history
+- Use subject + body format: short subject line (50 chars max) with bullet points below when needed
+- Keep messages terse and direct - no emojis, no decorations, no filler words
+- Use imperative mood ("Fix bug" not "Fixed bug")
+- NEVER add Claude attribution, author, or co-author information
+- DO NOT mention CI-enforced items (tests, linting, types) unless they required manual fixes
+- After committing, push to the remote repository
