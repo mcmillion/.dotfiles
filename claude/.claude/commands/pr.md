@@ -1,5 +1,6 @@
 # Create a new PR for the current branch
 
+- NEVER use `git -C` - always run git commands directly in the current directory
 - NEVER add Claude attribution
 - ALWAYS use the github PR template in the repo if it exists
 - create a new PR for the current branch

@@ -1,6 +1,7 @@
 # Rebase current branch on top of latest master/main
 
-Use the git-expert agent.
+- NEVER use `git -C` - always run git commands directly in the current directory
+- Use the git-expert agent
 
 Rebase current branch onto latest master/main:
 1. Detect if repo uses 'master' or 'main' as default branch

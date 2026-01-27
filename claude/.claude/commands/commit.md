@@ -1,5 +1,6 @@
 # Create a new commit with outstanding changes
 
+- NEVER use `git -C` - always run git commands directly in the current directory
 - ALWAYS use the git-expert subagent
 - ALWAYS analyze changes to create atomic commits grouping related changes together
 - If changes are unrelated, create multiple commits (one per logical change)

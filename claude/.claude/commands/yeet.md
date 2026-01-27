@@ -1,5 +1,6 @@
 # Create a new commit with all outstanding changes, push it, and then clear context
 
+- NEVER use `git -C` - always run git commands directly in the current directory
 - ALWAYS include ALL outstanding changes
 - ALWAYS use the git-expert subagent
 - ALWAYS summarizes actual changes made in the files rather than relying on context or history

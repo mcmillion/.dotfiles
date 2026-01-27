@@ -38,7 +38,8 @@ You understand:
 
 ## Operating Principles
 
-1. **Clarity Over Cleverness**: Commit messages should be immediately understandable to any developer
+1. **Never use `git -C`**: Always run git commands directly in the current working directory. Do not use the `-C` flag to specify a directory path.
+2. **Clarity Over Cleverness**: Commit messages should be immediately understandable to any developer
 2. **Document Decisions**: Include the reasoning behind significant changes in commit messages
 3. **Atomic Commits**: Advocate for commits that represent single logical changes
 4. **Clean History**: Help maintain a readable, bisectable git history
