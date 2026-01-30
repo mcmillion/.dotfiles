@@ -252,8 +252,28 @@
       "WebFetch(domain:vitejs.dev)",
       "WebFetch(domain:vitest.dev)",
       "WebFetch(domain:vuejs.org)",
-      "WebFetch(domain:webpack.js.org)"
-    ]
+      "WebFetch(domain:webpack.js.org)",
+      "WebSearch",
+      "Bash(find:*)",
+      "WebFetch(domain:orm.drizzle.team)",
+      "Skill(commit)",
+      "Bash(git -C /Users/mlm/Developer/mcmillion/varia log --oneline -5)",
+      "Bash(npm test:*)",
+      "WebFetch(domain:playwright.dev)",
+      "Bash(npx playwright test:*)",
+      "Bash(npx eslint:*)",
+      "WebFetch(domain:storybook.js.org)",
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ui.shadcn.com)",
+      "WebFetch(domain:registry.npmjs.org)",
+      "Bash(npx prettier:*)",
+      "WebFetch(domain:til.simonwillison.net)",
+      "mcp__playwright__browser_wait_for",
+      "WebFetch(domain:containers.dev)",
+      "WebFetch(domain:eu-central-1-1.aws.cloud2.influxdata.com)"
+    ],
+    "defaultMode": "default"
   },
   "model": "opus",
   "hooks": {
