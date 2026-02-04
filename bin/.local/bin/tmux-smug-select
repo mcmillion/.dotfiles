@@ -1,0 +1,14 @@
+#!/bin/bash
+selected=$(smug list | fzf --reverse --header='Select smug session to start' \
+    --preview='echo {}' \
+    --preview-window=up:1:wrap)
+
+[ -z "$selected" ] && exit 0
+
+session=$(awk '/^session:/{print $2}' ~/.config/smug/"$selected".yml)
+
+if tmux has-session -t "$session" 2>/dev/null; then
+    tmux switch-client -t "$session"
+else
+    smug start "$selected" --attach
+fi
