@@ -106,7 +106,8 @@ alias home='tmux new-session -A -s home'
 # GIT
 #==================================================================================================
 
-alias g='lazygit'
+alias lg='lazygit'
+alias ld='lazydocker'
 alias gr='gh dash'
 alias gs='git status'
 alias gd='git diff'
