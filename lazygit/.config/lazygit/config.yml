@@ -4,16 +4,17 @@ gui:
 
   theme:
     activeBorderColor:
-      - '#979eab'
+      - '#61afef'
+      - bold
 
     inactiveBorderColor:
-      - '#3e4452'
+      - '#979eab'
 
     searchingActiveBorderColor:
       - '#e5c07b'
 
     optionsTextColor:
-      - '#3e4452'
+      - '#979eab'
 
     selectedLineBgColor:
       - '#3e4452'
