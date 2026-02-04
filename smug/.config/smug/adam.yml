@@ -1,6 +1,12 @@
 session: adam
 root: ~/Developer/mcmillion/adam
 
+before_start:
+  - devpod up adam --recreate --ide none
+
+stop:
+  - devpod stop adam
+
 windows:
   - name: nvim
     commands:
@@ -13,8 +19,8 @@ windows:
   - name: servers
     layout: even-horizontal
     commands:
-      - nr dev
+      - devpod ssh adam --workdir /workspace --command "npm run dev"
     panes:
       - type: horizontal
         commands:
-          - nr storybook
+          - devpod ssh adam --workdir /workspace --command "npm run storybook"
