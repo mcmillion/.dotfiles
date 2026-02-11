@@ -14,6 +14,8 @@ bindkey "^?" backward-delete-char
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:(mosh|ssh|scp|sftp|rsync):*' known-hosts-files ''
+zstyle ':completion:*:(mosh|ssh|scp|sftp|rsync):*' ignored-patterns '*.*'
 
 # Auto-ls when cd-ing into directories
 cd () {
