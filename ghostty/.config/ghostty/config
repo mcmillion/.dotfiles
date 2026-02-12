@@ -39,6 +39,7 @@ window-padding-x = 6
 window-padding-y = 6
 window-padding-balance = true
 
+macos-titlebar-style = hidden
 window-colorspace = srgb
 confirm-close-surface = false
 
