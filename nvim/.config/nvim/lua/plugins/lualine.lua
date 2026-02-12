@@ -26,12 +26,14 @@ return {
       options = {
         theme = auto_theme,
         component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
       },
       sections = {
         lualine_a = {
           {
             "mode",
+            padding = { left = 0, right = 1 },
+            separator = { left = "" },
             fmt = function(s)
               return s:sub(1, 1)
             end,
@@ -88,7 +90,7 @@ return {
           },
         },
         lualine_y = {},
-        lualine_z = { "location" },
+        lualine_z = { { "location", padding = { left = 1, right = 0 }, separator = { right = "" } } },
       },
       inactive_sections = {
         lualine_a = {},
