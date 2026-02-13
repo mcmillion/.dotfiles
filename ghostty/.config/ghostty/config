@@ -44,6 +44,7 @@ window-colorspace = srgb
 confirm-close-surface = false
 
 mouse-hide-while-typing = true
+mouse-shift-capture = false
 keybind = shift+enter=text:\x1b\r
 keybind = alt+left=esc:[1;3D
 keybind = alt+right=esc:[1;3C
