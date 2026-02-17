@@ -275,7 +275,6 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -297,5 +296,6 @@
     "context7-plugin@context7-marketplace": true
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium"
+  "effortLevel": "medium",
+  "model": "opus"
 }
