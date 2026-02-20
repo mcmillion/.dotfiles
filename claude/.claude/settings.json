@@ -296,6 +296,5 @@
     "context7-plugin@context7-marketplace": true
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium",
-  "model": "opus"
+  "effortLevel": "medium"
 }
