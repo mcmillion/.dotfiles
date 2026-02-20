@@ -29,10 +29,9 @@
   line-numbers-minus-style = "#e06c75"
   line-numbers-plus-style = "#98c379"
   line-numbers-zero-style = "#5c6370"
-  hunk-header-style = file line-number syntax
-  hunk-header-decoration-style = "#61afef" box
-  file-style = "#61afef" bold
-  file-decoration-style = "#61afef" ul
+  hunk-header-style = omit
+  file-style = "#979eab" bold
+  file-decoration-style = "#5c6370" ul
   commit-decoration-style = "#e5c07b" box
 
 [difftool]
@@ -57,10 +56,11 @@
   unpublish = !git push origin :$(git branch-name)
   delete-merged-branches = !git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
   new = !git init && git symbolic-ref HEAD refs/heads/trunk
-  refresh = !git commit --amend -m \"$(git log -1 --format=%s)\"
+	refresh = !git commit --amend -m \"$(git log -1 --format=%s)\"
   default-branch = "!git symbolic-ref refs/remotes/origin/HEAD | cut -f4 -d/"
   cleanup = !git branch --merged | grep -v -e $(git default-branch) -e '\\*' | xargs -n 1 git branch -d && git remote prune origin
   reup = !git checkout $(git default-branch) && git pull --rebase && git cleanup
+  review = "!f() { git diff \"${1:-$(git default-branch)}\"...HEAD; }; f"
 
 [color]
   ui = auto
