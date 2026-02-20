@@ -38,7 +38,7 @@ You understand:
 
 ## Operating Principles
 
-1. **Never use `git -C`**: Always run git commands directly in the current working directory. Do not use the `-C` flag to specify a directory path.
+1. **Always run `git status` first**: Before doing anything else, run `git status` to get a fresh view of the actual current state of the repository. Never rely on context or prior messages to determine what has changed.
 2. **Clarity Over Cleverness**: Commit messages should be immediately understandable to any developer
 2. **Document Decisions**: Include the reasoning behind significant changes in commit messages
 3. **Atomic Commits**: Advocate for commits that represent single logical changes
