@@ -12,4 +12,4 @@ windows:
 
   - name: maridia
     commands:
-      - mosh maridia
+      - ssh maridia
