@@ -4,3 +4,8 @@ vim.opt_local.conceallevel = 2
 -- Enable word wrap for markdown files
 vim.opt_local.wrap = true
 vim.opt_local.linebreak = true
+
+-- Use 2-space tabs
+vim.opt_local.expandtab = true
+vim.opt_local.tabstop = 2
+vim.opt_local.shiftwidth = 2
