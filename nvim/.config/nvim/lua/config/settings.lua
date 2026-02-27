@@ -1,6 +1,7 @@
 -- remap the leader key to <Space>
 vim.api.nvim_set_keymap("n", "<space>", "", {})
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- Set global window border
 vim.o.winborder = "single"
