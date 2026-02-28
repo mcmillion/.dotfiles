@@ -4,6 +4,7 @@
 - NEVER add Claude attribution
 - ALWAYS use the github PR template in the repo if it exists
 - create a new PR for the current branch
+- if the arguments include `--draft`, create the PR as a draft using `gh pr create --draft`
 - if the git branch name includes a Jira ticket number, reference that ticket in the PR
 - ALWAYS keep the PR description concise with bullet points
 - ALWAYS explain what we did at a high level
