@@ -338,5 +338,9 @@
     "context7-plugin@context7-marketplace": true
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium"
+  "effortLevel": "medium",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
+  }
 }
