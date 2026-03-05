@@ -15,7 +15,7 @@ description: |
   Accepts: a description of the issue, service name, time range, or error details.
   Returns a compact investigation report — not raw Datadog output.
 color: purple
-tools: Bash, Grep, Read, WebFetch, WebSearch
+tools: Bash, Grep, Read, WebFetch, WebSearch, ToolSearch
 allowedMcpServers:
   - datadog
 ---
