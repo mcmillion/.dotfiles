@@ -15,7 +15,34 @@ description: |
   Accepts: a description of the issue, service name, time range, or error details.
   Returns a compact investigation report — not raw Datadog output.
 color: purple
-tools: Bash, Grep, Read, WebFetch, WebSearch, ToolSearch
+tools:
+  - Bash
+  - Grep
+  - Read
+  - WebFetch
+  - WebSearch
+  - ToolSearch
+  - mcp__datadog__search_datadog_logs
+  - mcp__datadog__analyze_datadog_logs
+  - mcp__datadog__search_datadog_spans
+  - mcp__datadog__get_datadog_trace
+  - mcp__datadog__search_datadog_metrics
+  - mcp__datadog__get_datadog_metric
+  - mcp__datadog__get_datadog_metric_context
+  - mcp__datadog__search_datadog_monitors
+  - mcp__datadog__search_datadog_services
+  - mcp__datadog__search_datadog_service_dependencies
+  - mcp__datadog__search_datadog_hosts
+  - mcp__datadog__search_datadog_events
+  - mcp__datadog__search_datadog_incidents
+  - mcp__datadog__get_datadog_incident
+  - mcp__datadog__search_datadog_dashboards
+  - mcp__datadog__search_datadog_notebooks
+  - mcp__datadog__get_datadog_notebook
+  - mcp__datadog__create_datadog_notebook
+  - mcp__datadog__edit_datadog_notebook
+  - mcp__datadog__search_datadog_rum_events
+  - mcp__datadog__search_datadog_docs
 allowedMcpServers:
   - datadog
 ---
