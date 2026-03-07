@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: clone_worktree_repo <git-repo-url> [parent-folder-name]"
+  exit 1
+fi
+
+repo_url="$1"
+repo_name="${2:-$(basename "$repo_url" .git)}"
+
+if [[ -d "$repo_name" ]]; then
+  echo "Error: directory '$repo_name' already exists"
+  exit 1
+fi
+
+mkdir -p "$repo_name"
+git clone --bare "$repo_url" "$repo_name/.bare"
+
+echo "gitdir: ./.bare" > "$repo_name/.git"
+
+# Configure fetch to track all remote branches
+git -C "$repo_name/.bare" config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+
+# Fetch so remote tracking branches are available for worktrees
+git -C "$repo_name/.bare" fetch origin
+
+# Detect the default branch from the remote
+default_branch=$(git -C "$repo_name/.bare" remote show origin | sed -n 's/.*HEAD branch: //p')
+
+# Point HEAD at the actual default branch
+git -C "$repo_name/.bare" symbolic-ref HEAD "refs/heads/$default_branch"
+
+# Create a worktree for the default branch tracking its upstream
+git -C "$repo_name" worktree add "$default_branch" "$default_branch"
+git -C "$repo_name/$default_branch" branch --set-upstream-to="origin/$default_branch"
+
+echo "Bare repo cloned into '$repo_name/.bare'"
+echo "Default branch worktree created at '$repo_name/$default_branch'"
