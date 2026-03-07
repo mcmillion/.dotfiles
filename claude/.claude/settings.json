@@ -317,6 +317,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -341,7 +342,5 @@
     "feature-dev@claude-plugins-official": true,
     "context7-plugin@context7-marketplace": true
   },
-  "alwaysThinkingEnabled": true,
-  "effortLevel": "medium",
-  "model": "opus"
+  "alwaysThinkingEnabled": true
 }
