@@ -39,45 +39,27 @@
                                 "from": {
                                     "key_code": "period",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_shift",
-                                            "left_command",
-                                            "left_control",
-                                            "left_option"
-                                        ]
+                                        "mandatory": ["command", "shift", "option", "control"]
                                     }
                                 },
-                                "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "comma",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_shift",
-                                            "left_command",
-                                            "left_control",
-                                            "left_option"
-                                        ]
+                                        "mandatory": ["command", "shift", "option", "control"]
                                     }
                                 },
-                                "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "slash",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_shift",
-                                            "left_command",
-                                            "left_control",
-                                            "left_option"
-                                        ]
+                                        "mandatory": ["command", "shift", "option", "control"]
                                     }
                                 },
-                                "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             }
                         ]
