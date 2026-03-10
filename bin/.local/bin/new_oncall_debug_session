@@ -1,0 +1,36 @@
+#!/bin/bash
+
+SESSION="on-call-debugging"
+BASE_DIR="$HOME/Developer/galileo-inc"
+WORKTREES=(
+  "zodiac/master"
+  "api/master"
+  "core-api/main"
+)
+
+# Kill existing session if it exists
+tmux kill-session -t "$SESSION" 2>/dev/null
+
+# Pull latest on each worktree
+for wt in "${WORKTREES[@]}"; do
+    wt_dir="$BASE_DIR/$wt"
+    if [ ! -d "$wt_dir" ]; then
+        echo "Warning: $wt_dir not found, skipping"
+        continue
+    fi
+
+    echo "Updating $wt..."
+    git -C "$wt_dir" pull
+done
+
+# Create session with claude window in zodiac/master
+tmux new-session -d -s "$SESSION" -c "$BASE_DIR/zodiac/master"
+tmux rename-window -t "$SESSION" "claude"
+tmux send-keys -t "$SESSION" "claude --add-dir ../../api/master --add-dir ../../core-api/main" Enter
+
+# Attach/switch to the session
+if [ -n "$TMUX" ]; then
+    tmux switch-client -t "$SESSION"
+else
+    tmux attach-session -t "$SESSION"
+fi
