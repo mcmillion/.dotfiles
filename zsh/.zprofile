@@ -8,3 +8,6 @@ export LESS='-RFX'
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:/opt/homebrew/bin:$PATH:/Users/mlm/.local/bin"
+
+# Added by Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
