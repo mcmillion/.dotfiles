@@ -10,5 +10,10 @@ return {
     anti_conceal = {
       enabled = false,
     },
+    checkbox = {
+      checked = {
+        scope_highlight = "RenderMarkdownCheckedDim",
+      },
+    },
   },
 }

@@ -280,6 +280,10 @@ hi link FzfLuaBorder           FloatBorder
 hi WinBar                       guifg=#abb2bf guibg=#242932 gui=NONE
 hi WinBarNC                     guifg=#5c6370 guibg=#1c1f24 gui=NONE
 
+" Render Markdown checked todos
+hi RenderMarkdownChecked          guifg=#5c6370 guibg=NONE    gui=strikethrough
+hi RenderMarkdownCheckedDim       guifg=#5c6370 guibg=NONE    gui=strikethrough
+
 " Macro recording and status messages
 hi ModeMsg                      guifg=#98c379 guibg=NONE    gui=NONE
 hi MoreMsg                      guifg=#98c379 guibg=NONE    gui=NONE
