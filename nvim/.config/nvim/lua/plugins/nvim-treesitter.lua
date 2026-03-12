@@ -24,6 +24,8 @@ return {
         "json5",
         "lua",
         "make",
+        "markdown",
+        "markdown_inline",
         "regex",
         "ruby",
         "rust",

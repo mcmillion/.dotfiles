@@ -8,6 +8,12 @@ return {
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
 
+      -- Disable line highlights for markdown to avoid clashing
+      -- with render-markdown.nvim header backgrounds
+      if vim.bo[bufnr].filetype == "markdown" then
+        gs.toggle_linehl(false)
+      end
+
       local function map(mode, l, r, opts)
         opts = opts or {}
         opts.buffer = bufnr

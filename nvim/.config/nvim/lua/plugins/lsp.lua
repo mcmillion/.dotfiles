@@ -142,6 +142,12 @@ return {
       })
       vim.lsp.enable("denols")
 
+      -- Marksman (Markdown)
+      vim.lsp.config("marksman", {
+        on_attach = on_attach,
+      })
+      vim.lsp.enable("marksman")
+
       -- GDScript
       vim.lsp.config("gdscript", {
         settings = {},
