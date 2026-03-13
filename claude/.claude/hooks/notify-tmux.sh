@@ -33,5 +33,17 @@ notification_text=" [$session_name] $message"
 
 # Display the message in tmux (shows for 5 seconds) and play system sound
 tmux display-message -d 5000 "$notification_text"
+# Check if user is currently viewing this session/window
+is_attached=$(tmux display-message -p "#{session_attached}")
+is_active_window=$(tmux display-message -p "#{window_active}")
+
+# Session-level alert (shows in session chooser) — skip if user is on this session
+if [ "$is_attached" != "1" ]; then
+  tmux set-option -t "$session_name" @claude_session_alert "1"
+fi
+# Window-level alert (shows on the tab) — skip if user is viewing this window
+if [ "$is_attached" != "1" ] || [ "$is_active_window" != "1" ]; then
+  tmux set-option -w @claude_window_alert "1"
+fi
 # Play macOS system sound (works regardless of terminal bell support)
 /usr/bin/afplay /System/Library/Sounds/Blow.aiff 2>/dev/null &
