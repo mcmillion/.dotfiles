@@ -8,7 +8,10 @@ return {
   opts = {
     preset = "obsidian",
     anti_conceal = {
-      enabled = false,
+      enabled = true,
+    },
+    heading = {
+      setext = false,
     },
     checkbox = {
       checked = {
