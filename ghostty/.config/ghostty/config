@@ -35,8 +35,8 @@ cursor-style = block
 
 window-height = 48
 window-width = 176
-window-padding-x = 6
-window-padding-y = 6
+window-padding-x = 10
+window-padding-y = 10
 window-padding-balance = true
 
 macos-titlebar-style = hidden
