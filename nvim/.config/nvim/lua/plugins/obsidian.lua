@@ -38,6 +38,10 @@ return {
       order = { " ", "x" },
     },
 
+    frontmatter = {
+      enabled = false,
+    },
+
     ui = {
       enable = false,
     },
