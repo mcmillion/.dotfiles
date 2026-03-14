@@ -320,7 +320,6 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus",
   "hooks": {
     "Notification": [
       {
