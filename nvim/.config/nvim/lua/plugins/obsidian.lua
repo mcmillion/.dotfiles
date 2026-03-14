@@ -3,8 +3,8 @@ return {
   version = "*",
   lazy = true,
   event = {
-    "BufReadPre " .. vim.fn.expand("~") .. "/.obsidian/Notes/**.md",
-    "BufNewFile " .. vim.fn.expand("~") .. "/.obsidian/Notes/**.md",
+    "BufReadPre " .. vim.fn.expand("~") .. "/.obsidian/main/**.md",
+    "BufNewFile " .. vim.fn.expand("~") .. "/.obsidian/main/**.md",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -14,7 +14,7 @@ return {
     workspaces = {
       {
         name = "notes",
-        path = "~/.obsidian/Notes",
+        path = "~/.obsidian/main",
       },
     },
 
