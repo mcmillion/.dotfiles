@@ -1,0 +1,14 @@
+# root: ~/Developer/mcmillion/samus
+session: ${session}
+root: ${root}
+
+windows:
+  - name: nvim
+    commands:
+      - nvim
+
+  - name: claude
+    commands:
+      - claude
+
+  - name: shell
