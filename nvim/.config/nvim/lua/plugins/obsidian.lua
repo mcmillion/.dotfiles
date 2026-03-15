@@ -25,6 +25,14 @@ return {
 
     legacy_commands = false,
 
+    note_id_func = function(title)
+      return title or tostring(os.time())
+    end,
+
+    note = {
+      template = vim.NIL,
+    },
+
     checkbox = {
       order = { " ", "x" },
     },
@@ -40,7 +48,23 @@ return {
 
   keys = {
     { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian" },
-    { "<leader>on", "<cmd>Obsidian new<cr>", desc = "New note" },
+    {
+      "<leader>on",
+      function()
+        local vault = vim.fn.expand("~/.obsidian/main")
+        local cwd = vim.fn.getcwd()
+        vim.cmd.lcd(vault)
+        local input = vim.fn.input({
+          prompt = "New note: ",
+          completion = "file",
+        })
+        vim.cmd.lcd(cwd)
+        if input ~= "" then
+          vim.cmd("Obsidian new " .. input)
+        end
+      end,
+      desc = "New note",
+    },
     { "<leader>of", "<cmd>Obsidian quick_switch<cr>", desc = "Find note" },
     { "<leader>os", "<cmd>Obsidian search<cr>", desc = "Search vault" },
     { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
