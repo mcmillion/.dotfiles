@@ -2,14 +2,13 @@
 session: ${session}
 root: ${root}
 
-before_start:
-  - source .cypress_local
-
 windows:
-  - name: web/nvim
+  - name: nvim
     commands:
       - nvim
 
-  - name: web/server
+  - name: claude
     commands:
-      - PORT=$(port-hash "${session}" dev) yarn start
+      - claude
+
+  - name: shell

@@ -52,6 +52,12 @@ if [[ ! -d "$worktree_path" ]]; then
     default_branch="${default_branch:-main}"
     git -C "$bare_dir" worktree add -b "$branch" "$worktree_path" "$default_branch"
   fi
+
+  # Run post-checkout hook if it exists
+  if [[ -x "$bare_dir/hooks/post-checkout" ]]; then
+    echo "Running post-checkout hook..."
+    (cd "$worktree_path" && "$bare_dir/hooks/post-checkout" null HEAD 1)
+  fi
 fi
 
 # Derive session name

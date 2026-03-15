@@ -11,6 +11,4 @@ windows:
     commands:
       - claude
 
-  - name: servers
-    commands:
-      - PORT=$(port-hash "${session}" dev) nr dev
+  - name: shell

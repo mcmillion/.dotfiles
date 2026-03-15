@@ -11,11 +11,4 @@ windows:
     commands:
       - claude
 
-  - name: servers
-    layout: even-horizontal
-    commands:
-      - PORT=$(port-hash "${session}" dev) nr dev
-    panes:
-      - type: horizontal
-        commands:
-          - PORT=$(port-hash "${session}" storybook) nr storybook
+  - name: shell

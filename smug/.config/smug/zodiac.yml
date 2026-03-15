@@ -9,8 +9,6 @@ windows:
 
   - name: claude
     commands:
-      - claude --add-dir ../api --add-dir ../core-api
+      - claude
 
-  - name: server
-    commands:
-      - PORT=$(port-hash "${session}" dev) nr start
+  - name: shell

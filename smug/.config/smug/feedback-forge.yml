@@ -11,6 +11,4 @@ windows:
     commands:
       - claude
 
-  - name: server
-    commands:
-      - PORT=$(port-hash "${session}" dev) bin/dev
+  - name: shell

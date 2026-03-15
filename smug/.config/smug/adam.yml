@@ -2,10 +2,6 @@
 session: ${session}
 root: ${root}
 
-before_start:
-  - op item get "env-mcmillion-adam" --account my.1password.com --fields notesPlain --format json | jq -r '.value' > .env.local
-  - devpod up "${root}" --id "${session}" --ide none
-
 windows:
   - name: nvim
     commands:
@@ -15,10 +11,4 @@ windows:
     commands:
       - claude
 
-  - name: dev
-    commands:
-      - devpod ssh "${session}" -L $(port-hash "${session}" dev):localhost:3000 --command "cd /workspace && npm run dev"
-
-  - name: storybook
-    commands:
-      - devpod ssh "${session}" -L $(port-hash "${session}" storybook):localhost:6006 --command "cd /workspace && npm run storybook"
+  - name: shell

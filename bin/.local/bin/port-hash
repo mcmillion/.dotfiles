@@ -1,9 +1,0 @@
-#!/bin/bash
-set -euo pipefail
-
-if [[ $# -lt 2 ]]; then
-  echo "Usage: port-hash <session> <service>" >&2
-  exit 1
-fi
-
-echo $(( ($(echo "${1}-${2}" | cksum | cut -d' ' -f1) % 9000) + 3000 ))

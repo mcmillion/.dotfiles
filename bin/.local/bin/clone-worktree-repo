@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [[ $# -lt 1 ]]; then
-  echo "Usage: clone_worktree_repo <git-repo-url> [parent-folder-name]"
+  echo "Usage: clone-worktree-repo <git-repo-url> [parent-folder-name]"
   exit 1
 fi
 
@@ -34,6 +34,22 @@ git -C "$repo_name/.bare" symbolic-ref HEAD "refs/heads/$default_branch"
 # Create a worktree for the default branch tracking its upstream
 git -C "$repo_name" worktree add "$default_branch" "$default_branch"
 git -C "$repo_name/$default_branch" branch --set-upstream-to="origin/$default_branch"
+
+# Symlink repo hooks into the bare repo if they exist
+hooks_dir="$repo_name/$default_branch/hooks"
+if [[ -d "$hooks_dir" ]]; then
+  for hook in "$hooks_dir"/*; do
+    hook_name=$(basename "$hook")
+    ln -sf "../../$default_branch/hooks/$hook_name" "$repo_name/.bare/hooks/$hook_name"
+    echo "Linked hook: $hook_name"
+  done
+fi
+
+# Run post-checkout hook for the initial worktree
+if [[ -x "$repo_name/.bare/hooks/post-checkout" ]]; then
+  echo "Running post-checkout hook..."
+  (cd "$repo_name/$default_branch" && "$(git rev-parse --git-common-dir)/hooks/post-checkout" null HEAD 1)
+fi
 
 echo "Bare repo cloned into '$repo_name/.bare'"
 echo "Default branch worktree created at '$repo_name/$default_branch'"

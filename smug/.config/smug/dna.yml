@@ -2,34 +2,13 @@
 session: ${session}
 root: ${root}
 
-before_start:
-  - source .cypress_local
-
 windows:
-  - name: dna/nvim
+  - name: nvim
     commands:
       - nvim
 
-  - name: dna/server
+  - name: claude
     commands:
-      - PORT=$(port-hash "${session}" dev) yarn start
+      - claude
 
-  - name: core-api
-    manual: true
-    root: ~/Developer/Galileo/core-api/
-    before_start:
-      - docker-compose --file=local.yml up --detach --build postgres redis opensearch
-    commands:
-      - compose/local/django/start
-
-  - name: component-library/nvim
-    manual: true
-    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library/
-    commands:
-      - nvim
-
-  - name: component-library/servers
-    manual: true
-    root: ~/Developer/Galileo/frontend-monorepo/packages/galileo-component-library/
-    commands:
-      - yarn storybook
+  - name: shell
