@@ -5,10 +5,10 @@ selected=$(smug list | fzf --reverse --header='Select smug session to start' \
 
 [ -z "$selected" ] && exit 0
 
-session=$(awk '/^session:/{print $2}' ~/.config/smug/"$selected".yml)
+read -p "Branch (enter for default): " branch
 
-if tmux has-session -t "$session" 2>/dev/null; then
-    tmux switch-client -t "$session"
+if [ -n "$branch" ]; then
+    worktree-session "$selected" "$branch"
 else
-    smug start "$selected" --attach
+    worktree-session "$selected"
 fi

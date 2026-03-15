@@ -1,5 +1,6 @@
-session: varia
-root: ~/Developer/mcmillion/varia
+# root: ~/Developer/mcmillion/varia
+session: ${session}
+root: ${root}
 
 windows:
   - name: nvim
@@ -13,8 +14,8 @@ windows:
   - name: servers
     layout: even-horizontal
     commands:
-      - nr dev
+      - PORT=$(port-hash "${session}" dev) nr dev
     panes:
       - type: horizontal
         commands:
-          - nr storybook
+          - PORT=$(port-hash "${session}" storybook) nr storybook

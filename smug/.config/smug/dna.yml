@@ -1,5 +1,6 @@
-session: dna
-root: ~/Developer/galileo-inc/dna/
+# root: ~/Developer/galileo-inc/dna
+session: ${session}
+root: ${root}
 
 before_start:
   - source .cypress_local
@@ -11,7 +12,7 @@ windows:
 
   - name: dna/server
     commands:
-      - yarn start
+      - PORT=$(port-hash "${session}" dev) yarn start
 
   - name: core-api
     manual: true

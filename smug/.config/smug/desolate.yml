@@ -1,5 +1,6 @@
-session: desolate
-root: ~/Developer/BitPivot/desolate.gg/
+# root: ~/Developer/BitPivot/desolate.gg
+session: ${session}
+root: ${root}
 
 windows:
   - name: nvim
@@ -12,4 +13,4 @@ windows:
 
   - name: servers
     commands:
-      - nr dev
+      - PORT=$(port-hash "${session}" dev) nr dev

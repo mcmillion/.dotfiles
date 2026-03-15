@@ -1,5 +1,6 @@
-session: black-omen-web
-root: ~/Developer/BlackOmen/black-omen-web/
+# root: ~/Developer/BlackOmen/black-omen-web
+session: ${session}
+root: ${root}
 
 windows:
   - name: nvim
@@ -12,4 +13,4 @@ windows:
 
   - name: servers
     commands:
-      - nr dev
+      - PORT=$(port-hash "${session}" dev) nr dev

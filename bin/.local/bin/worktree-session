@@ -1,0 +1,76 @@
+#!/bin/bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: worktree-session <smug-profile> [branch-name]"
+  exit 1
+}
+
+[[ $# -lt 1 ]] && usage
+
+profile="$1"
+branch="${2:-}"
+config_file="$HOME/.config/smug/${profile}.yml"
+
+if [[ ! -f "$config_file" ]]; then
+  echo "Error: smug profile '$profile' not found at $config_file" >&2
+  exit 1
+fi
+
+# Extract project root from the comment at top of profile
+project_root=$(awk '/^# root:/{print $3; exit}' "$config_file")
+project_root="${project_root/#\~/$HOME}"
+
+if [[ -z "$project_root" ]]; then
+  echo "Error: no '# root:' comment found in $config_file" >&2
+  exit 1
+fi
+
+bare_dir="${project_root}/.bare"
+
+# Detect default branch if none specified
+if [[ -z "$branch" ]]; then
+  if [[ -d "$bare_dir" ]]; then
+    branch=$(git -C "$bare_dir" symbolic-ref HEAD 2>/dev/null | sed 's|refs/heads/||')
+  fi
+  branch="${branch:-main}"
+fi
+
+sanitized_branch="${branch//\//-}"
+worktree_path="${project_root}/${sanitized_branch}"
+
+# Create worktree if it doesn't exist
+if [[ ! -d "$worktree_path" ]]; then
+  echo "Creating worktree at $worktree_path..."
+  git -C "$bare_dir" fetch origin
+
+  if git -C "$bare_dir" show-ref --verify --quiet "refs/heads/${branch}" || \
+     git -C "$bare_dir" show-ref --verify --quiet "refs/remotes/origin/${branch}"; then
+    git -C "$bare_dir" worktree add "$worktree_path" "$branch"
+  else
+    default_branch=$(git -C "$bare_dir" symbolic-ref HEAD 2>/dev/null | sed 's|refs/heads/||')
+    default_branch="${default_branch:-main}"
+    git -C "$bare_dir" worktree add -b "$branch" "$worktree_path" "$default_branch"
+  fi
+fi
+
+# Derive session name
+default_branch=$(git -C "$bare_dir" symbolic-ref HEAD 2>/dev/null | sed 's|refs/heads/||')
+default_branch="${default_branch:-main}"
+
+if [[ "$branch" == "$default_branch" ]]; then
+  session_name="$profile"
+else
+  session_name="${profile}-${sanitized_branch}"
+fi
+
+# Switch to existing session or start new one
+if tmux has-session -t "=$session_name" 2>/dev/null; then
+  if [[ -n "${TMUX:-}" ]]; then
+    tmux switch-client -t "=$session_name"
+  else
+    tmux attach-session -t "=$session_name"
+  fi
+else
+  smug start "$profile" "session=$session_name" "root=$worktree_path" --attach
+fi

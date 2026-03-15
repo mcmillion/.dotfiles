@@ -6,7 +6,7 @@ augroup END
 
 function! NetrwMapping()
   noremap <buffer>% :call CreateFileAndOpen()<CR>
-  nnoremap <buffer> <C-l> :NavigatorRight<CR>
+  nnoremap <buffer> <silent> <C-l> :NavigatorRight<CR>
 endfunction
 
 function! CreateFileAndOpen()

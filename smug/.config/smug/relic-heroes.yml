@@ -1,5 +1,6 @@
-session: relic-heroes
-root: ~/Developer/BlackOmen/relic-heroes/
+# root: ~/Developer/BlackOmen/relic-heroes
+session: ${session}
+root: ${root}
 
 windows:
   - name: nvim
