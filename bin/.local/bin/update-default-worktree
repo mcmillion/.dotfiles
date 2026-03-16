@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Find the repo root (the parent dir containing .bare/)
+find_repo_root() {
+  local dir="$1"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.bare" ]]; then
+      echo "$dir"
+      return
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+
+repo_root="${1:-}"
+
+if [[ -z "$repo_root" ]]; then
+  repo_root=$(find_repo_root "$PWD") || {
+    echo "Error: not inside a bare worktree repo and no path given"
+    echo "Usage: update_default_worktree [repo-path]"
+    exit 1
+  }
+fi
+
+if [[ ! -d "$repo_root/.bare" ]]; then
+  echo "Error: '$repo_root' is not a bare worktree repo (no .bare/ found)"
+  exit 1
+fi
+
+default_branch=$(git -C "$repo_root/.bare" symbolic-ref --short HEAD)
+
+worktree_path="$repo_root/$default_branch"
+
+if [[ ! -d "$worktree_path" ]]; then
+  echo "Error: worktree '$worktree_path' does not exist"
+  exit 1
+fi
+
+git -C "$worktree_path" pull --ff-only
