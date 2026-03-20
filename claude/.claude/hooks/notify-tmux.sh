@@ -25,11 +25,12 @@ if [ -z "$message" ]; then
   message="Claude needs attention"
 fi
 
-# Get the current tmux session name
+# Get the current tmux session and window name
 session_name=$(tmux display-message -p "#{session_name}")
+window_name=$(tmux display-message -p "#{window_name}")
 
 # Format the notification message
-notification_text=" [$session_name] $message"
+notification_text=" [$session_name/$window_name] $message"
 
 # Display the message in tmux (shows for 5 seconds) and play system sound
 tmux display-message -d 5000 "$notification_text"

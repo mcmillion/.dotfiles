@@ -340,5 +340,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "context7-plugin@context7-marketplace": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "voiceEnabled": false
 }

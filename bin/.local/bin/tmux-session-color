@@ -1,0 +1,6 @@
+#!/bin/sh
+colors="red green yellow blue magenta cyan brightred brightgreen brightyellow brightblue brightmagenta brightcyan"
+id=$(tmux display-message -p "#{session_id}" | tr -d '$')
+idx=$(( (id % 12) + 1 ))
+color=$(echo "$colors" | awk -v n="$idx" '{print $n}')
+tmux set -q @session_color "$color"
