@@ -8,6 +8,7 @@ vim.api.nvim_exec(
     autocmd BufRead,BufNewFile *.env.* set filetype=sh
     autocmd BufRead,BufNewFile Procfile set filetype=sh
     autocmd BufRead,BufNewFile Procfile.* set filetype=sh
+    autocmd BufRead,BufNewFile *.tml set filetype=toml
     augroup END
   ]],
   true
