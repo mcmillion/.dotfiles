@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://aurora.tailde3142.ts.net:11434/v1"
+      },
+      "models": {
+        "qwen3-coder-next:latest": {
+          "name": "Qwen3 Coder Next 80B (MoE)",
+          "tools": true
+        },
+        "qwen3-coder:30b": {
+          "name": "Qwen3 Coder 30B (MoE)",
+          "tools": true
+        },
+        "qwen2.5-coder:32b": {
+          "name": "Qwen 2.5 Coder 32B",
+          "tools": true
+        },
+        "devstral:24b": {
+          "name": "Devstral 24B",
+          "tools": true
+        }
+      }
+    }
+  }
+}
