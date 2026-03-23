@@ -68,6 +68,12 @@
                         "description": "Map Return to Hyper when held",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": ["tv\\.parsec\\.www"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "return_or_enter",
                                     "modifiers": { "optional": ["any"] }
