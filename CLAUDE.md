@@ -71,7 +71,7 @@ Each tool has its own directory containing the configuration files in the same s
 
 **Terminal & Shell**
 - `zsh/` - Zsh shell configuration (.zshrc, .zprofile)
-- `ghostty/` - Ghostty terminal emulator configuration
+- `kitty/` - Kitty terminal emulator configuration
 - `tmux/` - Terminal multiplexer (Ctrl+A prefix, vim-style navigation)
 - `starship/` - Cross-shell prompt with Git integration
 
