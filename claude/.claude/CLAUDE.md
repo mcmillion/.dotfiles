@@ -38,6 +38,13 @@
 - Do not inline complex argument types or return types, always use an interface
 - For functions with multiple arguments, prefer passing an object rather than individual arguments
 
+## MCP Servers
+
+- User-scoped MCP servers go in `~/.claude.json` (via `claude mcp add -s user`)
+- Project-scoped MCP servers go in `.mcp.json` at the project root
+- NEVER hardcode secrets/tokens in MCP configs — reference env vars from zshenv instead
+- When adding or troubleshooting MCP servers, use `claude mcp get <name>` and `claude mcp list` to inspect config
+
 ## File Handling
 
 - ALWAYS use unix line endings

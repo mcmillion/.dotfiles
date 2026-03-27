@@ -342,5 +342,6 @@
     "rust-analyzer-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "voiceEnabled": false
+  "voiceEnabled": false,
+  "model": "opus[1m]"
 }
