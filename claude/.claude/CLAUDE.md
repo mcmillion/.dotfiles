@@ -44,6 +44,7 @@
 - Project-scoped MCP servers go in `.mcp.json` at the project root
 - NEVER hardcode secrets/tokens in MCP configs — reference env vars from zshenv instead
 - When adding or troubleshooting MCP servers, use `claude mcp get <name>` and `claude mcp list` to inspect config
+- When setting up MCP servers that use `uvx` or `npx`, use `--default-index https://pypi.org/simple/` (uvx) or equivalent to bypass the project's CodeArtifact configuration, which will block public package resolution
 
 ## File Handling
 
