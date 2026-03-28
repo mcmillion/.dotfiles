@@ -20,7 +20,7 @@ zstyle ':completion:*:(mosh|ssh|scp|sftp|rsync):*' ignored-patterns '*.*'
 # Auto-ls when cd-ing into directories
 cd () {
   builtin cd "$@";
-  lsd -a;
+  ls -AGh;
 }
 
 
@@ -31,7 +31,7 @@ cd () {
 
 eval "$(zoxide init zsh --hook pwd)"
 function z() {
-    __zoxide_z "$@" && lsd -a
+    __zoxide_z "$@" && ls -AGh
 }
 
 
@@ -58,11 +58,11 @@ setopt incappendhistory     # Immediately append to the history file, not just w
 alias reload='source ~/.zshrc'
 alias c='brew upgrade claude-code --quiet 2>/dev/null; claude'
 alias cl='clear'
-alias l='lsd -a'
-alias ls='lsd -a'
-alias ll='lsd -al'
-alias cp='cp -iv'
-alias mv='mv -iv'
+alias l='ls -AGh'
+alias ls='ls -AGh'
+alias ll='ls -AGlh'
+alias cp='cp -v'
+alias mv='mv -v'
 alias rm='rm -v'
 alias mkdir='mkdir -pv'
 alias x='exit'

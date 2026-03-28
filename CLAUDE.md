@@ -78,7 +78,6 @@ Each tool has its own directory containing the configuration files in the same s
 **Session & File Management**
 - `smug/` - Tmux session templates (sentinel, black-omen-web, health-web, varia, zodiac, etc.)
 - `yazi/` - Terminal file manager configuration
-- `lsd/` - Modern ls replacement configuration
 
 **Version Control**
 - `git/` - Git configuration (.gitconfig, global gitignore via dot-gitignore)
