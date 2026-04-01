@@ -2,22 +2,43 @@
 
 input=$(cat)
 
-cwd=$(echo "$input" | jq -r '.cwd // empty')
-model=$(echo "$input" | jq -r '.model.display_name // .model // empty')
-used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
+# Single jq call to extract all fields
+eval "$(echo "$input" | jq -r '
+  @sh "cwd=\(.cwd // empty)",
+  @sh "model=\(.model.display_name // .model // empty)",
+  @sh "ctx_pct=\(.context_window.used_percentage // empty)",
+  @sh "five_pct=\(.rate_limits.five_hour.used_percentage // empty)",
+  @sh "seven_pct=\(.rate_limits.seven_day.used_percentage // empty)"
+')"
 
 # ANSI colors
 blue='\033[0;34m'
 yellow='\033[0;33m'
 gray='\033[0;37m'
 red='\033[0;31m'
+green='\033[0;32m'
 reset='\033[0m'
 sep="${gray} · ${reset}"
 
+# Build a labeled bar: label ▰▰▰▱▱▱ NN%
+bar() {
+  local label="$1" pct="$2" width=10
+  local filled=$(( (pct * width + 50) / 100 ))
+  local empty=$(( width - filled ))
+  local color="$green"
+  [ "$pct" -ge 50 ] && color="$yellow"
+  [ "$pct" -ge 80 ] && color="$red"
+  local b=""
+  for ((i=0; i<filled; i++)); do b+="▰"; done
+  for ((i=0; i<empty; i++)); do b+="▱"; done
+  printf '%b%s %b%s%b %b%d%%%b' \
+    "$gray" "$label" "$color" "$b" "$reset" \
+    "$gray" "$pct" "$reset"
+}
+
 # Abbreviate home directory with ~
-home="$HOME"
 if [ -n "$cwd" ]; then
-  display_dir="${cwd/#$home/~}"
+  display_dir="${cwd/#$HOME/~}"
 else
   display_dir="~"
 fi
@@ -26,9 +47,11 @@ fi
 branch=""
 git_status=""
 if [ -n "$cwd" ]; then
-  branch=$(git --no-optional-locks -C "$cwd" rev-parse --abbrev-ref HEAD 2>/dev/null)
+  branch=$(git --no-optional-locks -C "$cwd" \
+    rev-parse --abbrev-ref HEAD 2>/dev/null)
   if [ -n "$branch" ]; then
-    porcelain=$(git --no-optional-locks -C "$cwd" status --porcelain 2>/dev/null)
+    porcelain=$(git --no-optional-locks -C "$cwd" \
+      status --porcelain 2>/dev/null)
     staged=$(echo "$porcelain" | grep -c '^[MADRC]')
     unstaged=$(echo "$porcelain" | grep -c '^.[MD]')
     untracked=$(echo "$porcelain" | grep -c '^??')
@@ -45,18 +68,26 @@ output="${blue}${display_dir}${reset}"
 
 if [ -n "$branch" ]; then
   output="${output}${sep}${yellow}${branch}${reset}"
-  if [ -n "$git_status" ]; then
-    output="${output} ${red}${git_status}${reset}"
-  fi
+  [ -n "$git_status" ] && output="${output} ${red}${git_status}${reset}"
 fi
 
 if [ -n "$model" ]; then
   output="${output}${sep}${gray}${model}${reset}"
 fi
 
-if [ -n "$used_pct" ]; then
-  pct=$(printf "%.0f" "$used_pct")
-  output="${output}${sep}${gray}${pct}%${reset}"
+if [ -n "$ctx_pct" ]; then
+  pct=$(printf "%.0f" "$ctx_pct")
+  output="${output}${sep}$(bar ctx "$pct")"
+fi
+
+if [ -n "$five_pct" ]; then
+  pct=$(printf "%.0f" "$five_pct")
+  output="${output}${sep}$(bar 5h "$pct")"
+fi
+
+if [ -n "$seven_pct" ]; then
+  pct=$(printf "%.0f" "$seven_pct")
+  output="${output}${sep}$(bar 7d "$pct")"
 fi
 
 echo -e "$output"
