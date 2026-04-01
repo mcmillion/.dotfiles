@@ -29,8 +29,9 @@ bar() {
   [ "$pct" -ge 50 ] && color="$yellow"
   [ "$pct" -ge 80 ] && color="$red"
   local b=""
-  for ((i=0; i<filled; i++)); do b+="▰"; done
-  for ((i=0; i<empty; i++)); do b+="▱"; done
+  for ((i=0; i<filled; i++)); do b+="━"; done
+  local dim='\033[0;90m'
+  for ((i=0; i<empty; i++)); do b+="${dim}┄"; done
   printf '%b%s %b%s%b %b%d%%%b' \
     "$gray" "$label" "$color" "$b" "$reset" \
     "$gray" "$pct" "$reset"
