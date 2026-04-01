@@ -89,7 +89,7 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
     pct=$(printf "%.0f" "$seven_pct")
     output="${output}${sep}$(bar 7d "$pct")"
   fi
-elif [ -n "$cost_usd" ]; then
+elif [ -n "$cost_usd" ] && [ "$cost_usd" != "0" ]; then
   output="${output}${sep}${gray}\$$(printf '%.2f' "$cost_usd")${reset}"
 fi
 
