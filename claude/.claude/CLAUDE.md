@@ -1,3 +1,5 @@
+Be extremely concise. Sacrifice grammar for the sake of concision.
+
 # Personal Global Claude Setup
 
 ## General Behavior

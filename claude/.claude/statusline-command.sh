@@ -6,9 +6,10 @@ input=$(cat)
 eval "$(echo "$input" | jq -r '
   @sh "cwd=\(.cwd // empty)",
   @sh "model=\(.model.display_name // .model // empty)",
-  @sh "ctx_pct=\(.context_window.used_percentage // empty)",
+  @sh "ctx_pct=\(.context_window.used_percentage // 0)",
   @sh "five_pct=\(.rate_limits.five_hour.used_percentage // empty)",
-  @sh "seven_pct=\(.rate_limits.seven_day.used_percentage // empty)"
+  @sh "seven_pct=\(.rate_limits.seven_day.used_percentage // empty)",
+  @sh "cost_usd=\(.cost.total_cost_usd // empty)"
 ')"
 
 # ANSI colors
@@ -76,19 +77,20 @@ if [ -n "$model" ]; then
   output="${output}${sep}${gray}${model}${reset}"
 fi
 
-if [ -n "$ctx_pct" ]; then
-  pct=$(printf "%.0f" "$ctx_pct")
-  output="${output}${sep}$(bar ctx "$pct")"
-fi
+pct=$(printf "%.0f" "$ctx_pct")
+output="${output}${sep}$(bar ctx "$pct")"
 
-if [ -n "$five_pct" ]; then
-  pct=$(printf "%.0f" "$five_pct")
-  output="${output}${sep}$(bar 5h "$pct")"
-fi
-
-if [ -n "$seven_pct" ]; then
-  pct=$(printf "%.0f" "$seven_pct")
-  output="${output}${sep}$(bar 7d "$pct")"
+if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
+  if [ -n "$five_pct" ]; then
+    pct=$(printf "%.0f" "$five_pct")
+    output="${output}${sep}$(bar 5h "$pct")"
+  fi
+  if [ -n "$seven_pct" ]; then
+    pct=$(printf "%.0f" "$seven_pct")
+    output="${output}${sep}$(bar 7d "$pct")"
+  fi
+elif [ -n "$cost_usd" ]; then
+  output="${output}${sep}${gray}\$$(printf '%.2f' "$cost_usd")${reset}"
 fi
 
 echo -e "$output"
