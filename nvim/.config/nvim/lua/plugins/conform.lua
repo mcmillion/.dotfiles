@@ -10,8 +10,8 @@ return {
       -- json = { "jq" },
       lua = { "stylua" },
       rust = { "rustfmt" },
-      -- typescript = { "prettier" },
-      -- typescriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
       gdscript = { "gdformat" },
     },
     format_on_save = {

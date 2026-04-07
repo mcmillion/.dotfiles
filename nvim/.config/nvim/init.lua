@@ -3,6 +3,7 @@ require("config.lazy")
 require("config.maps")
 require("config.autocommands")
 require("config.commands")
+require("config.lsp")
 
 if vim.g.neovide then
   require("config.neovide")

@@ -284,6 +284,33 @@ hi WinBarNC                     guifg=#5c6370 guibg=#1c1f24 gui=NONE
 hi RenderMarkdownChecked          guifg=#5c6370 guibg=NONE    gui=strikethrough
 hi RenderMarkdownCheckedDim       guifg=#5c6370 guibg=NONE    gui=strikethrough
 
+" Blink completion
+hi BlinkCmpMenu                    guifg=#abb2bf guibg=#1c1f24 gui=NONE
+hi BlinkCmpMenuBorder              guifg=#363945 guibg=#1c1f24 gui=NONE
+hi BlinkCmpMenuSelection           guifg=NONE    guibg=#272d36 gui=NONE
+hi BlinkCmpDoc                     guifg=#abb2bf guibg=#1c1f24 gui=NONE
+hi BlinkCmpDocBorder               guifg=#363945 guibg=#1c1f24 gui=NONE
+hi BlinkCmpLabel                   guifg=#abb2bf guibg=NONE    gui=NONE
+hi BlinkCmpLabelMatch              guifg=#61afef guibg=NONE    gui=bold
+hi BlinkCmpLabelDeprecated         guifg=#6c727e guibg=NONE    gui=strikethrough
+hi BlinkCmpKindFunction            guifg=#c678dd guibg=NONE    gui=NONE
+hi BlinkCmpKindMethod              guifg=#c678dd guibg=NONE    gui=NONE
+hi BlinkCmpKindVariable            guifg=#e06c75 guibg=NONE    gui=NONE
+hi BlinkCmpKindField               guifg=#e06c75 guibg=NONE    gui=NONE
+hi BlinkCmpKindProperty            guifg=#e06c75 guibg=NONE    gui=NONE
+hi BlinkCmpKindKeyword             guifg=#c678dd guibg=NONE    gui=NONE
+hi BlinkCmpKindModule              guifg=#e5c07b guibg=NONE    gui=NONE
+hi BlinkCmpKindClass               guifg=#e5c07b guibg=NONE    gui=NONE
+hi BlinkCmpKindStruct              guifg=#e5c07b guibg=NONE    gui=NONE
+hi BlinkCmpKindInterface           guifg=#e5c07b guibg=NONE    gui=NONE
+hi BlinkCmpKindEnum                guifg=#e5c07b guibg=NONE    gui=NONE
+hi BlinkCmpKindSnippet             guifg=#98c379 guibg=NONE    gui=NONE
+hi BlinkCmpKindText                guifg=#6c727e guibg=NONE    gui=NONE
+hi BlinkCmpKindValue               guifg=#d19a66 guibg=NONE    gui=NONE
+hi BlinkCmpKindConstant            guifg=#d19a66 guibg=NONE    gui=NONE
+hi BlinkCmpKindTypeParameter       guifg=#56b6c2 guibg=NONE    gui=NONE
+hi BlinkCmpKindCopilot             guifg=#98c379 guibg=NONE    gui=NONE
+
 " Macro recording and status messages
 hi ModeMsg                      guifg=#98c379 guibg=NONE    gui=NONE
 hi MoreMsg                      guifg=#98c379 guibg=NONE    gui=NONE
