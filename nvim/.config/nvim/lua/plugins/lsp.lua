@@ -24,22 +24,6 @@ function on_attach(client, bufnr)
   -- Hover information
   vim.keymap.set("n", "grh", "<Cmd>lua vim.lsp.buf.hover()<CR>", { buffer = bufnr, noremap = true, silent = true })
 
-  -- Go to previous diagnostic
-  vim.keymap.set(
-    "n",
-    "[d",
-    "<cmd>lua vim.diagnostic.goto_prev()<CR>",
-    { buffer = bufnr, noremap = true, silent = true }
-  )
-
-  -- Go to next diagnostic
-  vim.keymap.set(
-    "n",
-    "]d",
-    "<cmd>lua vim.diagnostic.goto_next()<CR>",
-    { buffer = bufnr, noremap = true, silent = true }
-  )
-
   -- Open diagnostic in float
   vim.keymap.set(
     "n",
