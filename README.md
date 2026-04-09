@@ -23,6 +23,7 @@ This repository contains configuration for the following tools:
 ### Utilities
 - **EditorConfig** - Consistent coding styles across editors
 - **Claude** - AI assistant configuration
+- **Codex** - OpenAI Codex CLI configuration
 - **fzf** - Command-line fuzzy finder
 - **ripgrep** - Fast text search tool
 - **zoxide** - Smart directory jumper
@@ -78,6 +79,7 @@ stow asdf
 stow homebrew
 stow editorconfig
 stow claude
+stow codex
 stow smug
 
 # Git requires --dotfiles flag to properly link .gitignore
@@ -105,3 +107,14 @@ To restow (useful after making changes):
 ```bash
 stow -R tool-name
 ```
+
+### Codex Notes
+
+Only Codex instructions/support files are stow-managed here. Keep
+`~/.codex/config.toml` local and machine-specific.
+
+The `codex` package currently manages:
+- `~/.codex/AGENTS.md`
+- `~/.codex/notify-tmux.sh`
+- `~/.codex/agents/*` custom subagents
+- `~/.agents/skills/grill-me` for design interrogation before implementation

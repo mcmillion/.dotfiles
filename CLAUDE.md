@@ -97,6 +97,7 @@ Each tool has its own directory containing the configuration files in the same s
 
 **AI Tools**
 - `claude/` - Claude Code configuration (settings, custom agents, hooks, commands)
+- `codex/` - Codex CLI configuration (`config.toml`, global `AGENTS.md`, notifier)
 
 ## Working with Configurations
 

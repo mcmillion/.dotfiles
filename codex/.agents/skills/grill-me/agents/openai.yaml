@@ -1,0 +1,6 @@
+interface:
+  display_name: "Grill Me"
+  short_description: "Interrogate a design before implementation."
+  default_prompt: "Stress-test this design before we implement it."
+policy:
+  allow_implicit_invocation: false
