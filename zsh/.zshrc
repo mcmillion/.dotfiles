@@ -56,8 +56,7 @@ setopt incappendhistory     # Immediately append to the history file, not just w
 #==============================================================================
 
 alias reload='source ~/.zshrc'
-alias c='clear'
-alias cl='brew upgrade claude-code --quiet 2>/dev/null; claude'
+alias c='brew upgrade claude-code --quiet 2>/dev/null; claude'
 alias cx='brew upgrade --cask codex --quiet 2>/dev/null; codex'
 alias l='ls -AGh'
 alias ls='ls -AGh'
