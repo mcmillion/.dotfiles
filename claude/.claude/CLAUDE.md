@@ -48,6 +48,19 @@ Be extremely concise. Sacrifice grammar for the sake of concision.
 - When adding or troubleshooting MCP servers, use `claude mcp get <name>` and `claude mcp list` to inspect config
 - When setting up MCP servers that use `uvx` or `npx`, use `--default-index https://pypi.org/simple/` (uvx) or equivalent to bypass the project's CodeArtifact configuration, which will block public package resolution
 
+## Obsidian
+
+- No MCP server — interact with vaults directly via markdown files
+- Personal vault: `~/.obsidian/main` (all machines)
+- Black Omen vault: `~/.obsidian/black-omen` (personal machines only)
+- Vault structure: each note is a `.md` file, folders are directories
+- Links between notes use `[[wikilink]]` syntax
+- Frontmatter (YAML between `---`) is used for metadata/properties
+- Tags use `#tag` syntax inline or `tags:` in frontmatter
+- Daily notes typically live in a `daily/` or `Daily Notes/` folder
+- When creating/editing notes, preserve existing frontmatter and wikilinks
+- Do not reorganize vault structure without being asked
+
 ## File Handling
 
 - ALWAYS use unix line endings
