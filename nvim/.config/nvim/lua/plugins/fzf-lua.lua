@@ -56,29 +56,14 @@ return {
   },
 
   keys = {
-    -- Fuzzy find all files
-    { "<leader>fk", "<cmd>lua require('fzf-lua').keymaps()<CR>" },
+    { "<leader>fk", "<cmd>lua require('fzf-lua').keymaps()<CR>", desc = "Keymaps" },
+    { "<leader><leader>", "<cmd>lua require('fzf-lua').files()<CR>", desc = "Find files" },
+    { "<leader>fd", "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>", desc = "Find directories" },
+    { "<leader>fg", "<cmd>lua require('fzf-lua').git_commits()<CR>", desc = "Git commits" },
+    { "<leader>fm", "<cmd>lua require('fzf-lua').marks()<CR>", desc = "Marks" },
+    { "gra", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>", desc = "Code actions" },
 
-    -- Fuzzy find all files
-    { "<leader><leader>", "<cmd>lua require('fzf-lua').files()<CR>" },
-
-    -- Fuzzy find directories and open in netrw
-    { "<leader>fd", "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>" },
-
-    -- Fuzzy find git commits (and optionally check out)
-    { "<leader>fg", "<cmd>lua require('fzf-lua').git_commits()<CR>" },
-
-    -- Fuzzy find marks
-    { "<leader>fm", "<cmd>lua require('fzf-lua').marks()<CR>" },
-
-    -- LSP Code actions
-    { "gra", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>" },
-
-    -- Workspace symbols
-    { "<leader>ls", "<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>" },
-
-    -- DAP
-    { "<leader>dc", "<cmd>lua require('fzf-lua').dap_commands()<CR>" },
-    { "<leader>db", "<cmd>lua require('fzf-lua').dap_breakpoints()<CR>" },
+    { "<leader>dc", "<cmd>lua require('fzf-lua').dap_commands()<CR>", desc = "DAP commands" },
+    { "<leader>db", "<cmd>lua require('fzf-lua').dap_breakpoints()<CR>", desc = "DAP breakpoints" },
   },
 }

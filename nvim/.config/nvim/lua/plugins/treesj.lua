@@ -7,8 +7,8 @@ return {
   },
 
   keys = {
-    { "<Leader>m", ":TSJToggle<CR>" },
-    { "<Leader>j", ":TSJJoin<CR>" },
-    { "<Leader>k", ":TSJSplit<CR>" },
+    { "<Leader>m", ":TSJToggle<CR>", desc = "Toggle split/join" },
+    { "<Leader>j", ":TSJJoin<CR>", desc = "Join lines" },
+    { "<Leader>k", ":TSJSplit<CR>", desc = "Split lines" },
   },
 }

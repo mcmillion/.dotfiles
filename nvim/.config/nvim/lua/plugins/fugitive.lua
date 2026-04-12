@@ -3,11 +3,11 @@ return {
   lazy = false,
 
   config = function()
-    vim.keymap.set("n", "<leader>gs", ":vertical Git<cr>", { noremap = true, silent = true })
-    vim.keymap.set("n", "<Leader>gd", ":Gdiffsplit!<CR>", { noremap = true, silent = true })
-    vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", { noremap = true, silent = true })
-    vim.keymap.set("n", "<Leader>gw", ":Gwrite<CR>", { noremap = true, silent = true })
-    vim.keymap.set("n", "<Leader>gr", ":Gread<CR>", { noremap = true, silent = true })
-    vim.keymap.set("n", "dp", ":diffput<CR>", { buffer = true })
+    vim.keymap.set("n", "<leader>gs", ":vertical Git<cr>", { noremap = true, silent = true, desc = "Git status" })
+    vim.keymap.set("n", "<Leader>gd", ":Gdiffsplit!<CR>", { noremap = true, silent = true, desc = "Git diff split" })
+    vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", { noremap = true, silent = true, desc = "Git blame" })
+    vim.keymap.set("n", "<Leader>gw", ":Gwrite<CR>", { noremap = true, silent = true, desc = "Git write" })
+    vim.keymap.set("n", "<Leader>gr", ":Gread<CR>", { noremap = true, silent = true, desc = "Git read" })
+    vim.keymap.set("n", "dp", ":diffput<CR>", { buffer = true, desc = "Diff put" })
   end,
 }

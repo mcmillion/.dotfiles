@@ -90,18 +90,18 @@ return {
     -- Standard DAP keybindings
     vim.keymap.set("n", "<F5>", function()
       require("dap").continue()
-    end)
+    end, { desc = "DAP continue" })
     vim.keymap.set("n", "<F10>", function()
       require("dap").step_over()
-    end)
+    end, { desc = "DAP step over" })
     vim.keymap.set("n", "<F11>", function()
       require("dap").step_into()
-    end)
+    end, { desc = "DAP step into" })
     vim.keymap.set("n", "<F12>", function()
       require("dap").step_out()
-    end)
+    end, { desc = "DAP step out" })
     vim.keymap.set("n", "<Leader>b", function()
       require("dap").toggle_breakpoint()
-    end)
+    end, { desc = "Toggle breakpoint" })
   end,
 }

@@ -73,11 +73,33 @@ vim.api.nvim_create_autocmd("LspAttach", {
       buffer = bufnr,
       noremap = true,
       silent = true,
+      desc = "Hover",
     })
     vim.keymap.set("n", "grd", vim.diagnostic.open_float, {
       buffer = bufnr,
       noremap = true,
       silent = true,
+      desc = "Diagnostics float",
+    })
+    vim.keymap.set("n", "gri", vim.lsp.buf.implementation, {
+      buffer = bufnr,
+      desc = "Implementation",
+    })
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, {
+      buffer = bufnr,
+      desc = "Rename",
+    })
+    vim.keymap.set("n", "grr", vim.lsp.buf.references, {
+      buffer = bufnr,
+      desc = "References",
+    })
+    vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, {
+      buffer = bufnr,
+      desc = "Type definition",
+    })
+    vim.keymap.set("n", "grx", vim.lsp.codelens.run, {
+      buffer = bufnr,
+      desc = "Run codelens",
     })
 
     -- Eslint auto-fix on save
