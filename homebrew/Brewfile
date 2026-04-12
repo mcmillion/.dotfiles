@@ -38,6 +38,7 @@ brew 'zoxide'
 brew 'zsh'
 
 cask '1password-cli'
+cask 'ghostty'
 cask 'claude'
 cask 'claude-code'
 cask 'codex'
