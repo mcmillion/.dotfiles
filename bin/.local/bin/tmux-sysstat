@@ -1,6 +1,8 @@
 #!/bin/sh
-mactop --headless --count 1 2>/dev/null | jq -r '
+pcores=$(sysctl -n hw.perflevel0.logicalcpu)
+ecores=$(sysctl -n hw.perflevel1.logicalcpu)
+macmon pipe -s 1 2>/dev/null | jq -r --argjson pc "$pcores" --argjson ec "$ecores" '
   def pad(n): tostring | until(length >= n; " " + .);
-  .[0] |
-  "CPU \(.cpu_usage | round | pad(3))% • MEM \(.memory.used / 1073741824 | round | pad(3))/\(.memory.total / 1073741824 | round)G • GPU \(.soc_metrics.gpu_active | round | pad(3))%"
+  ((.ecpu_usage[1] * $ec + .pcpu_usage[1] * $pc) / ($ec + $pc) * 100) as $cpu |
+  "CPU \($cpu | round | pad(3))% • MEM \(.memory.ram_usage / 1073741824 | round | pad(3))/\(.memory.ram_total / 1073741824 | round)G • GPU \(.gpu_usage[1] * 100 | round | pad(3))%"
 '
