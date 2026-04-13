@@ -18,7 +18,6 @@
 | `M-v` | Copy mode |
 | `M-g` | Lazygit popup |
 | `M-C` | Fork claude session |
-| `` M-` `` | Terminal popup |
 | `M-?` | This cheatsheet |
 
 ## Prefix (`Ctrl+A`)
