@@ -20,14 +20,14 @@ return {
     {
       "<leader>fr",
       function() require("grug-far").open() end,
-      desc = "Find and Replace",
+      desc = "(grug) Search and replace",
     },
     {
       "<leader>fR",
       function()
         require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
       end,
-      desc = "Find and Replace (current file)",
+      desc = "(grug) Search and replace (current file)",
     },
     {
       "<leader>fw",
@@ -36,13 +36,13 @@ return {
           prefills = { search = vim.fn.expand("<cword>") },
         })
       end,
-      desc = "Find word under cursor",
+      desc = "(grug) Search and replace (cursor word)",
     },
     {
       "<leader>fr",
       function() require("grug-far").with_visual_selection() end,
       mode = "x",
-      desc = "Find and Replace (selection)",
+      desc = "(grug) Search and replace (selection)",
     },
   },
 }

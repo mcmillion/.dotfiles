@@ -56,14 +56,14 @@ return {
   },
 
   keys = {
-    { "<leader>fk", "<cmd>lua require('fzf-lua').keymaps()<CR>", desc = "Keymaps" },
-    { "<leader><leader>", "<cmd>lua require('fzf-lua').files()<CR>", desc = "Find files" },
-    { "<leader>fd", "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>", desc = "Find directories" },
-    { "<leader>fg", "<cmd>lua require('fzf-lua').git_commits()<CR>", desc = "Git commits" },
-    { "<leader>fm", "<cmd>lua require('fzf-lua').marks()<CR>", desc = "Marks" },
-    { "gra", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>", desc = "Code actions" },
+    { "<leader>fk", "<cmd>lua require('fzf-lua').keymaps()<CR>", desc = "(fzf) Keymaps" },
+    { "<leader><leader>", "<cmd>lua require('fzf-lua').files()<CR>", desc = "(fzf) Find files" },
+    { "<leader>fd", "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>", desc = "(fzf) Directories" },
+    { "<leader>fg", "<cmd>lua require('fzf-lua').git_commits()<CR>", desc = "(fzf) Git commits" },
+    { "<leader>fm", "<cmd>lua require('fzf-lua').marks()<CR>", desc = "(fzf) Marks" },
+    { "gra", "<cmd>lua require('fzf-lua').lsp_code_actions()<CR>", desc = "(fzf) Code actions" },
 
-    { "<leader>dc", "<cmd>lua require('fzf-lua').dap_commands()<CR>", desc = "DAP commands" },
-    { "<leader>db", "<cmd>lua require('fzf-lua').dap_breakpoints()<CR>", desc = "DAP breakpoints" },
+    { "<leader>dc", "<cmd>lua require('fzf-lua').dap_commands()<CR>", desc = "(fzf) DAP commands" },
+    { "<leader>db", "<cmd>lua require('fzf-lua').dap_breakpoints()<CR>", desc = "(fzf) DAP breakpoints" },
   },
 }
