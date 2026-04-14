@@ -33,38 +33,6 @@
                         ]
                     },
                     {
-                        "description": "Block Hyper+Period/Comma/Slash (prevents sysdiagnose)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "period",
-                                    "modifiers": {
-                                        "mandatory": ["command", "shift", "option", "control"]
-                                    }
-                                },
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "comma",
-                                    "modifiers": {
-                                        "mandatory": ["command", "shift", "option", "control"]
-                                    }
-                                },
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "slash",
-                                    "modifiers": {
-                                        "mandatory": ["command", "shift", "option", "control"]
-                                    }
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Map Return to Hyper when held",
                         "manipulators": [
                             {
@@ -80,7 +48,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_shift",
+                                        "key_code": "right_shift",
                                         "modifiers": ["left_command", "left_control", "left_option"]
                                     }
                                 ],
