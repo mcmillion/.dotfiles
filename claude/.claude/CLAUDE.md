@@ -39,6 +39,7 @@ Be extremely concise. Sacrifice grammar for the sake of concision.
 - Use interfaces rather than types unless types are needed
 - Do not inline complex argument types or return types, always use an interface
 - For functions with multiple arguments, prefer passing an object rather than individual arguments
+- Avoid inline ternaries in JSX — assign to variables before rendering
 
 ## MCP Servers
 
