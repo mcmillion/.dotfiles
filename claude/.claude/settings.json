@@ -317,6 +317,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -340,5 +341,5 @@
   },
   "alwaysThinkingEnabled": true,
   "voiceEnabled": false,
-  "model": "opus[1m]"
+  "effortLevel": "high"
 }
