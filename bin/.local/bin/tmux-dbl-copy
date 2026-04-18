@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+# Async helper for the DoubleClick1Pane binding.
+# If the word-selection made by select-word is unchanged after a brief
+# delay, pipe it to pbcopy and exit copy-mode. If it changed (the user
+# started a drag), bail so MouseDragEnd1Pane handles the copy instead.
+
+pane=$1
+orig="$2,$3,$4,$5"
+
+sleep 0.5
+
+[ "$(tmux display-message -p -t "$pane" '#{pane_in_mode}')" = "1" ] || exit 0
+
+cur=$(tmux display-message -p -t "$pane" '#{selection_start_x},#{selection_start_y},#{selection_end_x},#{selection_end_y}')
+[ "$cur" = "$orig" ] || exit 0
+
+tmux send-keys -t "$pane" -X copy-pipe-and-cancel "pbcopy"
