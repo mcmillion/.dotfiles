@@ -19,6 +19,7 @@ return {
         "comment",
         "cpp",
         "gdscript",
+        "glsl",
         "go",
         "graphql",
         "html",
