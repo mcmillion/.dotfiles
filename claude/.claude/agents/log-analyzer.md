@@ -1,5 +1,6 @@
 ---
 name: log-analyzer
+model: claude-sonnet-4-6
 description: |
   Use this agent to parse and analyze application logs without consuming the parent context
   window. Log files and runtime output are enormous and noisy. This agent reads through them

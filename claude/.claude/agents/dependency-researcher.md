@@ -1,5 +1,6 @@
 ---
 name: dependency-researcher
+model: claude-sonnet-4-6
 description: |
   Use this agent to research external packages and dependencies without consuming the parent
   context window. READMEs, changelogs, and package pages are dense and long. This agent

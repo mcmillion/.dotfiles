@@ -1,5 +1,6 @@
 ---
 name: ci-investigator
+model: claude-sonnet-4-6
 description: |
   Use this agent to investigate GitHub Actions CI failures without consuming the parent
   context window. CI logs are enormous and noisy. This agent fetches the failed run,

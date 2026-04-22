@@ -1,5 +1,6 @@
 ---
 name: git-investigator
+model: claude-sonnet-4-6
 description: |
   Use this agent to research git history without consuming the parent context window.
   Git log, blame, and diff output is noisy and large. This agent digs through history

@@ -1,5 +1,6 @@
 ---
 name: web-researcher
+model: claude-sonnet-4-6
 description: |
   Use this agent to fetch and research web content without consuming the parent context window.
   Give it URLs or a topic to research and it returns a distilled, actionable summary.

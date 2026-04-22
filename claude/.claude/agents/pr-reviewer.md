@@ -1,5 +1,6 @@
 ---
 name: pr-reviewer
+model: claude-sonnet-4-6
 description: |
   Use this agent to read and summarize a GitHub pull request without consuming the parent
   context window. PR diffs, comments, and CI results are expensive to read in full. This

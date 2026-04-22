@@ -1,5 +1,6 @@
 ---
 name: codebase-researcher
+model: claude-sonnet-4-6
 description: |
   Use this agent to explore and map a codebase without consuming the parent context window.
   Delegates file discovery, structure analysis, and code search to an isolated context.

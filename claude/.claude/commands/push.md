@@ -1,3 +1,7 @@
+---
+model: claude-sonnet-4-6
+---
+
 # Create a new commit with outstanding changes and push to remote
 
 - NEVER use `git -C` - always run git commands directly in the current directory

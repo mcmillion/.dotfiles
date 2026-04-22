@@ -1,5 +1,6 @@
 ---
 name: error-investigator
+model: claude-sonnet-4-6
 description: |
   Use this agent to diagnose errors and exceptions without consuming the parent context window.
   Tracing a stack trace through multiple files is expensive. This agent follows the call path,

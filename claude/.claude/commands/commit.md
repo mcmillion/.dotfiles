@@ -1,3 +1,7 @@
+---
+model: claude-sonnet-4-6
+---
+
 # Create a new commit with outstanding changes
 
 - ALWAYS run `git status` first to get a fresh view of the current repo state before doing anything else

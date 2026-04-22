@@ -1,5 +1,6 @@
 ---
 name: datadog-investigator
+model: claude-sonnet-4-6
 description: |
   Use this agent to investigate issues in Datadog without consuming the parent context window.
   Datadog queries return large volumes of logs, traces, metrics, and service data. This agent

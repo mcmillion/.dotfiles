@@ -1,5 +1,6 @@
 ---
 name: test-interpreter
+model: claude-sonnet-4-6
 description: |
   Use this agent to run tests and interpret results without flooding the parent context window.
   Test output — especially failures with backtraces — is enormous. This agent runs the suite

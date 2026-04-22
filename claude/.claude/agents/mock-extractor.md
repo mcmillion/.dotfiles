@@ -1,5 +1,6 @@
 ---
 name: mock-extractor
+model: claude-sonnet-4-6
 description: |
   Use this agent to capture real API responses from a local dev server connected to staging
   data and return structured mock data for use in tests.
