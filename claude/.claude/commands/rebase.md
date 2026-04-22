@@ -1,7 +1,3 @@
----
-model: claude-sonnet-4-6
----
-
 # Rebase current branch on top of latest master/main
 
 Rebase current branch onto latest master/main:
