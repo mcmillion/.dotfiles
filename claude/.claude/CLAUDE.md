@@ -1,27 +1,25 @@
-Be extremely concise. Sacrifice grammar for the sake of concision.
-
 # Personal Global Claude Setup
 
 ## General Behavior
 
-- Do NOT attempt fixes or implementation unless explicitly asked
-- When investigating issues, report findings and wait for instructions
-- Investigation ≠ permission to change code
+- Investigate and report findings; do not modify code unless explicitly asked
+
+## Shell
+
+- Assume zsh
 
 ## Git
 
 - Keep commit messages short and terse
 - NEVER include yourself as a co-author in a commit
 - Don't include things in a commit message that are enforced by CI (typechecking, linting, test coverage, etc)
-- Run `git status` before committing to ensure all modified/untracked files are included
 - Do not report a commit as complete if there are uncommitted changes
-- After a rebase, ALWAYS push to remote unless explicitly told not to
 - Verify the push succeeded and confirm the correct branch before reporting completion
 
-## Code Quality
+## Pull Requests
 
-- After generating or editing code, run lint, prettier, and typecheck before committing
-- Fix any issues before presenting work as done
+- If the repo has a GitHub PR template, use it and keep content terse
+- Otherwise, fall back to a terse description of what is changing and why
 
 ## Debugging
 
@@ -29,11 +27,14 @@ Be extremely concise. Sacrifice grammar for the sake of concision.
 - Do not guess at causes — identify the specific failing test/check and trace the real error
 - If a fix doesn't work after 2 attempts, step back and reconsider the root cause
 
+## Runtime & Dependencies
+
+- asdf is the default runtime version manager
+- Dependency management (package manager, lockfile conventions) is determined by the project configuration and varies
+
 ## TypeScript and React
 
 - ALWAYS strict mode
-- Format with 2 space indent
-- Try to keep lines to 80 if possible, no more than 100
 - Prefer functional style over OOP whenever possible
 - Prefer immutability whenever possible
 - Use interfaces rather than types unless types are needed
@@ -55,14 +56,5 @@ Be extremely concise. Sacrifice grammar for the sake of concision.
 - Personal vault: `~/.obsidian/main` (all machines)
 - Black Omen vault: `~/.obsidian/black-omen` (personal machines only)
 - Vault structure: each note is a `.md` file, folders are directories
-- Links between notes use `[[wikilink]]` syntax
-- Frontmatter (YAML between `---`) is used for metadata/properties
-- Tags use `#tag` syntax inline or `tags:` in frontmatter
-- Daily notes typically live in a `daily/` or `Daily Notes/` folder
 - When creating/editing notes, preserve existing frontmatter and wikilinks
 - Do not reorganize vault structure without being asked
-
-## File Handling
-
-- ALWAYS use unix line endings
-- ALWAYS end files with a newline
