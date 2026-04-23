@@ -341,5 +341,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": false
+  "voiceEnabled": false,
+  "model": "opus[1m]"
 }
