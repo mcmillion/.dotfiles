@@ -317,6 +317,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -340,7 +341,7 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
-  "skipAutoPermissionPrompt": true,
+  "theme": "dark-ansi",
   "voiceEnabled": false,
-  "model": "opus[1m]"
+  "skipAutoPermissionPrompt": true
 }
