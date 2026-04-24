@@ -86,7 +86,7 @@ hi DiagnosticUnderlineHint         gui=undercurl guisp=#6c727e
 hi DiagnosticUnderlineInfo         gui=undercurl guisp=#6c727e
 hi DiagnosticUnderlineWarn         gui=undercurl guisp=#e5c07b
 hi DiagnosticWarn                  guifg=#e5c07b guibg=NONE    gui=NONE
-hi DiagnsoticInfo                  guifg=#6c727e guibg=NONE    gui=NONE
+hi DiagnosticInfo                  guifg=#61afef guibg=NONE    gui=NONE
 hi DiffAdd                         guifg=#1c1f24 guibg=#98c379 gui=NONE
 hi DiffChange                      guifg=#e5c07b guibg=NONE    gui=underline
 hi DiffDelete                      guifg=#1c1f24 guibg=#e06c75 gui=NONE
@@ -314,3 +314,170 @@ hi BlinkCmpKindCopilot             guifg=#98c379 guibg=NONE    gui=NONE
 " Macro recording and status messages
 hi ModeMsg                      guifg=#98c379 guibg=NONE    gui=NONE
 hi MoreMsg                      guifg=#98c379 guibg=NONE    gui=NONE
+
+" ===== Diagnostics (modern severities + sign/virtual/floating variants) =====
+hi DiagnosticOk                 guifg=#98c379 guibg=NONE    gui=NONE
+hi DiagnosticUnderlineOk        gui=undercurl guisp=#98c379
+hi DiagnosticDeprecated         guifg=#5c6370 guibg=NONE    gui=strikethrough
+hi DiagnosticUnnecessary        guifg=#5c6370 guibg=NONE    gui=NONE
+
+hi link DiagnosticSignError          DiagnosticError
+hi link DiagnosticSignWarn           DiagnosticWarn
+hi link DiagnosticSignInfo           DiagnosticInfo
+hi link DiagnosticSignHint           DiagnosticHint
+hi link DiagnosticSignOk             DiagnosticOk
+
+hi link DiagnosticVirtualTextError   DiagnosticError
+hi link DiagnosticVirtualTextWarn    DiagnosticWarn
+hi link DiagnosticVirtualTextInfo    DiagnosticInfo
+hi link DiagnosticVirtualTextHint    DiagnosticHint
+hi link DiagnosticVirtualTextOk      DiagnosticOk
+
+hi link DiagnosticFloatingError      DiagnosticError
+hi link DiagnosticFloatingWarn       DiagnosticWarn
+hi link DiagnosticFloatingInfo       DiagnosticInfo
+hi link DiagnosticFloatingHint       DiagnosticHint
+hi link DiagnosticFloatingOk         DiagnosticOk
+
+" ===== LSP =====
+hi LspInlayHint                 guifg=#5c6370 guibg=NONE    gui=italic
+hi LspReferenceText             guifg=NONE    guibg=#272d36 gui=NONE
+hi LspSignatureActiveParameter  guifg=#e5c07b guibg=NONE    gui=bold
+hi link LspReferenceRead        LspReferenceText
+hi link LspReferenceWrite       LspReferenceText
+hi link LspReferenceTarget      LspReferenceText
+hi link LspCodeLens             Comment
+hi link @lsp.type.typeParameter @parameter
+hi link @lsp.type.comment       Comment
+
+" ===== Window / float chrome =====
+hi FloatTitle                   guifg=#61afef guibg=#1c1f24 gui=bold
+hi FloatFooter                  guifg=#5c6370 guibg=#1c1f24 gui=NONE
+hi MsgSeparator                 guifg=#363945 guibg=NONE    gui=NONE
+hi CurSearch                    guifg=#1c1f24 guibg=#d19a66 gui=bold
+hi link NormalNC                Normal
+
+" ===== Treesitter: modern capture names =====
+" Comment semantic scopes (post-0.9; drop the `.comment` suffix)
+hi link @comment.todo           Todo
+hi link @comment.note           Todo
+hi link @comment.warning        DiagnosticWarn
+hi link @comment.error          DiagnosticError
+
+" Keyword subgroups
+hi link @keyword.conditional    @conditional
+hi link @keyword.repeat         @repeat
+hi link @keyword.return         @keyword
+hi link @keyword.exception      @exception
+hi link @keyword.import         @include
+hi link @keyword.directive      PreProc
+hi link @keyword.debug          Debug
+hi link @keyword.storage        StorageClass
+
+" Function / method call sites
+hi link @function.call          @function
+hi link @function.method        @method
+hi link @method.call            @method
+
+" Variables / modules
+hi link @variable.parameter     @parameter
+hi link @variable.member        @field
+hi link @module                 @namespace
+
+" Numbers / strings
+hi link @number.float           @float
+hi link @string.regexp          @string.regex
+hi link @string.special.url     @uri
+hi link @string.special.path    @uri
+hi link @string.special.symbol  Constant
+
+" Types
+hi link @type.definition        @type
+hi link @type.qualifier         @type
+
+" Generic top-level TS
+hi link @punctuation            @punctuation.delimiter
+hi link @symbol                 Constant
+hi link @none                   Normal
+hi link @preproc                PreProc
+hi link @macro                  Macro
+hi link @define                 Define
+hi link @debug                  Debug
+hi link @storageclass           StorageClass
+hi link Debug                   Special
+
+" Markup (new treesitter names, replaces @text.*)
+hi link @markup.heading         Title
+hi link @markup.heading.1       markdownH1
+hi link @markup.heading.2       markdownH2
+hi link @markup.heading.3       markdownH3
+hi link @markup.heading.4       markdownH4
+hi link @markup.heading.5       markdownH5
+hi link @markup.heading.6       markdownH6
+hi link @markup.strong          markdownBold
+hi link @markup.italic          markdownItalic
+hi link @markup.strikethrough   RenderMarkdownChecked
+hi link @markup.link            markdownLinkText
+hi link @markup.link.label      markdownLinkText
+hi link @markup.link.url        markdownUrl
+hi link @markup.list            markdownListMarker
+hi link @markup.list.checked    markdownListMarker
+hi link @markup.list.unchecked  markdownListMarker
+hi link @markup.raw             markdownCode
+hi link @markup.raw.block       markdownCodeBlock
+hi link @markup.math            Special
+
+" ===== Diff (filetype syntax) =====
+hi diffChanged                  guifg=#e5c07b guibg=NONE    gui=NONE
+hi diffIndexLine                guifg=#5c6370 guibg=NONE    gui=NONE
+hi diffLine                     guifg=#61afef guibg=NONE    gui=NONE
+
+" Diff captures (treesitter)
+hi link @diff.plus              diffAdded
+hi link @diff.minus             diffRemoved
+hi link @diff.delta             diffChanged
+
+" ===== Diffview =====
+hi link DiffviewFilePanelInsertions diffAdded
+hi link DiffviewFilePanelDeletions  diffRemoved
+hi link DiffviewStatusModified      GitSignsChange
+
+" ===== which-key =====
+hi link WhichKeyTitle           FloatTitle
+
+" ===== Blink (additional kinds + labels) =====
+hi link BlinkCmpGhostText         Comment
+hi link BlinkCmpLabelDescription  Comment
+hi link BlinkCmpLabelDetail       Comment
+hi link BlinkCmpSource            Comment
+hi link BlinkCmpKindEnumMember    BlinkCmpKindConstant
+hi link BlinkCmpKindConstructor   BlinkCmpKindFunction
+hi link BlinkCmpKindEvent         BlinkCmpKindKeyword
+hi link BlinkCmpKindFile          Directory
+hi link BlinkCmpKindFolder        Directory
+hi link BlinkCmpKindOperator      Operator
+hi link BlinkCmpKindReference     BlinkCmpKindVariable
+hi link BlinkCmpKindUnit          BlinkCmpKindValue
+hi link BlinkCmpKindColor         BlinkCmpKindValue
+
+" ===== Misc fixes =====
+hi link Whitespace              NonText
+hi link debugPC                 debugPc
+
+" ===== Terminal colors (for :terminal inside nvim) =====
+let g:terminal_color_0  = '#1c1f24'
+let g:terminal_color_1  = '#e06c75'
+let g:terminal_color_2  = '#98c379'
+let g:terminal_color_3  = '#e5c07b'
+let g:terminal_color_4  = '#61afef'
+let g:terminal_color_5  = '#c678dd'
+let g:terminal_color_6  = '#56b6c2'
+let g:terminal_color_7  = '#abb2bf'
+let g:terminal_color_8  = '#5c6370'
+let g:terminal_color_9  = '#e06c75'
+let g:terminal_color_10 = '#98c379'
+let g:terminal_color_11 = '#e5c07b'
+let g:terminal_color_12 = '#61afef'
+let g:terminal_color_13 = '#c678dd'
+let g:terminal_color_14 = '#56b6c2'
+let g:terminal_color_15 = '#ffffff'
