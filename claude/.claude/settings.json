@@ -317,7 +317,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
+  "model": "claude-opus-4-6[1m]",
   "hooks": {
     "Notification": [
       {
@@ -342,6 +342,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "theme": "dark-ansi",
-  "voiceEnabled": false,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": false
 }
