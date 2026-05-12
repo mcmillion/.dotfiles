@@ -151,6 +151,7 @@
       "Bash(id:*)",
       "Bash(ifconfig:*)",
       "Bash(ipconfig getpacket:*)",
+      "Bash(jq:*)",
       "Bash(less:*)",
       "Bash(log show:*)",
       "Bash(ls:*)",
@@ -343,5 +344,6 @@
   "effortLevel": "high",
   "theme": "dark-ansi",
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": false
+  "voiceEnabled": false,
+  "awaySummaryEnabled": false
 }

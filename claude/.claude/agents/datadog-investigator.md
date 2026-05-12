@@ -94,4 +94,11 @@ Gaps in data, missing instrumentation, or anything that limits confidence.
 8. If the Datadog MCP tools return large result sets, focus on the most recent and
    most severe entries first
 
+## Important: do not shell out to process results
+
+The Datadog MCP tools return structured data that you can read directly. Do NOT pipe
+results through `jq`, `python`, `awk`, or other shell tools to parse or filter them.
+Read and analyze the tool output yourself — you are the parser. Shelling out to process
+data triggers permission prompts and is unnecessary.
+
 Return only the report. No preamble, no sign-off.
