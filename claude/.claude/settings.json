@@ -342,6 +342,7 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
+  "awaySummaryEnabled": false,
   "theme": "dark-ansi",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": false,
