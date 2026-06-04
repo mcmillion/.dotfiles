@@ -314,9 +314,26 @@
       "mcp__mcp-atlassian__confluence_download_attachment",
       "mcp__mcp-atlassian__confluence_download_content_attachments",
       "mcp__mcp-atlassian__confluence_search_user",
-      "mcp__mcp-atlassian__confluence_get_page_images"
+      "mcp__mcp-atlassian__confluence_get_page_images",
+      "WebFetch(domain:ghostty.org)",
+      "Bash(tmux show-option:*)",
+      "Bash(~/.tmux/plugins/tmux-continuum/scripts/continuum_save.sh)",
+      "Bash(python3:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(claude mcp get:*)",
+      "WebFetch(domain:hub.docker.com)",
+      "mcp__plugin_context7-plugin_context7__resolve-library-id",
+      "WebFetch(domain:docs.datadoghq.com)",
+      "WebFetch(domain:starship.rs)",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:karabiner-elements.pqrs.org)",
+      "Bash(kitty --version)",
+      "Read(//Users/mmcmillion/.obsidian/main/galileo/**)",
+      "Read(//Users/mmcmillion/.obsidian/black-omen/**)"
     ],
-    "defaultMode": "default"
+    "deny": [],
+    "ask": [],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Notification": [
