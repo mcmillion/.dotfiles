@@ -2,7 +2,7 @@ font-family             = "Iosevka Term Medium"
 font-family-bold        = "Iosevka Term Semibold"
 font-family-italic      = "Iosevka Term Medium Italic"
 font-family-bold-italic = "Iosevka Term Semibold Italic"
-font-size = 14
+font-size = 16
 
 font-feature = -liga
 font-feature = -calt
