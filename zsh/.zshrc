@@ -49,6 +49,11 @@ setopt appendhistory        # Append history to the history file (no overwriting
 setopt sharehistory         # Share history across terminals
 setopt incappendhistory     # Immediately append to the history file, not just when a term is killed
 
+# Silence the terminal bell (no dock bubble / screen flash)
+unsetopt beep               # no bell from the line editor
+unsetopt hist_beep          # no bell on history edge
+setopt nolistbeep           # no bell on ambiguous completion
+
 
 
 #==============================================================================

@@ -42,6 +42,7 @@ window-padding-balance = true
 macos-titlebar-style = hidden
 window-colorspace = srgb
 confirm-close-surface = false
+bell-features = no-attention,no-title
 
 mouse-hide-while-typing = true
 mouse-shift-capture = false
