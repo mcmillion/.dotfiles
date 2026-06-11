@@ -2,17 +2,16 @@
 
 ## General Behavior
 
+- When reporting information to me, be extremely concise and sacrifice grammar for the sake of concision
 - Investigate and report findings; do not modify code unless explicitly asked
-
-## Shell
-
-- Assume zsh
+- Comment sparingly — only the non-obvious *why*, never the *what*; no narration comments
+- Leave existing comments alone unless they're now wrong (don't strip them as a side effect of an unrelated edit)
 
 ## Git
 
 - Keep commit messages short and terse
 - NEVER include yourself as a co-author in a commit
-- Don't include things in a commit message that are enforced by CI (typechecking, linting, test coverage, etc)
+- Don't mention CI-enforced items (typechecking, linting, test coverage, etc) in a commit message unless they required manual fixes
 - Do not report a commit as complete if there are uncommitted changes
 - Verify the push succeeded and confirm the correct branch before reporting completion
 
@@ -30,7 +29,6 @@
 ## Runtime & Dependencies
 
 - asdf is the default runtime version manager
-- Dependency management (package manager, lockfile conventions) is determined by the project configuration and varies
 
 ## TypeScript and React
 
@@ -53,8 +51,14 @@
 ## Obsidian
 
 - No MCP server — interact with vaults directly via markdown files
-- Personal vault: `~/.obsidian/main` (all machines)
-- Black Omen vault: `~/.obsidian/black-omen` (personal machines only)
+- Vaults (each is a separate Obsidian vault, not a folder):
+  - Personal: `~/.obsidian/main` (all machines)
+  - Galileo (employer / work): `~/.obsidian/galileo` (work machine)
+  - Black Omen (my own company): `~/.obsidian/black-omen` (personal machines only)
+- Route notes to the vault matching their topic; never put work content in the personal vault
+- `~/.obsidian/main/galileo/` is legacy — Galileo content belongs in the galileo vault
+- Within a vault: topical `kebab-case` folders; never create notes at vault root
+- Conventions: `_todo.md` / `_links.md` for per-folder task & link collections; on-call notes prefixed `YYYY-MM-DD-`
 - Vault structure: each note is a `.md` file, folders are directories
 - When creating/editing notes, preserve existing frontmatter and wikilinks
 - Do not reorganize vault structure without being asked

@@ -42,7 +42,7 @@ embedded in a link — fetch it yourself.
 
 ## Phase 1 — Initialize the investigation document
 
-Create a new markdown file in `~/.obsidian/main/galileo/on-call/`. Create the directory
+Create a new markdown file in `~/.obsidian/galileo/on-call/`. Create the directory
 if it doesn't exist.
 
 **Filename**: `YYYY-MM-DD-summary-of-issue.md` where the date is today and the summary
