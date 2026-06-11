@@ -328,7 +328,7 @@
       "WebFetch(domain:gist.github.com)",
       "WebFetch(domain:karabiner-elements.pqrs.org)",
       "Bash(kitty --version)",
-      "Read(//Users/mmcmillion/.obsidian/main/galileo/**)",
+      "Read(//Users/mmcmillion/.obsidian/galileo/**)",
       "Read(//Users/mmcmillion/.obsidian/black-omen/**)"
     ],
     "deny": [],
