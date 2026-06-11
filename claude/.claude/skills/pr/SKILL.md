@@ -1,6 +1,7 @@
 ---
 name: pr
 description: Open a GitHub pull request for the current branch with a concise, template-conformant description. Use when the user asks to open or create a PR (e.g. /pr, "open a PR", "create a pull request"). Pass --draft for a draft PR.
+disable-model-invocation: true
 argument-hint: "[--draft]"
 allowed-tools:
   - Bash

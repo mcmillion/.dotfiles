@@ -1,6 +1,7 @@
 ---
 name: rebase
 description: Rebase the current branch onto the latest master/main and force-push with lease. Use when the user asks to rebase onto main/master (e.g. /rebase, "rebase on main", "update my branch off main").
+disable-model-invocation: true
 allowed-tools:
   - Bash
   - Read

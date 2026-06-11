@@ -1,6 +1,7 @@
 ---
 name: push
 description: Create atomic commits from outstanding changes and push to the remote. Use when the user asks to commit and push (e.g. /push, "push this", "commit and push").
+disable-model-invocation: true
 allowed-tools:
   - Bash
   - Read
