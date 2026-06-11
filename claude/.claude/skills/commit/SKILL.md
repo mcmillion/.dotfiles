@@ -1,3 +1,13 @@
+---
+name: commit
+description: Create a git commit from outstanding changes, grouped into atomic commits with terse, imperative messages. Use when the user asks to commit changes locally (e.g. /commit, "commit this", "make a commit").
+allowed-tools:
+  - Bash
+  - Read
+  - Grep
+  - Agent
+---
+
 # Create a new commit with outstanding changes
 
 - ALWAYS run `git status` first to get a fresh view of the current repo state before doing anything else

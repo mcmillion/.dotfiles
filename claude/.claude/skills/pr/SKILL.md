@@ -1,3 +1,13 @@
+---
+name: pr
+description: Open a GitHub pull request for the current branch with a concise, template-conformant description. Use when the user asks to open or create a PR (e.g. /pr, "open a PR", "create a pull request"). Pass --draft for a draft PR.
+argument-hint: "[--draft]"
+allowed-tools:
+  - Bash
+  - Read
+  - Grep
+---
+
 # Create a new PR for the current branch
 
 - NEVER use `git -C` - always run git commands directly in the current directory

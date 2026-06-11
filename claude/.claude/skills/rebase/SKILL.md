@@ -1,3 +1,13 @@
+---
+name: rebase
+description: Rebase the current branch onto the latest master/main and force-push with lease. Use when the user asks to rebase onto main/master (e.g. /rebase, "rebase on main", "update my branch off main").
+allowed-tools:
+  - Bash
+  - Read
+  - Edit
+  - Grep
+---
+
 # Rebase current branch on top of latest master/main
 
 Rebase current branch onto latest master/main:

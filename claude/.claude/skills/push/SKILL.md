@@ -1,3 +1,13 @@
+---
+name: push
+description: Create atomic commits from outstanding changes and push to the remote. Use when the user asks to commit and push (e.g. /push, "push this", "commit and push").
+allowed-tools:
+  - Bash
+  - Read
+  - Grep
+  - Agent
+---
+
 # Create a new commit with outstanding changes and push to remote
 
 - NEVER use `git -C` - always run git commands directly in the current directory
@@ -11,3 +21,4 @@
 - NEVER add Claude attribution, author, or co-author information
 - DO NOT mention CI-enforced items (tests, linting, types) unless they required manual fixes
 - After committing, push to the remote repository
+- Verify the push succeeded and confirm the correct branch before reporting completion
