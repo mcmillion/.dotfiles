@@ -51,6 +51,36 @@ bar() {
     "$gray" "$pct" "$reset"
 }
 
+# Rolling ccusage cost totals (7d / 30d), cached + background-refreshed
+# so the status line never blocks on ccusage (~0.5s/call).
+cc_cache_dir="$HOME/.cache/claude-statusline"
+cc_cache="$cc_cache_dir/ccusage"
+cc_lock="$cc_cache_dir/ccusage.lock"
+cc_ttl=600
+
+cc_refresh() {
+  mkdir "$cc_lock" 2>/dev/null || return  # another refresh in flight
+  local d7 d30 wk mo
+  d7=$(date -v-6d +%Y%m%d)
+  d30=$(date -v-29d +%Y%m%d)
+  wk=$(ccusage daily --since "$d7" --json 2>/dev/null | jq -r '.totals.totalCost // empty')
+  mo=$(ccusage daily --since "$d30" --json 2>/dev/null | jq -r '.totals.totalCost // empty')
+  [ -n "$wk" ] && [ -n "$mo" ] && \
+    printf '%s %s\n' "$wk" "$mo" > "$cc_cache.tmp" && mv "$cc_cache.tmp" "$cc_cache"
+  rmdir "$cc_lock" 2>/dev/null
+}
+
+cc_costs=""
+if command -v ccusage >/dev/null 2>&1; then
+  mkdir -p "$cc_cache_dir"
+  age=$cc_ttl
+  [ -f "$cc_cache" ] && age=$(( $(date +%s) - $(stat -f %m "$cc_cache") ))
+  if [ "$age" -ge "$cc_ttl" ]; then
+    ( cc_refresh ) >/dev/null 2>&1 &
+  fi
+  [ -f "$cc_cache" ] && cc_costs=$(cat "$cc_cache")
+fi
+
 # Abbreviate home directory with ~
 if [ -n "$cwd" ]; then
   display_dir="${cwd/#$HOME/~}"
@@ -111,7 +141,14 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
     fi
   fi
 elif [ -n "$cost_usd" ] && [ "$cost_usd" != "0" ]; then
-  output="${output}${sep}${gray}\$$(printf '%.2f' "$cost_usd")${reset}"
+  output="${output}${sep}${gray}s \$$(printf '%.2f' "$cost_usd")${reset}"
+fi
+
+# Rolling spend: last 7 days / last 30 days (from ccusage cache)
+if [ -n "$cc_costs" ]; then
+  cc_wk="${cc_costs%% *}"
+  cc_mo="${cc_costs##* }"
+  output="${output}${sep}${gray}w \$$(printf '%.2f' "$cc_wk") · m \$$(printf '%.2f' "$cc_mo")${reset}"
 fi
 
 echo -e "$output"
