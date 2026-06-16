@@ -1,0 +1,5 @@
+# Slide chrome follows Ghostty's palette (terminal-dark); code blocks use OneHalfDark.
+extends: terminal-dark
+
+code:
+  theme_name: OneHalfDark

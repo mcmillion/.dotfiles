@@ -1,6 +1,6 @@
 defaults:
-  # Default theme for decks that don't set one in front matter.
-  theme: dark
+  # Custom theme: terminal-dark slide chrome + OneHalfDark code highlighting.
+  theme: terminal-dark-onehalf
   # Terminal font size hint used for image/layout sizing.
   terminal_font_size: 16
   # kitty supports the kitty graphics protocol for crisp inline images.
