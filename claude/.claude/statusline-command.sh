@@ -46,7 +46,12 @@ fmt_remaining() {
   esac
   diff=$(( epoch - $(date +%s) ))
   [ "$diff" -lt 0 ] && diff=0
-  printf '%dh%dm' "$(( diff / 3600 ))" "$(( (diff % 3600) / 60 ))"
+  local h=$(( diff / 3600 )) m=$(( (diff % 3600) / 60 ))
+  if [ "$h" -gt 0 ]; then
+    printf '%dh%dm' "$h" "$m"
+  else
+    printf '%dm' "$m"
+  fi
 }
 
 # Build a labeled bar: label ▰▰▰▱▱▱ NN%
