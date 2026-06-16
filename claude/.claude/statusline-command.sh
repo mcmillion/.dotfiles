@@ -35,6 +35,20 @@ fmt_reset() {
   date -r "$epoch" "+$fmt"
 }
 
+# Time remaining until a reset timestamp, e.g. 4h31m
+fmt_remaining() {
+  local val="$1" epoch diff
+  case "$val" in
+    ''|*[!0-9]*)
+      epoch=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "$val" "+%s" 2>/dev/null) || return
+      ;;
+    *) epoch="$val" ;;
+  esac
+  diff=$(( epoch - $(date +%s) ))
+  [ "$diff" -lt 0 ] && diff=0
+  printf '%dh%dm' "$(( diff / 3600 ))" "$(( (diff % 3600) / 60 ))"
+}
+
 # Build a labeled bar: label ▰▰▰▱▱▱ NN%
 bar() {
   local label="$1" pct="$2" width=10
@@ -128,7 +142,7 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
     pct=$(printf "%.0f" "$five_pct")
     output="${output}${sep}$(bar 5h "$pct")"
     if [ -n "$five_reset" ]; then
-      t=$(fmt_reset "$five_reset" "%-I:%M%p")
+      t=$(fmt_remaining "$five_reset")
       [ -n "$t" ] && output="${output} (${t})"
     fi
   fi
