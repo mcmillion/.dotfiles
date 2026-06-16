@@ -1,5 +1,6 @@
 @antfu/ni
 @fsouza/prettierd
+@mermaid-js/mermaid-cli
 ccusage
 @tailwindcss/language-server
 aws-cdk
