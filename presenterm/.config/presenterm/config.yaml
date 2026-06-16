@@ -1,0 +1,24 @@
+defaults:
+  # Default theme for decks that don't set one in front matter.
+  theme: dark
+  # Terminal font size hint used for image/layout sizing.
+  terminal_font_size: 16
+  # kitty supports the kitty graphics protocol for crisp inline images.
+  # "auto" detects it; override if detection ever misbehaves.
+  image_protocol: auto
+
+options:
+  # Show implicit slide breaks so a trailing heading ends the slide.
+  implicit_slide_ends: true
+  # Treat a setext-style heading underline as a new-slide separator.
+  end_slide_shorthand: true
+
+snippet:
+  exec:
+    # Allow running code blocks live with +exec during a demo.
+    enable: true
+  render:
+    threads: 2
+
+mermaid:
+  scale: 2

@@ -91,6 +91,9 @@ Each tool has its own directory containing the configuration files in the same s
 - `ruby/` - Ruby development configs (.rubocop.yml, .rspec, .irbrc, .pryrc, .guard.rb)
 - `homebrew/` - Brewfile for reproducible package installs
 
+**Presentation**
+- `presenterm/` - Terminal markdown slide decks (config + sample deck under `.config/presenterm/`)
+
 **System Utilities**
 - `karabiner/` - Keyboard remapping for macOS
 - `bin/` - Custom scripts in .local/bin (critique)
