@@ -6,6 +6,7 @@
 - Investigate and report findings; do not modify code unless explicitly asked
 - Comment sparingly — only the non-obvious *why*, never the *what*; no narration comments
 - Leave existing comments alone unless they're now wrong (don't strip them as a side effect of an unrelated edit)
+- Use only ASCII characters; no emojis or special Unicode unless I ask
 
 ## Git
 
