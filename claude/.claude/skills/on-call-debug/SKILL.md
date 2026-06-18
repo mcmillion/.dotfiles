@@ -106,10 +106,26 @@ When the user supplies new context, errors, links, or feedback: update the doc i
 add to the Timeline, re-evaluate hypotheses, launch new agents if leads open, and tell the
 user how it changes the picture.
 
+## Environment URLs (build full clickable links)
+
+Always give the user **full clickable URLs**, never bare admin paths.
+
+- **Production Django admin (core-api):** `https://core-api.prod.int.galileo.io`
+  - Admin root: `https://core-api.prod.int.galileo.io/internal/admin/`
+  - Support admin (limited model set): `https://core-api.prod.int.galileo.io/internal/support/`
+  - Changelist URL pattern: `https://core-api.prod.int.galileo.io/internal/admin/<app_label>/<model_name_lowercased_no_underscores>/`
+    e.g. model `CarePlanDraft` in app `care_plan_drafts` → `…/internal/admin/care_plan_drafts/careplandraft/`
+  - Object detail: append `<pk>/change/` to the changelist URL.
+  - Search a changelist: append `?q=<value>` (e.g. `…/flaskapireferralorderentry/?q=32114`).
+  - Flask-mirrored MySQL tables live in the `flask_api` app (model names prefixed `FlaskApi…`).
+
+- **Chart / patient app (zodiac):** `https://zodiac.galileo.io` — pattern `…/auth/patients/<patient_id>/cases/<case_id>`.
+
 ## Using the user as a resource (no direct DB access)
 
-When you need application data, **ask the user to check Django admin**. Be specific (name the
-model + lookup key), explain which hypothesis it settles, one lookup at a time unless
+When you need application data, **ask the user to check Django admin**. Be specific: give the
+**full clickable URL** (see Environment URLs above) to the exact changelist/object, name the
+model + lookup key, explain which hypothesis it settles, one lookup at a time unless
 independent, and record what they report under **Evidence**.
 
 ## Rules
