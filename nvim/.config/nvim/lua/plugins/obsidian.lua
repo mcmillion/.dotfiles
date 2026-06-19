@@ -3,8 +3,8 @@ return {
   version = "*",
   lazy = true,
   event = {
-    "BufReadPre " .. vim.fn.expand("~") .. "/.obsidian/main/**.md",
-    "BufNewFile " .. vim.fn.expand("~") .. "/.obsidian/main/**.md",
+    "BufReadPre " .. vim.fn.expand("~") .. "/.obsidian/*/**.md",
+    "BufNewFile " .. vim.fn.expand("~") .. "/.obsidian/*/**.md",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -12,14 +12,14 @@ return {
 
   opts = {
     workspaces = {
-      {
-        name = "notes",
-        path = "~/.obsidian/main",
-      },
+      { name = "main", path = "~/.obsidian/main" },
+      { name = "galileo", path = "~/.obsidian/galileo" },
+      { name = "black-omen", path = "~/.obsidian/black-omen" },
     },
 
     completion = {
-      nvim_cmp = true,
+      nvim_cmp = false,
+      blink = true,
       min_chars = 2,
     },
 
@@ -65,8 +65,6 @@ return {
       end,
       desc = "New note",
     },
-    { "<leader>of", "<cmd>Obsidian quick_switch<cr>", desc = "Find note" },
-    { "<leader>os", "<cmd>Obsidian search<cr>", desc = "Search vault" },
     { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
     { "<leader>ot", "<cmd>Obsidian tags<cr>", desc = "Tags" },
     { "<leader>ol", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox" },

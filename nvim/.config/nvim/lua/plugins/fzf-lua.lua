@@ -57,6 +57,8 @@ return {
 
   keys = {
     { "<leader>fk", "<cmd>lua require('fzf-lua').keymaps()<CR>", desc = "(fzf) Keymaps" },
+    { "<leader>of", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('~/.obsidian') })<CR>", desc = "(obsidian) Find note (all vaults)" },
+    { "<leader>os", "<cmd>lua require('fzf-lua').live_grep({ cwd = vim.fn.expand('~/.obsidian') })<CR>", desc = "(obsidian) Grep (all vaults)" },
     { "<leader><leader>", "<cmd>lua require('fzf-lua').files()<CR>", desc = "(fzf) Find files" },
     { "<leader>fd", "<cmd>lua require('fzf-lua').files({ cmd = 'find * -type d' })<CR>", desc = "(fzf) Directories" },
     { "<leader>fg", "<cmd>lua require('fzf-lua').git_commits()<CR>", desc = "(fzf) Git commits" },
