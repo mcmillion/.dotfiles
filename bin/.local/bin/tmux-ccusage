@@ -15,7 +15,7 @@ refresh() {
   d1=$(date +%Y-%m-%d)
   out=$(ccusage daily --since "$(date -v-29d +%Y%m%d)" --json 2>/dev/null | jq -r \
     --arg d1 "$d1" --arg d7 "$d7" --arg d30 "$d30" '
-      def sum($d): [.daily[] | select(.date >= $d) | .totalCost] | add // 0;
+      def sum($d): [.daily[] | select(.period >= $d) | .totalCost] | add // 0;
       "\(sum($d1)|round) \(sum($d7)|round) \(sum($d30)|round)"
     ')
   case "$out" in
