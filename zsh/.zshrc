@@ -103,6 +103,18 @@ alias clear_nvim_sessions='rm ~/.local/share/nvim/sessions/*'
 
 alias y='yazi'
 
+export TODO_FILE="$HOME/todo.txt"  # global fallback when no local todo.txt
+t() {
+  local root
+  if root=$(git rev-parse --show-toplevel 2>/dev/null) && [ -f "$root/todo.txt" ]; then
+    tuxedo "$root/todo.txt" "$@"
+  elif [ -f todo.txt ]; then
+    tuxedo todo.txt "$@"
+  else
+    tuxedo "$@"
+  fi
+}
+
 
 
 alias home='tmux new-session -A -s home'
