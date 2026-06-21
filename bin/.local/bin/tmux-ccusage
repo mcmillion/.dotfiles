@@ -1,0 +1,39 @@
+#!/bin/sh
+# Claude Code spend pill for the tmux status bar: today / last 7d / last 30d.
+# ccusage is ~1s/call, so results are cached and refreshed in the background;
+# the status bar only ever reads the cache and never blocks.
+
+cache_dir="$HOME/.cache/tmux-ccusage"
+cache="$cache_dir/spend"
+lock="$cache_dir/lock"
+ttl=600
+
+refresh() {
+  mkdir "$lock" 2>/dev/null || return  # another refresh already running
+  d30=$(date -v-29d +%Y-%m-%d)
+  d7=$(date -v-6d +%Y-%m-%d)
+  d1=$(date +%Y-%m-%d)
+  out=$(ccusage daily --since "$(date -v-29d +%Y%m%d)" --json 2>/dev/null | jq -r \
+    --arg d1 "$d1" --arg d7 "$d7" --arg d30 "$d30" '
+      def sum($d): [.daily[] | select(.date >= $d) | .totalCost] | add // 0;
+      "\(sum($d1)|round) \(sum($d7)|round) \(sum($d30)|round)"
+    ')
+  case "$out" in
+    [0-9]*) printf '%s\n' "$out" > "$cache.tmp" && mv "$cache.tmp" "$cache" ;;
+  esac
+  rmdir "$lock" 2>/dev/null
+}
+
+command -v ccusage >/dev/null 2>&1 || exit 0
+mkdir -p "$cache_dir"
+
+age=$ttl
+[ -f "$cache" ] && age=$(( $(date +%s) - $(stat -f %m "$cache") ))
+[ "$age" -ge "$ttl" ] && ( refresh ) >/dev/null 2>&1 &
+
+if [ -f "$cache" ]; then
+  read -r day wk mo < "$cache"
+  printf 'd $%s \xe2\x80\xa2 w $%s \xe2\x80\xa2 m $%s' "$day" "$wk" "$mo"
+else
+  printf '...'
+fi
