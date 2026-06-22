@@ -46,17 +46,29 @@ fi
 # time passes, since the old percentage would then be stale.
 rl=""
 rl_cache="$cache_dir/ratelimits"
+pill_fg="#6c727e"  # status-right segment fg; restore after the colored percent
+
+# Color a usage percentage by threshold (tmux format directive, not ANSI):
+# gray <50, yellow <80, red otherwise. Resets fg to the pill default after.
+pct_pill() {
+  p=$(printf '%.0f' "$1")
+  if [ "$p" -ge 80 ]; then c="#e06c75"
+  elif [ "$p" -ge 50 ]; then c="#e5c07b"
+  else c="$pill_fg"; fi
+  printf '#[fg=%s]%s%%#[fg=%s]' "$c" "$p" "$pill_fg"
+}
+
 if [ -f "$rl_cache" ]; then
   read -r fp fe sp se < "$rl_cache"
   now=$(date +%s)
   if [ "$fp" != "-" ] && [ "$fe" != "-" ] && [ "$fe" -gt "$now" ]; then
     rem=$(( fe - now )); h=$(( rem / 3600 )); m=$(( (rem % 3600) / 60 ))
     if [ "$h" -gt 0 ]; then t="${h}h${m}m"; else t="${m}m"; fi
-    rl="$(printf '%.0f' "$fp")% ($t)"
+    rl="$(pct_pill "$fp") ($t)"
   fi
   if [ "$sp" != "-" ] && [ "$se" != "-" ] && [ "$se" -gt "$now" ]; then
     [ -n "$rl" ] && rl="$rl $bullet "
-    rl="${rl}$(printf '%.0f' "$sp")% ($(date -r "$se" '+%b %-d'))"
+    rl="${rl}$(pct_pill "$sp") ($(date -r "$se" '+%b %-d'))"
   fi
 fi
 
