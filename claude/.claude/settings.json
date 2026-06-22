@@ -372,7 +372,7 @@
   "awaySummaryEnabled": false,
   "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": false,
-  "agentPushNotifEnabled": true
+  "voiceEnabled": false
 }
