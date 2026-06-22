@@ -1,0 +1,39 @@
+# Derived from the ghostty palette in ghostty/.config/ghostty/config (OneDark)
+name = "OneDark"
+
+# Layout
+bg = "#1c1f24"
+panel = "#21252b"
+border = "#3e4452"
+
+# Text
+fg = "#abb2bf"
+dim = "#5c6370"
+accent = "#61afef"
+
+# Selection / cursor
+cursor = "#2c323c"
+selection = "#3e4452"
+selected = "#2c323c"
+
+# Status bar
+statusbar = "#21252b"
+status_fg = "#abb2bf"
+mode_fg = "#1c1f24"
+mode_bg = "#61afef"
+
+# Priorities (A-D and fallback)
+pri_a = "#e06c75"
+pri_b = "#e5c07b"
+pri_c = "#98c379"
+pri_d = "#61afef"
+pri_other = "#c678dd"
+
+# Semantic
+project = "#61afef"
+context = "#56b6c2"
+done = "#5c6370"
+matched = "#e5c07b"
+due = "#e5c07b"
+overdue = "#e06c75"
+today = "#98c379"
