@@ -15,7 +15,7 @@ Searches Datadog logs, traces, metrics, monitors.
 Explores codebases to find relevant files, symbols, patterns.
 - **Give it**: what you're looking for (function, endpoint, feature area, error message)
 - **Returns**: file paths, line numbers, structure, entry points
-- **IMPORTANT**: multiple repos are available (frontend + both backends). Ask the user for repo paths if unknown, then explore ALL relevant ones.
+- **IMPORTANT**: multiple repos are available under `~/Developer/galileo-inc/` — frontend (`frontend-monorepo/master`), both backends (`api/master`, `core-api/main`), and the two user-facing mobile apps (`health-ios/master`, Swift; `health-android/master`, Kotlin). Explore ALL repos relevant to the issue; for patient-reported problems the mobile apps are often where the user-facing behavior lives. Ask the user for a repo path only if it's not under that directory.
 - **Best for**: mapping code paths, finding where logic lives
 
 ## `git-investigator`

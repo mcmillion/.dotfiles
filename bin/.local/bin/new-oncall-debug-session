@@ -6,6 +6,8 @@ WORKTREES=(
   "frontend-monorepo/master"
   "api/master"
   "core-api/main"
+  "health-ios/master"
+  "health-android/master"
 )
 
 # Kill existing session if it exists
@@ -26,7 +28,7 @@ done
 # Create session with claude window in frontend-monorepo/master
 tmux new-session -d -s "$SESSION" -c "$BASE_DIR/frontend-monorepo/master"
 tmux rename-window -t "$SESSION" "claude"
-tmux send-keys -t "$SESSION" "claude --add-dir ../../api/master --add-dir ../../core-api/main" Enter
+tmux send-keys -t "$SESSION" "claude --add-dir ../../api/master --add-dir ../../core-api/main --add-dir ../../health-ios/master --add-dir ../../health-android/master" Enter
 
 # Attach/switch to the session
 if [ -n "$TMUX" ]; then

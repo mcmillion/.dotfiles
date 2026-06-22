@@ -41,7 +41,7 @@ user the path.
 ## Phase 2 — Extract context from provided links
 
 Before asking the user anything, extract everything you can from the links. Launch agents
-in parallel (see [AGENTS.md](AGENTS.md)):
+in parallel (see [INVESTIGATION-AGENTS.md](INVESTIGATION-AGENTS.md)):
 - **Slack** → `web-researcher`: who reported, when, description, IDs/URLs/errors/attachments in the thread.
 - **Datadog** → `web-researcher` for the page + `datadog-investigator` to query the same data programmatically.
 
@@ -67,7 +67,7 @@ saver — but don't block: proceed with your ranking if they're AFK. Record the 
 **Hypotheses**.
 
 Then launch agents in parallel (single message) to test the top hypotheses — see
-[AGENTS.md](AGENTS.md) for the catalog and how to brief each:
+[INVESTIGATION-AGENTS.md](INVESTIGATION-AGENTS.md) for the catalog and how to brief each:
 1. **First wave**: `datadog-investigator` (errors in affected service(s) in production for the time window, with entity IDs) · `codebase-researcher` (code for the affected feature) · `git-investigator` (recent commits to the area).
 2. **Second wave** (driven by first-wave findings): error messages → `error-investigator`; suspicious commits → `codebase-researcher`; deploy-related → `ci-investigator`; external deps → `web-researcher`.
 3. **Iterate**: each result confirms/refutes a hypothesis or opens a new line. Keep going until you have hard evidence.
