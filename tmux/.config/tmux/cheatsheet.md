@@ -25,6 +25,7 @@
 | Key | Action |
 |-----|--------|
 | `r` | Reload config |
+| `t` | Tuxedo todo popup |
 | `]` | Paste from clipboard |
 | `h/j/k/l` | Select pane |
 | `←↓↑→` | Resize pane |
