@@ -9,6 +9,7 @@
 - Use only ASCII characters; no emojis or special Unicode unless I ask
 - Write plainly; avoid jargon and insider terminology. Don't reach for obscure or academic terms (e.g. "oracle") when a plain phrase works, and never use a niche term that collides with a well-known one in tech. If unsure whether a word is common, assume it isn't and say it plainly.
 - NEVER use the built-in AskUserQuestion / multiple-choice Q&A interface — it loses fidelity. When you need to figure something out or make a decision with me, ALWAYS use the `grill-me` skill instead
+- When giving me shell commands to copy/paste, format them to wrap at 80 characters whenever possible (use `\` line continuations, break on pipes/`&&`, etc). Long single-line commands that soft-wrap in the terminal cause copy/paste problems
 
 ## Git
 
