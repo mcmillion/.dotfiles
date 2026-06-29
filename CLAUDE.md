@@ -36,12 +36,6 @@ stow -D tool-name
 stow -R tool-name
 ```
 
-### macOS System Preferences
-```bash
-# Apply macOS defaults
-source .macos
-```
-
 ## Architecture
 
 ### Stow-based Configuration Management
@@ -57,6 +51,7 @@ Each tool has its own directory containing the configuration files in the same s
 - `zsh/` - Zsh shell configuration (.zshrc, .zprofile)
 - `ghostty/` - Ghostty terminal emulator configuration
 - `tmux/` - Terminal multiplexer (Ctrl+A prefix, vim-style navigation)
+- `herdr/` - Agent-aware terminal multiplexer (Ctrl+B prefix) for AI coding agents
 - `starship/` - Cross-shell prompt with Git integration
 
 **Session & File Management**

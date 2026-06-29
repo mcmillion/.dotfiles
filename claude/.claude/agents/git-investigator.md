@@ -56,7 +56,7 @@ Patterns, renames, or anything that made the history hard to follow.
 When you are given a repo path that is NOT the current working directory, use `git -C <path>`
 to scope commands instead of `cd`. This avoids permission prompts.
 
-Good: `git -C /Users/mlm/Developer/project log --oneline -20`
-Bad:  `cd /Users/mlm/Developer/project && git log --oneline -20`
+Good: `git -C ~/Developer/project log --oneline -20`
+Bad:  `cd ~/Developer/project && git log --oneline -20`
 
 Return only the report. No preamble, no sign-off.

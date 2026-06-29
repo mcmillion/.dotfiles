@@ -1,0 +1,9 @@
+#==============================================================================
+# LINUX-SPECIFIC ZSH CONFIG (sourced by ~/.zshrc on Linux)
+#==============================================================================
+
+# Homebrew (linuxbrew)
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# 1Password SSH agent (desktop app, deb/rpm install)
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"

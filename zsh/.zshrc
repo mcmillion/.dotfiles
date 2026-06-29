@@ -1,4 +1,13 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+#==============================================================================
+# OS-SPECIFIC SETUP
+#==============================================================================
+# Brew, PATH, SSH agent, and platform-only aliases live in per-OS fragments.
+
+case "$(uname -s)" in
+  Darwin) [ -f ~/.zshrc.darwin ] && source ~/.zshrc.darwin ;;
+  Linux)  [ -f ~/.zshrc.linux ] && source ~/.zshrc.linux ;;
+esac
+
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 
@@ -20,7 +29,7 @@ zstyle ':completion:*:(mosh|ssh|scp|sftp|rsync):*' ignored-patterns '*.*'
 # Auto-ls when cd-ing into directories
 cd () {
   builtin cd "$@";
-  ls -AGh;
+  ls -Ah --color=auto;
 }
 
 
@@ -31,7 +40,7 @@ cd () {
 
 eval "$(zoxide init zsh --hook pwd)"
 function z() {
-    __zoxide_z "$@" && ls -AGh
+    __zoxide_z "$@" && ls -Ah --color=auto
 }
 
 
@@ -63,9 +72,9 @@ setopt nolistbeep           # no bell on ambiguous completion
 alias reload='source ~/.zshrc'
 alias c='claude'
 alias cx='brew upgrade --cask codex --quiet 2>/dev/null; codex'
-alias l='ls -AGh'
-alias ls='ls -AGh'
-alias ll='ls -AGlh'
+alias l='ls -Ah --color=auto'
+alias ls='ls -Ah --color=auto'
+alias ll='ls -Alh --color=auto'
 alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -v'
@@ -78,14 +87,6 @@ alias .='pwd'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-
-
-
-#==================================================================================================
-# SSH
-#==================================================================================================
-
-export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 
 
@@ -167,10 +168,11 @@ gsync() {
 
 
 #==================================================================================================
-# LS
+# LS COLORS
 #==================================================================================================
 
-export LSCOLORS='ExfxbxdxCxegedabagacad'
+# GNU ls colors. dircolors ships with GNU coreutils (on PATH on both OSes).
+command -v dircolors >/dev/null 2>&1 && eval "$(dircolors -b)"
 
 
 
@@ -264,7 +266,7 @@ alias kill_rails_server='kill -9 $(lsof -i tcp:3000 -t)'
 # PYTHON
 #==================================================================================================
 
-# Work Bootstrap
+# Work Bootstrap (no-ops unless pyenv is installed)
 if command -v pyenv 1>/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -280,33 +282,11 @@ fi
 
 
 #==================================================================================================
-# POSTGRES / REDIS / ETC
-#==================================================================================================
-
-alias fix_stuck_postgres='rm /opt/homebrew/var/postgres/postmaster.pid; brew services restart postgresql'
-
-
-
-#==================================================================================================
 # DOCKER
 #==================================================================================================
 
 alias d='docker'
 alias dc='docker-compose'
-
-
-
-#==================================================================================================
-# IOS / ANDROID
-#==================================================================================================
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-alias fl='bundle exec fastlane'
 
 
 
@@ -319,46 +299,6 @@ alias fl='bundle exec fastlane'
 
 
 #==================================================================================================
-# OSX
-#==================================================================================================
-
-alias finder='open -a Finder ./'
-alias cleanup_ds="find . -type f -name '*.DS_Store' -ls -delete"
-alias cleanup_open_with='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder'
-alias add_blank_space_to_dock="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}' && killall Dock"
-alias add_small_blank_space_to_dock="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"small-spacer-tile\";}'; killall Dock"
-alias flush_dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
-alias disable_hidden_files_in_finder='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
-alias enable_hidden_files_in_finder='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
-alias disable_local_timemachine='sudo tmutil disablelocal'
-alias enable_local_timemachine='sudo tmutil enablelocal'
-alias disable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false'
-alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true'
-
-# Restart network services and flush DNS
-restart_network() {
-    echo "🔄 Restarting network interfaces..."
-
-    # Get all active network interfaces
-    for interface in $(networksetup -listallhardwareports | awk '/Device/{print $2}'); do
-        if [[ $interface =~ ^en[0-9]+$ ]]; then
-            echo "  Restarting $interface..."
-            sudo ifconfig $interface down
-            sleep 1
-            sudo ifconfig $interface up
-        fi
-    done
-
-    echo "🧹 Flushing DNS cache..."
-    sudo dscacheutil -flushcache 2>/dev/null
-    sudo killall -HUP mDNSResponder 2>/dev/null
-
-    echo "✅ Network restart complete!"
-    echo "💡 Tip: If issues persist, try 'sudo reboot'"
-}
-
-
-#==================================================================================================
 # STARSHIP PROMPT (must be after fzf to avoid zle-keymap-select conflicts)
 #==================================================================================================
 
@@ -366,7 +306,12 @@ eval "$(starship init zsh)"
 
 
 
-# Auto-start or attach to home tmux session
-if [[ "$OSTYPE" == darwin* && "$TERM_PROGRAM" != "vscode" && -z "$TMUX" ]]; then
-  tmux new-session -A -s home
+#==================================================================================================
+# HERDR (terminal session manager)
+#==================================================================================================
+
+# Auto-launch / attach to the persistent herdr session for interactive shells.
+# Skips when already inside herdr, in VS Code's terminal, or when herdr is absent.
+if [[ -o interactive ]] && [[ -z "$HERDR_SESSION" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v herdr >/dev/null 2>&1; then
+  herdr
 fi

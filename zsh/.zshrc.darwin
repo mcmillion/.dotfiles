@@ -1,0 +1,56 @@
+#==============================================================================
+# macOS-SPECIFIC ZSH CONFIG (sourced by ~/.zshrc on Darwin)
+#==============================================================================
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# GNU coreutils ahead of BSD tools, so ls/dircolors/etc. behave like Linux
+export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+
+# 1Password SSH agent
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Postgres (Homebrew)
+alias fix_stuck_postgres='rm /opt/homebrew/var/postgres/postmaster.pid; brew services restart postgresql'
+
+
+
+#==============================================================================
+# macOS SYSTEM ALIASES
+#==============================================================================
+
+alias finder='open -a Finder ./'
+alias cleanup_ds="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanup_open_with='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder'
+alias add_blank_space_to_dock="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}' && killall Dock"
+alias add_small_blank_space_to_dock="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"small-spacer-tile\";}'; killall Dock"
+alias flush_dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+alias disable_hidden_files_in_finder='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
+alias enable_hidden_files_in_finder='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
+alias disable_local_timemachine='sudo tmutil disablelocal'
+alias enable_local_timemachine='sudo tmutil enablelocal'
+alias disable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false'
+alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true'
+
+# Restart network services and flush DNS
+restart_network() {
+    echo "🔄 Restarting network interfaces..."
+
+    # Get all active network interfaces
+    for interface in $(networksetup -listallhardwareports | awk '/Device/{print $2}'); do
+        if [[ $interface =~ ^en[0-9]+$ ]]; then
+            echo "  Restarting $interface..."
+            sudo ifconfig $interface down
+            sleep 1
+            sudo ifconfig $interface up
+        fi
+    done
+
+    echo "🧹 Flushing DNS cache..."
+    sudo dscacheutil -flushcache 2>/dev/null
+    sudo killall -HUP mDNSResponder 2>/dev/null
+
+    echo "✅ Network restart complete!"
+    echo "💡 Tip: If issues persist, try 'sudo reboot'"
+}

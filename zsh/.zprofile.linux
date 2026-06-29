@@ -1,0 +1,5 @@
+#==============================================================================
+# LINUX-SPECIFIC LOGIN ENVIRONMENT (sourced by ~/.zprofile on Linux)
+#==============================================================================
+
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
