@@ -10,22 +10,6 @@ return {
   config = function()
     local dap = require("dap")
 
-    dap.adapters.godot = {
-      type = "server",
-      host = "127.0.0.1",
-      port = 6006,
-    }
-
-    dap.configurations.gdscript = {
-      {
-        type = "godot",
-        request = "launch",
-        name = "Launch project",
-        project = "${workspaceFolder}",
-        launch_scene = false,
-      },
-    }
-
     vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
     vim.fn.sign_define(
       "DapStopped",
