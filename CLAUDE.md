@@ -36,22 +36,6 @@ stow -D tool-name
 stow -R tool-name
 ```
 
-### Tmux Session Management
-```bash
-# Start predefined development sessions using Smug
-smug start sentinel
-smug start black-omen-web
-smug start health-web
-smug start varia
-smug start zodiac
-
-# List available sessions
-smug list
-
-# Create new session template
-smug new project-name
-```
-
 ### macOS System Preferences
 ```bash
 # Apply macOS defaults
@@ -76,7 +60,6 @@ Each tool has its own directory containing the configuration files in the same s
 - `starship/` - Cross-shell prompt with Git integration
 
 **Session & File Management**
-- `smug/` - Tmux session templates (sentinel, black-omen-web, health-web, varia, zodiac, etc.)
 - `yazi/` - Terminal file manager configuration
 
 **Version Control**

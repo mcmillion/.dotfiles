@@ -240,15 +240,6 @@ fkill() {
   fi
 }
 
-# FZF tmuxinator
-mux() {
-  local selected=$(smug list | fzf --prompt="Project: " -m -1 -q "$1")
-
-  if [ -n "$selected" ]; then
-    smug start "$selected" -a
-  fi
-}
-
 
 
 #==================================================================================================

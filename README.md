@@ -12,7 +12,6 @@ This repository contains configuration for the following tools:
   - Plugins: Copilot, Fugitive, fzf-lua, Treesitter, and more
 - **Tmux** - Terminal multiplexer with vim-style keybindings
   - Custom prefix (Ctrl+A), pane navigation, session management
-  - **Smug** - Tmux session manager with project configurations
 - **Starship** - Fast shell prompt with Git integration
 - **asdf** - Version manager for multiple runtime versions
   - Configured with default packages for Ruby, Node.js, and Python
@@ -80,7 +79,6 @@ stow homebrew
 stow editorconfig
 stow claude
 stow codex
-stow smug
 
 # Git requires --dotfiles flag to properly link .gitignore
 stow --dotfiles git
