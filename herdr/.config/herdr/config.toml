@@ -1,0 +1,25 @@
+# herdr configuration
+# Lives at ~/.config/herdr/config.toml (stowed from dotfiles).
+# Run `herdr --default-config` to see every available option with docs.
+
+# Skip the first-run onboarding prompt.
+onboarding = false
+
+[theme]
+# Match the One Dark palette used by nvim and ghostty.
+name = "one-dark"
+
+[keys]
+# Match tmux muscle memory (tmux also uses C-a as prefix).
+# Note: this collides with tmux's prefix, so don't nest herdr inside tmux
+# while this is set - herdr is being used as a full tmux replacement.
+prefix = "ctrl+a"
+
+[ui]
+# Leave mouse capture on for herdr's mouse UI (pane select, resize, scroll).
+# Trade-off: Cmd-click to open URLs is swallowed; use Shift-Cmd-click instead.
+# Set false to give plain Cmd-click back to the terminal.
+mouse_capture = true
+
+# Show detected agent labels on pane borders - useful when running agents.
+show_agent_labels_on_pane_borders = true
