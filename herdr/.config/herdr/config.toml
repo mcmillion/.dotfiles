@@ -33,9 +33,8 @@ agent_panel_sort = "spaces"
 # while this is set - herdr is being used as a full tmux replacement.
 prefix = "ctrl+a"
 
-# Reload config. Bumps resize_mode off prefix+r.
-reload_config = "prefix+r"
-resize_mode = "prefix+shift+r"
+reload_config = "prefix+shift+r"
+resize_mode = "prefix+r"
 
 # Splits.
 split_vertical = "prefix+backslash"   # side by side
