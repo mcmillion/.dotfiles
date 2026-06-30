@@ -7,6 +7,9 @@ packer_compiled.lua
 .zshenv
 .DS_Store
 *.log
+**/herdr/session.json
+**/herdr/plugins.json
+**/herdr/plugins/
 
 # Claude files
 /.claude
