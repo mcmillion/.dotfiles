@@ -23,7 +23,6 @@ stow */
 stow codex
 stow claude
 stow nvim
-stow tmux
 stow -D tool-name
 stow -R tool-name
 stow --dotfiles git

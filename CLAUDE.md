@@ -24,7 +24,7 @@ stow */
 
 # Link specific tool configuration
 stow nvim
-stow tmux
+stow herdr
 
 # Git requires --dotfiles flag to link dot-gitignore as .gitignore
 stow --dotfiles git
@@ -50,8 +50,7 @@ Each tool has its own directory containing the configuration files in the same s
 **Terminal & Shell**
 - `zsh/` - Zsh shell configuration (.zshrc, .zprofile)
 - `ghostty/` - Ghostty terminal emulator configuration
-- `tmux/` - Terminal multiplexer (Ctrl+A prefix, vim-style navigation)
-- `herdr/` - Agent-aware terminal multiplexer (Ctrl+B prefix) for AI coding agents
+- `herdr/` - Agent-aware terminal multiplexer (Ctrl+A prefix) for AI coding agents
 - `starship/` - Cross-shell prompt with Git integration
 
 **Session & File Management**
@@ -87,4 +86,4 @@ When modifying tool configurations:
 2. Use `stow -R tool-name` to re-link if file structure changes
 3. Restart the relevant application or source configuration files
 
-For tmux specifically, use `tmux source-file ~/.tmux.conf` or restart tmux sessions to apply changes.
+For herdr specifically, use `herdr server reload-config` or `prefix+shift+r` to apply config changes without restarting.

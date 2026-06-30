@@ -10,9 +10,8 @@ This repository contains configuration for the following tools:
 - **Neovim** - Modern text editor with extensive Lua-based configuration
   - LSP support, autocompletion, syntax highlighting
   - Plugins: Copilot, Fugitive, fzf-lua, Treesitter, and more
-- **Tmux** - Terminal multiplexer with vim-style keybindings
-  - Custom prefix (Ctrl+A), pane navigation, session management
 - **Herdr** - Agent-aware terminal multiplexer for managing AI coding agents
+  - Custom prefix (Ctrl+A), pane navigation, workspace management
 - **Starship** - Fast shell prompt with Git integration
 - **asdf** - Version manager for multiple runtime versions
   - Configured with default packages for Ruby, Node.js, and Python
@@ -88,10 +87,9 @@ macOS only:
 
 ```bash
 stow karabiner   # keyboard remapping (macOS-only)
-stow tmux smug   # legacy multiplexer, kept during the herdr trial
 ```
 
-Linux: skip `karabiner`, `tmux`, and `smug` (herdr replaces tmux/smug).
+Linux: skip `karabiner` (macOS-only).
 
 5. Reload your shell or start a new terminal session to apply changes.
 
@@ -140,9 +138,8 @@ the OS genuinely differs.
   Requires the 1Password desktop app with the SSH agent enabled.
 - **herdr.** Cross-platform; installed via the shared Brewfile. `~/.zshrc`
   auto-launches/attaches herdr for interactive shells, skipping when already
-  inside herdr (`$HERDR_SESSION`), in VS Code's terminal, or when herdr is
-  absent. It replaces tmux/smug, which are kept as mac-only legacy during the
-  trial.
+  inside herdr (`$HERDR_ENV`), in VS Code's terminal, or when herdr is
+  absent. It replaces tmux/smug.
 
 ### Codex Notes
 
@@ -151,6 +148,5 @@ Only Codex instructions/support files are stow-managed here. Keep
 
 The `codex` package currently manages:
 - `~/.codex/AGENTS.md`
-- `~/.codex/notify-tmux.sh`
 - `~/.codex/agents/*` custom subagents
 - `~/.agents/skills/grill-me` for design interrogation before implementation

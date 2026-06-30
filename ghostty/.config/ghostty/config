@@ -49,7 +49,3 @@ mouse-shift-capture = false
 keybind = shift+enter=text:\x1b\r
 keybind = alt+left=esc:[1;3D
 keybind = alt+right=esc:[1;3C
-
-# Hyper+[ and Hyper+] for tmux session switching
-keybind = super+alt+shift+ctrl+left_bracket=text:\x1b[80~
-keybind = super+alt+shift+ctrl+right_bracket=text:\x1b[81~

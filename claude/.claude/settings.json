@@ -316,8 +316,6 @@
       "mcp__mcp-atlassian__confluence_search_user",
       "mcp__mcp-atlassian__confluence_get_page_images",
       "WebFetch(domain:ghostty.org)",
-      "Bash(tmux show-option:*)",
-      "Bash(~/.tmux/plugins/tmux-continuum/scripts/continuum_save.sh)",
       "Bash(python3:*)",
       "Bash(git check-ignore:*)",
       "Bash(claude mcp get:*)",
@@ -336,16 +334,6 @@
     "defaultMode": "auto"
   },
   "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/notify-tmux.sh"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "Bash",

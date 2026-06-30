@@ -91,10 +91,8 @@ alias ....='cd ../../..'
 
 
 #==================================================================================================
-# TMUX / VIM / FILES
+# VIM / FILES
 #==================================================================================================
-
-alias kill_all_tmux_sessions='tmux ls | awk '\''{print $1}'\'' | sed '\''s/://g'\'' | xargs -I{} tmux kill-session -t {}'
 
 alias v='nvim'
 alias vi='nvim'
@@ -115,12 +113,6 @@ t() {
     tuxedo "$@"
   fi
 }
-
-
-
-alias home='tmux new-session -A -s home'
-
-
 
 #==================================================================================================
 # GIT
@@ -180,7 +172,6 @@ command -v dircolors >/dev/null 2>&1 && eval "$(dircolors -b)"
 # FZF
 #==================================================================================================
 
-export FZF_TMUX=0
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!*.uid" 3> /dev/null'
 export FZF_DEFAULT_OPTS='--height 50% --color=fg:7,hl:8,fg+:15,hl+:4,info:9,prompt:4,pointer:4,marker:4,spinner:4,border:3,header:3'
 source <(fzf --zsh)
