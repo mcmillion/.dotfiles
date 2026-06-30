@@ -66,5 +66,3 @@
 - Vault structure: each note is a `.md` file, folders are directories
 - When creating/editing notes, preserve existing frontmatter and wikilinks
 - Do not reorganize vault structure without being asked
-
-@RTK.md
