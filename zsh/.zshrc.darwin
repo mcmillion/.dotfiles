@@ -35,7 +35,7 @@ alias enable_key_press_and_hold='defaults write NSGlobalDomain ApplePressAndHold
 
 # Restart network services and flush DNS
 restart_network() {
-    echo "🔄 Restarting network interfaces..."
+    echo "Restarting network interfaces..."
 
     # Get all active network interfaces
     for interface in $(networksetup -listallhardwareports | awk '/Device/{print $2}'); do
@@ -47,10 +47,10 @@ restart_network() {
         fi
     done
 
-    echo "🧹 Flushing DNS cache..."
+    echo "Flushing DNS cache..."
     sudo dscacheutil -flushcache 2>/dev/null
     sudo killall -HUP mDNSResponder 2>/dev/null
 
-    echo "✅ Network restart complete!"
-    echo "💡 Tip: If issues persist, try 'sudo reboot'"
+    echo "Network restart complete!"
+    echo "Tip: If issues persist, try 'sudo reboot'"
 }
