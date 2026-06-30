@@ -5,5 +5,9 @@
 # Homebrew (linuxbrew)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# 1Password SSH agent (desktop app, deb/rpm install)
-export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+# 1Password SSH agent (desktop app, deb/rpm install). Skip when an agent was
+# forwarded in over SSH (e.g. ceres uses the Mac's forwarded 1Password agent) so
+# we don't clobber the inherited socket.
+if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+fi

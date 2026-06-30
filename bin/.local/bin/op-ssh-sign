@@ -1,15 +1,22 @@
 #!/bin/sh
-# Cross-platform shim for 1Password's SSH commit signer.
+# Cross-platform shim for git's ssh commit signer.
 # git's gpg.ssh.program points here by name (this dir is on PATH), so the
-# gitconfig stays shared while the actual binary path differs per OS.
-for candidate in \
-  /Applications/1Password.app/Contents/MacOS/op-ssh-sign \
-  /opt/1Password/op-ssh-sign
-do
-  if [ -x "$candidate" ]; then
-    exec "$candidate" "$@"
-  fi
-done
+# gitconfig stays shared while the signer differs per environment.
+#
+# When 1Password is the active SSH agent (desktop app), let it sign. Otherwise
+# (e.g. an agent forwarded in over SSH, like ceres using the Mac's agent), sign
+# via ssh-keygen against whatever agent SSH_AUTH_SOCK points to.
+case "$SSH_AUTH_SOCK" in
+  *1password*)
+    for candidate in \
+      /Applications/1Password.app/Contents/MacOS/op-ssh-sign \
+      /opt/1Password/op-ssh-sign
+    do
+      if [ -x "$candidate" ]; then
+        exec "$candidate" "$@"
+      fi
+    done
+    ;;
+esac
 
-echo "op-ssh-sign: 1Password signer not found in known locations" >&2
-exit 1
+exec ssh-keygen "$@"
