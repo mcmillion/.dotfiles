@@ -23,6 +23,36 @@ green='\033[0;32m'
 reset='\033[0m'
 sep="${gray} · ${reset}"
 
+fmt_reset() {
+  local val="$1" fmt="$2" epoch
+  case "$val" in
+    ''|*[!0-9]*)
+      epoch=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "$val" "+%s" 2>/dev/null) || return
+      ;;
+    *) epoch="$val" ;;
+  esac
+  date -r "$epoch" "+$fmt"
+}
+
+# Time remaining until a reset timestamp, e.g. 4h31m
+fmt_remaining() {
+  local val="$1" epoch diff
+  case "$val" in
+    ''|*[!0-9]*)
+      epoch=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "$val" "+%s" 2>/dev/null) || return
+      ;;
+    *) epoch="$val" ;;
+  esac
+  diff=$(( epoch - $(date +%s) ))
+  [ "$diff" -lt 0 ] && diff=0
+  local h=$(( diff / 3600 )) m=$(( (diff % 3600) / 60 ))
+  if [ "$h" -gt 0 ]; then
+    printf '%dh%dm' "$h" "$m"
+  else
+    printf '%dm' "$m"
+  fi
+}
+
 # Build a labeled bar: label ▰▰▰▱▱▱ NN%
 bar() {
   local label="$1" pct="$2" width=10
@@ -81,23 +111,23 @@ fi
 pct=$(printf "%.0f" "$ctx_pct")
 output="${output}${sep}$(bar ctx "$pct")"
 
-# The 5h/7d windows aren't shown here; they're surfaced in the tmux status bar.
-# This data only exists in this hook's JSON, so forward it to a cache the tmux
-# bar reads (see tmux-ccusage). Reset times are stored as epochs so tmux-ccusage
-# can compute the live countdown itself.
 if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
-  to_epoch() {
-    case "$1" in
-      ''|*[!0-9]*) date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "$1" "+%s" 2>/dev/null ;;
-      *) printf '%s' "$1" ;;
-    esac
-  }
-  rl_cache="$HOME/.cache/tmux-ccusage/ratelimits"
-  fe=$(to_epoch "$five_reset"); se=$(to_epoch "$seven_reset")
-  mkdir -p "${rl_cache%/*}"
-  printf '%s %s %s %s\n' \
-    "${five_pct:--}" "${fe:--}" "${seven_pct:--}" "${se:--}" \
-    > "$rl_cache.tmp" && mv "$rl_cache.tmp" "$rl_cache"
+  if [ -n "$five_pct" ]; then
+    pct=$(printf "%.0f" "$five_pct")
+    output="${output}${sep}$(bar 5h "$pct")"
+    if [ -n "$five_reset" ]; then
+      t=$(fmt_remaining "$five_reset")
+      [ -n "$t" ] && output="${output} (${t})"
+    fi
+  fi
+  if [ -n "$seven_pct" ]; then
+    pct=$(printf "%.0f" "$seven_pct")
+    output="${output}${sep}$(bar 7d "$pct")"
+    if [ -n "$seven_reset" ]; then
+      d=$(fmt_reset "$seven_reset" "%b %-d")
+      [ -n "$d" ] && output="${output} (${d})"
+    fi
+  fi
 fi
 
 echo -e "$output"

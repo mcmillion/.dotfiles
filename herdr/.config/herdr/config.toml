@@ -15,8 +15,8 @@ name = "one-dark"
 panel_bg = "reset"
 
 [ui]
-# Darker gray instead of One Dark's default blue accent.
-accent = "#5c6370"
+# One Dark's green accent.
+accent = "#98c379"
 
 # Leave mouse capture on for herdr's mouse UI (pane select, resize, scroll).
 # Trade-off: Cmd-click to open URLs is swallowed; use Shift-Cmd-click instead.
@@ -26,6 +26,7 @@ mouse_capture = true
 # Show detected agent labels on pane borders - useful when running agents.
 show_agent_labels_on_pane_borders = true
 
+agent_panel_sort = "spaces"
 [keys]
 # Ctrl+A prefix to match tmux muscle memory.
 # Note: collides with tmux's prefix, so don't nest herdr inside tmux
@@ -62,9 +63,13 @@ close_tab = "prefix+shift+x"
 # Workspaces.
 new_workspace = "prefix+n"
 workspace_picker = "alt+s"
-next_workspace = "alt+j"
-previous_workspace = "alt+k"
+next_workspace = "alt+shift+j"
+previous_workspace = "alt+shift+k"
 close_workspace = "prefix+shift+d"
+
+# Agents - cycle through running agents in the agent panel.
+next_agent = "alt+j"
+previous_agent = "alt+k"
 
 # Free prefix+g for the lazygit popup below (herdr's goto lives there by default).
 goto = ""
