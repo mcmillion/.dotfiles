@@ -306,3 +306,7 @@ eval "$(starship init zsh)"
 if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v herdr >/dev/null 2>&1; then
   herdr
 fi
+
+# Shortcuts: `h` = local herdr, `hc` = attach ceres's herdr server over SSH.
+alias h='herdr'
+alias hc='herdr --remote ceres'
