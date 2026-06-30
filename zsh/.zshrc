@@ -312,6 +312,6 @@ eval "$(starship init zsh)"
 
 # Auto-launch / attach to the persistent herdr session for interactive shells.
 # Skips when already inside herdr, in VS Code's terminal, or when herdr is absent.
-if [[ -o interactive ]] && [[ -z "$HERDR_SESSION" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v herdr >/dev/null 2>&1; then
+if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v herdr >/dev/null 2>&1; then
   herdr
 fi
