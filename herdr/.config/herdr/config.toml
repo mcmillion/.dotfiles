@@ -9,6 +9,11 @@ onboarding = false
 # Match the One Dark palette used by nvim and ghostty.
 name = "one-dark"
 
+[theme.custom]
+# Let the tab bar strip use the host terminal's background instead of
+# One Dark's panel color, so it blends into Ghostty's darker bg.
+panel_bg = "reset"
+
 [ui]
 # Darker gray instead of One Dark's default blue accent.
 accent = "#5c6370"
@@ -35,7 +40,9 @@ resize_mode = "prefix+shift+r"
 split_vertical = "prefix+backslash"   # side by side
 split_horizontal = "prefix+minus"     # stacked
 
-# Pane focus.
+# Pane focus - prefix fallback for shell/agent panes.
+# ctrl+hjkl is handled by the herdr-splits.nvim plugin actions below, which
+# forward to nvim when it's focused and switch herdr panes otherwise.
 focus_pane_left = "prefix+h"
 focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
@@ -79,3 +86,25 @@ command = "tuxedo ~/todo.txt"
 key = "alt+shift+c"
 type = "pane"
 command = "claude --continue --fork-session"
+
+# herdr-splits.nvim: ctrl+hjkl moves between nvim splits and herdr panes as one.
+# Forwards to nvim when it's the focused pane, switches herdr panes otherwise.
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "herdr-splits.nav-left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "herdr-splits.nav-down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "herdr-splits.nav-up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "herdr-splits.nav-right"
