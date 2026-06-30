@@ -23,15 +23,18 @@ green='\033[0;32m'
 reset='\033[0m'
 sep="${gray} · ${reset}"
 
-fmt_reset() {
-  local val="$1" fmt="$2" epoch
+# Whole days until a reset timestamp, rounded up, e.g. 3d
+fmt_days_remaining() {
+  local val="$1" epoch diff
   case "$val" in
     ''|*[!0-9]*)
       epoch=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "$val" "+%s" 2>/dev/null) || return
       ;;
     *) epoch="$val" ;;
   esac
-  date -r "$epoch" "+$fmt"
+  diff=$(( epoch - $(date +%s) ))
+  [ "$diff" -lt 0 ] && diff=0
+  printf '%dd' $(( (diff + 86399) / 86400 ))
 }
 
 # Time remaining until a reset timestamp, e.g. 4h31m
@@ -124,7 +127,7 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
     pct=$(printf "%.0f" "$seven_pct")
     output="${output}${sep}$(bar 7d "$pct")"
     if [ -n "$seven_reset" ]; then
-      d=$(fmt_reset "$seven_reset" "%b %-d")
+      d=$(fmt_days_remaining "$seven_reset")
       [ -n "$d" ] && output="${output} (${d})"
     fi
   fi
