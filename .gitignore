@@ -10,6 +10,7 @@ packer_compiled.lua
 **/herdr/session.json
 **/herdr/plugins.json
 **/herdr/plugins/
+**/ghostty/.config/ghostty/config.local
 
 # Claude files
 /.claude
