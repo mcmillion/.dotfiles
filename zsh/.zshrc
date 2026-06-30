@@ -301,10 +301,13 @@ eval "$(starship init zsh)"
 # HERDR (terminal session manager)
 #==================================================================================================
 
-# Auto-launch / attach to the persistent herdr session for interactive shells.
+# Ensure a headless herdr server is running for interactive shells, but do NOT
+# attach automatically -- connect on demand with `h` (local) or `hc` (ceres).
 # Skips when already inside herdr, in VS Code's terminal, or when herdr is absent.
 if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v herdr >/dev/null 2>&1; then
-  herdr
+  if ! herdr status server >/dev/null 2>&1; then
+    nohup herdr server >/dev/null 2>&1 &!
+  fi
 fi
 
 # Shortcuts: `h` = local herdr, `hc` = attach ceres's herdr server over SSH.
