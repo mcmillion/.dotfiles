@@ -70,7 +70,9 @@ symbol = 'scala '
 disabled = true
 
 [hostname]
-disabled = true
+disabled = false
+ssh_only = true
+style = 'bold green'
 
 [time]
 disabled = false
