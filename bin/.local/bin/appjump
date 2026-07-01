@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Focus-or-launch a single app, Raycast style. Invoked by kanata's `cmd`
+# action as:  appjump <KEY>   where KEY is a letter defined in apps.conf.
+#
+# If no window of the app's WM_CLASS exists, launch it. If one exists,
+# activate it. If several exist, cycle: each press raises the next window.
+set -euo pipefail
+
+# kanata's systemd service starts with a minimal environment; reconstruct
+# what kdotool (DBus -> KWin) and GUI launching need.
+uid=$(id -u)
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$uid}"
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
+if [ -z "${WAYLAND_DISPLAY:-}" ]; then
+  for s in "$XDG_RUNTIME_DIR"/wayland-*; do
+    [ -S "$s" ] && { export WAYLAND_DISPLAY="${s##*/}"; break; }
+  done
+fi
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/usr/bin:$PATH"
+
+CONF="${XDG_CONFIG_HOME:-$HOME/.config}/appjump/apps.conf"
+KEY=${1:?usage: appjump <key-letter>}
+
+trim() { local s=$1; s=${s#"${s%%[![:space:]]*}"}; s=${s%"${s##*[![:space:]]}"}; printf '%s' "$s"; }
+
+# Look up this key's app in the config table (KEY | WM_CLASS | DESKTOP_ID).
+wm=""; desktop=""
+while IFS='|' read -r k w d; do
+  [ "$(trim "${k:-}")" = "$KEY" ] || continue
+  wm=$(trim "${w:-}"); desktop=$(trim "${d:-}"); break
+done < <(grep -vE '^[[:space:]]*#' "$CONF" 2>/dev/null)
+[ -n "$wm" ] && [ -n "$desktop" ] || { echo "appjump: no app mapped to key '$KEY'" >&2; exit 1; }
+
+have() { command -v "$1" >/dev/null 2>&1; }
+launch() {
+  if have gtk-launch; then exec gtk-launch "$desktop"
+  elif have kstart;   then exec kstart "$desktop"
+  else exec kioclient exec "applications:${desktop}.desktop"; fi
+}
+
+# kdotool speaks the KWin scripting API, so it works on native Wayland windows.
+mapfile -t ids < <(kdotool search --class "^${wm}$" 2>/dev/null | sort)
+[ "${#ids[@]}" -eq 0 ] && mapfile -t ids < <(kdotool search --class "^${wm,,}$" 2>/dev/null | sort)
+[ "${#ids[@]}" -eq 0 ] && launch
+
+active=$(kdotool getactivewindow 2>/dev/null || true)
+
+# Activate the window after the active one (wrap); if none of ours is active,
+# jump to the first.
+target=${ids[0]}
+for i in "${!ids[@]}"; do
+  if [ "${ids[$i]}" = "$active" ]; then
+    target=${ids[$(( (i + 1) % ${#ids[@]} ))]}
+    break
+  fi
+done
+kdotool windowactivate "$target"
