@@ -72,9 +72,20 @@ bar() {
     "$gray" "$pct" "$reset"
 }
 
-# Abbreviate home directory with ~
+# Abbreviate home directory with ~ (handles ostree /var/home vs /home symlink)
 if [ -n "$cwd" ]; then
-  display_dir="${cwd/#$HOME/~}"
+  display_dir="$cwd"
+  for home_prefix in "$HOME" /var/home/mlm /home/mlm /Users/mlm; do
+    [ -n "$home_prefix" ] || continue
+    if [ "$cwd" = "$home_prefix" ]; then
+      display_dir="~"
+      break
+    fi
+    if [ "${cwd#"$home_prefix"/}" != "$cwd" ]; then
+      display_dir="~/${cwd#"$home_prefix"/}"
+      break
+    fi
+  done
 else
   display_dir="~"
 fi
