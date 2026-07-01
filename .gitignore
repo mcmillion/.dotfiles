@@ -12,5 +12,15 @@ packer_compiled.lua
 **/herdr/plugins/
 **/ghostty/.config/ghostty/config.local
 
-# Claude files
-/.claude
+# Claude Code: track only config; ignore runtime data + secrets
+claude/.claude/*
+!claude/.claude/CLAUDE.md
+!claude/.claude/settings.json
+!claude/.claude/statusline-command.sh
+!claude/.claude/agents/
+!claude/.claude/commands/
+!claude/.claude/skills/
+
+# Symlinks to installed binaries (managed outside the repo)
+bin/.local/bin/claude
+bin/.local/bin/herdr
