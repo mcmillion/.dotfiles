@@ -11,6 +11,7 @@ packer_compiled.lua
 **/herdr/plugins.json
 **/herdr/plugins/
 **/ghostty/.config/ghostty/config.local
+.claude/settings.local.json
 
 # Claude Code: track only config; ignore runtime data + secrets
 claude/.claude/*
