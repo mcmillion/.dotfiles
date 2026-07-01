@@ -6,16 +6,16 @@
 # activate it. If several exist, cycle: each press raises the next window.
 set -euo pipefail
 
-# kanata's systemd service starts with a minimal environment; reconstruct
-# what kdotool (DBus -> KWin) and GUI launching need.
-uid=$(id -u)
-export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$uid}"
+# kanata's systemd service can start before the graphical session env is
+# imported, so its env (inherited by this script) may lack WAYLAND_DISPLAY,
+# KDE_SESSION_VERSION (kdotool refuses to run without it), etc. The systemd
+# user manager has the imported values by the time any app-switch happens --
+# pull them from there so we don't depend on kanata's start-time env.
+eval "$(systemctl --user show-environment 2>/dev/null \
+  | grep -E '^(WAYLAND_DISPLAY|DISPLAY|KDE_SESSION_VERSION|KDE_FULL_SESSION|XDG_CURRENT_DESKTOP|DBUS_SESSION_BUS_ADDRESS|XDG_RUNTIME_DIR)=' \
+  | sed 's/^/export /')"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
 export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
-if [ -z "${WAYLAND_DISPLAY:-}" ]; then
-  for s in "$XDG_RUNTIME_DIR"/wayland-*; do
-    [ -S "$s" ] && { export WAYLAND_DISPLAY="${s##*/}"; break; }
-  done
-fi
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/usr/bin:$PATH"
 
 CONF="${XDG_CONFIG_HOME:-$HOME/.config}/appjump/apps.conf"
@@ -39,8 +39,10 @@ launch() {
 }
 
 # kdotool speaks the KWin scripting API, so it works on native Wayland windows.
-mapfile -t ids < <(kdotool search --class "^${wm}$" 2>/dev/null | sort)
-[ "${#ids[@]}" -eq 0 ] && mapfile -t ids < <(kdotool search --class "^${wm,,}$" 2>/dev/null | sort)
+# Substring (unanchored) match: apps.conf uses short names like "firefox" but
+# the real Wayland app-id is e.g. "org.mozilla.firefox".
+mapfile -t ids < <(kdotool search --class "${wm}" 2>/dev/null | sort)
+[ "${#ids[@]}" -eq 0 ] && mapfile -t ids < <(kdotool search --class "${wm,,}" 2>/dev/null | sort)
 [ "${#ids[@]}" -eq 0 ] && launch
 
 active=$(kdotool getactivewindow 2>/dev/null || true)
