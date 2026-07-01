@@ -110,3 +110,8 @@
 
 [commit]
   gpgsign = true
+
+# Machine-local overrides (e.g. ceres uses an on-disk key, not 1Password).
+# Missing file is silently ignored, so this is a no-op on hosts without it.
+[include]
+  path = ~/.config/git/local.config
