@@ -1,5 +1,7 @@
 #==============================================================================
 # LINUX-SPECIFIC LOGIN ENVIRONMENT (sourced by ~/.zprofile on Linux)
+# Guarded (via _pp from .zprofile) to avoid duplicating the brew path that
+# .zshenv already set.
 #==============================================================================
 
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+_pp /home/linuxbrew/.linuxbrew/bin
