@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Bootstrap an on-call debugging context in herdr: pull the relevant repos and
+# open a claude pane with all of them loaded (cwd frontend, rest via --add-dir).
+#
+# Each run adds a new "debug" tab to a shared "on-call" workspace, so multiple
+# incidents can run side by side. Rename tabs to the incident as you go.
+# The /on-call-debug skill drives the actual investigation inside claude.
+
+BASE_DIR="$HOME/Developer/galileo-inc"
+WORKSPACE_LABEL="on-call"
+
+# First entry is the claude cwd; the rest are loaded via --add-dir.
+WORKTREES=(
+  "frontend-monorepo/master"
+  "api/master"
+  "core-api/main"
+  "health-ios/master"
+  "health-android/master"
+)
+
+warned=0
+cleanup() {
+  local ec=$?
+  # Launcher pane closes on exit; linger so warnings/errors stay readable.
+  if [[ $ec -ne 0 || $warned -eq 1 ]]; then
+    read -n1 -rsp $'\npress any key to close...' || true
+    echo
+  fi
+}
+trap cleanup EXIT
+
+warn() {
+  warned=1
+  printf 'warning: %s\n' "$1" >&2
+}
+
+die() {
+  printf 'error: %s\n' "$1" >&2
+  exit 1
+}
+
+command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]] \
+  || die "herdr server not reachable; can't bootstrap the on-call workspace"
+command -v jq >/dev/null 2>&1 || die "jq not found"
+
+# Best-effort pull each worktree so we debug against latest.
+for wt in "${WORKTREES[@]}"; do
+  wt_dir="$BASE_DIR/$wt"
+  [[ -d "$wt_dir" ]] || { warn "$wt_dir not found, skipping"; continue; }
+  echo "pulling $wt..."
+  git -C "$wt_dir" pull --ff-only || warn "pull failed for $wt (continuing)"
+done
+
+frontend_dir="$BASE_DIR/${WORKTREES[0]}"
+[[ -d "$frontend_dir" ]] || die "$frontend_dir not found; can't start claude"
+
+# Build the claude command: cwd is the frontend worktree, rest as --add-dir.
+add_dirs=()
+for wt in "${WORKTREES[@]:1}"; do
+  add_dirs+=(--add-dir "$BASE_DIR/$wt")
+done
+claude_cmd="claude"
+for arg in "${add_dirs[@]}"; do
+  claude_cmd+=" $(printf '%q' "$arg")"
+done
+
+# Reuse the on-call workspace if it exists, else create it.
+ws_id=$(herdr workspace list \
+  | jq -r --arg l "$WORKSPACE_LABEL" \
+      'first(.result.workspaces[] | select(.label==$l) | .workspace_id) // empty')
+
+if [[ -z "$ws_id" ]]; then
+  echo "creating '$WORKSPACE_LABEL' workspace..."
+  created=$(herdr workspace create --label "$WORKSPACE_LABEL" \
+    --cwd "$frontend_dir" --focus)
+else
+  echo "adding debug tab to '$WORKSPACE_LABEL' workspace..."
+  created=$(herdr tab create --workspace "$ws_id" --label debug \
+    --cwd "$frontend_dir" --focus)
+fi
+
+pane_id=$(jq -r '.result.root_pane.pane_id' <<<"$created")
+tab_id=$(jq -r '.result.tab.tab_id' <<<"$created")
+[[ -n "$pane_id" && "$pane_id" != "null" ]] \
+  || die "could not determine new pane id from herdr response"
+
+# First-run tab inherits the workspace default label; normalize it.
+herdr tab rename "$tab_id" debug >/dev/null 2>&1 || true
+
+herdr pane run "$pane_id" "$claude_cmd" \
+  || die "failed to start claude in pane $pane_id"
+
+echo "on-call debug tab ready."

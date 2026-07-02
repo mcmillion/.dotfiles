@@ -139,7 +139,7 @@ the OS genuinely differs.
 - **herdr.** Cross-platform; installed via the shared Brewfile. `~/.zshrc`
   auto-launches/attaches herdr for interactive shells, skipping when already
   inside herdr (`$HERDR_ENV`), in VS Code's terminal, or when herdr is
-  absent. It replaces tmux/smug.
+  absent.
 
 ### Codex Notes
 

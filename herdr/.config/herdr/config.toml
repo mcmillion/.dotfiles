@@ -28,9 +28,6 @@ show_agent_labels_on_pane_borders = true
 
 agent_panel_sort = "spaces"
 [keys]
-# Ctrl+A prefix to match tmux muscle memory.
-# Note: collides with tmux's prefix, so don't nest herdr inside tmux
-# while this is set - herdr is being used as a full tmux replacement.
 prefix = "ctrl+a"
 
 reload_config = "prefix+shift+r"
@@ -85,6 +82,20 @@ command = "lazygit"
 key = "prefix+t"
 type = "pane"
 command = "tuxedo ~/todo.txt"
+
+# new worktree: prompt for branch, create sibling worktree, template env from
+# 1Password, open it focused. Pane lingers on error so warnings stay readable.
+[[keys.command]]
+key = "prefix+w"
+type = "pane"
+command = "new-worktree"
+
+# on-call debug: pull the galileo repos and open a claude tab with all of them
+# loaded, in a shared "on-call" workspace (one debug tab per incident).
+[[keys.command]]
+key = "cmd+shift+o"
+type = "pane"
+command = "on-call-debug"
 
 # fork claude into a new pane
 [[keys.command]]
