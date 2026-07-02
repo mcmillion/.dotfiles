@@ -62,13 +62,14 @@ close_tab = "prefix+shift+x"
 # Workspaces.
 new_workspace = "prefix+n"
 workspace_picker = "alt+s"
-next_workspace = "alt+shift+j"
-previous_workspace = "alt+shift+k"
+next_workspace = "alt+j"
+previous_workspace = "alt+k"
 close_workspace = "prefix+shift+d"
 
 # Agents - cycle through running agents in the agent panel.
-next_agent = "alt+j"
-previous_agent = "alt+k"
+# cmd+j/k are left unbound in ghostty so they pass through to herdr.
+next_agent = "cmd+j"
+previous_agent = "cmd+k"
 
 # Free prefix+g for the lazygit popup below (herdr's goto lives there by default).
 goto = ""

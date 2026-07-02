@@ -52,10 +52,10 @@ keybind = alt+left=esc:[1;3D
 keybind = alt+right=esc:[1;3C
 
 # herdr split: one full-screen window per herdr (local `h` vs ceres `hc`).
-# cmd+n opens a new window; cmd+j/k cycle between them. cmd never reaches
-# herdr (ctrl+a/alt prefixes), so there's no keybinding collision.
-keybind = cmd+j=goto_window:next
-keybind = cmd+k=goto_window:previous
+# cmd+n opens a new window; cmd+h/l cycle between them. cmd+j/k are left
+# unbound so they pass through to herdr (agent cycling).
+keybind = cmd+h=goto_window:next
+keybind = cmd+l=goto_window:previous
 
 # Per-machine overrides (optional, not tracked)
 config-file = ?config.local
