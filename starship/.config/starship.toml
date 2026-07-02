@@ -71,7 +71,7 @@ disabled = true
 
 [hostname]
 disabled = false
-ssh_only = true
+ssh_only = false
 ssh_symbol = ''
 style = 'bold green'
 
