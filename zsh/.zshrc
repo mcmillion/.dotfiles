@@ -311,5 +311,16 @@ if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscod
 fi
 
 # Shortcuts: `h` = local herdr, `hc` = attach ceres's herdr server over SSH.
+# `hc` prefers Tailscale (ssh alias `ceres`); if that's unreachable -- e.g. from
+# a box that's off the tailnet but on the LAN -- it falls back to mDNS
+# (mlm@ceres.local). The probe is a fast, non-interactive ssh so it only takes
+# the Tailscale path when a real connection would actually succeed.
 alias h='herdr'
-alias hc='herdr --remote ceres'
+hc() {
+  if ssh -o BatchMode=yes -o ConnectTimeout=2 ceres true 2>/dev/null; then
+    herdr --remote ceres "$@"
+  else
+    print -u2 "hc: ceres unreachable over Tailscale, falling back to ceres.local"
+    herdr --remote mlm@ceres.local "$@"
+  fi
+}
