@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Pick an existing worktree in a bare-repo container layout (fzf) and open it in
+# herdr, nested + focused under the container's workspace group. Works from
+# inside any worktree, unlike herdr's native open_worktree (container-only).
+#
+# See clone-worktree-repo / new-worktree for the layout.
+# Usage: open-worktree   (fzf picker over existing worktrees)
+
+warned=0
+cleanup() {
+  local ec=$?
+  if [[ $ec -ne 0 || $warned -eq 1 ]]; then
+    read -n1 -rsp $'\npress any key to close...' || true
+    echo
+  fi
+}
+trap cleanup EXIT
+
+warn() {
+  warned=1
+  printf 'warning: %s\n' "$1" >&2
+}
+
+die() {
+  printf 'error: %s\n' "$1" >&2
+  exit 1
+}
+
+# Walk up to the container dir that holds .bare/.
+find_repo_root() {
+  local dir="$1"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.bare" ]]; then
+      echo "$dir"
+      return
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+
+repo_root=$(find_repo_root "$PWD") \
+  || die "not inside a bare-worktree repo (no .bare/ found walking up from $PWD)"
+
+current=$(git rev-parse --show-toplevel 2>/dev/null || true)
+
+# List branch-backed worktrees, excluding the bare entry and the current one.
+list=$(
+  git -C "$repo_root/.bare" worktree list --porcelain | awk -v cur="$current" '
+    function flush() {
+      if (!bare && branch != "" && path != cur) print branch "\t" path
+    }
+    NF == 0 { flush(); path=""; branch=""; bare=0; next }
+    $1 == "worktree" { path=$2 }
+    $1 == "bare"     { bare=1 }
+    $1 == "branch"   { b=$2; sub("refs/heads/", "", b); branch=b }
+    END { flush() }
+  '
+)
+
+[[ -n "$list" ]] || { echo "no other worktrees to open"; warned=1; exit 0; }
+
+pick=$(printf '%s\n' "$list" \
+  | fzf --prompt="open worktree > " --delimiter='\t' --with-nth=1 --height=40%) \
+  || exit 0
+branch=$(printf '%s' "$pick" | cut -f1)
+[[ -n "$branch" ]] || exit 0
+
+if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
+  herdr worktree open --cwd "$repo_root" --branch "$branch" --focus \
+    || warn "herdr worktree open failed for '$branch'"
+else
+  warn "herdr not running; cannot open '$branch'"
+fi

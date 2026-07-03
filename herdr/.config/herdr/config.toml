@@ -90,6 +90,13 @@ key = "prefix+w"
 type = "pane"
 command = "new-worktree"
 
+# open worktree: fzf-pick an existing worktree (incl. main) and open it nested +
+# focused. Works from inside any worktree, unlike herdr's container-only native.
+[[keys.command]]
+key = "prefix+o"
+type = "pane"
+command = "open-worktree"
+
 # on-call debug: pull the galileo repos and open a claude tab with all of them
 # loaded, in a shared "on-call" workspace (one debug tab per incident).
 [[keys.command]]
