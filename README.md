@@ -26,6 +26,7 @@ This repository contains configuration for the following tools:
 - **fzf** - Command-line fuzzy finder
 - **ripgrep** - Fast text search tool
 - **zoxide** - Smart directory jumper
+- **btop** - Resource monitor themed to match the terminal
 - **Git** - Version control with LFS support
 
 ### Applications (via Homebrew Cask)

@@ -1,5 +1,6 @@
 brew 'asdf'
 brew 'bfs'
+brew 'btop'
 brew 'cmake'
 brew 'coreutils'
 brew 'curl'
