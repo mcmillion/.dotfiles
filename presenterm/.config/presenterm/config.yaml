@@ -3,9 +3,10 @@ defaults:
   theme: terminal-dark-onehalf
   # Terminal font size hint used for image/layout sizing.
   terminal_font_size: 16
-  # kitty supports the kitty graphics protocol for crisp inline images.
-  # "auto" detects it; override if detection ever misbehaves.
-  image_protocol: auto
+  # Ghostty speaks the kitty graphics protocol but isn't detected from
+  # TERM=xterm-256color, so "auto" falls back to ascii-blocks (blank images).
+  # Force kitty-local (presenterm + terminal share the filesystem here).
+  image_protocol: kitty-local
 
 options:
   # Show implicit slide breaks so a trailing heading ends the slide.
