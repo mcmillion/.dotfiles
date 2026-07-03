@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Create a new worktree branch in a bare-repo container layout, template any
+# committed 1Password env files into it, then open it in herdr.
+#
+# Layout assumed (see clone-worktree-repo):
+#   myrepo/
+#     .bare/          bare clone (git common dir)
+#     .git            file: "gitdir: ./.bare"
+#     main/           worktree (default branch)
+#     feat-foo/       worktrees, flat siblings of .bare
+#
+# Usage: new-worktree [branch-name]
+#   branch-name omitted -> prompt for it.
+
+warned=0
+cleanup() {
+  local ec=$?
+  # Pane closes on exit; linger so warnings/errors stay readable.
+  if [[ $ec -ne 0 || $warned -eq 1 ]]; then
+    read -n1 -rsp $'\npress any key to close...' || true
+    echo
+  fi
+}
+trap cleanup EXIT
+
+warn() {
+  warned=1
+  printf 'warning: %s\n' "$1" >&2
+}
+
+die() {
+  printf 'error: %s\n' "$1" >&2
+  exit 1
+}
+
+# Walk up to the container dir that holds .bare/.
+find_repo_root() {
+  local dir="$1"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.bare" ]]; then
+      echo "$dir"
+      return
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+
+repo_root=$(find_repo_root "$PWD") \
+  || die "not inside a bare-worktree repo (no .bare/ found walking up from $PWD)"
+
+# Branch name: arg if given, else prompt.
+branch="${1:-}"
+if [[ -z "$branch" ]]; then
+  read -rp "new branch: " branch
+fi
+branch="${branch#"${branch%%[![:space:]]*}"}"   # ltrim
+branch="${branch%"${branch##*[![:space:]]}"}"   # rtrim
+[[ -n "$branch" ]] || die "no branch name given"
+
+git check-ref-format --branch "$branch" >/dev/null 2>&1 \
+  || die "invalid branch name: $branch"
+
+if git -C "$repo_root/.bare" show-ref --verify --quiet "refs/heads/$branch"; then
+  die "branch '$branch' already exists; use 'herdr worktree open' to attach it"
+fi
+
+# Slug the directory so worktrees stay flat siblings of .bare.
+slug="$branch"
+slug="${slug//\//-}"
+slug=$(printf '%s' "$slug" | tr -c 'A-Za-z0-9._-' '-')
+slug="${slug#-}"; slug="${slug%-}"
+[[ -n "$slug" ]] || die "branch name slugged to empty: $branch"
+
+new_path="$repo_root/$slug"
+[[ ! -e "$new_path" ]] || die "target directory already exists: $new_path"
+
+default_branch=$(git -C "$repo_root/.bare" symbolic-ref --short HEAD) \
+  || die "could not determine default branch from $repo_root/.bare"
+
+echo "fetching origin..."
+git -C "$repo_root/.bare" fetch origin
+
+echo "creating worktree '$slug' on branch '$branch' from origin/$default_branch..."
+git -C "$repo_root" worktree add -b "$branch" "$new_path" "origin/$default_branch" \
+  || die "git worktree add failed"
+
+# Template any committed 1Password env files (*.op.tpl) in the new worktree.
+# Recursive, pruning heavy/irrelevant dirs. Best-effort: warn, keep going.
+while IFS= read -r -d '' tpl; do
+  out="${tpl%.op.tpl}"
+  tmp="$out.op.tmp.$$"
+  echo "templating $(basename "$out") from 1Password..."
+  if op inject -i "$tpl" -o "$tmp" 2>/dev/null; then
+    mv -f "$tmp" "$out"
+  else
+    rm -f "$tmp"
+    warn "op inject failed for $tpl (signed in to 1Password?) - env not written"
+  fi
+done < <(
+  find "$new_path" \
+    \( -name .git -o -name .bare -o -name node_modules -o -name vendor \) -prune \
+    -o -type f -name '*.op.tpl' -print0
+)
+
+# Open in herdr. Source must be the container (not a linked worktree).
+if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
+  echo "opening in herdr..."
+  herdr worktree open --cwd "$repo_root" --branch "$branch" --focus \
+    || warn "herdr worktree open failed; worktree is at $new_path"
+else
+  warn "herdr not running; worktree created at $new_path (open it manually)"
+fi
+
+echo "done: $new_path"
