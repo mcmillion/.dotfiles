@@ -50,3 +50,8 @@ if OS.mac?
   cask 'font-symbols-only-nerd-font'
   cask 'raycast'
 end
+
+# Linux-only formulae
+if OS.linux?
+  brew 'wl-clipboard' # herdr client reads/writes Wayland clipboard (incl. image paste)
+end
