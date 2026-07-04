@@ -315,12 +315,14 @@ fi
 # a box that's off the tailnet but on the LAN -- it falls back to mDNS
 # (mlm@ceres.local). The probe is a fast, non-interactive ssh so it only takes
 # the Tailscale path when a real connection would actually succeed.
+# --remote-keybindings server: resolve keybinds on the server, where plugins
+# like herdr-splits live (default `local` would no-op ctrl+h/j/k/l nav).
 alias h='herdr'
 hc() {
   if ssh -o BatchMode=yes -o ConnectTimeout=2 ceres true 2>/dev/null; then
-    herdr --remote ceres "$@"
+    herdr --remote ceres --remote-keybindings server "$@"
   else
     print -u2 "hc: ceres unreachable over Tailscale, falling back to ceres.local"
-    herdr --remote mlm@ceres.local "$@"
+    herdr --remote mlm@ceres.local --remote-keybindings server "$@"
   fi
 }
