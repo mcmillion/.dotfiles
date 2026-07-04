@@ -56,9 +56,9 @@
 
 - No MCP server — interact with vaults directly via markdown files
 - Vaults (each is a separate Obsidian vault, not a folder):
-  - Personal: `~/.obsidian/personal` (all machines)
-  - Galileo (employer / work): `~/.obsidian/galileo` (work machine)
-  - Black Omen (my own company): `~/.obsidian/black-omen` (personal machines only)
+  - Personal: `~/obsidian/personal` (all machines)
+  - Galileo (employer / work): `~/obsidian/galileo` (work machine)
+  - Black Omen (my own company): `~/obsidian/black-omen` (personal machines only)
 - Route notes to the vault matching their topic; never put work content in the personal vault
 - Within a vault: topical `kebab-case` folders; never create notes at vault root
 - Conventions: `_todo.md` / `_links.md` for per-folder task & link collections; on-call notes prefixed `YYYY-MM-DD-`
