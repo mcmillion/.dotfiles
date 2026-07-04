@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+unset PYTHONPATH
+unset PYTHONHOME
+exec "/home/mlm/.hermes/hermes-agent/venv/bin/hermes" "$@"

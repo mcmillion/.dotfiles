@@ -25,3 +25,4 @@ claude/.claude/*
 # Symlinks to installed binaries (managed outside the repo)
 bin/.local/bin/claude
 bin/.local/bin/herdr
+bin/.local/bin/python3.11
