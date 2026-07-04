@@ -333,6 +333,7 @@
     "ask": [],
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
   "hooks": {},
   "statusLine": {
     "type": "command",
