@@ -302,7 +302,7 @@ eval "$(starship init zsh)"
 #==================================================================================================
 
 # Ensure a headless herdr server is running for interactive shells, but do NOT
-# attach automatically -- connect on demand with `h` (local) or `hc` (ceres).
+# attach automatically -- connect on demand with `h` (local) or `hr` (aurora).
 # Skips when already inside herdr, in VS Code's terminal, or when herdr is absent.
 if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v herdr >/dev/null 2>&1; then
   if ! herdr status server >/dev/null 2>&1; then
@@ -310,24 +310,15 @@ if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscod
   fi
 fi
 
-# Shortcuts: `h` = local herdr, `hc` = attach ceres's herdr server over SSH,
-# `hr` = same for aurora.
-# `hc`/`hr` prefer Tailscale (ssh aliases `ceres`/`aurora`); if that's
-# unreachable -- e.g. from a box that's off the tailnet but on the LAN -- they
-# fall back to mDNS (mlm@<host>.local). The probe is a fast, non-interactive
+# Shortcuts: `h` = local herdr, `hr` = attach aurora's herdr server over SSH.
+# `hr` prefers Tailscale (ssh alias `aurora`); if that's
+# unreachable -- e.g. from a box that's off the tailnet but on the LAN -- it
+# falls back to mDNS (mlm@<host>.local). The probe is a fast, non-interactive
 # ssh so it only takes the Tailscale path when a real connection would actually
 # succeed.
 # --remote-keybindings server: resolve keybinds on the server, where plugins
 # like herdr-splits live (default `local` would no-op ctrl+h/j/k/l nav).
 alias h='herdr'
-hc() {
-  if ssh -o BatchMode=yes -o ConnectTimeout=2 ceres true 2>/dev/null; then
-    herdr --remote ceres --remote-keybindings server "$@"
-  else
-    print -u2 "hc: ceres unreachable over Tailscale, falling back to ceres.local"
-    herdr --remote mlm@ceres.local --remote-keybindings server "$@"
-  fi
-}
 hr() {
   if ssh -o BatchMode=yes -o ConnectTimeout=2 aurora true 2>/dev/null; then
     herdr --remote aurora --remote-keybindings server "$@"
