@@ -77,6 +77,12 @@ brew bundle --file=homebrew/Brewfile
 Shared (both macOS and Linux):
 
 ```bash
+# ~/.local/bin must exist as a real directory BEFORE stowing `bin`, or stow
+# folds the whole dir into a single symlink and installers (uv, claude,
+# pip --user, ...) then write straight into this repo. Pre-creating it makes
+# stow use per-file symlinks instead.
+mkdir -p ~/.local/bin
+
 stow zsh nvim starship asdf homebrew editorconfig claude codex herdr \
   ripgrep yazi lazygit lazydocker ghostty tuxedo ruby presenterm bin
 
