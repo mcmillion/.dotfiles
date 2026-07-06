@@ -72,6 +72,40 @@ bar() {
     "$gray" "$pct" "$reset"
 }
 
+# Rolling ccusage spend (today / last 7 days) for API-billed sessions
+# (no subscription rate limits in the input), cached + background-refreshed
+# so the status line never blocks on ccusage (~0.5s/call).
+cc_cache_dir="$HOME/.cache/claude-statusline"
+cc_cache="$cc_cache_dir/ccusage"
+cc_lock="$cc_cache_dir/ccusage.lock"
+cc_ttl=600
+
+cc_refresh() {
+  mkdir "$cc_lock" 2>/dev/null || return  # another refresh in flight
+  local d1 d7 day wk
+  d1=$(date +%Y%m%d)
+  d7=$(date -v-6d +%Y%m%d 2>/dev/null || date -d '6 days ago' +%Y%m%d)
+  day=$(ccusage daily --since "$d1" --json 2>/dev/null | jq -r '.totals.totalCost // 0')
+  wk=$(ccusage daily --since "$d7" --json 2>/dev/null | jq -r '.totals.totalCost // 0')
+  [ -n "$day" ] && [ -n "$wk" ] && \
+    printf '%s %s\n' "$day" "$wk" > "$cc_cache.tmp" && mv "$cc_cache.tmp" "$cc_cache"
+  rmdir "$cc_lock" 2>/dev/null
+}
+
+cc_costs=""
+if [ -z "$five_pct" ] && [ -z "$seven_pct" ] && command -v ccusage >/dev/null 2>&1; then
+  mkdir -p "$cc_cache_dir"
+  age=$cc_ttl
+  if [ -f "$cc_cache" ]; then
+    mtime=$(stat -c %Y "$cc_cache" 2>/dev/null || stat -f %m "$cc_cache" 2>/dev/null)
+    [ -n "$mtime" ] && age=$(( $(date +%s) - mtime ))
+  fi
+  if [ "$age" -ge "$cc_ttl" ]; then
+    ( cc_refresh ) >/dev/null 2>&1 &
+  fi
+  [ -f "$cc_cache" ] && cc_costs=$(cat "$cc_cache")
+fi
+
 # Abbreviate home directory with ~ (handles ostree /var/home vs /home symlink)
 if [ -n "$cwd" ]; then
   display_dir="$cwd"
@@ -142,6 +176,10 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
       [ -n "$d" ] && output="${output} (${d})"
     fi
   fi
+elif [ -n "$cc_costs" ]; then
+  cc_day="${cc_costs%% *}"
+  cc_wk="${cc_costs##* }"
+  output="${output}${sep}${gray}d \$$(printf '%.2f' "$cc_day") · w \$$(printf '%.2f' "$cc_wk")${reset}"
 fi
 
 echo -e "$output"
