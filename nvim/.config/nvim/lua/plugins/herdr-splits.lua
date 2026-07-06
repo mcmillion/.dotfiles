@@ -3,7 +3,10 @@ return {
   cond = vim.env.HERDR_ENV == "1",
   event = "VeryLazy",
 
-  opts = {},
+  -- Repin the Herdr-side scripts to the commit lazy fetched, only on update.
+  build = 'lua require("herdr-splits").sync_herdr()',
+
+  opts = { auto_sync_herdr = true },
 
   keys = {
     { "<c-h>", function() require("herdr-splits").move_cursor_left() end, silent = true },
