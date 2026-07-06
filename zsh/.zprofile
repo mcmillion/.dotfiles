@@ -6,7 +6,7 @@
 #==============================================================================
 
 export LANG='en_US.UTF-8'
-export EDITOR='nvim'
+export EDITOR='nvim'  # also in .zshenv (for non-login shells); kept here too
 export LESS='-RFX'
 
 export XDG_CONFIG_HOME="$HOME/.config"
