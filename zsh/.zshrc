@@ -311,19 +311,22 @@ if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscod
 fi
 
 # Shortcuts: `h` = local herdr, `hr` = attach aurora's herdr server over SSH.
-# `hr` prefers Tailscale (ssh alias `aurora`); if that's
-# unreachable -- e.g. from a box that's off the tailnet but on the LAN -- it
-# falls back to mDNS (mlm@<host>.local). The probe is a fast, non-interactive
-# ssh so it only takes the Tailscale path when a real connection would actually
-# succeed.
+# `hr` tries three paths in order: Tailscale (ssh alias `aurora`), then mDNS on
+# the LAN (mlm@<host>.local), then the cloudflared tunnel (ssh alias
+# `aurora-cf`) for when aurora is off both the tailnet and the local network.
+# Each probe is a fast, non-interactive ssh so it only takes a path when a real
+# connection would actually succeed.
 # --remote-keybindings server: resolve keybinds on the server, where plugins
 # like herdr-splits live (default `local` would no-op ctrl+h/j/k/l nav).
 alias h='herdr'
 hr() {
   if ssh -o BatchMode=yes -o ConnectTimeout=2 aurora true 2>/dev/null; then
     herdr --remote aurora --remote-keybindings server "$@"
-  else
+  elif ssh -o BatchMode=yes -o ConnectTimeout=2 mlm@aurora.local true 2>/dev/null; then
     print -u2 "hr: aurora unreachable over Tailscale, falling back to aurora.local"
     herdr --remote mlm@aurora.local --remote-keybindings server "$@"
+  else
+    print -u2 "hr: aurora unreachable over Tailscale and LAN, falling back to cloudflared (aurora-cf)"
+    herdr --remote aurora-cf --remote-keybindings server "$@"
   fi
 }
