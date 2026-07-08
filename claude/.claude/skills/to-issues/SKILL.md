@@ -74,5 +74,4 @@ the decision-rich parts, noted as from a prototype>
 ```
 
 - Use the repo's issue template if one exists (`.github/ISSUE_TEMPLATE/`)
-- If the branch/repo convention references a Jira ticket, mention it
 - Do NOT close or modify any parent issue

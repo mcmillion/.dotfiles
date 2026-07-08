@@ -63,6 +63,6 @@ Then move it to **in-progress**. Match the repo's convention — check what alre
 - If the repo uses status labels, swap the ready label for the working one: `gh issue edit <num> --remove-label ready-for-work --add-label in-progress` (use the actual label names present in the repo).
 - If the issue lives on a GitHub Project board, set its Status field to In Progress via `gh project item-edit` instead.
 
-If neither convention is detectable, just assign and tell the user there's no in-progress state to move it to.
+If neither convention is detectable, just assign and tell the user there's no in-progress state to move it to. Report what was assigned and moved.
 
 Then start implementing. Work the slices in order. Verify as you go.
