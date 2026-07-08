@@ -26,7 +26,7 @@ mouse_capture = true
 # Show detected agent labels on pane borders - useful when running agents.
 show_agent_labels_on_pane_borders = true
 
-agent_panel_sort = "spaces"
+agent_panel_sort = "priority"
 [keys]
 prefix = "ctrl+a"
 
