@@ -23,7 +23,7 @@ allowed-tools:
 - **State** — what's done, what's in progress, what's left
 - **Key decisions** — choices made and the *why*, so they aren't relitigated
 - **Next steps** — concrete, ordered actions for the next session
-- **Suggested skills** — which skills the next agent should invoke (e.g. `/plan`, `/commit`, `/grill-me`)
+- **Suggested skills** — which skills the next agent should invoke (e.g. `/pickup`, `/commit`, `/grill-me`)
 - **Gotchas** — anything non-obvious that will trip up a cold start
 
 ## Rules
