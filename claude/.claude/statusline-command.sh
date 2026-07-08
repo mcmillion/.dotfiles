@@ -106,20 +106,35 @@ if [ -z "$five_pct" ] && [ -z "$seven_pct" ] && command -v ccusage >/dev/null 2>
   [ -f "$cc_cache" ] && cc_costs=$(cat "$cc_cache")
 fi
 
-# Abbreviate home directory with ~ (handles ostree /var/home vs /home symlink)
+# Path display: root at the git repo when inside one, else abbreviate
+# home with ~ (handles ostree /var/home vs /home symlink)
 if [ -n "$cwd" ]; then
-  display_dir="$cwd"
-  for home_prefix in "$HOME" /var/home/mlm /home/mlm /Users/mlm; do
-    [ -n "$home_prefix" ] || continue
-    if [ "$cwd" = "$home_prefix" ]; then
-      display_dir="~"
-      break
-    fi
-    if [ "${cwd#"$home_prefix"/}" != "$cwd" ]; then
-      display_dir="~/${cwd#"$home_prefix"/}"
-      break
-    fi
-  done
+  toplevel=$(git --no-optional-locks -C "$cwd" \
+    rev-parse --show-toplevel 2>/dev/null)
+  if [ -n "$toplevel" ]; then
+    display_dir=$(basename "$toplevel")
+    # linked worktrees have .git as a file; include the parent folder so
+    # worktrees read as repo/worktree-name
+    [ -f "$toplevel/.git" ] && \
+      display_dir="$(basename "$(dirname "$toplevel")")/$display_dir"
+    rel=$(git --no-optional-locks -C "$cwd" \
+      rev-parse --show-prefix 2>/dev/null)
+    rel="${rel%/}"
+    [ -n "$rel" ] && display_dir="${display_dir}/${rel}"
+  else
+    display_dir="$cwd"
+    for home_prefix in "$HOME" /var/home/mlm /home/mlm /Users/mlm; do
+      [ -n "$home_prefix" ] || continue
+      if [ "$cwd" = "$home_prefix" ]; then
+        display_dir="~"
+        break
+      fi
+      if [ "${cwd#"$home_prefix"/}" != "$cwd" ]; then
+        display_dir="~/${cwd#"$home_prefix"/}"
+        break
+      fi
+    done
+  fi
 else
   display_dir="~"
 fi
