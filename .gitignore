@@ -31,3 +31,4 @@ bin/.local/bin/python3.11
 # ceres-specific homelab infra (hardcoded Linux paths, not portable)
 bin/.local/bin/obh
 bin/.local/bin/vault-git-snapshot
+hunk/.config/hunk/state.json

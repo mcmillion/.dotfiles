@@ -1,0 +1,5 @@
+# Hunk - review-first terminal diff viewer (https://hunk.dev)
+theme = "auto"
+mode = "auto"
+line_numbers = true
+agent_notes = true

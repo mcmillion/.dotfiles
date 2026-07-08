@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Open hunk showing every change since the merge base with the default
+# branch: committed, staged, unstaged, and untracked. Watches for edits so
+# the review reloads as an agent addresses comments.
+#
+# Usage: review [base-ref] [extra hunk diff args...]
+set -euo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+base=""
+if [[ $# -gt 0 && $1 != -* ]]; then
+  base=$1
+  shift
+fi
+
+if [[ -z $base ]]; then
+  base=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD || true)
+fi
+if [[ -z $base ]]; then
+  for ref in origin/main origin/master main master; do
+    if git rev-parse --verify --quiet "$ref" >/dev/null; then
+      base=$ref
+      break
+    fi
+  done
+fi
+if [[ -z $base ]]; then
+  echo "review: no base branch found (pass one explicitly)" >&2
+  exit 1
+fi
+
+# Pin to the merge-base sha so committed work stays in the review after the
+# agent commits, and the diff includes staged + unstaged on top.
+merge_base=$(git merge-base HEAD "$base")
+
+exec hunk diff --watch "$merge_base" "$@"
