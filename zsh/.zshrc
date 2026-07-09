@@ -70,7 +70,7 @@ setopt nolistbeep           # no bell on ambiguous completion
 #==============================================================================
 
 alias reload='source ~/.zshrc'
-alias c='claude --model opus'
+alias c='claude --model "opus[1m]"'
 alias cx='brew upgrade --cask codex --quiet 2>/dev/null; codex'
 alias l='ls -Ah --color=auto'
 alias ls='ls -Ah --color=auto'
