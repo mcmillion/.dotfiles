@@ -1,5 +1,55 @@
 # Hunk - review-first terminal diff viewer (https://hunk.dev)
-theme = "auto"
+theme = "custom"
 mode = "auto"
 line_numbers = true
 agent_notes = true
+
+# "One Darker" - matches the One Dark palette in ghostty/nvim, on ghostty's
+# darker-than-stock background (#1c1f24). Colors mirror the ghostty palette;
+# syntax highlighting inherits from the one-dark-pro base.
+[custom_theme]
+base = "one-dark-pro"
+label = "One Darker"
+
+# Surfaces - kept flat on the ghostty background so it reads as one bg like the
+# terminal; separation comes from borders + the colored rail, not a lighter panel.
+background = "#1c1f24"   # ghostty background
+panel = "#1c1f24"        # flat with the app bg (chrome bars, rail strip)
+panelAlt = "#21252b"     # barely-lifted surface for selected/alt rows only
+border = "#3e4452"       # ghostty palette 8 (bright black)
+text = "#abb2bf"         # ghostty foreground
+muted = "#5c6370"        # One Dark comment gray
+accent = "#61afef"       # ghostty palette 4 (blue) - focus/selection accent
+
+# Context (unchanged code) blends with the terminal background
+contextBg = "#1c1f24"
+contextContentBg = "#1c1f24"
+lineNumberBg = "#1c1f24"
+lineNumberFg = "#5c6370"
+selectedHunk = "#3e4452"
+
+# Additions (green #98c379) / removals (red #e06c75), tinted onto the dark bg
+addedBg = "#22331f"
+addedContentBg = "#1f2a20"
+removedBg = "#331f22"
+removedContentBg = "#2a1f21"
+movedAddedBg = "#263025"
+movedRemovedBg = "#302526"
+addedSignColor = "#98c379"
+removedSignColor = "#e06c75"
+
+# Badges + file-status colors from the ghostty palette
+badgeAdded = "#98c379"
+badgeRemoved = "#e06c75"
+badgeNeutral = "#979eab"
+fileNew = "#98c379"
+fileDeleted = "#e06c75"
+fileModified = "#e5c07b"
+fileRenamed = "#61afef"
+fileUntracked = "#979eab"
+
+# Agent-note callouts
+noteBorder = "#61afef"
+noteBackground = "#21252b"
+noteTitleBackground = "#282c34"
+noteTitleText = "#abb2bf"
