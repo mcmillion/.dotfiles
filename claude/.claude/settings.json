@@ -339,7 +339,10 @@
       {
         "matcher": "Bash",
         "hooks": [
-          { "type": "command", "command": "$HOME/.claude/hooks/bg-to-herdr.sh" }
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/bg-to-herdr.sh"
+          }
         ]
       }
     ]
