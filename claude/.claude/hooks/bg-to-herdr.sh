@@ -29,10 +29,32 @@ pane=$(herdr "${split[@]}" 2>/dev/null | jq -r '.result.pane.pane_id // empty')
 # Swap so the new pane takes the top 25% slot and Claude drops to the bottom 75%.
 herdr pane swap --source-pane "$HERDR_PANE_ID" --target-pane "$pane" >/dev/null 2>&1
 
-# Run it, then close the pane on success; on failure leave it up to read the error.
-herdr pane run "$pane" "$cmd && herdr pane close $pane" >/dev/null 2>&1 || exit 0
+# Capture output to a logfile Claude can read, while still streaming live to the
+# pane. The command goes into a wrapper script (avoids quoting hell with $cmd):
+# it tees stdout+stderr to the log, records the exit code as a sentinel line, and
+# closes the pane on success (log persists on disk either way).
+logdir="${TMPDIR:-/tmp}/claude-herdr-bg"
+mkdir -p "$logdir"
+stamp=$(date +%Y%m%d-%H%M%S)-$$-${RANDOM}
+wrapper="$logdir/bg-$stamp.sh"
+log="$logdir/bg-$stamp.log"
 
-# Handled in a real pane -> block Claude's hidden background shell.
-cat <<'JSON'
-{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Launched in a visible herdr split pane for the user instead of a hidden background shell. Output is NOT captured here - do not re-run or retry this command in the background. If you need its output, ask the user to check the herdr pane."}}
-JSON
+{
+  printf '#!/usr/bin/env bash\n'
+  printf 'set -o pipefail\n'
+  printf '{\n'
+  printf '%s\n' "$cmd"
+  printf '} 2>&1 | tee %q\n' "$log"
+  printf 'ec=${PIPESTATUS[0]}\n'
+  printf 'printf "__BG_EXIT=%%s__\\n" "$ec" >> %q\n' "$log"
+  printf '[ "$ec" -eq 0 ] && herdr pane close %q >/dev/null 2>&1\n' "$pane"
+  printf 'exit "$ec"\n'
+} > "$wrapper"
+
+# herdr pane run returns immediately; the wrapper runs inside the pane.
+herdr pane run "$pane" "bash $(printf '%q' "$wrapper")" >/dev/null 2>&1 || exit 0
+
+# Handled in a real pane -> block Claude's hidden background shell, but hand Claude
+# the captured-output path so it can read the result instead of re-running.
+reason="Ran in a visible herdr pane (live output shows there). A captured copy of stdout+stderr is at: $log -- read that file to see output. When the command finishes the log ends with a line '__BG_EXIT=<code>__' (present = done, absent = still running). Do NOT re-run this in the background; read the log instead."
+jq -n --arg r "$reason" '{hookSpecificOutput:{hookEventName:"PreToolUse",permissionDecision:"deny",permissionDecisionReason:$r}}'
