@@ -24,6 +24,7 @@
   - **Chozo** — my local Mac. Game development happens here (local, not on aurora)
   - **XG7GT4XJLW** — work laptop (Galileo, macOS)
 - Repos live under `~/dev/` on aurora and `~/Developer/` on the Macs, organized as `owner/repo`. Most use the bare-repo worktree pattern: a `.bare/` directory holds the git data, a `.git` file points to it, and worktree folders sit alongside — with the default branch kept as a permanent worktree checkout
+- asdf is the default runtime version manager
 - `~/todo.txt` (home root) is my global todo list across all systems, in todo.txt format, managed with `tuxedo` (shell alias `t`). It is primarily MY tool — agents track their own work in Obsidian, not here. But know where it is: if I ask you to add or complete a task, edit `~/todo.txt` directly, and check off (`x `-prefix, todo.txt convention) items you actually finish.
 
 ## Git & Pull Requests
@@ -37,13 +38,8 @@
 
 ## Debugging
 
-- When debugging CI failures, read the ACTUAL error output before proposing fixes
-- Do not guess at causes — identify the specific failing test/check and trace the real error
+- Read the actual error output before proposing a fix; never guess at causes — trace the specific failing test, check, or stack trace to its source (CI failures included)
 - If a fix doesn't work after 2 attempts, step back and reconsider the root cause
-
-## Runtime & Dependencies
-
-- asdf is the default runtime version manager
 
 ## TypeScript and React
 
