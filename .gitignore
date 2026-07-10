@@ -22,7 +22,6 @@ claude/.claude/*
 !claude/.claude/agents/
 !claude/.claude/commands/
 !claude/.claude/skills/
-!claude/.claude/hooks/
 
 # Symlinks to installed binaries (managed outside the repo)
 bin/.local/bin/claude
