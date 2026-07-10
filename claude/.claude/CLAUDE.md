@@ -26,18 +26,14 @@
 - Repos live under `~/dev/` on aurora and `~/Developer/` on the Macs, organized as `owner/repo`. Most use the bare-repo worktree pattern: a `.bare/` directory holds the git data, a `.git` file points to it, and worktree folders sit alongside — with the default branch kept as a permanent worktree checkout
 - `~/todo.txt` (home root) is my global todo list across all systems, in todo.txt format, managed with `tuxedo` (shell alias `t`). It is primarily MY tool — agents track their own work in Obsidian, not here. But know where it is: if I ask you to add or complete a task, edit `~/todo.txt` directly, and check off (`x `-prefix, todo.txt convention) items you actually finish.
 
-## Git
+## Git & Pull Requests
 
-- Keep commit messages short and terse
-- NEVER include yourself as a co-author in a commit
-- Don't mention CI-enforced items (typechecking, linting, test coverage, etc) in a commit message unless they required manual fixes
+- Keep commit messages terse, imperative mood
+- NEVER include yourself as a co-author or add Claude attribution — commits or PRs
+- Don't mention CI-enforced items (typechecking, linting, test coverage, etc) in commit messages or PR descriptions unless they required manual fixes
 - Do not report a commit as complete if there are uncommitted changes
 - Verify the push succeeded and confirm the correct branch before reporting completion
-
-## Pull Requests
-
-- If the repo has a GitHub PR template, use it and keep content terse
-- Otherwise, fall back to a terse description of what is changing and why
+- For PRs: use the repo's GitHub PR template if it has one, otherwise a terse description of what's changing and why
 
 ## Debugging
 
