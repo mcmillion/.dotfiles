@@ -19,8 +19,11 @@
 
 ## Environment / Machines
 
-- This global file syncs to all my machines, so treat statements here as machine-neutral: always check `hostname` before assuming where you are, rather than hardcoding a machine.
-- **aurora** (NVIDIA DGX Spark, ARM64, Linux) is my default dev box — all personal development happens there EXCEPT game development, which is local on my Mac. Sessions very often run directly ON aurora (not remote from it): when `hostname` is `aurora`, don't tell me to `ssh` into it or treat it as a remote target; its paths and services are local to you.
+- This global file syncs to all my machines, so treat statements here as machine-neutral: always check `hostname` before assuming where you are. The machines:
+  - **aurora** — NVIDIA DGX Spark (ARM64, Linux). My default dev box; all personal dev happens here except game dev. Sessions very often run directly ON aurora, not remote from it: when `hostname` is `aurora`, don't tell me to `ssh` in or treat it as remote — its paths and services are local to you
+  - **Chozo** — my local Mac. Game development happens here (local, not on aurora)
+  - **XG7GT4XJLW** — work laptop (Galileo, macOS)
+- Repos live under `~/dev/` on aurora and `~/Developer/` on the Macs, organized as `owner/repo`. Most use the bare-repo worktree pattern: a `.bare/` directory holds the git data, a `.git` file points to it, and worktree folders sit alongside — with the default branch kept as a permanent worktree checkout
 - `~/todo.txt` (home root) is my global todo list across all systems, in todo.txt format, managed with `tuxedo` (shell alias `t`). It is primarily MY tool — agents track their own work in Obsidian, not here. But know where it is: if I ask you to add or complete a task, edit `~/todo.txt` directly, and check off (`x `-prefix, todo.txt convention) items you actually finish.
 
 ## Git
