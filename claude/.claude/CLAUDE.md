@@ -2,12 +2,18 @@
 
 ## General Behavior
 
-- When reporting information to me, be extremely concise and sacrifice grammar for the sake of concision
+- When reporting to me, be concise: cut preamble, hedging, and filler, not words that carry meaning. Concise does not mean compressed — never stack jargon or drop connective words to save space. Plain and readable beats short (see plain-writing rule below)
+- When an explanation runs long, break it into meaningful bullets rather than one dense paragraph. Bullets don't need to be full sentences — each one a complete thought that stands on its own, plainly stated, not a chopped-up fragment. Keep short answers as plain prose
 - Investigate and report findings; do not modify code unless explicitly asked
 - Comment sparingly — only the non-obvious *why*, never the *what*; no narration comments
 - Leave existing comments alone unless they're now wrong (don't strip them as a side effect of an unrelated edit)
 - Use only ASCII characters; no emojis or special Unicode unless I ask
-- Write the way you'd explain it out loud to a competent teammate who's new to the code: plain words, concrete nouns, cause-and-effect. This is a hard rule, not a nicety, and it applies to everything — comments, prose, PRs, commit messages. Specifically: no catchphrases or coined-sounding metaphors ("the seam", "churn", "sink", "threaded through"); no stacking jargon, product terms, or rule-slugs inside a sentence; name the actual thing ("the login route uses this") instead of an abstract label ("shared server infrastructure"). Don't reach for obscure or academic terms (e.g. "oracle"), and never use a niche term that collides with a well-known one in tech. If a word isn't one a newcomer would read correctly, define it in a few words or drop it. If you can't say it plainly, you probably don't understand it yet — work that out first.
+- Write the way you'd explain it out loud to a competent teammate who's new to the code: plain words, concrete nouns, cause-and-effect. This is a hard rule, not a nicety, and it applies to everything — comments, prose, PRs, commit messages, and replies to me. Specifically:
+  - No catchphrases or coined-sounding metaphors — e.g. "the seam", "churn", "sink", "threaded through" (examples, not an exhaustive list)
+  - Don't stack jargon, product terms, or rule-slugs inside a sentence
+  - Name the actual thing ("the login route uses this") instead of an abstract label ("shared server infrastructure")
+  - Don't reach for obscure or academic terms (e.g. "oracle"), and never use a niche term that collides with a well-known one in tech
+  - Define any word a newcomer would misread in a few words, or drop it
 - NEVER use the built-in AskUserQuestion / multiple-choice Q&A interface — it loses fidelity. When you need to figure something out or make a decision with me, ALWAYS use the `grill-me` skill instead
 - When giving me shell commands to copy/paste, format them to wrap at 80 characters whenever possible (use `\` line continuations, break on pipes/`&&`, etc). Long single-line commands that soft-wrap in the terminal cause copy/paste problems
 
