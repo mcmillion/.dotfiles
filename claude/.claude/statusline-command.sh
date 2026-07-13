@@ -81,6 +81,12 @@ cc_lock="$cc_cache_dir/ccusage.lock"
 cc_ttl=600
 
 cc_refresh() {
+  # reclaim an orphaned lock left by a refresh that was killed mid-run
+  if [ -d "$cc_lock" ]; then
+    lock_mtime=$(stat -c %Y "$cc_lock" 2>/dev/null || stat -f %m "$cc_lock" 2>/dev/null)
+    [ -n "$lock_mtime" ] && [ $(( $(date +%s) - lock_mtime )) -ge "$cc_ttl" ] && \
+      rmdir "$cc_lock" 2>/dev/null
+  fi
   mkdir "$cc_lock" 2>/dev/null || return  # another refresh in flight
   local d1 d7 day wk
   d1=$(date +%Y%m%d)
