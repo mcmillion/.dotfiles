@@ -72,9 +72,11 @@ bar() {
     "$gray" "$pct" "$reset"
 }
 
-# Rolling ccusage spend (today / last 7 days) for API-billed sessions
-# (no subscription rate limits in the input), cached + background-refreshed
-# so the status line never blocks on ccusage (~0.5s/call).
+# Rolling ccusage spend (today / last 7 days) for API-billed sessions,
+# cached + background-refreshed so the status line never blocks on ccusage
+# (~0.5s/call). Billing mode comes from the login, not from the absence of
+# rate_limits in the input: that field is missing on every session until the
+# first API response, subscription or not.
 cc_cache_dir="$HOME/.cache/claude-statusline"
 cc_cache="$cc_cache_dir/ccusage"
 cc_lock="$cc_cache_dir/ccusage.lock"
@@ -98,8 +100,15 @@ cc_refresh() {
   rmdir "$cc_lock" 2>/dev/null
 }
 
+api_billed=1
+if [ -z "$ANTHROPIC_API_KEY" ] && \
+  jq -e '.claudeAiOauth.subscriptionType // empty' \
+    "$HOME/.claude/.credentials.json" >/dev/null 2>&1; then
+  api_billed=0
+fi
+
 cc_costs=""
-if [ -z "$five_pct" ] && [ -z "$seven_pct" ] && command -v ccusage >/dev/null 2>&1; then
+if [ "$api_billed" -eq 1 ] && command -v ccusage >/dev/null 2>&1; then
   mkdir -p "$cc_cache_dir"
   age=$cc_ttl
   if [ -f "$cc_cache" ]; then
