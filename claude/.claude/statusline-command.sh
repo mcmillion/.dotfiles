@@ -100,10 +100,19 @@ cc_refresh() {
   rmdir "$cc_lock" 2>/dev/null
 }
 
+# Credentials live in the macOS Keychain on a Mac and in a file on Linux
+read_credentials() {
+  if [ -f "$HOME/.claude/.credentials.json" ]; then
+    cat "$HOME/.claude/.credentials.json"
+  elif command -v security >/dev/null 2>&1; then
+    security find-generic-password -s "Claude Code-credentials" -w 2>/dev/null
+  fi
+}
+
 api_billed=1
 if [ -z "$ANTHROPIC_API_KEY" ] && \
-  jq -e '.claudeAiOauth.subscriptionType // empty' \
-    "$HOME/.claude/.credentials.json" >/dev/null 2>&1; then
+  read_credentials | jq -e '.claudeAiOauth.subscriptionType // empty' \
+    >/dev/null 2>&1; then
   api_billed=0
 fi
 
