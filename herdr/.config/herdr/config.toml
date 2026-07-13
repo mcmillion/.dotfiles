@@ -24,7 +24,7 @@ accent = "#98c379"
 mouse_capture = true
 
 # Show detected agent labels on pane borders - useful when running agents.
-show_agent_labels_on_pane_borders = true
+show_agent_labels_on_pane_borders = false
 
 agent_panel_sort = "priority"
 [keys]
@@ -137,3 +137,6 @@ command = "herdr-splits.nav-up"
 key = "ctrl+l"
 type = "plugin_action"
 command = "herdr-splits.nav-right"
+
+[ui.toast]
+delivery = "off"
