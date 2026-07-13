@@ -62,6 +62,8 @@ Each tool has its own directory containing the configuration files in the same s
 - `hunk/` - Review-first terminal diff viewer; `review` (in bin/) opens the
   working tree diffed against the merge base with the default branch, and the
   `hunk-comments` Claude skill addresses review comments left in a live session
+- `gh-dash/` - GitHub PR/issue dashboard (`gh dash` extension); One Dark
+  theme, opened from herdr via `prefix+g`
 
 **Search & Navigation**
 - `ripgrep/` - Fast text search (.ripgreprc, .ignore)

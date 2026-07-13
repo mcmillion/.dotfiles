@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
+#
+# gh-dash: GitHub PR/issue dashboard (gh extension dlvhdr/gh-dash).
+# Lives at ~/.config/gh-dash/config.yml (stowed from dotfiles).
+# Opened from herdr via prefix+g.
+
+prSections:
+  - title: My Pull Requests
+    filters: is:open author:@me
+  - title: Needs My Review
+    filters: is:open review-requested:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+  - title: Recently Merged
+    filters: is:merged author:@me sort:updated-desc
+
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+  - title: Assigned
+    filters: is:open assignee:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+
+defaults:
+  view: prs
+  prsLimit: 20
+  issuesLimit: 20
+  refetchIntervalMinutes: 30
+  dateFormat: relative
+  preview:
+    open: true
+    width: 60
+  layout:
+    prs:
+      updatedAt:
+        width: 7
+      repo:
+        width: 18
+      author:
+        width: 15
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 16
+    issues:
+      updatedAt:
+        width: 7
+      repo:
+        width: 18
+      creator:
+        width: 10
+      assignees:
+        width: 20
+        hidden: true
+
+# Map repos to local checkouts so checkout / lazygit keybindings work.
+# Macs (Chozo, work laptop) keep repos under ~/Developer/owner/repo.
+# On aurora repos live under ~/dev instead, so these paths won't resolve
+# there - sections still work, only the local-path keybindings break.
+repoPaths:
+  galileo-inc/*: ~/Developer/galileo-inc/*
+  black-omen/*: ~/Developer/black-omen/*
+  mmcmillion/*: ~/Developer/mmcmillion/*
+
+keybindings:
+  prs:
+    - key: v
+      name: lazygit
+      command: >
+        cd {{.RepoPath}} && lazygit
+  issues: []
+
+pager:
+  diff: delta
+
+confirmQuit: false
+
+# One Dark palette - matches nvim, ghostty, and herdr.
+theme:
+  ui:
+    table:
+      sectionsShowCount: true
+      showSeparators: true
+      compact: false
+  colors:
+    text:
+      primary: "#abb2bf"
+      secondary: "#5c6370"
+      inverted: "#282c34"
+      faint: "#4b5263"
+      warning: "#e06c75"
+      success: "#98c379"
+    background:
+      selected: "#2c323c"
+    border:
+      primary: "#3e4452"
+      secondary: "#4b5263"
+      faint: "#2c323c"
