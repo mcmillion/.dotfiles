@@ -9,7 +9,7 @@
   "fzf-lua": { "branch": "main", "commit": "532d463f5c83595192fe740572d8fd6902b2217a" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
   "grug-far.nvim": { "branch": "main", "commit": "1cc080f55706b38aabfa97d40acb6adf59ac4a5a" },
-  "herdr-splits.nvim": { "branch": "main", "commit": "0926e8c375deeee19a0317a051a9ed43ca16e76c" },
+  "herdr-splits.nvim": { "branch": "main", "commit": "65f8ce298454e1e4f5c91c03474e1b3de0f0b561" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "149fbd9f5e25511b0a8bad3ccecd43d1bc584f86" },
