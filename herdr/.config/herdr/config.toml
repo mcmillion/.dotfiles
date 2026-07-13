@@ -68,14 +68,20 @@ close_workspace = "prefix+shift+d"
 next_agent = "cmd+j"
 previous_agent = "cmd+k"
 
-# Free prefix+g for the hunk review pane below (herdr's goto lives there by default).
+# Free prefix+g for the gh dash pane below (herdr's goto lives there by default).
 goto = ""
 
 # hunk: review uncommitted working-tree changes in a temporary pane
 [[keys.command]]
-key = "prefix+g"
+key = "prefix+d"
 type = "pane"
 command = "hunk diff"
+
+# gh dash: GitHub PR/issue dashboard in a temporary pane
+[[keys.command]]
+key = "prefix+g"
+type = "pane"
+command = "gh dash"
 
 # tuxedo todo
 [[keys.command]]
