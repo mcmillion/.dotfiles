@@ -9,6 +9,7 @@ return {
       { "<leader>d", group = "diff/debug" },
       { "<leader>f", group = "find" },
       { "<leader>g", group = "git" },
+      { "<leader>gh", group = "github (octo)" },
       { "<leader>o", group = "obsidian" },
       { "<leader>R", group = "rest" },
       { "gr", group = "lsp" },
