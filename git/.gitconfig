@@ -115,3 +115,5 @@
 # Missing file is silently ignored, so this is a no-op on hosts without it.
 [include]
   path = ~/.config/git/local.config
+[branch]
+	autoSetupMerge = simple
