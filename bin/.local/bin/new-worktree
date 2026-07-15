@@ -35,6 +35,19 @@ die() {
   exit 1
 }
 
+# Open $branch's worktree in herdr, focused. $1 is the on-disk path to point at
+# if herdr isn't reachable. Uses the container as source (not a linked worktree).
+open_in_herdr() {
+  local fallback_path="$1"
+  if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
+    echo "opening in herdr..."
+    herdr worktree open --cwd "$repo_root" --branch "$branch" --focus \
+      || warn "herdr worktree open failed; worktree is at $fallback_path"
+  else
+    warn "herdr not running; worktree at $fallback_path (open it manually)"
+  fi
+}
+
 # Walk up to the container dir that holds .bare/.
 find_repo_root() {
   local dir="$1"
@@ -63,8 +76,27 @@ branch="${branch%"${branch##*[![:space:]]}"}"   # rtrim
 git check-ref-format --branch "$branch" >/dev/null 2>&1 \
   || die "invalid branch name: $branch"
 
+branch_exists=0
 if git -C "$repo_root/.bare" show-ref --verify --quiet "refs/heads/$branch"; then
-  die "branch '$branch' already exists; use 'herdr worktree open' to attach it"
+  branch_exists=1
+fi
+
+# If the branch already has a worktree, there's nothing to create - just open
+# that existing worktree in herdr and we're done.
+if [[ $branch_exists -eq 1 ]]; then
+  existing_wt=$(
+    git -C "$repo_root/.bare" worktree list --porcelain \
+      | awk -v b="refs/heads/$branch" '
+          $1 == "worktree" { path=$2 }
+          $1 == "branch" && $2 == b { print path; exit }
+        '
+  )
+  if [[ -n "$existing_wt" ]]; then
+    echo "branch '$branch' already checked out at $existing_wt; opening it..."
+    open_in_herdr "$existing_wt"
+    echo "done: $existing_wt"
+    exit 0
+  fi
 fi
 
 # Drop a leading "prefix/" (e.g. mlm/, zc-1234/) so the worktree folder is
@@ -82,15 +114,23 @@ slug="${slug#-}"; slug="${slug%-}"
 new_path="$repo_root/$slug"
 [[ ! -e "$new_path" ]] || die "target directory already exists: $new_path"
 
-default_branch=$(git -C "$repo_root/.bare" symbolic-ref --short HEAD) \
-  || die "could not determine default branch from $repo_root/.bare"
+if [[ $branch_exists -eq 1 ]]; then
+  # Existing branch, no worktree yet: check it out into a new sibling worktree.
+  echo "creating worktree '$slug' for existing branch '$branch'..."
+  git -C "$repo_root" worktree add "$new_path" "$branch" \
+    || die "git worktree add failed"
+else
+  # New branch: fork it off the up-to-date default branch.
+  default_branch=$(git -C "$repo_root/.bare" symbolic-ref --short HEAD) \
+    || die "could not determine default branch from $repo_root/.bare"
 
-echo "fetching origin..."
-git -C "$repo_root/.bare" fetch origin
+  echo "fetching origin..."
+  git -C "$repo_root/.bare" fetch origin
 
-echo "creating worktree '$slug' on branch '$branch' from origin/$default_branch..."
-git -C "$repo_root" worktree add -b "$branch" "$new_path" "origin/$default_branch" \
-  || die "git worktree add failed"
+  echo "creating worktree '$slug' on new branch '$branch' from origin/$default_branch..."
+  git -C "$repo_root" worktree add -b "$branch" "$new_path" "origin/$default_branch" \
+    || die "git worktree add failed"
+fi
 
 # Template any committed 1Password env files (*.op.tpl) in the new worktree.
 # Recursive, pruning heavy/irrelevant dirs. Best-effort: warn, keep going.
@@ -110,13 +150,6 @@ done < <(
     -o -type f -name '*.op.tpl' -print0
 )
 
-# Open in herdr. Source must be the container (not a linked worktree).
-if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
-  echo "opening in herdr..."
-  herdr worktree open --cwd "$repo_root" --branch "$branch" --focus \
-    || warn "herdr worktree open failed; worktree is at $new_path"
-else
-  warn "herdr not running; worktree created at $new_path (open it manually)"
-fi
+open_in_herdr "$new_path"
 
 echo "done: $new_path"

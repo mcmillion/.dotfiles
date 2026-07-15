@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Pick an existing worktree in a bare-repo container layout (fzf) and open it in
-# herdr, nested + focused under the container's workspace group. Works from
-# inside any worktree, unlike herdr's native open_worktree (container-only).
+# Pick a worktree in a bare-repo container layout (fzf) and open it in herdr,
+# nested + focused under the container's workspace group. Works from inside any
+# worktree, unlike herdr's native open_worktree (container-only).
+#
+# The picker lists existing worktrees plus local branches that have no worktree
+# yet (flagged with a leading "+"). Picking a flagged branch hands off to
+# new-worktree, which checks the branch out into a new worktree and opens it.
 #
 # See clone-worktree-repo / new-worktree for the layout.
-# Usage: open-worktree   (fzf picker over existing worktrees)
+# Usage: open-worktree   (fzf picker over worktrees + branches)
 
 warned=0
 cleanup() {
@@ -46,8 +50,9 @@ repo_root=$(find_repo_root "$PWD") \
 
 current=$(git rev-parse --show-toplevel 2>/dev/null || true)
 
-# List branch-backed worktrees, excluding the bare entry and the current one.
-list=$(
+# Existing worktrees, excluding the bare entry and the current one.
+# Columns: branch <tab> path.
+existing=$(
   git -C "$repo_root/.bare" worktree list --porcelain | awk -v cur="$current" '
     function flush() {
       if (!bare && branch != "" && path != cur) print branch "\t" path
@@ -60,13 +65,50 @@ list=$(
   '
 )
 
-[[ -n "$list" ]] || { echo "no other worktrees to open"; warned=1; exit 0; }
+# Every branch that already has a worktree (incl. current + bare), so those
+# aren't offered again as "no worktree" entries below.
+have_wt=$(
+  git -C "$repo_root/.bare" worktree list --porcelain \
+    | awk '$1 == "branch" { b=$2; sub("refs/heads/", "", b); print b }'
+)
+
+# Local branches with no worktree at all - candidates to create one for.
+# Columns: branch <tab> (empty path). grep exits 1 when none match; tolerate it.
+missing=$(
+  git -C "$repo_root/.bare" for-each-ref --format='%(refname:short)' refs/heads \
+    | grep -vxF -f <(printf '%s\n' "$have_wt") \
+    | awk 'NF { print $0 "\t" }' || true
+)
+
+# fzf lines: display <tab> branch <tab> path. A leading "+" flags branches with
+# no worktree yet (picking one creates it); existing worktrees are indented to
+# line up under it. Only the display column is shown and searched (--with-nth=1).
+list=$(
+  { printf '%s\n' "$existing"; printf '%s\n' "$missing"; } \
+    | awk -F'\t' 'NF >= 2 && $1 != "" {
+        if ($2 == "") disp = "+ " $1 "  (no worktree - will create)"
+        else          disp = "  " $1
+        print disp "\t" $1 "\t" $2
+      }'
+)
+
+[[ -n "$list" ]] || { echo "no worktrees or branches to open"; warned=1; exit 0; }
 
 pick=$(printf '%s\n' "$list" \
-  | fzf --prompt="open worktree > " --delimiter='\t' --with-nth=1 --height=40%) \
+  | fzf --prompt="worktree > " --delimiter='\t' --with-nth=1 --height=40% \
+        --header='+ = no worktree yet (will be created)') \
   || exit 0
-branch=$(printf '%s' "$pick" | cut -f1)
+branch=$(printf '%s' "$pick" | cut -f2)
+path=$(printf '%s' "$pick" | cut -f3)
 [[ -n "$branch" ]] || exit 0
+
+# No worktree yet: hand off to new-worktree, which checks the existing branch
+# out into a new sibling worktree, templates env, and opens it in herdr.
+if [[ -z "$path" ]]; then
+  command -v new-worktree >/dev/null 2>&1 \
+    || die "new-worktree not on PATH; cannot create a worktree for '$branch'"
+  exec new-worktree "$branch"
+fi
 
 if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
   herdr worktree open --cwd "$repo_root" --branch "$branch" --focus \
