@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Spin up a terminal Neovim that listens on the socket Godot's external editor
+# sends scripts to. Run this in the terminal you want to edit in; it becomes
+# both your editor and the target Godot opens scripts into. Afterwards,
+# clicking a script in the Godot editor opens it here.
+#
+# Idempotent: if a live server already owns the socket, this does nothing.
+# Override the socket with GODOT_NVIM_SOCKET; it must match Godot's
+# text_editor/external/exec_flags (see godot-nvim-open).
+set -euo pipefail
+
+SOCKET="${GODOT_NVIM_SOCKET:-/tmp/godothost}"
+
+if [ -S "$SOCKET" ] && nvim --server "$SOCKET" --remote-expr '1' >/dev/null 2>&1; then
+  echo "Neovim already listening on $SOCKET"
+  exit 0
+fi
+
+# A crashed instance leaves a stale socket file that blocks --listen.
+[ -e "$SOCKET" ] && rm -f "$SOCKET"
+
+exec nvim --listen "$SOCKET" "$@"

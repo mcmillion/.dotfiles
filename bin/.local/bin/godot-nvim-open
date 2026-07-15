@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Godot external-editor hook. Godot invokes this as:
+#   godot-nvim-open {file} {line} {col}
+#
+# Opens the file at line/col in the Neovim server (start it with
+# godot-nvim-server). If no server is live it does nothing, rather than letting
+# `nvim --remote-send` spawn an invisible headless instance.
+set -euo pipefail
+
+SOCKET="${GODOT_NVIM_SOCKET:-/tmp/godothost}"
+
+file="${1:?usage: godot-nvim-open <file> [line] [col]}"
+line="${2:-1}"
+col="${3:-1}"
+# Godot sometimes passes 0; Neovim's cursor() is 1-based.
+[ "$line" -gt 0 ] 2>/dev/null || line=1
+[ "$col" -gt 0 ] 2>/dev/null || col=1
+
+if [ -S "$SOCKET" ] && nvim --server "$SOCKET" --remote-expr '1' >/dev/null 2>&1; then
+  # <C-\><C-N> forces normal mode first, in case the server is in insert/terminal.
+  nvim --server "$SOCKET" --remote-send \
+    "<C-\\><C-N>:edit ${file}<CR>:call cursor(${line}, ${col})<CR>zz"
+else
+  echo "No Neovim server on $SOCKET — start one with godot-nvim-server" >&2
+  exit 1
+fi
