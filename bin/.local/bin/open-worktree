@@ -110,8 +110,12 @@ if [[ -z "$path" ]]; then
   exec new-worktree "$branch"
 fi
 
+# Workspace label: drop a leading "prefix/" (e.g. mlm/, zc-1234/) so the herdr
+# workspace shows just the descriptive part. No slash -> unchanged.
+label="${branch#*/}"
+
 if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
-  herdr worktree open --cwd "$repo_root" --branch "$branch" --focus \
+  herdr worktree open --cwd "$repo_root" --branch "$branch" --label "$label" --focus \
     || warn "herdr worktree open failed for '$branch'"
 else
   warn "herdr not running; cannot open '$branch'"

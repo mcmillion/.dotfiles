@@ -37,11 +37,12 @@ die() {
 
 # Open $branch's worktree in herdr, focused. $1 is the on-disk path to point at
 # if herdr isn't reachable. Uses the container as source (not a linked worktree).
+# Labels the workspace with the prefix-stripped branch name (see $label).
 open_in_herdr() {
   local fallback_path="$1"
   if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
     echo "opening in herdr..."
-    herdr worktree open --cwd "$repo_root" --branch "$branch" --focus \
+    herdr worktree open --cwd "$repo_root" --branch "$branch" --label "$label" --focus \
       || warn "herdr worktree open failed; worktree is at $fallback_path"
   else
     warn "herdr not running; worktree at $fallback_path (open it manually)"
@@ -75,6 +76,10 @@ branch="${branch%"${branch##*[![:space:]]}"}"   # rtrim
 
 git check-ref-format --branch "$branch" >/dev/null 2>&1 \
   || die "invalid branch name: $branch"
+
+# Workspace label: drop a leading "prefix/" (e.g. mlm/, zc-1234/) so the herdr
+# workspace shows just the descriptive part. No slash -> unchanged.
+label="${branch#*/}"
 
 branch_exists=0
 if git -C "$repo_root/.bare" show-ref --verify --quiet "refs/heads/$branch"; then
