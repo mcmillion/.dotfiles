@@ -67,8 +67,13 @@ if git -C "$repo_root/.bare" show-ref --verify --quiet "refs/heads/$branch"; the
   die "branch '$branch' already exists; use 'herdr worktree open' to attach it"
 fi
 
+# Drop a leading "prefix/" (e.g. mlm/, zc-1234/) so the worktree folder is
+# just the descriptive part; the branch itself keeps its full prefixed name.
+# No slash -> unchanged.
+dir_name="${branch#*/}"
+
 # Slug the directory so worktrees stay flat siblings of .bare.
-slug="$branch"
+slug="$dir_name"
 slug="${slug//\//-}"
 slug=$(printf '%s' "$slug" | tr -c 'A-Za-z0-9._-' '-')
 slug="${slug#-}"; slug="${slug%-}"
