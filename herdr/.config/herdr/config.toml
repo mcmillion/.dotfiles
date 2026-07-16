@@ -45,16 +45,20 @@ focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
 focus_pane_right = "prefix+l"
 
-# Zoom + close pane.
+# Zoom + close pane. Close is a shift chord because plain prefix+x was too easy
+# to hit by accident, and herdr has no close confirmation.
 zoom = "prefix+z"
-close_pane = "prefix+x"
+close_pane = "prefix+shift+x"
 
 # Tabs.
 new_tab = "prefix+c"
 next_tab = "alt+l"
 previous_tab = "alt+h"
 rename_tab = "prefix+comma"
-close_tab = "prefix+shift+x"
+
+# Unbound so close_pane can take prefix+shift+x. Close a tab by closing its
+# splits; the last tab in a workspace can't be closed, use close_workspace.
+close_tab = ""
 
 # Workspaces.
 new_workspace = "prefix+n"
