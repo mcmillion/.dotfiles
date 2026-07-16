@@ -14,10 +14,11 @@ packer_compiled.lua
 **/ghostty/.config/ghostty/config.local
 .claude/settings.local.json
 
-# Claude Code: track only config; ignore runtime data + secrets
+# Claude Code: track only hand-authored config; ignore runtime data + secrets.
+# settings.json is deliberately NOT tracked: Claude Code rewrites it at runtime,
+# so it lives as a real local file at ~/.claude/settings.json and is allowed to drift.
 claude/.claude/*
 !claude/.claude/CLAUDE.md
-!claude/.claude/settings.json
 !claude/.claude/statusline-command.sh
 !claude/.claude/agents/
 !claude/.claude/commands/
