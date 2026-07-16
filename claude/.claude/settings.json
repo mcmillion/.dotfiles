@@ -1,31 +1,8 @@
 {
-  "agentPushNotifEnabled": true,
-  "alwaysThinkingEnabled": true,
   "attribution": {
     "commit": "",
     "pr": ""
   },
-  "awaySummaryEnabled": false,
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "context7-plugin@context7-marketplace": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"AskUserQuestion / multiple-choice Q&A is blocked by user policy. NEVER use it. Use the grill-me skill instead for ANY clarification, decision, or question to the user.\"}}'",
-            "type": "command"
-          }
-        ],
-        "matcher": "AskUserQuestion"
-      }
-    ]
-  },
-  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "Bash(ack:*)",
@@ -352,17 +329,61 @@
       "Read(//Users/mmcmillion/.obsidian/galileo/**)",
       "Read(//Users/mmcmillion/.obsidian/black-omen/**)"
     ],
+    "deny": [],
     "ask": [],
-    "defaultMode": "auto",
-    "deny": []
+    "defaultMode": "auto"
   },
-  "skipAutoPermissionPrompt": true,
-  "skipWorkflowUsageWarning": true,
+  "model": "claude-fable-5[1m]",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"AskUserQuestion / multiple-choice Q&A is blocked by user policy. NEVER use it. Use the grill-me skill instead for ANY clarification, decision, or question to the user.\"}}'"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
-    "command": "~/.claude/statusline-command.sh",
-    "type": "command"
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
   },
-  "theme": "dark-ansi",
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "galileo@galileo-claude-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "galileo-claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "galileo-inc/galileo-claude-plugins"
+      },
+      "autoUpdate": true
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "awaySummaryEnabled": false,
   "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark-ansi",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
   "voiceEnabled": false
 }
