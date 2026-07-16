@@ -15,6 +15,8 @@ packer_compiled.lua
 .claude/settings.local.json
 
 # Claude Code: track only hand-authored config; ignore runtime data + secrets.
+# Safety net only -- runtime state belongs at ~/.claude, outside the repo.
+# Stow this package with --no-folding so ~/.claude stays a real directory.
 # settings.json is deliberately NOT tracked: Claude Code rewrites it at runtime,
 # so it lives as a real local file at ~/.claude/settings.json and is allowed to drift.
 # Skills and agents live in the mcmillion/claude-plugins marketplace, not here.

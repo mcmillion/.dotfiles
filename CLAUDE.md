@@ -29,6 +29,11 @@ stow herdr
 # Git requires --dotfiles flag to link dot-gitignore as .gitignore
 stow --dotfiles git
 
+# Claude requires --no-folding: if ~/.claude is missing, plain stow links the
+# whole directory and Claude Code then writes all its runtime state (sessions,
+# history, credentials) inside the repo. --no-folding links the files instead.
+stow --no-folding claude
+
 # Remove/unlink configuration
 stow -D tool-name
 
