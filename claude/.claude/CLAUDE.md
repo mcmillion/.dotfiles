@@ -75,6 +75,6 @@
 
 ### Shared agent knowledge base
 
-- The personal vault (`~/obsidian/personal`) is a knowledge base shared by AI agents (Hermes on ceres + personal Claude sessions) and me. The whole vault syncs to ceres via `obsidian-headless`.
+- The personal vault (`~/obsidian/personal`) is a knowledge base shared by AI agents (Hermes on aurora + personal Claude sessions) and me. The whole vault syncs on aurora via `obsidian-headless`.
 - Record durable knowledge (homelab, projects, etc.) into the matching topical folder; use `agents/inbox/` for quick captures without a home yet. Knowledge does NOT live in `agents/` - that folder is the operating layer.
 - Invoke the `/kb` skill for the full operating manual (conventions, folder map, inbox + distillation rules); it loads `agents/README.md` from the vault. Use `/distill` to promote inbox captures into their topical home.
