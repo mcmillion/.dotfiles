@@ -21,3 +21,6 @@ taskell.json
 taskell.md
 
 **/.claude/settings.local.json
+
+# Playwright MCP scratch output (snapshots, console logs)
+.playwright-mcp/
