@@ -116,6 +116,29 @@ t() {
 }
 
 #==================================================================================================
+# FILES
+#==================================================================================================
+
+# Move top-level items in ~/Downloads older than N days (default 180) to the Trash.
+# Previews by default; pass -f to actually trash. Optional day count as the last arg.
+#   clean-downloads        list what's older than 180 days
+#   clean-downloads 90     list what's older than 90 days
+#   clean-downloads -f     trash items older than 180 days
+#   clean-downloads -f 90  trash items older than 90 days
+clean-downloads() {
+  local go=0 days=180
+  [ "$1" = "-f" ] && { go=1; shift; }
+  [ -n "$1" ] && days="$1"
+
+  if [ "$go" -eq 1 ]; then
+    find ~/Downloads -mindepth 1 -maxdepth 1 -mtime +"$days" -exec trash {} +
+  else
+    echo "Older than $days days in ~/Downloads (pass -f to trash):"
+    find ~/Downloads -mindepth 1 -maxdepth 1 -mtime +"$days" -print
+  fi
+}
+
+#==================================================================================================
 # GIT
 #==================================================================================================
 
