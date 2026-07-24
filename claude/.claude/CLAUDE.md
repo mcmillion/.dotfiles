@@ -57,7 +57,7 @@
 - Project-scoped MCP servers go in `.mcp.json` at the project root
 - NEVER hardcode secrets/tokens in MCP configs — reference env vars from zshenv instead
 - When adding or troubleshooting MCP servers, use `claude mcp get <name>` and `claude mcp list` to inspect config
-- When setting up MCP servers that use `uvx` or `npx`, use `--default-index https://pypi.org/simple/` (uvx) or equivalent to bypass the project's CodeArtifact configuration, which will block public package resolution
+- CodeArtifact is a **work-only** concern: only on the work laptop (Galileo, `XG7GT4XJLW`) or in a work project does a private registry block public package resolution. There, when setting up MCP servers that use `uvx` or `npx`, use `--default-index https://pypi.org/simple/` (uvx) or equivalent to bypass it. On aurora and any personal repo, `uvx`/`npx`/`pnpm dlx` resolve against the public registries directly — no workaround, don't assume one
 
 ## Obsidian
 
@@ -65,7 +65,8 @@
 - Vaults (each is a separate Obsidian vault, not a folder):
   - Personal: `~/obsidian/personal` (all machines)
   - Galileo (employer / work): `~/obsidian/galileo` (work machine)
-  - Black Omen (my own company): `~/obsidian/black-omen` (personal machines only)
+  - BitPivot (my company, dev work): `~/obsidian/bitpivot` (personal machines only)
+  - Black Omen (my company, game dev): `~/obsidian/black-omen` (Chozo only, since game dev happens there)
 - Route notes to the vault matching their topic; never put work content in the personal vault
 - Within a vault: topical `kebab-case` folders; never create notes at vault root
 - Conventions: `_todo.md` / `_links.md` for per-folder task & link collections; on-call notes prefixed `YYYY-MM-DD-`
