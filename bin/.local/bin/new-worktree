@@ -137,23 +137,58 @@ else
     || die "git worktree add failed"
 fi
 
+# Ensure a live 1Password session, prompting interactively if there isn't one.
+# In CLI-only mode (no desktop app) a session lasts 30 min of inactivity and is
+# not extendable, so a cold pane needs a fresh sign-in. Prompt once per run; the
+# OP_SESSION_* it exports is inherited by the op inject calls below. Returns
+# non-zero if still not signed in. No --account, so it stays machine-neutral.
+op_signin_tried=0
+ensure_op_session() {
+  op whoami >/dev/null 2>&1 && return 0
+  if [[ $op_signin_tried -eq 0 ]]; then
+    op_signin_tried=1
+    echo "1Password session expired; signing in..."
+    eval "$(op signin)" || true
+  fi
+  op whoami >/dev/null 2>&1
+}
+
 # Template any committed 1Password env files (*.op.tpl) in the new worktree.
-# Recursive, pruning heavy/irrelevant dirs. Best-effort: warn, keep going.
+# Recursive, pruning heavy/irrelevant dirs. Best-effort: warn, keep going, but
+# collect failures and report them loudly at the end so none slips past.
+failed_templates=()
 while IFS= read -r -d '' tpl; do
   out="${tpl%.op.tpl}"
+  rel="${tpl#"$new_path"/}"
   tmp="$out.op.tmp.$$"
-  echo "templating $(basename "$out") from 1Password..."
-  if op inject -i "$tpl" -o "$tmp" 2>/dev/null; then
+  echo "templating ${out#"$new_path"/} from 1Password..."
+  if ! ensure_op_session; then
+    failed_templates+=("${out#"$new_path"/}")
+    warn "not signed in to 1Password - $rel not rendered"
+    continue
+  fi
+  if op inject -i "$tpl" -o "$tmp"; then
     mv -f "$tmp" "$out"
   else
     rm -f "$tmp"
-    warn "op inject failed for $tpl (signed in to 1Password?) - env not written"
+    failed_templates+=("${out#"$new_path"/}")
+    warn "op inject failed for $rel - env not written"
   fi
 done < <(
   find "$new_path" \
     \( -name .git -o -name .bare -o -name node_modules -o -name vendor \) -prune \
     -o -type f -name '*.op.tpl' -print0
 )
+
+# Loud, itemized summary of anything not rendered. warn() sets warned=1, so the
+# pane lingers on the way out and this stays on screen.
+if [[ ${#failed_templates[@]} -gt 0 ]]; then
+  warn "these env files were NOT written from 1Password:"
+  for f in "${failed_templates[@]}"; do
+    printf '           %s\n' "$f" >&2
+  done
+  warn "sign in to 1Password, then run 'pnpm env:pull' in the worktree"
+fi
 
 open_in_herdr "$new_path"
 
