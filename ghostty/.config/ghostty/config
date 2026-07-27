@@ -39,7 +39,7 @@ window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
 
-macos-titlebar-style = hidden
+macos-titlebar-style = tabs
 progress-style = false
 window-colorspace = srgb
 confirm-close-surface = false
@@ -60,6 +60,10 @@ keybind = alt+right=esc:[1;3C
 # unbound so they pass through to herdr (agent cycling).
 keybind = cmd+h=goto_window:next
 keybind = cmd+l=goto_window:previous
+
+# Rename the current tab. Needed because shell integration's `title` feature
+# rewrites the title at every prompt, so OSC title escapes don't survive.
+keybind = cmd+shift+i=prompt_tab_title
 
 # Per-machine overrides (optional, not tracked)
 config-file = ?config.local
