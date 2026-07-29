@@ -5,7 +5,12 @@
 - When reporting to me, be concise: cut preamble, hedging, and filler, not words that carry meaning. Concise does not mean compressed — never stack jargon or drop connective words to save space. Plain and readable beats short (see plain-writing rule below)
 - When an explanation runs long, break it into meaningful bullets rather than one dense paragraph. Bullets don't need to be full sentences — each one a complete thought that stands on its own, plainly stated, not a chopped-up fragment. Keep short answers as plain prose
 - Investigate and report findings; do not modify code unless explicitly asked
-- Comment sparingly — only the non-obvious *why*, never the *what*; no narration comments
+- **The bar for a comment existing at all:** it explains something non-obvious, or something a reader — person or model — would have a hard time discovering from the code itself. If someone could work it out by reading the code and following it where it goes, don't write it. Default to no comment; the comment is what needs justifying, not its absence
+- What clears that bar is usually knowledge from outside the file: a constraint the code can't show, an approach already tried and rejected, a failure that happens silently somewhere else. What doesn't clear it: restating the *what*, narrating the next line, or explaining a decision that the code and its types already make plain
+- **Hard cap: 2 lines per comment.** If the reasoning needs more room it goes in the spec, the docs, or the PR, and the comment becomes a one-line pointer. This is a limit, not a target — going over means the content belongs somewhere else, not that this one is special
+- A comment is never a second copy of something already written down. If it's in a spec, point at the spec instead of restating it
+- **Never argue a code review in a comment.** Findings get answered in the PR thread. A comment that defends a choice against an objection, or talks down an alternative nobody chose ("X looks tidier and is wrong because…"), is a review reply in disguise — cut it. Whoever reads the file next was never in that conversation
+- Before committing, compare comment density in the files I touched against what was there before. A big jump is the signal to cut, not to justify
 - Leave existing comments alone unless they're now wrong (don't strip them as a side effect of an unrelated edit)
 - Use only ASCII characters; no emojis or special Unicode unless I ask
 - Write the way you'd explain it out loud to a competent teammate who's new to the code: plain words, concrete nouns, cause-and-effect. This is a hard rule, not a nicety, and it applies to everything — comments, prose, PRs, commit messages, and replies to me. Specifically:
