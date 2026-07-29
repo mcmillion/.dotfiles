@@ -51,6 +51,7 @@ if OS.mac?
   cask 'claude'
   cask 'codex'
   cask 'font-symbols-only-nerd-font'
+  cask 'mouseless'
   cask 'raycast'
 end
 

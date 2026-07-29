@@ -24,6 +24,12 @@ claude/.claude/*
 !claude/.claude/CLAUDE.md
 !claude/.claude/statusline-command.sh
 
+# Mouseless: track only configs/, never the sibling license file or logs.
+# Safety net only -- stow this package with --no-folding so
+# ~/Library/Application Support/Mouseless stays a real directory.
+mouseless/Library/Application Support/Mouseless/*
+!mouseless/Library/Application Support/Mouseless/configs/
+
 # Symlinks to installed binaries (managed outside the repo)
 bin/.local/bin/claude
 bin/.local/bin/herdr
