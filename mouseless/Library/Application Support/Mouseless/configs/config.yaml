@@ -288,7 +288,7 @@ keymaps:
     cycle click count: null
     cycle font: '3'
     cycle font reverse: shift+3
-    cycle grid action level: '2'
+    cycle grid action level: null
     cycle mouse action type: null
     cycle mouse button: null
     decrease overlay opacity: ArrowDown
