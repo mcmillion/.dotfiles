@@ -11,13 +11,17 @@ set -euo pipefail
 BASE_DIR="$HOME/Developer/galileo-inc"
 WORKSPACE_LABEL="on-call"
 
-# First entry is the claude cwd; the rest are loaded via --add-dir.
-WORKTREES=(
-  "frontend-monorepo/master"
-  "api/master"
-  "core-api/main"
-  "health-ios/master"
-  "health-android/master"
+# Repos loaded into the claude session. First entry is the claude cwd; the rest
+# load via --add-dir. Each gets a dedicated "oncall" worktree pinned to latest
+# default branch (see provision_oncall) so an investigation reads shipped code
+# and never fights another agent over the shared default-branch worktree.
+REPOS=(
+  frontend-monorepo
+  api
+  core-api
+  health-ios
+  health-android
+  dna
 )
 
 warned=0
@@ -45,21 +49,62 @@ command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]] \
   || die "herdr server not reachable; can't bootstrap the on-call workspace"
 command -v jq >/dev/null 2>&1 || die "jq not found"
 
-# Best-effort pull each worktree so we debug against latest.
-for wt in "${WORKTREES[@]}"; do
-  wt_dir="$BASE_DIR/$wt"
-  [[ -d "$wt_dir" ]] || { warn "$wt_dir not found, skipping"; continue; }
-  echo "pulling $wt..."
-  git -C "$wt_dir" pull --ff-only || warn "pull failed for $wt (continuing)"
+# Ensure a dedicated "oncall" worktree for a repo, pinned to latest default
+# branch, and append its path to ONCALL_DIRS. Layout is auto-detected:
+#   bare-repo container (.bare/ present) -> oncall worktree at <repo>/oncall
+#   plain clone (e.g. dna)               -> sibling worktree at <repo>-oncall
+# Detached at origin/<default>: the default branch is already checked out in the
+# repo's default worktree and git won't check a branch out twice. Permanent -
+# created once, then hard-reset to latest on every run.
+provision_oncall() {
+  local repo="$1"
+  local repo_dir="$BASE_DIR/$repo"
+  [[ -d "$repo_dir" ]] || { warn "$repo_dir not found, skipping"; return 1; }
+
+  local gitdir container oncall_path default
+  if [[ -d "$repo_dir/.bare" ]]; then
+    gitdir="$repo_dir/.bare"
+    container="$repo_dir"
+    oncall_path="$repo_dir/oncall"
+    default=$(git -C "$gitdir" symbolic-ref --short HEAD) \
+      || { warn "could not resolve default branch for $repo"; return 1; }
+  else
+    gitdir="$repo_dir"
+    container="$repo_dir"
+    oncall_path="$BASE_DIR/$repo-oncall"
+    default=$(git -C "$gitdir" rev-parse --abbrev-ref origin/HEAD 2>/dev/null)
+    default="${default#origin/}"
+    [[ -n "$default" ]] || default="main"
+  fi
+
+  echo "refreshing $repo oncall worktree (origin/$default)..."
+  git -C "$gitdir" fetch --quiet origin || warn "fetch failed for $repo (continuing)"
+
+  if [[ -d "$oncall_path" ]]; then
+    git -C "$oncall_path" reset --hard "origin/$default" \
+      || warn "could not refresh $oncall_path"
+  else
+    git -C "$container" worktree add --detach "$oncall_path" "origin/$default" \
+      || { warn "worktree add failed for $repo"; return 1; }
+  fi
+
+  ONCALL_DIRS+=("$oncall_path")
+}
+
+ONCALL_DIRS=()
+for repo in "${REPOS[@]}"; do
+  provision_oncall "$repo" || true
 done
 
-frontend_dir="$BASE_DIR/${WORKTREES[0]}"
-[[ -d "$frontend_dir" ]] || die "$frontend_dir not found; can't start claude"
+[[ ${#ONCALL_DIRS[@]} -gt 0 ]] || die "no oncall worktrees provisioned; can't start claude"
 
-# Build the claude command: cwd is the frontend worktree, rest as --add-dir.
+# cwd is the first repo's oncall worktree; the rest load via --add-dir.
+frontend_dir="${ONCALL_DIRS[0]}"
+
+# Build the claude command: herdr sets cwd, other worktrees load via --add-dir.
 add_dirs=()
-for wt in "${WORKTREES[@]:1}"; do
-  add_dirs+=(--add-dir "$BASE_DIR/$wt")
+for dir in "${ONCALL_DIRS[@]:1}"; do
+  add_dirs+=(--add-dir "$dir")
 done
 claude_cmd="claude"
 for arg in "${add_dirs[@]}"; do
