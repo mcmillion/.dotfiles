@@ -12,6 +12,12 @@ case "$(uname -s)" in
 esac
 _prepend_path "$HOME/.local/bin"
 _prepend_path "${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+
+# pnpm refuses `install -g` unless PNPM_HOME is set and on PATH. Setting it
+# explicitly also pins one path on both OSes; pnpm's default differs per OS.
+export PNPM_HOME="$HOME/.local/share/pnpm"
+_prepend_path "$PNPM_HOME/bin"
+
 export PATH
 unset -f _prepend_path
 
