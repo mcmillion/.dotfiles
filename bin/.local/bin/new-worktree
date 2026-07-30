@@ -168,18 +168,12 @@ ensure_op_session() {
 # Recursive, pruning heavy/irrelevant dirs. Best-effort: warn, keep going, but
 # collect failures and report them loudly at the end so none slips past.
 #
-# Collect the list up front instead of piping find straight into the loop. In a
-# `find | while read` the loop body inherits the pipe as stdin, so op signin
-# (inside ensure_op_session) reads from it: it can't prompt you, and it eats the
-# rest of the list, silently skipping every template after the first.
-mapfile -d '' templates < <(
-  find "$new_path" \
-    \( -name .git -o -name .bare -o -name node_modules -o -name vendor \) -prune \
-    -o -type f -name '*.op.tpl' -print0
-)
-
+# find feeds the loop on fd 3, not stdin (mapfile isn't in macOS's bash 3.2). With
+# a plain `find | while read` the loop body inherits the pipe as stdin, so op signin
+# (inside ensure_op_session) reads the file list instead of prompting you, silently
+# skipping every template after the first. fd 3 leaves stdin on the terminal.
 failed_templates=()
-for tpl in "${templates[@]}"; do
+while IFS= read -r -d '' tpl <&3; do
   out="${tpl%.op.tpl}"
   rel="${tpl#"$new_path"/}"
   tmp="$out.op.tmp.$$"
@@ -196,7 +190,11 @@ for tpl in "${templates[@]}"; do
     failed_templates+=("${out#"$new_path"/}")
     warn "op inject failed for $rel - env not written"
   fi
-done
+done 3< <(
+  find "$new_path" \
+    \( -name .git -o -name .bare -o -name node_modules -o -name vendor \) -prune \
+    -o -type f -name '*.op.tpl' -print0
+)
 
 # Loud, itemized summary of anything not rendered. warn() sets warned=1, so the
 # pane lingers on the way out and this stays on screen.
