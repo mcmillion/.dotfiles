@@ -6,6 +6,7 @@ input=$(cat)
 eval "$(echo "$input" | jq -r '
   @sh "cwd=\(.cwd // empty)",
   @sh "model=\(.model.display_name // .model // empty)",
+  @sh "effort=\(.effort.level // empty)",
   @sh "ctx_pct=\(.context_window.used_percentage // 0)",
   @sh "five_pct=\(.rate_limits.five_hour.used_percentage // empty)",
   @sh "five_reset=\(.rate_limits.five_hour.resets_at // empty)",
@@ -193,6 +194,8 @@ fi
 
 if [ -n "$model" ]; then
   output="${output}${sep}${gray}${model}${reset}"
+  # absent from the input entirely on models without effort levels
+  [ -n "$effort" ] && output="${output} ${gray}[${effort}]${reset}"
 fi
 
 pct=$(printf "%.0f" "$ctx_pct")
