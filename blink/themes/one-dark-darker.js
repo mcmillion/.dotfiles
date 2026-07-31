@@ -9,3 +9,8 @@ t.prefs_.set('color-palette-overrides', [
 t.prefs_.set('foreground-color', "#abb2bf");
 t.prefs_.set('background-color', "#1c1f24");
 t.prefs_.set('cursor-color', 'rgba(224,108,117,0.6)');
+
+// Matches ghostty's window-padding-x/y. hterm hardcodes `padding: 0` inline on
+// x-screen, so !important and border-box (it is width/height 100%) are required.
+t.prefs_.set('user-css-text',
+  'x-screen { padding: 10px !important; box-sizing: border-box !important; }');
