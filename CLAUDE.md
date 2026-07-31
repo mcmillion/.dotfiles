@@ -61,6 +61,9 @@ Each tool has its own directory containing the configuration files in the same s
 - `ghostty/` - Ghostty terminal emulator configuration
 - `herdr/` - Agent-aware terminal multiplexer (Ctrl+A prefix) for AI coding agents
 - `starship/` - Cross-shell prompt with Git integration
+- `blink/` - Blink Shell (iOS/iPadOS) themes. NOT stowed: Blink installs themes
+  by fetching a raw URL from this repo, so files here only need to be committed
+  and pushed, never linked
 
 **Session & File Management**
 - `yazi/` - Terminal file manager configuration
