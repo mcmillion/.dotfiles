@@ -391,7 +391,7 @@ style_configs:
   - - 0.0
     - 0.0
     - 0.0
-    - 0.35
+    - 0.75
   bg_color_block_size: 1
   bg_color_transforms_level_1:
   - - hsla_add
