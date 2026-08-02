@@ -73,6 +73,15 @@ bar() {
     "$gray" "$pct" "$reset"
 }
 
+# label NN%, no bar. Percentage carries the threshold color the bar would have.
+pct_only() {
+  local label="$1" pct="$2"
+  local color="$green"
+  [ "$pct" -ge 50 ] && color="$yellow"
+  [ "$pct" -ge 80 ] && color="$red"
+  printf '%b%s %b%d%%%b' "$gray" "$label" "$color" "$pct" "$reset"
+}
+
 # Rolling ccusage spend (today / last 7 days) for API-billed sessions,
 # cached + background-refreshed so the status line never blocks on ccusage
 # (~0.5s/call). Billing mode comes from the login, not from the absence of
@@ -232,7 +241,7 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
   fi
   if [ -n "$seven_pct" ]; then
     pct=$(printf "%.0f" "$seven_pct")
-    output="${output}${sep}$(bar 7d "$pct")"
+    output="${output}${sep}$(pct_only 7d "$pct")"
     if [ -n "$seven_reset" ]; then
       d=$(fmt_days_remaining "$seven_reset")
       [ -n "$d" ] && output="${output} (${d})"
@@ -243,7 +252,7 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
   if [ -n "$scoped" ]; then
     scoped_label=$(printf '%s' "${scoped%% *}" | tr '[:upper:]' '[:lower:]')
     pct=$(printf "%.0f" "${scoped##* }")
-    output="${output}${sep}$(bar "$scoped_label" "$pct")"
+    output="${output}${sep}$(pct_only "$scoped_label" "$pct")"
   fi
 elif [ -n "$cc_costs" ]; then
   cc_day="${cc_costs%% *}"
