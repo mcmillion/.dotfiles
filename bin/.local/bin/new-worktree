@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# -E so the ERR trap below still fires inside functions and subshells.
+set -Eeuo pipefail
+
+[[ -n "${NEW_WORKTREE_DEBUG:-}" ]] && set -x
 
 # Create a new worktree branch in a bare-repo container layout, template any
 # committed 1Password env files into it, then open it in herdr.
@@ -17,13 +20,21 @@ set -euo pipefail
 warned=0
 cleanup() {
   local ec=$?
-  # Pane closes on exit; linger so warnings/errors stay readable.
+  # Pane closes on exit; linger so warnings/errors stay readable. Read the
+  # keypress from /dev/tty: pnpm and op leave stdin at EOF, which skips the wait.
   if [[ $ec -ne 0 || $warned -eq 1 ]]; then
-    read -n1 -rsp $'\npress any key to close...' || true
-    echo
+    if [[ -e /dev/tty ]]; then
+      read -n1 -rsp $'\npress any key to close...' </dev/tty || sleep 30
+      echo
+    else
+      sleep 30
+    fi
   fi
 }
 trap cleanup EXIT
+
+# set -e exits mute, so a failing pane just vanishes. Name the line that died.
+trap 'printf "\nfailed at line %s: %s\n" "$LINENO" "$BASH_COMMAND" >&2' ERR
 
 warn() {
   warned=1
