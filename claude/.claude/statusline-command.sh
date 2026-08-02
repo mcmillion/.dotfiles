@@ -101,6 +101,26 @@ cc_refresh() {
   rmdir "$cc_lock" 2>/dev/null
 }
 
+# Per-model weekly caps (currently just Fable) are absent from the status line
+# payload -- Claude Code passes only five_hour and seven_day. Read aurora's
+# claude-usage.timer output instead of the usage endpoint, which rate-limits
+# hard and would be hit on every render. Missing on the Macs, so this stays off.
+scoped_prom="$HOME/aurora-monitoring/textfile/claude_usage.prom"
+scoped_max_age=1800
+
+# Prints "Fable 12" for the first per-model weekly cap, or nothing.
+read_scoped_quota() {
+  [ -f "$scoped_prom" ] || return
+  local mtime age
+  mtime=$(stat -c %Y "$scoped_prom" 2>/dev/null || \
+    stat -f %m "$scoped_prom" 2>/dev/null)
+  [ -n "$mtime" ] || return
+  age=$(( $(date +%s) - mtime ))
+  [ "$age" -lt "$scoped_max_age" ] || return
+  sed -n 's/^claude_usage_percent{kind="weekly_scoped",scope="\([^"]*\)"} \(.*\)$/\1 \2/p' \
+    "$scoped_prom" | head -1
+}
+
 # Credentials live in the macOS Keychain on a Mac and in a file on Linux
 read_credentials() {
   if [ -f "$HOME/.claude/.credentials.json" ]; then
@@ -217,6 +237,13 @@ if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
       d=$(fmt_days_remaining "$seven_reset")
       [ -n "$d" ] && output="${output} (${d})"
     fi
+  fi
+  # Resets with the 7d window, so the countdown isn't worth repeating.
+  scoped=$(read_scoped_quota)
+  if [ -n "$scoped" ]; then
+    scoped_label=$(printf '%s' "${scoped%% *}" | tr '[:upper:]' '[:lower:]')
+    pct=$(printf "%.0f" "${scoped##* }")
+    output="${output}${sep}$(bar "$scoped_label" "$pct")"
   fi
 elif [ -n "$cc_costs" ]; then
   cc_day="${cc_costs%% *}"
