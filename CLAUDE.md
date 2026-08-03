@@ -97,7 +97,10 @@ Each tool has its own directory containing the configuration files in the same s
 - `bin/` - Custom scripts in .local/bin (critique)
 
 **AI Tools**
-- `claude/` - Claude Code configuration (settings, custom agents, hooks, commands)
+- `claude/` - Claude Code configuration (global CLAUDE.md, statusline script).
+  `~/.claude/settings.json` is deliberately NOT stowed and must stay out of this
+  repo: settings differ per machine (model, plugins, permissions), so there is no
+  single correct version to sync. Do not propose adding it
 - `codex/` - Codex CLI configuration (`config.toml`, global `AGENTS.md`, notifier)
 
 ## Working with Configurations
