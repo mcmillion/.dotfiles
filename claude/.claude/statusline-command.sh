@@ -18,7 +18,6 @@ eval "$(echo "$input" | jq -r '
 blue='\033[0;34m'
 yellow='\033[0;33m'
 gray='\033[0;37m'
-dim='\033[0;90m'
 red='\033[0;31m'
 green='\033[0;32m'
 reset='\033[0m'
@@ -57,23 +56,7 @@ fmt_remaining() {
   fi
 }
 
-# Build a labeled bar: label ▰▰▰▱▱▱ NN%
-bar() {
-  local label="$1" pct="$2" width=10
-  local filled=$(( (pct * width + 50) / 100 ))
-  local empty=$(( width - filled ))
-  local color="$green"
-  [ "$pct" -ge 50 ] && color="$yellow"
-  [ "$pct" -ge 80 ] && color="$red"
-  local b=""
-  for ((i=0; i<filled; i++)); do b+="━"; done
-  for ((i=0; i<empty; i++)); do b+="${dim}┄"; done
-  printf '%b%s %b%s%b %b%d%%%b' \
-    "$gray" "$label" "$color" "$b" "$reset" \
-    "$gray" "$pct" "$reset"
-}
-
-# label NN%, no bar. Percentage carries the threshold color the bar would have.
+# label NN%, colored by usage threshold
 pct_only() {
   local label="$1" pct="$2"
   local color="$green"
@@ -228,12 +211,12 @@ if [ -n "$model" ]; then
 fi
 
 pct=$(printf "%.0f" "$ctx_pct")
-output="${output}${sep}$(bar ctx "$pct")"
+output="${output}${sep}$(pct_only ctx "$pct")"
 
 if [ -n "$five_pct" ] || [ -n "$seven_pct" ]; then
   if [ -n "$five_pct" ]; then
     pct=$(printf "%.0f" "$five_pct")
-    output="${output}${sep}$(bar 5h "$pct")"
+    output="${output}${sep}$(pct_only 5h "$pct")"
     if [ -n "$five_reset" ]; then
       t=$(fmt_remaining "$five_reset")
       [ -n "$t" ] && output="${output} (${t})"
