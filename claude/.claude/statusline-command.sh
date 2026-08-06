@@ -5,6 +5,7 @@ input=$(cat)
 # Single jq call to extract all fields
 eval "$(echo "$input" | jq -r '
   @sh "cwd=\(.cwd // empty)",
+  @sh "model_id=\(.model.id // empty)",
   @sh "model=\(.model.display_name // .model // empty)",
   @sh "effort=\(.effort.level // empty)",
   @sh "ctx_pct=\(.context_window.used_percentage // 0)",
@@ -204,10 +205,17 @@ if [ -n "$branch" ]; then
   [ -n "$git_status" ] && output="${output} ${red}${git_status}${reset}"
 fi
 
-if [ -n "$model" ]; then
-  output="${output}${sep}${gray}${model}${reset}"
+# claude-opus-5[1m] -> opus-5-1m, claude-haiku-4-5-20251001 -> haiku-4-5
+short_model="${model_id#claude-}"
+short_model="${short_model%-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]}"
+short_model="${short_model/\[/-}"
+short_model="${short_model/\]/}"
+[ -n "$short_model" ] || short_model="$model"
+
+if [ -n "$short_model" ]; then
   # absent from the input entirely on models without effort levels
-  [ -n "$effort" ] && output="${output} ${gray}[${effort}]${reset}"
+  [ -n "$effort" ] && short_model="${short_model}/${effort}"
+  output="${output}${sep}${gray}${short_model}${reset}"
 fi
 
 pct=$(printf "%.0f" "$ctx_pct")
