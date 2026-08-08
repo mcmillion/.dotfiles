@@ -69,7 +69,9 @@ open_in_herdr() {
     return
   fi
 
-  [[ -n "$handoff" ]] || return
+  # return 0, not a bare return: that hands back the failed test's status, which
+  # under set -e kills the script on every run without --handoff.
+  [[ -n "$handoff" ]] || return 0
 
   # An already-open workspace may have an agent in its root pane; typing a
   # claude command into that would go to the agent, not a shell.
