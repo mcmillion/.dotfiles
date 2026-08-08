@@ -27,6 +27,11 @@ mouse_capture = true
 show_agent_labels_on_pane_borders = false
 
 agent_panel_sort = "priority"
+
+# herdr 0.8 dropped the blank row between space entries; 1 restores it.
+[ui.sidebar.spaces]
+row_gap = 1
+
 [keys]
 prefix = "ctrl+a"
 
