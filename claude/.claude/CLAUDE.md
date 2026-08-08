@@ -1,5 +1,7 @@
 # Personal Global Claude Setup
 
+When grilling, ask me one question at a time.
+
 ## General Behavior
 
 - Default to no comment. What earns one is knowledge from outside the file — a constraint the code can't show, an approach already tried and rejected. Not the *what*, and never a rebuttal to a code review
