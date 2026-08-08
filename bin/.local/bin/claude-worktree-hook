@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Claude Code PreToolUse hook: block raw `git worktree add` so worktrees go
+# through new-worktree, which also opens the herdr workspace and forks the
+# calling session into it. Wire it up in ~/.claude/settings.json (not stowed).
+#
+# Reads the hook payload on stdin, writes a permission decision on stdout.
+
+allow() {
+  printf '%s\n' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"allow"}}'
+  exit 0
+}
+
+payload=$(cat)
+
+command -v jq >/dev/null 2>&1 || allow
+
+cmd=$(jq -r '.tool_input.command // empty' <<<"$payload" 2>/dev/null) || allow
+[[ -n "$cmd" ]] || allow
+
+# Outside herdr there's no workspace to open, so plain git is the right tool.
+[[ "${HERDR_ENV:-}" == 1 ]] || allow
+
+# `worktree` must be the actual subcommand, reachable only past git's own
+# options, so `git -C <path> worktree add` counts but `git commit -m "worktree
+# add ..."` and `worktree list`/`remove`/`prune` don't.
+grep -Eq '(^|[;&|(]|&&|\|\|)[[:space:]]*([^[:space:];&|]*/)?git([[:space:]]+(-[cC][[:space:]]+[^[:space:]]+|--[^[:space:]]+))*[[:space:]]+worktree[[:space:]]+add\b' \
+  <<<"$cmd" || allow
+
+reason='Use new-worktree instead of raw `git worktree add`.
+
+  new-worktree <branch> --handoff "$CLAUDE_CODE_SESSION_ID"
+
+It creates the sibling worktree, renders any 1Password env templates, installs
+dependencies, opens a focused herdr workspace, and forks this session into that
+workspace so the work continues there with the conversation that decided it.
+
+Run it from inside the repo. Drop --handoff if the work should start fresh.'
+
+jq -n --arg r "$reason" '{
+  hookSpecificOutput: {
+    hookEventName: "PreToolUse",
+    permissionDecision: "deny",
+    permissionDecisionReason: $r
+  }
+}'

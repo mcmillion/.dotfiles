@@ -14,15 +14,19 @@ set -Eeuo pipefail
 #     main/           worktree (default branch)
 #     feat-foo/       worktrees, flat siblings of .bare
 #
-# Usage: new-worktree [branch-name]
+# Usage: new-worktree [branch-name] [--handoff <session-id>]
 #   branch-name omitted -> prompt for it.
+#   --handoff  fork that Claude Code session into the new worktree's pane, so
+#              the work continues there with the conversation that decided it.
 
 warned=0
 cleanup() {
   local ec=$?
   # Pane closes on exit; linger so warnings/errors stay readable. Read the
   # keypress from /dev/tty: pnpm and op leave stdin at EOF, which skips the wait.
-  if [[ $ec -ne 0 || $warned -eq 1 ]]; then
+  # No terminal means no reader (an agent shelling out), so skip the linger
+  # entirely rather than stalling it for 30s on a message nobody will see.
+  if [[ $ec -ne 0 || $warned -eq 1 ]] && [[ -t 1 ]]; then
     if [[ -e /dev/tty ]]; then
       read -n1 -rsp $'\npress any key to close...' </dev/tty || sleep 30
       echo
@@ -49,15 +53,44 @@ die() {
 # Open $branch's worktree in herdr, focused. $1 is the on-disk path to point at
 # if herdr isn't reachable. Uses the container as source (not a linked worktree).
 # Labels the workspace with the prefix-stripped branch name (see $label).
+# With $handoff set, forks that session into the new workspace's root pane.
 open_in_herdr() {
   local fallback_path="$1"
-  if command -v herdr >/dev/null 2>&1 && [[ -n "${HERDR_SOCKET_PATH:-}" ]]; then
-    echo "opening in herdr..."
-    herdr worktree open --cwd "$repo_root" --branch "$branch" --label "$label" --focus \
-      || warn "herdr worktree open failed; worktree is at $fallback_path"
-  else
+  if ! command -v herdr >/dev/null 2>&1 || [[ -z "${HERDR_SOCKET_PATH:-}" ]]; then
     warn "herdr not running; worktree at $fallback_path (open it manually)"
+    return
   fi
+
+  echo "opening in herdr..."
+  local opened
+  if ! opened=$(herdr worktree open --cwd "$repo_root" --branch "$branch" \
+      --label "$label" --focus); then
+    warn "herdr worktree open failed; worktree is at $fallback_path"
+    return
+  fi
+
+  [[ -n "$handoff" ]] || return
+
+  # An already-open workspace may have an agent in its root pane; typing a
+  # claude command into that would go to the agent, not a shell.
+  if [[ $(jq -r '.result.already_open // false' <<<"$opened") == true ]]; then
+    warn "workspace was already open; not starting claude in it"
+    return
+  fi
+
+  local pane_id
+  pane_id=$(jq -r '.result.root_pane.pane_id // empty' <<<"$opened")
+  if [[ -z "$pane_id" ]]; then
+    warn "no pane id in herdr's response; start claude in the worktree by hand"
+    return
+  fi
+
+  # --resume finds a session by id from any directory, and the fork adopts this
+  # pane's cwd, so the conversation lands in the worktree with its history.
+  echo "forking claude session $handoff into $pane_id..."
+  herdr pane run "$pane_id" \
+    "claude --resume $(printf '%q' "$handoff") --fork-session" \
+    || warn "could not start claude in pane $pane_id"
 }
 
 # Walk up to the container dir that holds .bare/.
@@ -73,11 +106,39 @@ find_repo_root() {
   return 1
 }
 
+# --handoff takes a required value: a bare flag would swallow the branch
+# positional, and silently forking the wrong session is worse than a usage error.
+branch=""
+handoff=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --handoff)
+      [[ $# -ge 2 ]] || die "--handoff needs a session id"
+      handoff="$2"
+      shift 2
+      ;;
+    --handoff=*)
+      handoff="${1#*=}"
+      shift
+      ;;
+    -*) die "unknown option: $1" ;;
+    *)
+      [[ -z "$branch" ]] || die "unexpected extra argument: $1"
+      branch="$1"
+      shift
+      ;;
+  esac
+done
+
+if [[ -n "$handoff" ]]; then
+  command -v jq >/dev/null 2>&1 \
+    || die "--handoff needs jq to read herdr's response"
+fi
+
 repo_root=$(find_repo_root "$PWD") \
   || die "not inside a bare-worktree repo (no .bare/ found walking up from $PWD)"
 
 # Branch name: arg if given, else prompt.
-branch="${1:-}"
 if [[ -z "$branch" ]]; then
   read -rp "new branch: " branch
 fi

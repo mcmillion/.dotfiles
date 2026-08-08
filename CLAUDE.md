@@ -94,7 +94,13 @@ Each tool has its own directory containing the configuration files in the same s
   `~/Library/Application Support/Mouseless/configs/config.yaml`. The app rewrites
   this file whenever you save from its built-in editor (Tab while the overlay is
   up), so treat GUI edits as edits to the repo and commit them
-- `bin/` - Custom scripts in .local/bin (critique)
+- `bin/` - Custom scripts in .local/bin. `new-worktree` (herdr `prefix+w`) creates
+  a sibling worktree and opens it as a herdr workspace; `new-worktree <branch>
+  --handoff "$CLAUDE_CODE_SESSION_ID"` also forks the calling Claude session into
+  that workspace, so the work continues there with the conversation that decided
+  it. `claude-worktree-hook` is the PreToolUse hook that blocks raw `git worktree
+  add` and points at that command; it needs an entry in `~/.claude/settings.json`,
+  which is not stowed, so wire it up per machine
 
 **AI Tools**
 - `claude/` - Claude Code configuration (global CLAUDE.md, statusline script).
