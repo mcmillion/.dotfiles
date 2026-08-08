@@ -9,6 +9,7 @@ packer_compiled.lua
 *.log
 **/herdr/session.json
 **/herdr/plugins.json
+**/herdr/.plugins.lock
 **/herdr/plugins/
 **/herdr/release-notes.json
 **/ghostty/.config/ghostty/config.local
