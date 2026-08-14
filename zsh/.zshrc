@@ -342,8 +342,30 @@ fi
 # connection would actually succeed.
 # --remote-keybindings server: resolve keybinds on the server, where plugins
 # like herdr-splits live (default `local` would no-op ctrl+h/j/k/l nav).
+# Tint the Ghostty window while a session is pointed at aurora, so a window
+# connected to the remote box is visually distinct from a local one. OSC 11
+# sets the background; OSC 111 resets it to the config default. No-op unless
+# we're talking to a live Ghostty window, so it's safe on every machine/term.
+AURORA_TINT='#151c26'
+_ghostty_tint() { [[ "$TERM" == xterm-ghostty ]] && printf '\e]11;%s\e\\' "$1"; }
+_ghostty_untint() { [[ "$TERM" == xterm-ghostty ]] && printf '\e]111\e\\'; }
+
+# Wrap interactive `ssh aurora` (and aurora.local / aurora-cf) to tint on
+# connect and reset on return. The zsh quirk that makes this self-resetting:
+# an EXIT trap set inside a function fires when the function returns, not when
+# the shell exits. Skips BatchMode probes so hr's path checks don't flash.
+ssh() {
+  if [[ "$*" == *aurora* && "$*" != *BatchMode* ]]; then
+    _ghostty_tint "$AURORA_TINT"
+    trap '_ghostty_untint' EXIT INT
+  fi
+  command ssh "$@"
+}
+
 alias h='herdr'
 hr() {
+  _ghostty_tint "$AURORA_TINT"
+  trap '_ghostty_untint' EXIT INT
   if ssh -o BatchMode=yes -o ConnectTimeout=2 aurora true 2>/dev/null; then
     herdr --remote aurora --remote-keybindings server "$@"
   elif ssh -o BatchMode=yes -o ConnectTimeout=2 mlm@aurora.local true 2>/dev/null; then
