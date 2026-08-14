@@ -1,0 +1,165 @@
+#!/usr/bin/env bash
+# -E so the ERR trap below still fires inside functions and subshells.
+set -Eeuo pipefail
+
+# Fetch a bare-repo container once, then fast-forward every checked-out worktree
+# to its upstream. Linked worktrees share .bare as their git common dir, so a
+# single fetch updates the remote-tracking refs for all of them; only the local
+# branch pointers need touching per worktree.
+#
+# Layout assumed (see clone-worktree-repo):
+#   myrepo/
+#     .bare/          bare clone (git common dir)
+#     .git            file: "gitdir: ./.bare"
+#     main/           worktree (default branch)
+#     feat-foo/       worktrees, flat siblings of .bare
+#
+# Usage: update-worktrees [repo-path]
+#   repo-path omitted -> walk up from $PWD, so this works from the container
+#   itself or from inside any worktree.
+
+trap 'printf "\nfailed at line %s: %s\n" "$LINENO" "$BASH_COMMAND" >&2' ERR
+
+die() {
+  printf 'error: %s\n' "$1" >&2
+  exit 1
+}
+
+# Walk up to the container dir that holds .bare/. Prints nothing and still exits 0
+# when there is none: a failing assignment trips the ERR trap even when handled.
+find_repo_root() {
+  local dir="$1"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.bare" ]]; then
+      echo "$dir"
+      return
+    fi
+    dir="$(dirname "$dir")"
+  done
+}
+
+repo_root="${1:-}"
+if [[ -z "$repo_root" ]]; then
+  repo_root=$(find_repo_root "$PWD")
+  [[ -n "$repo_root" ]] \
+    || die "not inside a bare-worktree repo (no .bare/ found walking up from $PWD)
+       usage: update-worktrees [repo-path]"
+else
+  repo_root=$(cd "$repo_root" 2>/dev/null && pwd) || die "no such directory: $1"
+  [[ -d "$repo_root/.bare" ]] \
+    || die "'$repo_root' is not a bare-worktree repo (no .bare/ found)"
+fi
+
+git_bare() {
+  git -C "$repo_root/.bare" "$@"
+}
+
+echo "fetching $(basename "$repo_root")..."
+git_bare fetch --all --prune --tags --quiet || die "fetch failed"
+
+# Drop admin files for worktrees whose directories are gone, so they don't show
+# up in the list below.
+git_bare worktree prune
+
+# Collect the worktrees holding a branch. The bare entry and any detached HEAD
+# have no "branch" line in the porcelain output, so both fall out here.
+# substr instead of $2 keeps paths with spaces intact.
+paths=()
+branches=()
+while IFS=$'\t' read -r wt_path wt_branch; do
+  paths+=("$wt_path")
+  branches+=("$wt_branch")
+done < <(
+  git_bare worktree list --porcelain | awk '
+    $1 == "worktree" { path = substr($0, 10); next }
+    $1 == "branch"   {
+      ref = substr($0, 8)
+      sub(/^refs\/heads\//, "", ref)
+      print path "\t" ref
+    }
+  '
+)
+
+if [[ ${#paths[@]} -eq 0 ]]; then
+  echo "no worktrees with a branch checked out"
+  exit 0
+fi
+
+# Column widths, so the report lines up.
+dir_width=0
+branch_width=0
+for i in "${!paths[@]}"; do
+  name=$(basename "${paths[$i]}")
+  [[ ${#name} -gt $dir_width ]] && dir_width=${#name}
+  [[ ${#branches[$i]} -gt $branch_width ]] && branch_width=${#branches[$i]}
+done
+
+report() {
+  printf '  %-*s  %-*s  %s\n' "$dir_width" "$1" "$branch_width" "$2" "$3"
+}
+
+failures=0
+
+for i in "${!paths[@]}"; do
+  wt="${paths[$i]}"
+  branch="${branches[$i]}"
+  name=$(basename "$wt")
+
+  # Survives a locked worktree whose directory is gone, which prune leaves alone.
+  if [[ ! -d "$wt" ]]; then
+    report "$name" "$branch" "directory missing - $wt"
+    continue
+  fi
+
+  # `|| true` inside the substitution, not outside: a failing assignment trips the
+  # ERR trap even when the caller handles it.
+  upstream=$(
+    git -C "$wt" rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null || true
+  )
+  upstream_sha=""
+  if [[ -n "$upstream" && "$upstream" != '@{u}' ]]; then
+    upstream_sha=$(git -C "$wt" rev-parse --verify --quiet "$upstream^{commit}" || true)
+  fi
+
+  # --symbolic-full-name echoes the literal "@{u}" rather than failing when the
+  # remote-tracking ref is missing, so the name alone doesn't prove it resolves.
+  if [[ -z "$upstream_sha" ]]; then
+    # Tracking config with no resolvable ref means the remote branch was deleted
+    # (typically after the PR merged) and this fetch just pruned it.
+    if [[ -n "$(git -C "$wt" config --get "branch.$branch.merge" || true)" ]]; then
+      report "$name" "$branch" "upstream gone - remote branch was deleted"
+    else
+      report "$name" "$branch" "no upstream - never pushed"
+    fi
+    continue
+  fi
+
+  local_sha=$(git -C "$wt" rev-parse HEAD)
+
+  if [[ "$local_sha" == "$upstream_sha" ]]; then
+    report "$name" "$branch" "up to date"
+  elif git -C "$wt" merge-base --is-ancestor HEAD "$upstream"; then
+    behind=$(git -C "$wt" rev-list --count "HEAD..$upstream")
+    if git -C "$wt" merge --ff-only --quiet "$upstream" 2>/dev/null; then
+      report "$name" "$branch" \
+        "pulled $behind commit(s) -> $(git -C "$wt" rev-parse --short HEAD)"
+    else
+      failures=$((failures + 1))
+      report "$name" "$branch" \
+        "behind $behind, fast-forward refused - dirty tree or rebase in progress"
+    fi
+  elif git -C "$wt" merge-base --is-ancestor "$upstream" HEAD; then
+    ahead=$(git -C "$wt" rev-list --count "$upstream..HEAD")
+    report "$name" "$branch" "ahead $ahead - unpushed"
+  else
+    ahead=$(git -C "$wt" rev-list --count "$upstream..HEAD")
+    behind=$(git -C "$wt" rev-list --count "HEAD..$upstream")
+    report "$name" "$branch" \
+      "diverged: $ahead ahead, $behind behind - rebase by hand"
+  fi
+done
+
+if [[ $failures -gt 0 ]]; then
+  printf '\n%s worktree(s) could not be fast-forwarded (see above)\n' "$failures" >&2
+  exit 1
+fi
