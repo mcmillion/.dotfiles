@@ -347,7 +347,7 @@ fi
 # connected to the remote box is visually distinct from a local one. OSC 11
 # sets the background; OSC 111 resets it to the config default. No-op unless
 # we're talking to a live Ghostty window, so it's safe on every machine/term.
-AURORA_TINT='#192332'
+AURORA_TINT='#0b1e2a'
 _ghostty_tint() { [[ "$TERM" == xterm-ghostty ]] && printf '\e]11;%s\e\\' "$1"; }
 _ghostty_untint() { [[ "$TERM" == xterm-ghostty ]] && printf '\e]111\e\\'; }
 
