@@ -4,7 +4,7 @@ return {
   event = "VeryLazy",
 
   -- Repin the Herdr-side scripts to the commit lazy fetched, only on update.
-  build = 'lua require("herdr-splits").sync_herdr()',
+  build = ':lua require("herdr-splits").sync_herdr()',
 
   opts = { auto_sync_herdr = true },
 
