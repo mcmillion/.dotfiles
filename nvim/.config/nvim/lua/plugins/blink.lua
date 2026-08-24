@@ -3,14 +3,6 @@ return {
   version = "1.*",
   dependencies = {
     "L3MON4D3/LuaSnip",
-    "fang2hou/blink-copilot",
-    {
-      "zbirenbaum/copilot.lua",
-      opts = {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      },
-    },
   },
 
   opts = {
@@ -37,17 +29,8 @@ return {
       default = {
         "lsp",
         "snippets",
-        "copilot",
         "path",
         "buffer",
-      },
-      providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-copilot",
-          async = true,
-          score_offset = 100,
-        },
       },
     },
 
