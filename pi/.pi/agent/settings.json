@@ -9,7 +9,7 @@
   "skills": [
     "~/.claude/skills"
   ],
-  "lastChangelogVersion": "0.85.0",
+  "lastChangelogVersion": "0.85.1",
   "packages": [
     "npm:pi-web-access",
     "npm:pi-powerline-footer"
@@ -19,9 +19,21 @@
     "placement": "below",
     "separator": "dot",
     "welcome": false,
-    "path": { "mode": "basename" },
+    "path": {
+      "mode": "basename"
+    },
+    "model": {
+      "display": "name",
+      "showThinkingLevel": true
+    },
     "layout": {
-      "left": ["path", "git", "model", "thinking", "context_pct", "cost"],
+      "left": [
+        "path",
+        "git",
+        "model",
+        "context_pct",
+        "extension_statuses"
+      ],
       "right": [],
       "secondary": []
     }

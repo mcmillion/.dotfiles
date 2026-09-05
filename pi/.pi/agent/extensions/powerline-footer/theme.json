@@ -1,4 +1,14 @@
 {
+  "icons": {
+    "folder": "",
+    "model": "",
+    "branch": "",
+    "git": "",
+    "github": "",
+    "gitlab": "",
+    "bitbucket": "",
+    "context": "ctx"
+  },
   "colors": {
     "path": "#61afef",
     "model": "#979eab",
