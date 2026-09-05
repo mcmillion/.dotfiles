@@ -1,0 +1,14 @@
+{
+  "colors": {
+    "path": "#61afef",
+    "model": "#979eab",
+    "gitClean": "#e5c07b",
+    "gitDirty": "#e06c75",
+    "context": "#98c379",
+    "contextWarn": "#e5c07b",
+    "contextError": "#e06c75",
+    "cost": "#abb2bf",
+    "tokens": "#828997",
+    "thinking": "#828997"
+  }
+}

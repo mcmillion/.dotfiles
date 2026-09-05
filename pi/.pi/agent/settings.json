@@ -1,0 +1,29 @@
+{
+  "theme": "onedark-darker",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-terra",
+  "enabledModels": [
+    "openai-codex/*"
+  ],
+  "enableSkillCommands": true,
+  "skills": [
+    "~/.claude/skills"
+  ],
+  "lastChangelogVersion": "0.85.0",
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-powerline-footer"
+  ],
+  "powerline": {
+    "preset": "default",
+    "placement": "below",
+    "separator": "dot",
+    "welcome": false,
+    "path": { "mode": "basename" },
+    "layout": {
+      "left": ["path", "git", "model", "thinking", "context_pct", "cost"],
+      "right": [],
+      "secondary": []
+    }
+  }
+}

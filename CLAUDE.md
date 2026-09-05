@@ -38,6 +38,12 @@ stow --no-folding claude
 # sit next to the config in ~/Library/Application Support/Mouseless.
 stow --no-folding mouseless
 
+# Pi needs --no-folding for the same reason: ~/.pi/agent holds credentials
+# (auth.json), sessions, and model cache next to settings.json. Only
+# settings.json is linked; Pi rewrites it in place (e.g. lastChangelogVersion),
+# which surfaces as repo diffs.
+stow --no-folding pi
+
 # Remove/unlink configuration
 stow -D tool-name
 
@@ -102,6 +108,10 @@ Each tool has its own directory containing the configuration files in the same s
   repo: settings differ per machine (model, plugins, permissions), so there is no
   single correct version to sync. Do not propose adding it
 - `codex/` - Codex CLI configuration (`config.toml`, global `AGENTS.md`, notifier)
+- `pi/` - Pi coding agent (pi.dev) global settings (`.pi/agent/settings.json`).
+  Only settings.json is stowed; auth.json, sessions, and the model cache stay
+  out of the repo. Skills are reused from Claude by pointing the `skills` setting
+  at `~/.claude/skills` (Pi reads the same SKILL.md format)
 
 ## Working with Configurations
 
