@@ -27,13 +27,20 @@
     },
     "model": {
       "display": "name",
-      "showThinkingLevel": true
+      "showThinkingLevel": false
     },
+    "customItems": [
+      {
+        "id": "thinking_value",
+        "statusKey": "thinking-value"
+      }
+    ],
     "layout": {
       "left": [
         "path",
         "git",
         "model",
+        "custom:thinking_value",
         "context_pct",
         "extension_statuses"
       ],
