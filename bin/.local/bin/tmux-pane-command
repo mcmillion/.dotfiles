@@ -1,0 +1,19 @@
+#!/bin/sh
+# Return the real executable basename for the foreground process on a tmux
+# pane's tty. Works around tools (like Claude Code) that set process.title —
+# on macOS that surfaces as ucomm, which tmux reports via pane_current_command.
+#
+# Args: $1 = pane_tty (e.g. /dev/ttys001), $2 = pane_pid (shell, used as fallback)
+
+tty=${1#/dev/}
+fallback=$2
+
+if [ -n "$tty" ]; then
+  pid=$(ps -t "$tty" -o pid=,pgid=,stat= 2>/dev/null |
+    awk '$3 ~ /\+/ && $1 == $2 { print $1; exit }')
+fi
+
+[ -z "$pid" ] && pid=$fallback
+[ -z "$pid" ] && exit 0
+
+basename "$(ps -p "$pid" -o comm= 2>/dev/null)"
