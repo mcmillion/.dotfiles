@@ -34,8 +34,11 @@ function formatDuration(seconds: number): string {
   return `${minutes}m`;
 }
 
-function formatDaysRemaining(seconds: number): string {
-  return `${Math.ceil(Math.max(0, seconds) / 86_400)}d`;
+function formatResetDate(seconds: number): string {
+  return new Intl.DateTimeFormat(undefined, {
+    month: "short",
+    day: "numeric",
+  }).format(new Date(Date.now() + Math.max(0, seconds) * 1_000));
 }
 
 function formatWindowLabel(seconds: number | undefined, fallback: string): string {
@@ -59,7 +62,7 @@ function formatWindow(
     ? ctx.ui.theme.fg(
       "dim",
       ` (${window.limit_window_seconds && window.limit_window_seconds >= 86_400
-        ? formatDaysRemaining(window.reset_after_seconds)
+        ? formatResetDate(window.reset_after_seconds)
         : formatDuration(window.reset_after_seconds)})`,
     )
     : "";
