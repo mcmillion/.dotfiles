@@ -1,4 +1,5 @@
 brew 'asdf'
+brew 'bash'
 brew 'bfs'
 brew 'btop'
 brew 'cmake'

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Pi's portable shell entrypoint. Prefer Homebrew Bash on macOS and Linux,
+# while retaining a system-Bash fallback until Homebrew is provisioned.
+if command -v brew >/dev/null 2>&1; then
+  brew_bash="$(brew --prefix bash 2>/dev/null)/bin/bash"
+  if [ -x "$brew_bash" ]; then
+    exec "$brew_bash" "$@"
+  fi
+fi
+
+exec /bin/bash "$@"
