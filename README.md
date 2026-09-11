@@ -32,7 +32,6 @@ This repository contains configuration for the following tools:
 ### Applications (via Homebrew Cask)
 - **Ghostty** - GPU-accelerated terminal emulator
 - **Raycast** - Productivity launcher
-- **Mouseless** - Mouse-free navigation tool
 
 ## Setup Instructions
 
@@ -94,11 +93,6 @@ macOS only:
 
 ```bash
 stow karabiner   # keyboard remapping (macOS-only)
-
-# Mouseless keeps its license file and logs next to its config under
-# ~/Library/Application Support/Mouseless. --no-folding links only
-# configs/config.yaml, so that runtime state stays out of this repo.
-stow --no-folding mouseless
 ```
 
 Linux: skip `karabiner` (macOS-only).

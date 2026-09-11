@@ -34,10 +34,6 @@ stow --dotfiles git
 # history, credentials) inside the repo. --no-folding links the files instead.
 stow --no-folding claude
 
-# Mouseless needs --no-folding for the same reason: its license file and logs
-# sit next to the config in ~/Library/Application Support/Mouseless.
-stow --no-folding mouseless
-
 # Pi needs --no-folding for the same reason: ~/.pi/agent holds credentials
 # (auth.json), sessions, and model cache next to settings.json. Only
 # settings.json is linked; Pi rewrites it in place (e.g. lastChangelogVersion),
@@ -96,10 +92,6 @@ Each tool has its own directory containing the configuration files in the same s
 
 **System Utilities**
 - `karabiner/` - Keyboard remapping for macOS
-- `mouseless/` - Keyboard-driven mouse control for macOS; single YAML config at
-  `~/Library/Application Support/Mouseless/configs/config.yaml`. The app rewrites
-  this file whenever you save from its built-in editor (Tab while the overlay is
-  up), so treat GUI edits as edits to the repo and commit them
 - `bin/` - Custom scripts in .local/bin (critique)
 
 **AI Tools**
