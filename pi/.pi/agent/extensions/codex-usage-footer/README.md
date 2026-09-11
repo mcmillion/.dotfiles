@@ -1,6 +1,6 @@
-# Personal Pi extensions
+# Codex Usage Footer
 
-This directory is the source of personal Pi extensions, managed by the `pi/` GNU Stow package in this repository.  Pi auto-discovers `extensions/*/index.ts` from `~/.pi/agent/extensions/`; after changing these files, run `/reload` in Pi.
+This extension is managed by the `pi/` GNU Stow package in this repository. Pi auto-discovers `extensions/*/index.ts` from `~/.pi/agent/extensions/`; after changing these files, run `/reload` in Pi.
 
 ## Codex usage
 

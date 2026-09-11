@@ -12,9 +12,6 @@
     "openai-codex/gpt-6-astra"
   ],
   "enableSkillCommands": true,
-  "skills": [
-    "~/.claude/skills"
-  ],
   "lastChangelogVersion": "0.85.1",
   "packages": [
     "npm:pi-web-access",

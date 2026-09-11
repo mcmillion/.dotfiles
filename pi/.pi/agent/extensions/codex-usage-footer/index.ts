@@ -1,7 +1,7 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { registerCodexUsage } from "./codex-usage.ts";
 
-/** Personal Pi extensions managed from this dotfiles package. */
+/** Adds Codex rate-limit usage to the Powerline footer. */
 export default function (pi: ExtensionAPI) {
   // Herdr advertises TERM=xterm-256color, so Powerline otherwise selects its
   // ASCII `.` separator. Its Unicode middle-dot separator matches the one used
