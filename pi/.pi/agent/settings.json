@@ -12,7 +12,7 @@
     "openai-codex/gpt-6-astra"
   ],
   "enableSkillCommands": true,
-  "lastChangelogVersion": "0.85.1",
+  "lastChangelogVersion": "0.87.0",
   "packages": [
     "npm:pi-web-access",
     "npm:pi-powerline-footer"
