@@ -3,8 +3,8 @@ return {
   version = "*",
   lazy = true,
   event = {
-    "BufReadPre " .. vim.fn.expand("~") .. "/.obsidian/*/**.md",
-    "BufNewFile " .. vim.fn.expand("~") .. "/.obsidian/*/**.md",
+    "BufReadPre " .. vim.fn.expand("~") .. "/obsidian/*/**.md",
+    "BufNewFile " .. vim.fn.expand("~") .. "/obsidian/*/**.md",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -12,9 +12,10 @@ return {
 
   opts = {
     workspaces = {
-      { name = "main", path = "~/.obsidian/main" },
-      { name = "galileo", path = "~/.obsidian/galileo" },
-      { name = "black-omen", path = "~/.obsidian/black-omen" },
+      { name = "personal", path = "~/obsidian/personal" },
+      { name = "galileo", path = "~/obsidian/galileo" },
+      { name = "bitpivot", path = "~/obsidian/bitpivot" },
+      { name = "black-omen", path = "~/obsidian/black-omen" },
     },
 
     completion = {
@@ -51,7 +52,7 @@ return {
     {
       "<leader>on",
       function()
-        local vault = vim.fn.expand("~/.obsidian/main")
+        local vault = vim.fn.expand("~/obsidian/personal")
         local cwd = vim.fn.getcwd()
         vim.cmd.lcd(vault)
         local input = vim.fn.input({
