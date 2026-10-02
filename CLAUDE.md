@@ -24,7 +24,10 @@ stow */
 
 # Link specific tool configuration
 stow nvim
-stow herdr
+
+# herdr and hunk write runtime state (sockets, logs, session snapshots,
+# state.json) next to config.toml, so link the file, never the directory.
+stow --no-folding herdr hunk
 
 # Git requires --dotfiles flag to link dot-gitignore as .gitignore
 stow --dotfiles git
@@ -51,6 +54,26 @@ stow -R tool-name
 
 ### Stow-based Configuration Management
 Each tool has its own directory containing the configuration files in the same structure they should appear in `$HOME`. Stow creates symbolic links from the home directory to the dotfiles repository, allowing version control of configurations while keeping them in their expected locations.
+
+### No Runtime State in the Repo
+Runtime files (sockets, logs, sessions, caches, lock files, credentials) must
+never land in this repo. A `.gitignore` entry is not a fix: it only hides files
+that are still being written into the working tree.
+
+- Plain `stow` folds a package into a single directory symlink when the target
+  directory does not exist yet, so everything the tool writes next to its
+  config ends up here. If a tool writes anything beside its config, stow it
+  with `--no-folding` so only the tracked files are linked.
+- When adding or stowing a package, check what the tool writes to its config
+  directory first, and after stowing confirm `git status --short --ignored`
+  shows nothing new once the tool has run.
+- If runtime files do show up: `stow -D` the package, create the real
+  directory in `$HOME`, move the runtime files there, then
+  `stow --no-folding` it. Sockets and open logs survive the move.
+- Trade-off: with per-file links, a tool that rewrites its own tracked config
+  by replacing the file (btop does) swaps the symlink for a real file and
+  drifts from the repo. Leave those packages folded while their directory
+  stays free of runtime files.
 
 ### Tool Configurations
 

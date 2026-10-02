@@ -82,8 +82,12 @@ Shared (both macOS and Linux):
 # stow use per-file symlinks instead.
 mkdir -p ~/.local/bin
 
-stow zsh nvim starship asdf homebrew editorconfig claude codex herdr \
+stow zsh nvim starship asdf homebrew editorconfig codex \
   ripgrep yazi lazygit lazydocker ghostty tuxedo ruby presenterm bin
+
+# These tools write runtime state next to their config. --no-folding links
+# the files instead of the directory, so that state stays out of this repo.
+stow --no-folding claude herdr hunk
 
 # Git requires --dotfiles flag to properly link .gitignore
 stow --dotfiles git
