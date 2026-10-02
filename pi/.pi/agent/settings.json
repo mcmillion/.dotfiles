@@ -3,8 +3,8 @@
   "tuiMode": "fullscreen",
   "shellPath": "~/.local/bin/pi-bash",
   "shellCommandPrefix": "if command -v brew >/dev/null 2>&1; then _pi_gnubin=\"$(brew --prefix coreutils 2>/dev/null)/libexec/gnubin\"; [ -d \"$_pi_gnubin\" ] && PATH=\"$_pi_gnubin:$PATH\"; unset _pi_gnubin; fi",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-terra",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-5.5",
   "enabledModels": [
     "openai-codex/gpt-5.6-luna",
     "openai-codex/gpt-5.6-terra",
@@ -12,7 +12,7 @@
     "openai-codex/gpt-6-astra"
   ],
   "enableSkillCommands": true,
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "1.0.0",
   "packages": [
     "npm:pi-web-access",
     "npm:pi-powerline-footer"
@@ -47,5 +47,6 @@
       "right": [],
       "secondary": []
     }
-  }
+  },
+  "deviceId": "2ec2f6b5-2057-42dd-8974-bf9b147972be"
 }
