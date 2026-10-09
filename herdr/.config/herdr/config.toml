@@ -28,6 +28,11 @@ show_agent_labels_on_pane_borders = false
 
 agent_panel_sort = "priority"
 
+# Pin the sidebar at herdr's default maximum (36 columns). The width auto-scales
+# to workspace names between min and max, so the minimum is raised to match.
+sidebar_width = 36
+sidebar_min_width = 36
+
 # herdr 0.8 dropped the blank row between space entries; 1 restores it.
 [ui.sidebar.spaces]
 row_gap = 1
