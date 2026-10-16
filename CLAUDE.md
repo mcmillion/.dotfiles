@@ -19,15 +19,18 @@ brew update && brew upgrade
 
 ### Stow Operations
 ```bash
-# Link all configurations (most packages)
-stow */
+# Link all configurations. Never plain `stow */`: it folds the packages below
+# into directory symlinks, and their runtime state then lands in the repo.
+stow */ && stow -R --no-folding herdr hunk opencode claude pi
 
 # Link specific tool configuration
 stow nvim
 
 # herdr and hunk write runtime state (sockets, logs, session snapshots,
 # state.json) next to config.toml, so link the file, never the directory.
-stow --no-folding herdr hunk
+# opencode installs plugins (package.json, node_modules, lockfiles) beside
+# its config the same way.
+stow --no-folding herdr hunk opencode
 
 # Git requires --dotfiles flag to link dot-gitignore as .gitignore
 stow --dotfiles git
@@ -122,6 +125,8 @@ that are still being written into the working tree.
   `~/.claude/settings.json` is deliberately NOT stowed and must stay out of this
   repo: settings differ per machine (model, plugins, permissions), so there is no
   single correct version to sync. Do not propose adding it
+- `opencode/` - opencode configuration and theme. Stow with `--no-folding`:
+  opencode installs its plugins into the same directory
 - `codex/` - Codex CLI configuration (`config.toml`, global `AGENTS.md`, notifier)
 - `pi/` - Pi coding agent (pi.dev) global settings (`.pi/agent/settings.json`).
   Only settings.json is stowed; auth.json, sessions, and the model cache stay
