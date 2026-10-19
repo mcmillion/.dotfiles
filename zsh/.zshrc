@@ -326,7 +326,7 @@ eval "$(starship init zsh)"
 #==================================================================================================
 
 # Ensure a headless herdr server is running for interactive shells, but do NOT
-# attach automatically -- connect on demand with `h` (local) or `hr` (aurora).
+# attach automatically. Ghostty launches herdr on open; `h` attaches elsewhere.
 # Skips when already inside herdr, in VS Code's terminal, or when herdr is absent.
 if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v herdr >/dev/null 2>&1; then
   if ! herdr status server >/dev/null 2>&1; then
@@ -334,14 +334,6 @@ if [[ -o interactive ]] && [[ -z "$HERDR_ENV" ]] && [[ "$TERM_PROGRAM" != "vscod
   fi
 fi
 
-# Shortcuts: `h` = local herdr, `hr` = attach aurora's herdr server over SSH.
-# `hr` tries three paths in order: Tailscale (ssh alias `aurora`), then mDNS on
-# the LAN (mlm@<host>.local), then the cloudflared tunnel (ssh alias
-# `aurora-cf`) for when aurora is off both the tailnet and the local network.
-# Each probe is a fast, non-interactive ssh so it only takes a path when a real
-# connection would actually succeed.
-# --remote-keybindings server: resolve keybinds on the server, where plugins
-# like herdr-splits live (default `local` would no-op ctrl+h/j/k/l nav).
 # Tint the Ghostty window while a session is pointed at aurora, so a window
 # connected to the remote box is visually distinct from a local one. OSC 11
 # sets the background; OSC 111 resets it to the config default. No-op unless
@@ -353,7 +345,7 @@ _ghostty_untint() { [[ "$TERM" == xterm-ghostty ]] && printf '\e]111\e\\'; }
 # Wrap interactive `ssh aurora` (and aurora.local / aurora-cf) to tint on
 # connect and reset on return. The zsh quirk that makes this self-resetting:
 # an EXIT trap set inside a function fires when the function returns, not when
-# the shell exits. Skips BatchMode probes so hr's path checks don't flash.
+# the shell exits. Skips BatchMode probes so they don't flash.
 ssh() {
   if [[ "$*" == *aurora* && "$*" != *BatchMode* ]]; then
     _ghostty_tint "$AURORA_TINT"
@@ -363,16 +355,3 @@ ssh() {
 }
 
 alias h='herdr'
-hr() {
-  _ghostty_tint "$AURORA_TINT"
-  trap '_ghostty_untint' EXIT INT
-  if ssh -o BatchMode=yes -o ConnectTimeout=2 aurora true 2>/dev/null; then
-    herdr --remote aurora --remote-keybindings server "$@"
-  elif ssh -o BatchMode=yes -o ConnectTimeout=2 mlm@aurora.local true 2>/dev/null; then
-    print -u2 "hr: aurora unreachable over Tailscale, falling back to aurora.local"
-    herdr --remote mlm@aurora.local --remote-keybindings server "$@"
-  else
-    print -u2 "hr: aurora unreachable over Tailscale and LAN, falling back to cloudflared (aurora-cf)"
-    herdr --remote aurora-cf --remote-keybindings server "$@"
-  fi
-}
