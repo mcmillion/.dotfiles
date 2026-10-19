@@ -54,8 +54,9 @@ shell-integration-features = ssh-env,ssh-terminfo
 keybind = alt+left=esc:[1;3D
 keybind = alt+right=esc:[1;3C
 
-# Attach herdr in the first window on launch; later windows get a plain shell.
-initial-command = /opt/homebrew/bin/herdr
+# Attach herdr in every new window; detaching falls back to a plain shell.
+# initial-command only fires for the first window after Ghostty launches.
+command = /bin/zsh -lc '/opt/homebrew/bin/herdr; exec /bin/zsh -l'
 
 # cmd+h/l cycle between windows. cmd+j/k are left unbound so they pass
 # through to herdr (agent cycling).
