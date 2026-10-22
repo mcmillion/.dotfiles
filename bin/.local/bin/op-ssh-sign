@@ -4,7 +4,7 @@
 # gitconfig stays shared while the signer differs per environment.
 #
 # When 1Password is the active SSH agent (desktop app), let it sign. Otherwise
-# (e.g. an agent forwarded in over SSH, like ceres using the Mac's agent), sign
+# (e.g. an agent forwarded in over SSH), sign
 # via ssh-keygen against whatever agent SSH_AUTH_SOCK points to.
 case "$SSH_AUTH_SOCK" in
   *1password*)
