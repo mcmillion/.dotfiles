@@ -8,9 +8,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # GNU coreutils ahead of BSD tools, so ls/dircolors/etc. behave like Linux
 export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
-# 1Password SSH agent
-export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
 # Postgres (Homebrew)
 alias fix_stuck_postgres='rm /opt/homebrew/var/postgres/postmaster.pid; brew services restart postgresql'
 
