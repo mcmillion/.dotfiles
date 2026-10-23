@@ -1,7 +1,6 @@
 [user]
   name = Matthew McMillion
   email = matt@mlm.dev
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGJbojL84KcMBS+nPwXhIVv2mYwSYmWwmmNBoZwWELu/
 
 [core]
   excludesfile = ~/.gitignore
@@ -105,14 +104,13 @@
   format = ssh
 
 [gpg "ssh"]
-  program = op-ssh-sign
   allowedSignersFile = ~/.allowed_signers
 
 [commit]
   gpgsign = true
 
-# Machine-local overrides (e.g. a host that signs with an on-disk key).
-# Missing file is silently ignored, so this is a no-op on hosts without it.
+# Each machine sets user.signingkey and gpg.ssh.program here; without them
+# signing fails. Missing file is silently ignored.
 [include]
   path = ~/.config/git/local.config
 [branch]

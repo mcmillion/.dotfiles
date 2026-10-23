@@ -130,9 +130,8 @@ the OS genuinely differs.
 
 - **Shell split.** `~/.zshrc` and `~/.zprofile` are shared. Each sources a
   per-OS fragment (`.zshrc.darwin`/`.zshrc.linux`,
-  `.zprofile.darwin`/`.zprofile.linux`) chosen by `uname`. Brew prefix, the
-  1Password SSH agent socket, and macOS-only system aliases live in those
-  fragments. Both fragments are stowed everywhere; the base picks one at
+  `.zprofile.darwin`/`.zprofile.linux`) chosen by `uname`. Brew prefix and
+  macOS-only system aliases live in those fragments. Both fragments are stowed everywhere; the base picks one at
   runtime. Per-host (not per-OS) differences are handled with ad-hoc hostname
   conditions when needed.
 - **GNU coreutils everywhere.** The macOS fragment puts
@@ -141,11 +140,13 @@ the OS genuinely differs.
 - **Brewfile.** One file. macOS-only formulae and all casks are wrapped in
   `if OS.mac?`, so `brew bundle` is safe to run on Linux (casks are unsupported
   by Linux brew).
-- **Git signing.** Commit signing uses 1Password's `op-ssh-sign`, referenced by
-  name. A small wrapper at `~/.local/bin/op-ssh-sign` (from the `bin` package)
-  execs the right binary per OS (`/Applications/1Password.app/...` on macOS,
-  `/opt/1Password/op-ssh-sign` on Linux), so `git/.gitconfig` stays shared.
-  Requires the 1Password desktop app with the SSH agent enabled.
+- **Git signing.** Each machine has one on-disk key at `~/.ssh/id_ed25519`,
+  used for SSH, GitHub, and commit signing. `git/.gitconfig` names no key;
+  each machine sets `user.signingkey` (absolute path to that key) and
+  `gpg.ssh.program = ssh-keygen` in `~/.config/git/local.config`, which the
+  shared config includes. `~/.ssh/config` sets `IdentityAgent none` so no
+  agent is involved. `git/.allowed_signers` lists every machine's key, plus
+  retired ones so old commits still verify.
 - **herdr.** Cross-platform; installed via the shared Brewfile. `~/.zshrc`
   auto-launches/attaches herdr for interactive shells, skipping when already
   inside herdr (`$HERDR_ENV`), in VS Code's terminal, or when herdr is
