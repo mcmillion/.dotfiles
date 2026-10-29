@@ -5,7 +5,7 @@
 - Default to no comment. What earns one is knowledge from outside the file — a constraint the code can't show, an approach already tried and rejected. Not the *what*, and never a rebuttal to a code review
 - Hard cap: 2 lines per comment. More than that belongs in the spec or the PR, with the comment as a one-line pointer
 - Leave existing comments alone unless they're now wrong
-- Use only ASCII characters; no emojis or special Unicode unless I ask
+- In code, files, commit messages, and shell commands, use only ASCII characters; no emojis or special Unicode unless I ask. Chat replies may use them
 - When giving me shell commands to copy/paste, format them to wrap at 80 characters whenever possible (use `\` line continuations, break on pipes/`&&`, etc). Long single-line commands that soft-wrap in the terminal cause copy/paste problems
 
 ## Environment / Machines
