@@ -18,6 +18,14 @@
 - asdf is the default runtime version manager
 - `~/todo.txt` (home root) is my global todo list across all systems, in todo.txt format, managed with `tuxedo` (shell alias `t`). It is primarily MY tool — agents track their own work in Obsidian, not here. But know where it is: if I ask you to add or complete a task, edit `~/todo.txt` directly, and check off (`x `-prefix, todo.txt convention) items you actually finish.
 
+## herdr
+
+- One parent workspace per project, at the repo root. Reuse it if it is already open (`herdr workspace list`); create it only when missing
+- Open each worktree as a linked workspace under that parent with `herdr worktree open --workspace <parent-id> --path <worktree>`, never as a standalone `herdr workspace create`
+- In the bare-repo layout, make the worktree with `git worktree add` first; `herdr worktree create` fails there with `linked_worktree_source`
+- Never use `herdr workspace close --group`; close only the linked workspace you are done with
+- Always name new tabs: for an agent session, a short title of what it is doing (e.g. `fix ci`, `review #70`); for anything else, the process it runs (e.g. `dev server`, `tests`)
+
 ## Debugging
 
 - Read the actual error output before proposing a fix; never guess at causes — trace the specific failing test, check, or stack trace to its source (CI failures included)
