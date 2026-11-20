@@ -16,6 +16,7 @@
   - **XG7GT4XJLW** — work laptop (Galileo, macOS)
 - Repos live under `~/dev/` on aurora and `~/Developer/` on the Macs, organized as `owner/repo`. Most use the bare-repo worktree pattern: a `.bare/` directory holds the git data, a `.git` file points to it, and worktree folders sit alongside — with the default branch kept as a permanent worktree checkout
 - aurora has no browser. There, write HTML reports (architecture reviews, test reports, rendered diagrams) to `~/reports/<owner>/<repo>/` and give me the link `https://reports.lab.mlm.dev/<owner>/<repo>/<file>` instead of running `xdg-open`
+- HTML reports and pages you generate for me are always dark mode (dark background, light text, dark Mermaid theme), with no light mode or toggle, even when a skill's template is light
 - asdf is the default runtime version manager
 - `~/todo.txt` (home root) is my global todo list across all systems, in todo.txt format, managed with `tuxedo` (shell alias `t`). It is primarily MY tool — agents track their own work in Obsidian, not here. But know where it is: if I ask you to add or complete a task, edit `~/todo.txt` directly, and check off (`x `-prefix, todo.txt convention) items you actually finish.
 
